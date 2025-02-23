@@ -1,59 +1,100 @@
 <!DOCTYPE html>
-<html lang="zh-Hans-CN">
- 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="SiteName" content="网站的规范名称">
-  <meta name="SiteDomain" content="网站的英文域名">
-  <meta name="SiteIDCode" content="网站合法身份的标识">
-  <!-- 栏目页面 -->
-  <meta name="ColumnName" content="栏目名称/频道/专题">
-  <meta name="ColumnDescription" content="栏目描述">
-  <meta name="ColumnKeywords" content="栏目关键词">
-  <meta name="ColumnType" content="栏目类别">
-  <!-- 内容页面 -->
-  <meta name="ArticleTitle" content="标题">
-  <meta name="PubDate" content="发布时间:YYYY—MM—DD HH∶MM">
-  <meta name="ContentSource" content="来源">
-  <meta name="Keywords" content="关键词">
-  <meta name="Author" content="作者">
-  <meta name="Description" content="摘要">
-  <meta name="Image" content="图片">
-  <meta name="Url" content="网址">
-  <title>文章标题-栏目名称-网站名</title>
-</head>
- 
-<body>
-  <div id="app"></div>
-  <h1>你好</h1>
+<html>
+	<head>
+		<!--HTML清理缓存-->
+        <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+        <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+        <META HTTP-EQUIV="expires" CONTENT="0"> 
+		<!--设置字符格式及适配手机格式-->
+	    <meta charset="utf-8" />
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="yes" name="apple-touch-fullscreen">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="320" name="MobileOptimized">
+		<title>欢迎使用小爱课程表</title>
+		<style type="text/css">a{text-decoration:none}</style>
+        
+	</head>
+	
+	<body>
+    
+		<table width="100%" border="0">
+		  <tr>
+			<th scope="col"><strong><p>选择当前网络</p></strong></th>
+		  </tr>
+		  
+		  <tr>
+			<th scope="col"><button onclick="gotoCampusNetwork()">当前处于校园网</button>
+		  &nbsp;<button onclick="gotoOffCampusNetwork()">当前处于校外网</button></th>
+		  </tr>
+		  
+		  <tr>
+		  
+		  </tr>
+		  
+		  <tr>
+			<th scope="col"><input id="inputurl" type="text" onkeydown="if(event.keyCode==13) {gotoOther()}" placeholder="自定义教务平台网址" />&nbsp;<button onclick="gotoOther()">跳转</button><div id="html"></div>
+		  </tr>
+		</table>
 
- <p>Hello 大家好</p>
-<p>我是lyuu，这是我的个人网站。 </p>
-<p>很高兴你来到这里, 你可以在以下的网站找到我</p>
+		<br>
+		<br>
+		课程导入步骤：选择网络环境 → 登录账号 → 一键导入
+		<br>
+        <br>
 
-<ul>
-  <li> <a href="https://blog.csdn.net/walkerxsxk">我的CSDN</a> </li>
-  <li>  </li>
-</ul>
+        <details open>
+        <summary>更新</summary>
+		<br>
+        · 可根据不同校区自动适配不同时间安排
+        <br><div align="right">2021/04/20</div>
+        </details>
 
-  <p>
- <a >白云校区听讲证</a>
-<a href="https://raw.githubusercontent.com/java-walker/java-walker.github.io/3f104e7748ccbe19a03cb728eec89776bc88b15c/%E7%99%BD%E4%BA%91%E6%A0%A1%E5%8C%BA%E8%AE%B2%E5%BA%A7%E5%90%AC%E8%AE%B2%E8%AF%81%E8%A1%A5%E5%8A%9E%E6%B5%81%E7%A8%8B.pdf">GitHub直接下载</a> </li>
- <a href="https://ghp.ci/https://raw.githubusercontent.com/java-walker/java-walker.github.io/3f104e7748ccbe19a03cb728eec89776bc88b15c/%E7%99%BD%E4%BA%91%E6%A0%A1%E5%8C%BA%E8%AE%B2%E5%BA%A7%E5%90%AC%E8%AE%B2%E8%AF%81%E8%A1%A5%E5%8A%9E%E6%B5%81%E7%A8%8B.pdf">代理下载</a> </li>
-</p>
+	<details open>
+        <summary>备注信息</summary>
+		&nbsp;&nbsp;外网连接学校可能会更换,<br>
+		&nbsp;&nbsp;建议连接校园网打开。<br>
+		&nbsp;&nbsp;如果学校更新外网连接，<br>
+		&nbsp;&nbsp;可自定义教务网页进行导入。<br>
+	</details>
+		
+	<details>
+        <summary>关于作者</summary>
+		&nbsp;&nbsp;Gitee：<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://gitee.com/wulve/GPNU_XiaoAiCurriculum">https://gitee.com/wulve/GPNU_XiaoAiCurriculum</a><br>
+		&nbsp;&nbsp;Github：<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/WuLve/GPNU_XiaoAiCurriculum">https://github.com/WuLve/GPNU_XiaoAiCurriculum</a><br>
+		&nbsp;&nbsp;联系：<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;ouwulve@outlook.com
+        </details>
 
- <p>
- <a href="https://gpnu.edu.cn/info/1040/59634.htm">关于开通师生校内电子邮箱自助申请服务的通知</a> </li>
-</p>
- 
- <p>
- <a >一网通办个人电子邮箱申请指南</a>
-<a href="https://github.com/java-walker/java-walker.github.io/blob/main/%E4%B8%80%E7%BD%91%E9%80%9A%E5%8A%9E%E4%B8%AA%E4%BA%BA%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97.pdf">GitHub直接下载</a> </li>
- <a href="https://ghp.ci/?q=https%3A%2F%2Fgithub.com%2Fjava-walker%2Fjava-walker.github.io%2Fblob%2Fmain%2F%25E4%25B8%2580%25E7%25BD%2591%25E9%2580%259A%25E5%258A%259E%25E4%25B8%25AA%25E4%25BA%25BA%25E7%2594%25B5%25E5%25AD%2590%25E9%2582%25AE%25E7%25AE%25B1%25E7%2594%25B3%25E8%25AF%25B7%25E6%258C%2587%25E5%258D%2597.pdf">代理下载</a> </li>
-</p>
- 
-</body>
- 
+		
+
+	</body>
+
+	<script type="text/javascript"> 
+	document.write("<link rel='stylesheet' type='text/css' href='/css/layout.css?v="+new Date().getTime()+"'>");   
+	var othernetwork=document.getElementById("inputurl")
+
+	function gotoCampusNetwork()
+	{	
+		alert("正在跳转，请等候……");
+		window.location.replace("http://10.0.10.184/jwglxt/kbcx/xskbcx_cxXskbcxIndex.html?gnmkdm=N2151&layout=default&su=");
+	}
+
+	function gotoOffCampusNetwork()
+	{
+		alert("正在跳转，请等候……如果无法打开建议使用内网连接");
+		window.location.replace("https://10-0-10-184.webvpn.gpnu.edu.cn/jwglxt/kbcx/xskbcx_cxXskbcxIndex.html?gnmkdm=N2151&layout=default&su=");
+	}
+
+	function gotoOther()
+	{
+	    alert("正在打开，请等候……");
+		window.location.replace(""+othernetwork.value+"");
+	}
+	</script>
+
+
 </html>
