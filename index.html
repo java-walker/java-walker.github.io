@@ -1,100 +1,128 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<!--HTML清理缓存-->
-        <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
-        <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
-        <META HTTP-EQUIV="expires" CONTENT="0"> 
-		<!--设置字符格式及适配手机格式-->
-	    <meta charset="utf-8" />
-        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
-        <meta content="yes" name="apple-mobile-web-app-capable">
-        <meta content="yes" name="apple-touch-fullscreen">
-        <meta content="black" name="apple-mobile-web-app-status-bar-style">
-        <meta content="320" name="MobileOptimized">
-		<title>欢迎使用小爱课程表</title>
-		<style type="text/css">a{text-decoration:none}</style>
-        
-	</head>
-	
-	<body>
-    
-		<table width="100%" border="0">
-		  <tr>
-			<th scope="col"><strong><p>选择当前网络</p></strong></th>
-		  </tr>
-		  
-		  <tr>
-			<th scope="col"><button onclick="gotoCampusNetwork()">当前处于校园网</button>
-		  &nbsp;<button onclick="gotoOffCampusNetwork()">当前处于校外网</button></th>
-		  </tr>
-		  
-		  <tr>
-		  
-		  </tr>
-		  
-		  <tr>
-			<th scope="col"><input id="inputurl" type="text" onkeydown="if(event.keyCode==13) {gotoOther()}" placeholder="自定义教务平台网址" />&nbsp;<button onclick="gotoOther()">跳转</button><div id="html"></div>
-		  </tr>
-		</table>
 
-		<br>
-		<br>
-		课程导入步骤：选择网络环境 → 登录账号 → 一键导入
-		<br>
-        <br>
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dmego Home">
+    <meta name="keywords" content="Dmego,Homepage">
+    <meta name="author" content="Dmego">
+    <title>Dmego Home</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/onlinewebfonts.css"/>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/vno.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/iconfont.css">
+    <link rel="apple-touch-icon" href="https://unpkg.com/dmego-home-page@latest/apple-touch-icon.png">
+    <link rel="icon" href="https://unpkg.com/dmego-home-page@latest/favicon.ico">
+</head>
 
-        <details open>
-        <summary>更新</summary>
-		<br>
-        · 可根据不同校区自动适配不同时间安排
-        <br><div align="right">2021/04/20</div>
-        </details>
+<body>
+    <span class="mobile btn-mobile-menu">
+        <i class="social iconfont icon-list btn-mobile-menu__icon"></i>
+        <i class="social iconfont icon-angleup btn-mobile-close__icon hidden"></i>
+    </span>
+    <header id="panel" class="panel-cover">
+        <div class="panel-main">
+            <div class="panel-main__inner panel-inverted">
+                <div class="panel-main__content">
+                    <div class="ih-item circle effect right_to_left">            
+                        <a href="#" title="" class="blog-button">
+                            <div class="img"><img src="https://unpkg.com/dmego-home-page@latest/assets/img/logo3.jpg" alt="img" class="js-avatar iUp profilepic"></div>
+                            <div class="info iUp">
+                                <div class="info-back">
+                                    <h2> 
+                                        
+                                            Be Brave
+                                        
+                                    </h2>
+                                    <p>
+                                        
+                                            2025 · 勇敢
+                                        
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <h1 class="panel-cover__title panel-title iUp">
+                        <a href="#" title="Dmego Home">Dmego</a>
+                    </h1>
+                    <p class="panel-cover__subtitle panel-subtitle iUp">Code Create Life</p>
+                    <hr class="panel-cover__divider iUp" />
+                    <p id="description" class="panel-cover__description iUp">如何得与凉风约, 不共尘沙一并来!
+                        <br/>
+                        <strong>-「中牟道中」</strong>
+                    </p>
+                    <div class="navigation-wrapper iUp">
+                        <div>
+                            <nav class="cover-navigation cover-navigation--primary">
+                                <ul class="navigation">
+                                    <li class="navigation__item">
+                                        <a href="/" class="blog-button">首页</a>
+                                    </li>
+                                    <li class="navigation__item">
+                                        <a href="https://dmego.cn" class="blog-button" target="_blank">博客</a>
+                                    </li>
+                                    <li class="navigation__item">
+                                        <a href="https://r.dmego.cn" class="blog-button" target="_blank">简历</a>
+                                    </li>
+                                    <li class="navigation__item">
+                                        <a href="https://dmego.cn/about/" class="blog-button" target="_blank">关于</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="iUp">
+                            <nav class="cover-navigation navigation--social">
+                                <ul class="navigation">
+                                    <li class="navigation__item">
+                                        <a href="https://github.com/dmego/" title="github" target="_blank">
+                                            <i class='social iconfont icon-github'></i>
+                                            <span class="label">github</span>
+                                        </a>
+                                    </li>
+                                    <li class="navigation__item">
+                                        <a href="http://www.cnblogs.com/dmego/" title="cnblogs" target="_blank">
+                                            <i class='social iconfont icon-cnblogs'></i>
+                                            <span class="label">cnblogs</span>
+                                        </a>
+                                    </li>
 
-	<details open>
-        <summary>备注信息</summary>
-		&nbsp;&nbsp;外网连接学校可能会更换,<br>
-		&nbsp;&nbsp;建议连接校园网打开。<br>
-		&nbsp;&nbsp;如果学校更新外网连接，<br>
-		&nbsp;&nbsp;可自定义教务网页进行导入。<br>
-	</details>
-		
-	<details>
-        <summary>关于作者</summary>
-		&nbsp;&nbsp;Gitee：<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://gitee.com/wulve/GPNU_XiaoAiCurriculum">https://gitee.com/wulve/GPNU_XiaoAiCurriculum</a><br>
-		&nbsp;&nbsp;Github：<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/WuLve/GPNU_XiaoAiCurriculum">https://github.com/WuLve/GPNU_XiaoAiCurriculum</a><br>
-		&nbsp;&nbsp;联系：<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;ouwulve@outlook.com
-        </details>
-
-		
-
-	</body>
-
-	<script type="text/javascript"> 
-	document.write("<link rel='stylesheet' type='text/css' href='/css/layout.css?v="+new Date().getTime()+"'>");   
-	var othernetwork=document.getElementById("inputurl")
-
-	function gotoCampusNetwork()
-	{	
-		alert("正在跳转，请等候……");
-		window.location.replace("http://10.0.10.184/jwglxt/kbcx/xskbcx_cxXskbcxIndex.html?gnmkdm=N2151&layout=default&su=");
-	}
-
-	function gotoOffCampusNetwork()
-	{
-		alert("正在跳转，请等候……如果无法打开建议使用内网连接");
-		window.location.replace("https://10-0-10-184.webvpn.gpnu.edu.cn/jwglxt/kbcx/xskbcx_cxXskbcxIndex.html?gnmkdm=N2151&layout=default&su=");
-	}
-
-	function gotoOther()
-	{
-	    alert("正在打开，请等候……");
-		window.location.replace(""+othernetwork.value+"");
-	}
-	</script>
-
-
+                                    <li class="navigation__item">
+                                        <a href="https://www.zhihu.com/people/dmego/" title="zhihu" target="_blank">
+                                            <i class='social iconfont icon-zhihu'></i>
+                                            <span class="label">zhihu</span>
+                                        </a>
+                                    </li>
+                                    <li class="navigation__item">
+                                        <!-- 加密的邮箱地址, 请自行修改, 或者改用下方的明文方式 -->
+                                        <a href="javascript:decryptEmail('ZG1lYWdvQGdtYWlsLmNvbQ==');" title="email">
+                                        <!-- <a href="test@test.com" title="email"> -->
+                                            <i class='social iconfont icon-email'></i>
+                                            <span class="label">email</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-cover--overlay cover-slate"></div>
+        </div>
+        <!-- <div class="beian iUp">
+            <a class="icp" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">XXX</a>
+            <a class="gwab" href="http://www.beian.gov.cn/portal/recordQuery" target="_blank">XXX</a>
+        </div> -->
+        <div class="remark iUp">
+            <p class="power">Powered By 
+                <a href="https://github.com/features/actions" target="_blank"> GitHub Actions </a> And 
+                <a href="https://hitokoto.cn/" target="_blank"> Hitokoto </a>
+            </p>
+        </div>
+    </header>
+    <script type="text/javascript" src="https://unpkg.com/dmego-home-page@latest/assets/js/main.js"></script>
+    <script type="text/javascript" src="./assets/json/images.json?cb=getBingImages"></script>
+</body>
 </html>
