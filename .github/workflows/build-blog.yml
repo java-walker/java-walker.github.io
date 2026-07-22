@@ -38,6 +38,10 @@ jobs:
         working-directory: hexo
         run: npm ci
 
+      - name: Clean previous build output
+        working-directory: hexo
+        run: npx hexo clean
+
       - name: Generate static site (public_dir = ../blog)
         working-directory: hexo
         run: npx hexo generate
