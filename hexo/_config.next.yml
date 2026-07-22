@@ -10,6 +10,7 @@ scheme: Gemini
 # menu: 顶部导航
 menu:
   home: / || fa fa-home
+  portal: https://lyuu.eu.cc/ || fa fa-globe
   archives: /archives/ || fa fa-archive
   categories: /categories/ || fa fa-th
   tags: /tags/ || fa fa-tags
@@ -57,3 +58,7 @@ post_settings:
     enable: true
     number: true
     wrap: false
+
+# 自定义语言覆盖（与主题默认语言合并），用于菜单「主页」中文显示
+custom_file_path:
+  language: source/_data/languages.yml

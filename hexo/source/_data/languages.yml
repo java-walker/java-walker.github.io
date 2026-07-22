@@ -1,0 +1,5 @@
+# NexT 自定义语言覆盖（与主题默认语言 deep merge）
+# 用途：让博客菜单「主页」项显示中文而非 key
+zh-CN:
+  menu:
+    portal: 主页
