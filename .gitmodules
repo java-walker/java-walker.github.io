@@ -1,0 +1,3 @@
+[submodule "ai-guide"]
+	path = ai-guide
+	url = https://github.com/liyupi/ai-guide.git
