@@ -1,0 +1,56 @@
+name: Build and Deploy Blog
+
+# 触发条件：
+# 1) 推送到 lyuu_cn 分支，且改动落在 hexo/ 源码配置、根 index.html、CNAME 时
+#    —— 新增/修改文章、改主题配置都会自动重建并部署 blog/
+# 2) 手动在 Actions 页面触发（workflow_dispatch）
+on:
+  push:
+    branches: [lyuu_cn]
+    paths:
+      - 'hexo/**'
+      - 'index.html'
+      - 'CNAME'
+  workflow_dispatch:
+
+# 允许 GITHUB_TOKEN 把重建后的 blog/ 推回 lyuu_cn
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout lyuu_cn
+        uses: actions/checkout@v4
+        with:
+          ref: lyuu_cn
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: hexo/package-lock.json
+
+      - name: Install Hexo dependencies
+        working-directory: hexo
+        run: npm ci
+
+      - name: Generate static site (public_dir = ../blog)
+        working-directory: hexo
+        run: npx hexo generate
+
+      - name: Commit and push blog output back to lyuu_cn
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout lyuu_cn
+          git add blog
+          if git diff --cached --quiet; then
+            echo "blog/ 无变化，跳过提交"
+          else
+            git commit -m "chore: rebuild blog [skip ci]"
+            git push origin lyuu_cn
+          fi
