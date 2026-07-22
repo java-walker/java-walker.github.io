@@ -2,29 +2,264 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>gpnu资源站</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="GPNU 校内资源导航站 —— 教务系统、讲座资料、课件下载等常用入口聚合。">
+    <title>GPNU 资源站</title>
     <style>
+        :root {
+            --brand: #1565c0;
+            --brand-dark: #0d47a1;
+            --brand-soft: #e8f1fb;
+            --ink: #1f2933;
+            --muted: #647084;
+            --line: #e3e8ef;
+            --bg: #f5f7fa;
+            --card: #ffffff;
+            --radius: 14px;
+            --shadow: 0 1px 3px rgba(16, 24, 40, .08), 0 6px 18px rgba(16, 24, 40, .06);
+            --shadow-hover: 0 6px 16px rgba(21, 101, 192, .18), 0 12px 32px rgba(16, 24, 40, .10);
+        }
+
+        * { box-sizing: border-box; }
+
         body {
-            font-size: 16px;
-            line-height: 2;
-            padding: 20px;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                         "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
-        a {
-            display: block;
-            margin: 10px 0;
-            color: #0066cc;
+
+        .wrap {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 32px 20px 56px;
+        }
+
+        /* Header */
+        .hero {
+            text-align: center;
+            padding: 24px 16px 4px;
+        }
+        .hero .logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+            color: #fff;
+            font-size: 26px;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+            margin-bottom: 14px;
+        }
+        .hero h1 {
+            margin: 0 0 6px;
+            font-size: 26px;
+            letter-spacing: .5px;
+        }
+        .hero p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* Section */
+        .section { margin-top: 36px; }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--brand-dark);
+            margin: 0 0 14px;
+            padding-left: 10px;
+            border-left: 4px solid var(--brand);
+        }
+        .section-title .count {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--muted);
+            background: var(--brand-soft);
+            border-radius: 999px;
+            padding: 1px 9px;
+        }
+
+        /* Cards grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 14px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 16px 18px;
             text-decoration: none;
+            color: inherit;
+            box-shadow: var(--shadow);
+            transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
         }
-        a:hover {
-            text-decoration: underline;
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--brand);
         }
+        .card .row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .card .icon {
+            flex: 0 0 auto;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            background: var(--brand-soft);
+        }
+        .card .body { min-width: 0; }
+        .card .name {
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .card .desc {
+            margin-top: 3px;
+            font-size: 13px;
+            color: var(--muted);
+            word-break: break-all;
+        }
+        .card .ext {
+            font-size: 11px;
+            color: var(--brand);
+            border: 1px solid var(--brand);
+            border-radius: 6px;
+            padding: 0 5px;
+            line-height: 16px;
+        }
+        .tag {
+            display: inline-block;
+            font-size: 11px;
+            color: #b45309;
+            background: #fef3c7;
+            border-radius: 6px;
+            padding: 1px 7px;
+            margin-top: 8px;
+            align-self: flex-start;
+        }
+
+        /* Actions (view + download) */
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .btn {
+            flex: 1;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 0;
+            border-radius: 9px;
+            text-decoration: none;
+            transition: background .15s ease, color .15s ease;
+        }
+        .btn.primary {
+            background: var(--brand);
+            color: #fff;
+        }
+        .btn.primary:hover { background: var(--brand-dark); }
+        .btn.ghost {
+            background: #fff;
+            color: var(--brand);
+            border: 1px solid var(--brand);
+        }
+        .btn.ghost:hover { background: var(--brand-soft); }
+
+        /* Footer */
+        footer {
+            margin-top: 44px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--muted);
+        }
+        footer a { color: var(--brand); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-    <a>不会html网页制作，请见谅</a>
-    <a href="https://lyuu.cn/%E7%99%BD%E4%BA%91%E6%A0%A1%E5%8C%BA%E8%AE%B2%E5%BA%A7%E5%90%AC%E8%AE%B2%E8%AF%81%E8%A1%A5%E5%8A%9E%E6%B5%81%E7%A8%8B.pdf" target="_blank">白云校区讲座听讲证补办流程.pdf</a>
-    <a href="https://lyuu.cn/%E7%99%BD%E4%BA%91%E6%A0%A1%E5%8C%BA%E8%AE%B2%E5%BA%A7%E5%90%AC%E8%AE%B2%E8%AF%81%E8%A1%A5%E5%8A%9E%E6%B5%81%E7%A8%8B.pdf" download>下载</a>
-    <a href="https://jwglxt.gpnu.edu.cn/sso/lyiotlogin">教务系统_校内网</a>
-    <a href="http://10.200.14.56/d/200G/SharedFolder/%E6%8A%95%E5%BD%B1%E6%9D%BF%E4%B9%A6-%E6%9B%B4%E6%96%B0.pptx?sign=FsbtGNo83ycdeIMW7CM4le-fxy06PLnD1P0re0Kt1f4=:0">投影板书-更新.pptx</a>
+    <div class="wrap">
+        <header class="hero">
+            <div class="logo">G</div>
+            <h1>GPNU 资源站</h1>
+            <p>广东技术师范大学校内常用资源导航 · 持续整理中</p>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title">校内系统 <span class="count">1</span></h2>
+            <div class="grid">
+                <a class="card" href="https://jwglxt.gpnu.edu.cn/sso/lyiotlogin" target="_blank" rel="noopener">
+                    <div class="row">
+                        <div class="icon">🎓</div>
+                        <div class="body">
+                            <div class="name">教务系统 <span class="ext">外网</span></div>
+                            <div class="desc">jwglxt.gpnu.edu.cn</div>
+                        </div>
+                    </div>
+                    <span class="tag">需校内网 / 统一身份认证登录</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">资料下载 <span class="count">2</span></h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="row">
+                        <div class="icon">📄</div>
+                        <div class="body">
+                            <div class="name">白云校区讲座听讲证补办流程</div>
+                            <div class="desc">PDF · 补办流程说明</div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <a class="btn primary" href="https://lyuu.cn/%E7%99%BD%E4%BA%91%E6%A0%A1%E5%8C%BA%E8%AE%B2%E5%BA%A7%E5%90%AC%E8%AE%B2%E8%AF%81%E8%A1%A5%E5%8A%9E%E6%B5%81%E7%A8%8B.pdf" target="_blank" rel="noopener">在线查看</a>
+                        <a class="btn ghost" href="https://lyuu.cn/%E7%99%BD%E4%BA%91%E6%A0%A1%E5%8C%BA%E8%AE%B2%E5%BA%A7%E5%90%AC%E8%AE%B2%E8%AF%81%E8%A1%A5%E5%8A%9E%E6%B5%81%E7%A8%8B.pdf" download>下载</a>
+                    </div>
+                </div>
+
+                <a class="card" href="http://10.200.14.56/d/200G/SharedFolder/%E6%8A%95%E5%BD%B1%E6%9D%BF%E4%B9%A6-%E6%9B%B4%E6%96%B0.pptx?sign=FsbtGNo83ycdeIMW7CM4le-fxy06PLnD1P0re0Kt1f4=:0" target="_blank" rel="noopener">
+                    <div class="row">
+                        <div class="icon">📊</div>
+                        <div class="body">
+                            <div class="name">投影板书 <span class="ext">PPTX</span></div>
+                            <div class="desc">投影板书-更新.pptx</div>
+                        </div>
+                    </div>
+                    <span class="tag">需校内网访问（10.200.14.56）</span>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            资源持续整理中，如有失效链接欢迎反馈 · 本站为校内导航用途
+        </footer>
+    </div>
 </body>
 </html>
