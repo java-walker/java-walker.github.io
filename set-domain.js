@@ -9,6 +9,7 @@
  *   2) hexo/_config.yml 的 url                  —— 博客全站 URL（Hexo 用它生成所有 blog 页面）
  *   3) hexo/_config.next.yml 的 portal 菜单      —— 博客侧栏「主页/门户」链接
  *   4) 根 index.html 的 3 个站内链接             —— GPNU资源 / 简历 / 关于
+ *   5) 根 gpnu.html 内遗留的旧域名 lyuu.cn 资源   —— 站内 PDF 等（归一为 SITE_DOMAIN）
  *
  * 设计要点（避免踩坑）：
  *   - 替换按「路径」(gpnu.html / about) 匹配，而不是按域名匹配，
@@ -69,6 +70,10 @@ function replaceInFile(relPath, regex, replacer) {
   }
 }
 
+function escapeRegExp(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 const domain = readDomain();
 const https = `https://${domain}`;
 console.log('[set-domain] 目标域名:', domain);
@@ -95,6 +100,15 @@ replaceInFile(
   'index.html',
   /(https?:\/\/)[^\/"'\s]+(\/(?:gpnu\.html|about\/?))/g,
   (_, g1, g2) => `${g1}${domain}${g2}`
+);
+
+// 5) gpnu.html 内遗留的旧域名 lyuu.cn 站内资源（PDF）链接，归一为 SITE_DOMAIN
+//    同时兼容「当前 SITE_DOMAIN」，确保将来改 .env 域名时也能同步更新。
+//    只匹配指向 lyuu.cn 或本站点域名的链接，绝不碰 github / zhihu / unpkg 等外链。
+replaceInFile(
+  'gpnu.html',
+  new RegExp('(https?://)(?:lyuu\\.cn|' + escapeRegExp(domain) + ')(/[^\\s"\']+)', 'g'),
+  (_, proto, p) => `${proto}${domain}${p}`
 );
 
 console.log('[set-domain] 完成');

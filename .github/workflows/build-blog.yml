@@ -10,6 +10,7 @@ on:
     paths:
       - 'hexo/**'
       - 'index.html'
+      - 'gpnu.html'
       - 'CNAME'
       - '.env'
       - 'set-domain.js'
@@ -60,7 +61,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout lyuu_cn
-          git add blog last_updated.json index.html hexo/_config.yml hexo/_config.next.yml CNAME
+          git add blog last_updated.json index.html gpnu.html hexo/_config.yml hexo/_config.next.yml CNAME
           if git diff --cached --quiet; then
             echo "blog/ 无变化，跳过提交"
           else
