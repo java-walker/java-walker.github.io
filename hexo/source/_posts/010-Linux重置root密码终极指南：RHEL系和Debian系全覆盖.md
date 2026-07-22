@@ -199,49 +199,13 @@ exec /sbin/init
 
 ## 三、RHEL系 vs Ubuntu 重置密码核心区别
 
-| 
-对比项
-
- | 
-
-RHEL系（CentOS/Rocky/RHEL）
-
- | 
-
-Ubuntu/Debian
-
- |
+| 对比项 | RHEL系（CentOS/Rocky/RHEL） | Ubuntu/Debian |
 | --- | --- | --- |
-| **救援模式关键字** | `rd.break` | 
-
-recovery mode / `init=/bin/bash`
-
- |
-| **SELinux处理** | 
-
-✅ **必须** `touch /.autorelabel`
-
- | 
-
-❌ 默认无SELinux，**不需要**
-
- |
+| **救援模式关键字** | `rd.break` | recovery mode / `init=/bin/bash` |
+| **SELinux处理** | ✅ **必须** `touch /.autorelabel` | ❌ 默认无SELinux，**不需要** |
 | **根分区挂载** | `/sysroot` | `/` |
-| **重置对象** | `passwd root` | `passwd 普通用户`
-
-（或root）
-
- |
-| **默认root登录** | 
-
-启用
-
- | 
-
-禁用（用sudo）
-
- |
-
+| **重置对象** | `passwd root` | `passwd 普通用户`  （或root） |
+| **默认root登录** | 启用 | 禁用（用sudo） |
 ## 四、常见报错与解决方案
 
 ## 报错1：Authentication token manipulation error
@@ -316,59 +280,11 @@ SELinux（Security-Enhanced Linux）会给每个文件打上**安全上下文标
 
 ## 六、云服务器特别提醒
 
-| 
-云平台
-
- | 
-
-推荐方式
-
- | 
-
-说明
-
- |
+| 云平台 | 推荐方式 | 说明 |
 | --- | --- | --- |
-| 
-
-阿里云
-
- | 
-
-控制台 → 重置实例密码
-
- | 
-
-官方功能，最省事
-
- |
-| 
-
-腾讯云
-
- | 
-
-控制台 → 重置密码
-
- | 
-
-不需要进GRUB
-
- |
-| 
-
-AWS EC2
-
- | 
-
-分离根卷 → 挂载到临时实例修改
-
- | 
-
-官方推荐方法
-
- |
-
+| 阿里云 | 控制台 → 重置实例密码 | 官方功能，最省事 |
+| 腾讯云 | 控制台 → 重置密码 | 不需要进GRUB |
+| AWS EC2 | 分离根卷 → 挂载到临时实例修改 | 官方推荐方法 |
 > 💡 **强烈建议**：云服务器优先使用云厂商提供的\*\*「重置密码」\*\*功能，远比手动进GRUB更安全、更方便！
 
 ## 七、完整操作速查卡片
@@ -399,59 +315,15 @@ AWS EC2
 
 ## 八、快速对比总结表
 
-| 
-操作步骤
-
- | 
-
-RHEL系（CentOS/Rocky）
-
- | 
-
-Ubuntu/Debian
-
- |
+| 操作步骤 | RHEL系（CentOS/Rocky） | Ubuntu/Debian |
 | --- | --- | --- |
-| **GRUB按键** | 
-
-按 `e`
-
- | `Shift`
-
-（BIOS）/ `Esc`（UEFI）
-
- |
-| **内核参数** | 
-
-行尾加 `rd.break`
-
- | 
-
-recovery mode 或 `init=/bin/bash`
-
- |
+| **GRUB按键** | 按 `e` | `Shift`  （BIOS）/ `Esc`（UEFI） |
+| **内核参数** | 行尾加 `rd.break` | recovery mode 或 `init=/bin/bash` |
 | **挂载命令** | `mount -o remount,rw /sysroot` | `mount -o rw,remount /` |
-| **切换环境** | `chroot /sysroot` | 
-
-不需要（直接在 / 下操作）
-
- |
-| **SELinux重标记** | 
-
-✅ `touch /.autorelabel`
-
- | 
-
-❌ 不需要
-
- |
+| **切换环境** | `chroot /sysroot` | 不需要（直接在 / 下操作） |
+| **SELinux重标记** | ✅ `touch /.autorelabel` | ❌ 不需要 |
 | **重置密码** | `passwd root` | `passwd 用户名` |
-| **重启** | `exit`
-
-（自动重启）
-
- | `exec /sbin/init` |
-
+| **重启** | `exit`  （自动重启） | `exec /sbin/init` |
 * * *
 
 > 📌

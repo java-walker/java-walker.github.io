@@ -27,91 +27,23 @@ find [搜索范围] [选项] [匹配条件]
 
 ### 常用选项
 
-| 
-选项
-
- | 
-
-功能
-
- | 
-
-示例
-
- |
+| 选项 | 功能 | 示例 |
 | --- | --- | --- |
-| `-name` | 
-
-按**文件名**查找（**区分大小写**）
-
- | `find /home -name "hello.txt"` |
-| `-iname` | 
-
-按文件名查找（**忽略大小写**）(iname没有空格)
-
- | `find /home -iname "Hello.TXT"` |
-| `-user` | 
-
-按**所有者**查找
-
- | `find /opt -user tom` |
-| `-size` | 
-
-按**文件大小**查找
-
- | `find / -size +100M` |
-| `-type` | 
-
-按**文件类型**查找（f=文件，d=目录）
-
- | `find / -type d -name "logs"` |
-| `-mtime` | 
-
-按**修改时间**查找
-
- | `find / -mtime -7`
-
-（7天内修改）
-
- |
-| `-exec` | 
-
-对查找到的文件执行操作
-
- | `find /tmp -name "*.log" -exec rm {} \;` |
-
+| `-name` | 按**文件名**查找（**区分大小写**） | `find /home -name "hello.txt"` |
+| `-iname` | 按文件名查找（**忽略大小写**）(iname没有空格) | `find /home -iname "Hello.TXT"` |
+| `-user` | 按**所有者**查找 | `find /opt -user tom` |
+| `-size` | 按**文件大小**查找 | `find / -size +100M` |
+| `-type` | 按**文件类型**查找（f=文件，d=目录） | `find / -type d -name "logs"` |
+| `-mtime` | 按**修改时间**查找 | `find / -mtime -7`  （7天内修改） |
+| `-exec` | 对查找到的文件执行操作 | `find /tmp -name "*.log" -exec rm {} \;` |
 ### 搜索范围写法
 
-| 
-写法
-
- | 
-
-含义
-
- |
+| 写法 | 含义 |
 | --- | --- |
-| `/` | 
-
-从**根目录**开始搜索（整个系统）
-
- |
-| `.` | 
-
-从**当前目录**开始搜索
-
- |
-| `~` | 
-
-从**当前用户家目录**开始搜索
-
- |
-| `/home` | 
-
-从指定目录开始搜索
-
- |
-
+| `/` | 从**根目录**开始搜索（整个系统） |
+| `.` | 从**当前目录**开始搜索 |
+| `~` | 从**当前用户家目录**开始搜索 |
+| `/home` | 从指定目录开始搜索 |
 ### 实战案例
 
 ```
@@ -136,59 +68,11 @@ locate 文件名
 
 ### locate vs find 对比
 
-| 
-对比项
-
- | 
-
-locate
-
- | 
-
-find
-
- |
+| 对比项 | locate | find |
 | --- | --- | --- |
-| 
-
-搜索速度
-
- | 
-
-⚡ 极快（查数据库）
-
- | 
-
-🐢 较慢（遍历磁盘）
-
- |
-| 
-
-实时性
-
- | 
-
-❌ 依赖数据库更新
-
- | 
-
-✅ 实时搜索
-
- |
-| 
-
-灵活性
-
- | 
-
-仅按文件名
-
- | 
-
-✅ 支持多种条件（大小、时间、类型等）
-
- |
-
+| 搜索速度 | ⚡ 极快（查数据库） | 🐢 较慢（遍历磁盘） |
+| 实时性 | ❌ 依赖数据库更新 | ✅ 实时搜索 |
+| 灵活性 | 仅按文件名 | ✅ 支持多种条件（大小、时间、类型等） |
 > 💡 **建议**：快速查找已知文件用 `locate`，复杂条件搜索用 `find`。
 
 ## 三、grep — 文件内容搜索（含管道符实战）
@@ -203,60 +87,17 @@ grep [选项] ”搜索内容” 文件
 
 ### 常用选项
 
-| 
-选项
-
- | 
-
-功能
-
- | 
-
-示例
-
- |
+| 选项 | 功能 | 示例 |
 | --- | --- | --- |
-| `-n` | 
-
-显示匹配行的**行号**
-
- | `grep -n "root" /etc/passwd` |
+| `-n` | 显示匹配行的**行号** | `grep -n "root" /etc/passwd` |
 | `-i` | **忽略大小写** | `grep -i "error" app.log` |
-| `-r` | **递归搜索**
-
-目录下所有文件
-
- | `grep -r "passwd" /etc/` |
-| `-v` | **反向匹配**
-
-（显示不含关键词的行）
-
- | `grep -v "debug" app.log` |
-| `-c` | 
-
-只统计**匹配行数**（不显示内容）
-
- | `grep -c "error" app.log` |
-| `-l` | 
-
-只显示**包含匹配内容的文件名**
-
- | `grep -l "root" /etc/*` |
-| `-w` | 
-
-按**完整单词**匹配
-
- | `grep -w "to" file.txt`
-
-（不匹配"tom"）
-
- |
-| `-E` | 
-
-支持**扩展正则表达式**
-
- | `grep -E "error|fail" app.log` |
-
+| `-r` | **递归搜索**  目录下所有文件 | `grep -r "passwd" /etc/` |
+| `-v` | **反向匹配**  （显示不含关键词的行） | `grep -v "debug" app.log` |
+| `-c` | 只统计**匹配行数**（不显示内容） | `grep -c "error" app.log` |
+| `-l` | 只显示**包含匹配内容的文件名** | `grep -l "root" /etc/*` |
+| `-w` | 按**完整单词**匹配 | `grep -w "to" file.txt`  （不匹配"tom"） |
+| `-E` | 支持**扩展正则表达式** | `grep -E "error |
+| fail" app.log` |  |  |
 ### 基础搜索案例
 
 ```
@@ -313,71 +154,22 @@ grep [选项] ”搜索内容” 文件
 
 ### grep 实战场景速查
 
-| 
-场景
-
- | 
-
-命令
-
- |
+| 场景 | 命令 |
 | --- | --- |
-| 
-
-文件内容搜索
-
- | `grep "关键词" 文件名` |
-| 
-
-文件内容搜索+行号
-
- | `grep -n "关键词" 文件名` |
-| 
-
-目录递归搜索
-
- | `grep -r "关键词" 目录/` |
-| 
-
-查看并筛选文件
-
- | `cat 文件 | grep -n "关键词"` |
-| 
-
-查看进程
-
- | `ps aux | grep 进程名` |
-| 
-
-查看进程（不含grep自身）
-
- | `ps aux | grep [进]程名` |
-| 
-
-历史命令搜索
-
- | `history | grep 关键词` |
-| 
-
-实时日志过滤
-
- | `tail -f 日志 | grep 关键词` |
-| 
-
-统计匹配行数
-
- | `grep -c "关键词" 文件` |
-| 
-
-排除匹配行
-
- | `grep -v "关键词" 文件` |
-| 
-
-多关键词匹配
-
- | `grep -E "关键词1|关键词2" 文件` |
-
+| 文件内容搜索 | `grep "关键词" 文件名` |
+| 文件内容搜索+行号 | `grep -n "关键词" 文件名` |
+| 目录递归搜索 | `grep -r "关键词" 目录/` |
+| 查看并筛选文件 | `cat 文件 |
+| grep -n "关键词"` | 查看进程 |
+| `ps aux | grep 进程名` |
+| 查看进程（不含grep自身） | `ps aux |
+| grep [进]程名` | 历史命令搜索 |
+| `history | grep 关键词` |
+| 实时日志过滤 | `tail -f 日志 |
+| grep 关键词` | 统计匹配行数 |
+| `grep -c "关键词" 文件` | 排除匹配行 |
+| `grep -v "关键词" 文件` | 多关键词匹配 |
+| `grep -E "关键词1 | 关键词2" 文件` |
 ## 四、三者核心区别（一张图看懂）
 
 ```
@@ -392,95 +184,25 @@ grep [选项] ”搜索内容” 文件
 
 ## 六、命令速查卡片
 
-| 
-命令
-
- | 
-
-用途
-
- | 
-
-最常用法
-
- |
+| 命令 | 用途 | 最常用法 |
 | --- | --- | --- |
-| `find / -name "文件名"` | 
-
-按文件名找文件
-
- | `find /home -name "*.txt"` |
-| `find / -size +100M` | 
-
-按文件大小找文件
-
- | `find / -size +200M` |
-| `find . -type d` | 
-
-只找目录
-
- | `find . -type d -name "logs"` |
-| `find . -mtime -7` | 
-
-找7天内修改的文件
-
- | `find . -mtime -3` |
-| `find . -exec 命令 {} \;` | 
-
-找到后执行操作
-
- | `find . -name "*.log" -exec rm {} \;` |
-| `locate 文件名` | 
-
-快速定位文件
-
- | `locate nginx.conf` |
-| `updatedb` | 
-
-更新locate数据库
-
- | `sudo updatedb` |
-| `grep "关键词" 文件` | 
-
-在文件中搜索内容
-
- | `grep "error" app.log` |
-| `grep -r "关键词" 目录/` | 
-
-递归搜索目录内容
-
- | `grep -r "passwd" /etc/` |
-| `grep -n "关键词" 文件` | 
-
-搜索并显示行号
-
- | `grep -n "root" passwd` |
-| `grep -i "关键词" 文件` | 
-
-忽略大小写搜索
-
- | `grep -i "error" log` |
-| `grep -c "关键词" 文件` | 
-
-统计匹配行数
-
- | `grep -c "error" log` |
-| `命令 | grep xxx` | 
-
-管道配合搜索
-
- | `ps aux | grep nginx` |
-| `cat 文件 | grep -n "关键词"` | 
-
-查看并筛选内容
-
- | `cat 55.sh | grep -n "int"` |
-| `tail -f 日志 | grep 关键词` | 
-
-实时日志过滤
-
- | `tail -f app.log | grep ERROR` |
-
+| `find / -name "文件名"` | 按文件名找文件 | `find /home -name "*.txt"` |
+| `find / -size +100M` | 按文件大小找文件 | `find / -size +200M` |
+| `find . -type d` | 只找目录 | `find . -type d -name "logs"` |
+| `find . -mtime -7` | 找7天内修改的文件 | `find . -mtime -3` |
+| `find . -exec 命令 {} \;` | 找到后执行操作 | `find . -name "*.log" -exec rm {} \;` |
+| `locate 文件名` | 快速定位文件 | `locate nginx.conf` |
+| `updatedb` | 更新locate数据库 | `sudo updatedb` |
+| `grep "关键词" 文件` | 在文件中搜索内容 | `grep "error" app.log` |
+| `grep -r "关键词" 目录/` | 递归搜索目录内容 | `grep -r "passwd" /etc/` |
+| `grep -n "关键词" 文件` | 搜索并显示行号 | `grep -n "root" passwd` |
+| `grep -i "关键词" 文件` | 忽略大小写搜索 | `grep -i "error" log` |
+| `grep -c "关键词" 文件` | 统计匹配行数 | `grep -c "error" log` |
+| `命令 | grep xxx` | 管道配合搜索 |
+| `ps aux | grep nginx` | `cat 文件 |
+| grep -n "关键词"` | 查看并筛选内容 | `cat 55.sh |
+| grep -n "int"` | `tail -f 日志 | grep 关键词` |
+| 实时日志过滤 | `tail -f app.log | grep ERROR` |
 * * *
 
 > 📌 如果觉得有用，欢迎**点赞、在看、转发**三连！
