@@ -46,12 +46,16 @@ jobs:
         working-directory: hexo
         run: npx hexo generate
 
+      - name: Write site update timestamp
+        run: |
+          printf '{\n  "updated_at": "%s",\n  "sha": "%s",\n  "source": "github-pages"\n}\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$(git rev-parse --short HEAD)" > last_updated.json
+
       - name: Commit and push blog output back to lyuu_cn
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout lyuu_cn
-          git add blog
+          git add blog last_updated.json
           if git diff --cached --quiet; then
             echo "blog/ 无变化，跳过提交"
           else

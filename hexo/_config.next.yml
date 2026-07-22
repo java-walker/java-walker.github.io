@@ -62,3 +62,6 @@ post_settings:
 # 自定义语言覆盖（与主题默认语言合并），用于菜单「主页」中文显示
 custom_file_path:
   language: source/_data/languages.yml
+  # 站点更新时间：在 body 末尾注入样式 + site-updated.js
+  # 脚本读取仓库根目录 last_updated.json，于侧栏标题下方与主页底部显示更新时间
+  bodyEnd: source/_data/body-end.njk
