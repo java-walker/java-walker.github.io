@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lyuu.eu.cc","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat","show_result":true},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js" defer></script>
+
+    <meta name="description" content="原文转载自微信公众号「walker-行者」Linux 系列。原始链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MzkwMDgyMTA2OQ&#x3D;&#x3D;&amp;mid&#x3D;2247483815&amp;idx&#x3D;1&amp;sn&#x3D;57add2922e12a29ae92986530d0b37a0&amp;chksm&#x3D;c0bf7885f7c8f1937a09e6cfa36cd5f3a12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="005 Linux要了解的编辑器（文本）">
+<meta property="og:url" content="https://lyuu.eu.cc/blog/2026/07/03/006-Linux%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8%EF%BC%88%E6%96%87%E6%9C%AC%EF%BC%89/index.html">
+<meta property="og:site_name" content="Lyuu 的博客">
+<meta property="og:description" content="原文转载自微信公众号「walker-行者」Linux 系列。原始链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MzkwMDgyMTA2OQ&#x3D;&#x3D;&amp;mid&#x3D;2247483815&amp;idx&#x3D;1&amp;sn&#x3D;57add2922e12a29ae92986530d0b37a0&amp;chksm&#x3D;c0bf7885f7c8f1937a09e6cfa36cd5f3a12">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lyuu.eu.cc/images/ops/006/img1.png">
+<meta property="article:published_time" content="2026-07-03T14:19:00.000Z">
+<meta property="article:modified_time" content="2026-07-22T18:18:59.475Z">
+<meta property="article:author" content="Lyuu">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lyuu.eu.cc/images/ops/006/img1.png">
+
+
+<link rel="canonical" href="https://lyuu.eu.cc/blog/2026/07/03/006-Linux%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8%EF%BC%88%E6%96%87%E6%9C%AC%EF%BC%89/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lyuu.eu.cc/blog/2026/07/03/006-Linux%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8%EF%BC%88%E6%96%87%E6%9C%AC%EF%BC%89/","path":"2026/07/03/006-Linux要了解的编辑器（文本）/","title":"005 Linux要了解的编辑器（文本）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>005 Linux要了解的编辑器（文本） | Lyuu 的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/blog/js/utils.js" defer></script><script src="/blog/js/motion.js" defer></script><script src="/blog/js/sidebar.js" defer></script><script src="/blog/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Lyuu 的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code Create Life</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-portal"><a href="https://lyuu.eu.cc/" rel="section"><i class="fa fa-globe fa-fw"></i>主页</a></li><li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E6%8C%87%E5%8D%97%EF%BC%9AVim%E3%80%81Nano%E4%B8%8E%E4%B8%BB%E6%B5%81%E7%BC%96%E8%BE%91%E5%99%A8%E7%9B%98%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">Linux文本编辑器指南：Vim、Nano与主流编辑器盘点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%B6%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%AD%A6%E4%BC%9A%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">零、为什么需要学会命令行文本编辑器？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Nano-%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">二、Nano 命令笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%90%AF%E5%8A%A8"><span class="nav-number">1.1.</span> <span class="nav-text">2.1 启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%A0%B8%E5%BF%83%E5%BF%AB%E6%8D%B7%E9%94%AE%EF%BC%88Ctrl-%E7%B3%BB%E5%88%97%EF%BC%8C-Ctrl%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">2.2 核心快捷键（Ctrl 系列，^ &#x3D; Ctrl）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Alt-%E7%B3%BB%E5%88%97%E5%BF%AB%E6%8D%B7%E9%94%AE%EF%BC%88M-Alt%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">2.3 Alt 系列快捷键（M- &#x3D; Alt）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Nano-%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B%E9%80%9F%E8%AE%B0"><span class="nav-number">1.4.</span> <span class="nav-text">2.4 Nano 操作流程速记</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%85%B6%E4%BB%96%E9%AB%98%E4%BD%BF%E7%94%A8%E7%8E%87%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">三、其他高使用率编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E7%BB%88%E7%AB%AF%E7%BC%96%E8%BE%91%E5%99%A8%E5%AF%B9%E6%AF%94"><span class="nav-number">2.1.</span> <span class="nav-text">3.1 终端编辑器对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">2.2.</span> <span class="nav-text">3.2 图形界面编辑器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">3.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Vim-%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0"><span class="nav-number">4.</span> <span class="nav-text">一、Vim 命令笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Vim-%E7%9A%84%E4%B8%89%E7%A7%8D%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%BC%8F"><span class="nav-number">4.1.</span> <span class="nav-text">1.1 Vim 的三种核心模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%99%AE%E9%80%9A%E6%A8%A1%E5%BC%8F%EF%BC%88Normal-%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">1. 普通模式（Normal 模式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%87%E6%B3%A8%EF%BC%9A%E5%88%A0%E9%99%A45%E8%A1%8C%EF%BC%9A5yy"><span class="nav-number">4.3.</span> <span class="nav-text">备注：删除5行：5yy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-2"><span class="nav-number">4.4.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8F%92%E5%85%A5%E6%A8%A1%E5%BC%8F%EF%BC%88Insert-%E6%A8%A1%E5%BC%8F%E3%80%81%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">4.5.</span> <span class="nav-text">2. 插入模式（Insert 模式、编辑模式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F%EF%BC%88Command-line-%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">4.6.</span> <span class="nav-text">3. 命令行模式（Command-line 模式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%BC%8F%E5%88%87%E6%8D%A2%E7%AE%80%E6%98%93%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">4.7.</span> <span class="nav-text">模式切换简易流程图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E3%80%81Vim-%E5%91%BD%E4%BB%A4%E8%AF%A6%E7%BB%86%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%AF%E4%BB%A5%E8%B7%B3%E8%BF%87%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">二++、Vim 命令详细笔记（可以跳过）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%90%AF%E5%8A%A8%E4%B8%8E%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6"><span class="nav-number">5.1.</span> <span class="nav-text">1.1 启动与打开文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E6%AD%A3%E5%B8%B8%E6%A8%A1%E5%BC%8F%EF%BC%88Normal-Mode%EF%BC%89%E2%80%94-%E7%A7%BB%E5%8A%A8"><span class="nav-number">5.2.</span> <span class="nav-text">1.2 正常模式（Normal Mode）— 移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E6%AD%A3%E5%B8%B8%E6%A8%A1%E5%BC%8F-%E2%80%94-%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C"><span class="nav-number">5.3.</span> <span class="nav-text">1.3 正常模式 — 编辑操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E8%BF%9B%E5%85%A5%E6%8F%92%E5%85%A5%E6%A8%A1%E5%BC%8F%EF%BC%88Insert-Mode%EF%BC%89"><span class="nav-number">5.4.</span> <span class="nav-text">1.4 进入插入模式（Insert Mode）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F%EF%BC%88Command-Mode%EF%BC%89"><span class="nav-number">5.5.</span> <span class="nav-text">1.5 命令行模式（Command Mode）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-%E5%8F%AF%E8%A7%86%E6%A8%A1%E5%BC%8F%EF%BC%88Visual-Mode%EF%BC%89"><span class="nav-number">5.6.</span> <span class="nav-text">1.6 可视模式（Visual Mode）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-3"><span class="nav-number">6.</span> <span class="nav-text"></span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lyuu</p>
+  <div class="site-description" itemprop="description">记录技术、AI 与生活的个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/java-walker" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;java-walker" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/07/03/006-Linux%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8%EF%BC%88%E6%96%87%E6%9C%AC%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="005 Linux要了解的编辑器（文本） | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          005 Linux要了解的编辑器（文本）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-07-03 22:19:00" itemprop="dateCreated datePublished" datetime="2026-07-03T22:19:00+08:00">2026-07-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>原文转载自微信公众号「walker-行者」Linux 系列。<br>原始链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&mid=2247483815&idx=1&sn=57add2922e12a29ae92986530d0b37a0&chksm=c0bf7885f7c8f1937a09e6cfa36cd5f3a12112244184b675ddd91e99f60113cd53ce54e17aa0&cur_album_id=4586547322464501762&scene=189#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&amp;mid=2247483815&amp;idx=1&amp;sn=57add2922e12a29ae92986530d0b37a0&amp;chksm=c0bf7885f7c8f1937a09e6cfa36cd5f3a12112244184b675ddd91e99f60113cd53ce54e17aa0&amp;cur_album_id=4586547322464501762&amp;scene=189#wechat_redirect</a></p>
+</blockquote>
+<h2 id="Linux文本编辑器指南：Vim、Nano与主流编辑器盘点"><a href="#Linux文本编辑器指南：Vim、Nano与主流编辑器盘点" class="headerlink" title="Linux文本编辑器指南：Vim、Nano与主流编辑器盘点"></a>Linux文本编辑器指南：Vim、Nano与主流编辑器盘点</h2><h2 id="零、为什么需要学会命令行文本编辑器？"><a href="#零、为什么需要学会命令行文本编辑器？" class="headerlink" title="零、为什么需要学会命令行文本编辑器？"></a>零、为什么需要学会命令行文本编辑器？</h2><p>在Linux服务器上，很多场景下没有图形界面可用：</p>
+<ul>
+<li><p>修改系统配置文件（如 <code>/etc/nginx/nginx.conf</code>）</p>
+</li>
+<li><p>编写Shell脚本</p>
+</li>
+<li><p>提交Git commit message</p>
+</li>
+<li><p>快速编辑远程服务器上的代码</p>
+</li>
+</ul>
+<p>这时候，命令行文本编辑器就是你的<strong>救命稻草</strong>。下面介绍最主流的几款。</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h2 id="二、Nano-命令笔记"><a href="#二、Nano-命令笔记" class="headerlink" title="二、Nano 命令笔记"></a>二、Nano 命令笔记</h2><p>Nano 是一个轻量级、对新手友好的终端编辑器，所有快捷键都在屏幕底部显示（<code>^</code> 表示 <code>Ctrl</code>）。</p>
+<h3 id="2-1-启动"><a href="#2-1-启动" class="headerlink" title="2.1 启动"></a>2.1 启动</h3><p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>nano 文件名</code> | </p>
+<p>打开或新建文件</p>
+<p> |<br>| <code>nano -l 文件名</code> | </p>
+<p>显示行号</p>
+<p> |<br>| <code>nano -m 文件名</code> | </p>
+<p>启用鼠标支持</p>
+<p> |<br>| <code>nano -B 文件名</code> | </p>
+<p>保存前自动备份原文件</p>
+<p> |<br>| <code>nano -c 文件名</code> | </p>
+<p>显示光标位置信息</p>
+<p> |</p>
+<h3 id="2-2-核心快捷键（Ctrl-系列，-Ctrl）"><a href="#2-2-核心快捷键（Ctrl-系列，-Ctrl）" class="headerlink" title="2.2 核心快捷键（Ctrl 系列，^ &#x3D; Ctrl）"></a>2.2 核心快捷键（Ctrl 系列，<code>^</code> &#x3D; <code>Ctrl</code>）</h3><p>|<br>快捷键</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>Ctrl + O</code> | </p>
+<p>保存文件（Write Out）</p>
+<p> |<br>| <code>Ctrl + X</code> | </p>
+<p>退出（Exit）</p>
+<p> |<br>| <code>Ctrl + G</code> | </p>
+<p>查看帮助（Get Help）</p>
+<p> |<br>| <code>Ctrl + K</code> | </p>
+<p>剪切整行（Cut，相当于 vim 的 dd）</p>
+<p> |<br>| <code>Ctrl + U</code> | </p>
+<p>粘贴（Uncut，粘贴刚才剪切的行）</p>
+<p> |<br>| <code>Ctrl + W</code> | </p>
+<p>搜索（Where Is）</p>
+<p> |<br>| <code>Ctrl + \</code> | </p>
+<p>搜索并替换</p>
+<p> |<br>| <code>Ctrl + C</code> | </p>
+<p>显示当前光标位置（行号、列号）</p>
+<p> |<br>| <code>Ctrl + J</code> | </p>
+<p>段落对齐（Justify）</p>
+<p> |<br>| <code>Ctrl + T</code> | </p>
+<p>调用拼写检查</p>
+<p> |<br>| <code>Ctrl + R</code> | </p>
+<p>读取另一个文件插入当前位置</p>
+<p> |<br>| <code>Ctrl + _</code> | </p>
+<p>跳转到指定行号</p>
+<p> |</p>
+<h3 id="2-3-Alt-系列快捷键（M-Alt）"><a href="#2-3-Alt-系列快捷键（M-Alt）" class="headerlink" title="2.3 Alt 系列快捷键（M- &#x3D; Alt）"></a>2.3 Alt 系列快捷键（<code>M-</code> &#x3D; <code>Alt</code>）</h3><p>|<br>快捷键</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>Alt + 6</code> | </p>
+<p>复制当前行（不剪切）</p>
+<p> |<br>| <code>Alt + A</code> | </p>
+<p>开始标记选择（类似 vim 可视模式）</p>
+<p> |<br>| <code>Alt + #</code> | </p>
+<p>注释&#x2F;取消注释当前行</p>
+<p> |<br>| <code>Alt + U</code> | </p>
+<p>撤销（Undo）</p>
+<p> |<br>| <code>Alt + E</code> | </p>
+<p>重做（Redo）</p>
+<p> |<br>| <code>Alt + G</code> | </p>
+<p>跳转到指定行</p>
+<p> |</p>
+<h3 id="2-4-Nano-操作流程速记"><a href="#2-4-Nano-操作流程速记" class="headerlink" title="2.4 Nano 操作流程速记"></a>2.4 Nano 操作流程速记</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打开文件 → nano test.txt编辑内容 → 直接输入即可（无模式概念）保存     → Ctrl + O → 回车确认文件名退出     → Ctrl + X</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、其他高使用率编辑器"><a href="#三、其他高使用率编辑器" class="headerlink" title="三、其他高使用率编辑器"></a>三、其他高使用率编辑器</h2><h3 id="3-1-终端编辑器对比"><a href="#3-1-终端编辑器对比" class="headerlink" title="3.1 终端编辑器对比"></a>3.1 终端编辑器对比</h3><p>|<br>编辑器</p>
+<p> | </p>
+<p>特点</p>
+<p> | </p>
+<p>适用场景</p>
+<p> |<br>| — | — | — |<br>| <strong>vim &#x2F; vi</strong> | </p>
+<p>模式编辑，功能强大，几乎所有 Linux 预装</p>
+<p> | </p>
+<p>服务器运维、远程编辑、高效文本处理</p>
+<p> |<br>| <strong>nano</strong> | </p>
+<p>简单直观，无模式，底部提示快捷键</p>
+<p> | </p>
+<p>快速修改配置文件、新手入门</p>
+<p> |<br>| <strong>emacs</strong> | </p>
+<p>功能极其丰富（”伪装成编辑器的操作系统”），可收发邮件、浏览网页</p>
+<p> | </p>
+<p>重度 Lisp 用户、一站式工作流</p>
+<p> |<br>| <strong>micro</strong> | </p>
+<p>现代终端编辑器，支持鼠标、多光标、语法高亮，开箱即用</p>
+<p> | </p>
+<p>想要现代体验但不想学 vim 的用户</p>
+<p> |</p>
+<h3 id="3-2-图形界面编辑器"><a href="#3-2-图形界面编辑器" class="headerlink" title="3.2 图形界面编辑器"></a>3.2 图形界面编辑器</h3><p>|<br>编辑器</p>
+<p> | </p>
+<p>特点</p>
+<p> | </p>
+<p>适用场景</p>
+<p> |<br>| — | — | — |<br>| <strong>gedit</strong> | </p>
+<p>GNOME 桌面默认编辑器，轻量简洁</p>
+<p> | </p>
+<p>Ubuntu 桌面日常编辑</p>
+<p> |<br>| <strong>VS Code</strong> | </p>
+<p>微软出品，插件生态丰富，远程开发能力强</p>
+<p> | </p>
+<p>前后端开发、远程 SSH 开发</p>
+<p> |<br>| <strong>Sublime Text</strong> | </p>
+<p>极速启动，界面优雅，多光标编辑</p>
+<p> | </p>
+<p>快速查看和编辑大文件</p>
+<p> |</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="一、Vim-命令笔记"><a href="#一、Vim-命令笔记" class="headerlink" title="一、Vim 命令笔记"></a>一、Vim 命令笔记</h2><h3 id="1-1-Vim-的三种核心模式"><a href="#1-1-Vim-的三种核心模式" class="headerlink" title="1.1 Vim 的三种核心模式"></a>1.1 Vim 的三种核心模式</h3><p>Vim 是 Vi Improved 的缩写，是 Linux 下最强大的文本编辑器之一。它的核心设计理念是<strong>模式化编辑</strong>。</p>
+<p>Vim 核心分为<strong>普通模式</strong>、<strong>插入模式</strong>、<strong>命令行模式</strong>，三者可以互相切换，是使用 Vim 的基础。</p>
+<h3 id="1-普通模式（Normal-模式）"><a href="#1-普通模式（Normal-模式）" class="headerlink" title="1. 普通模式（Normal 模式）"></a>1. 普通模式（Normal 模式）</h3><p><strong>进入方式</strong></p>
+<ul>
+<li><p>打开文件默认就是普通模式</p>
+</li>
+<li><p>在其他模式按 <code>Esc</code> 退回此模式</p>
+</li>
+</ul>
+<p><strong>作用</strong></p>
+<p>不能输入文字，专门用来光标移动、复制、删除、粘贴、撤销、跳转等文本操作。</p>
+<p><strong>常用操作举例</strong></p>
+<p>|<br>按键</p>
+<p> | </p>
+<p>功能</p>
+<p> |<br>| — | — |<br>| <code>h</code></p>
+<p> &#x2F; <code>j</code> &#x2F; <code>k</code> &#x2F; <code>l</code></p>
+<p> | </p>
+<p>左 &#x2F; 下 &#x2F; 上 &#x2F; 右移动光标</p>
+<p> |<br>| <code>dd</code> | </p>
+<p>删除一整行</p>
+<p> |<br>| <code>yy</code> | </p>
+<p>复制一整行</p>
+<p> |<br>| <code>p</code> | </p>
+<p>粘贴</p>
+<p> |<br>| <code>u</code> | </p>
+<p>撤销修改</p>
+<p> |<br>| </p>
+<p> &#x2F;</p>
+<p> | </p>
+<p>查询，使用n查询下一个</p>
+<p> |<br>| </p>
+<p>gg&#x2F; G</p>
+<p> | </p>
+<p>gg 首行，3gg 第三行，大写G尾行</p>
+<p> |</p>
+<h3 id="备注：删除5行：5yy"><a href="#备注：删除5行：5yy" class="headerlink" title="备注：删除5行：5yy"></a>备注：删除5行：5yy</h3><hr>
+<h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3><h3 id="2-插入模式（Insert-模式、编辑模式）"><a href="#2-插入模式（Insert-模式、编辑模式）" class="headerlink" title="2. 插入模式（Insert 模式、编辑模式）"></a>2. 插入模式（Insert 模式、编辑模式）</h3><p><strong>进入方式</strong>（普通模式下按以下按键）</p>
+<p>|<br>按键</p>
+<p> | </p>
+<p>功能</p>
+<p> |<br>| — | — |<br>| <code>i</code> | </p>
+<p>光标前面插入文字（最常用）</p>
+<p> |<br>| <code>a</code> | </p>
+<p>光标后面插入文字</p>
+<p> |<br>| <code>o</code> | </p>
+<p>光标下方新开一行插入</p>
+<p> |<br>| <code>O</code> | </p>
+<p>光标上方新开一行插入</p>
+<p> |</p>
+<p><strong>作用</strong></p>
+<p>唯一可以输入、编辑文字的模式，屏幕底部会显示 <code>-- INSERT --</code> 标识。</p>
+<p><strong>退出</strong></p>
+<p>按下 <code>Esc</code> 回到普通模式。</p>
+<hr>
+<h3 id="3-命令行模式（Command-line-模式）"><a href="#3-命令行模式（Command-line-模式）" class="headerlink" title="3. 命令行模式（Command-line 模式）"></a>3. 命令行模式（Command-line 模式）</h3><p><strong>进入方式</strong></p>
+<p>普通模式下按英文冒号 <code>:</code>，底部出现 <code>:</code> 输入框。</p>
+<p><strong>作用</strong></p>
+<p>执行保存、退出、查找替换、设置参数、批量操作、调用工具等底层命令。</p>
+<p><strong>高频常用命令</strong></p>
+<p>|<br>命令</p>
+<p> | </p>
+<p>功能</p>
+<p> |<br>| — | — |<br>| <code>:w</code> | </p>
+<p>保存文件</p>
+<p> |<br>| <code>:q</code> | </p>
+<p>退出文件</p>
+<p> |<br>| <code>:wq</code> | </p>
+<p>保存并退出</p>
+<p> |<br>| <code>:q!</code> | </p>
+<p>强制退出，放弃修改</p>
+<p> |<br>| <code>:set nu</code> | </p>
+<p>显示行号  &#x2F; nonu取消显示</p>
+<p> |<br>| <code>:%s/旧文本/新文本/g</code> | </p>
+<p>全文替换</p>
+<p> |</p>
+<hr>
+<h3 id="模式切换简易流程图"><a href="#模式切换简易流程图" class="headerlink" title="模式切换简易流程图"></a>模式切换简易流程图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">普通模式  │  ├── i / a / o ──→ 插入模式 ──→ Esc ──→ 普通模式  │  └── : ──→ 命令行模式 ──→ 回车执行 / Esc 取消 ──→ 普通模式</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>要点：插入模式和命令行模式之间<strong>不能直接切换</strong>，必须先按 <code>Esc</code> 回到普通模式，再进入另一模式。普通模式是所有切换的枢纽。</p>
+</blockquote>
+<p>如上图所示，Vim 的三种模式是理解所有命令的基础。下面是完整的命令笔记。</p>
+<p><img src="/blog/../images/ops/006/img1.png" alt="vim键位图打印版简体中文"></p>
+<p>图片来自：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhlh/_xt/article/details/52458672">https://blog.csdn.net/zhlh\_xt/article/details/52458672</a></p>
+<hr>
+<h2 id="二-、Vim-命令详细笔记（可以跳过）"><a href="#二-、Vim-命令详细笔记（可以跳过）" class="headerlink" title="二++、Vim 命令详细笔记（可以跳过）"></a>二++、Vim 命令详细笔记（可以跳过）</h2><h3 id="1-1-启动与打开文件"><a href="#1-1-启动与打开文件" class="headerlink" title="1.1 启动与打开文件"></a>1.1 启动与打开文件</h3><p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>vim 文件名</code> | </p>
+<p>打开或新建文件</p>
+<p> |<br>| <code>vim +n 文件名</code> | </p>
+<p>打开文件并定位到第 n 行</p>
+<p> |<br>| <code>vim + 文件名</code> | </p>
+<p>打开文件并定位到最后一行</p>
+<p> |<br>| <code>vim +/关键词 文件名</code> | </p>
+<p>打开文件并定位到第一个匹配关键词处</p>
+<p> |<br>| <code>vim -R 文件名</code> | </p>
+<p>只读模式打开</p>
+<p> |<br>| <code>view 文件名</code> | </p>
+<p>只读模式打开（等同于 <code>vim -R</code>）</p>
+<p> |</p>
+<h3 id="1-2-正常模式（Normal-Mode）—-移动"><a href="#1-2-正常模式（Normal-Mode）—-移动" class="headerlink" title="1.2 正常模式（Normal Mode）— 移动"></a>1.2 正常模式（Normal Mode）— 移动</h3><p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>h</code> | </p>
+<p>左移一个字符</p>
+<p> |<br>| <code>j</code> | </p>
+<p>下移一行</p>
+<p> |<br>| <code>k</code> | </p>
+<p>上移一行</p>
+<p> |<br>| <code>l</code> | </p>
+<p>右移一个字符</p>
+<p> |<br>| <code>w</code> | </p>
+<p>跳到下一个单词开头</p>
+<p> |<br>| <code>b</code> | </p>
+<p>跳到上一个单词开头</p>
+<p> |<br>| <code>e</code> | </p>
+<p>跳到当前&#x2F;下一个单词末尾</p>
+<p> |<br>| <code>0</code> | </p>
+<p>跳到行首</p>
+<p> |<br>| <code>^</code> | </p>
+<p>跳到行首第一个非空字符</p>
+<p> |<br>| <code>$</code> | </p>
+<p>跳到行尾</p>
+<p> |<br>| <code>gg</code> | </p>
+<p>跳到文件第一行</p>
+<p> |<br>| <code>G</code> | </p>
+<p>跳到文件最后一行</p>
+<p> |<br>| <code>nG</code></p>
+<p> 或 <code>:n</code></p>
+<p> | </p>
+<p>跳到第 n 行</p>
+<p> |<br>| <code>Ctrl + f</code> | </p>
+<p>向下翻一页（Page Down）</p>
+<p> |<br>| <code>Ctrl + b</code> | </p>
+<p>向上翻一页（Page Up）</p>
+<p> |<br>| <code>Ctrl + d</code> | </p>
+<p>向下翻半页</p>
+<p> |<br>| <code>Ctrl + u</code> | </p>
+<p>向上翻半页</p>
+<p> |<br>| <code>&#123;</code> | </p>
+<p>跳到上一个段落</p>
+<p> |<br>| <code>&#125;</code> | </p>
+<p>跳到下一个段落</p>
+<p> |</p>
+<h3 id="1-3-正常模式-—-编辑操作"><a href="#1-3-正常模式-—-编辑操作" class="headerlink" title="1.3 正常模式 — 编辑操作"></a>1.3 正常模式 — 编辑操作</h3><p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>x</code> | </p>
+<p>删除光标处字符（向后删）</p>
+<p> |<br>| <code>X</code> | </p>
+<p>删除光标前字符（向前删）</p>
+<p> |<br>| <code>dd</code> | </p>
+<p>删除（剪切）整行</p>
+<p> |<br>| <code>ndd</code> | </p>
+<p>删除当前行起的 n 行（如 <code>3dd</code>）</p>
+<p> |<br>| <code>dw</code> | </p>
+<p>删除一个单词</p>
+<p> |<br>| <code>d$</code></p>
+<p> 或 <code>D</code></p>
+<p> | </p>
+<p>删除从光标到行尾</p>
+<p> |<br>| <code>d0</code> | </p>
+<p>删除从行首到光标</p>
+<p> |<br>| <code>dG</code> | </p>
+<p>删除从当前行到文件末尾</p>
+<p> |<br>| <code>dgg</code> | </p>
+<p>删除从文件开头到当前行</p>
+<p> |<br>| <code>yy</code> | </p>
+<p>复制（yank）整行</p>
+<p> |<br>| <code>nyy</code> | </p>
+<p>复制 n 行（如 <code>3yy</code>）</p>
+<p> |<br>| <code>yw</code> | </p>
+<p>复制一个单词</p>
+<p> |<br>| <code>y$</code> | </p>
+<p>复制从光标到行尾</p>
+<p> |<br>| <code>p</code> | </p>
+<p>粘贴到光标后&#x2F;下方</p>
+<p> |<br>| <code>P</code> | </p>
+<p>粘贴到光标前&#x2F;上方</p>
+<p> |<br>| <code>r</code> | </p>
+<p>替换光标处单个字符（按 r 后输入新字符）</p>
+<p> |<br>| <code>R</code> | </p>
+<p>进入替换模式，连续替换</p>
+<p> |<br>| <code>u</code> | </p>
+<p>撤销（undo）</p>
+<p> |<br>| <code>Ctrl + r</code> | </p>
+<p>重做（redo）</p>
+<p> |<br>| <code>.</code> | </p>
+<p>重复上一次操作</p>
+<p> |<br>| <code>~</code> | </p>
+<p>切换光标处字符大小写</p>
+<p> |<br>| <code>&gt;&gt;</code> | </p>
+<p>当前行右移（缩进）</p>
+<p> |<br>| <code>&lt;&lt;</code> | </p>
+<p>当前行左移（取消缩进）</p>
+<p> |</p>
+<h3 id="1-4-进入插入模式（Insert-Mode）"><a href="#1-4-进入插入模式（Insert-Mode）" class="headerlink" title="1.4 进入插入模式（Insert Mode）"></a>1.4 进入插入模式（Insert Mode）</h3><p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>i</code> | </p>
+<p>在光标前插入</p>
+<p> |<br>| <code>I</code> | </p>
+<p>在行首第一个非空字符前插入</p>
+<p> |<br>| <code>a</code> | </p>
+<p>在光标后插入（append）</p>
+<p> |<br>| <code>A</code> | </p>
+<p>在行尾插入</p>
+<p> |<br>| <code>o</code> | </p>
+<p>在下方新开一行并进入插入</p>
+<p> |<br>| <code>O</code> | </p>
+<p>在上方新开一行并进入插入</p>
+<p> |<br>| <code>s</code> | </p>
+<p>删除光标字符并进入插入</p>
+<p> |<br>| <code>S</code> | </p>
+<p>删除整行并进入插入</p>
+<p> |<br>| <code>cw</code> | </p>
+<p>删除当前单词并进入插入</p>
+<p> |<br>| <code>Esc</code> | </p>
+<p>退出插入模式，回到正常模式</p>
+<p> |</p>
+<h3 id="1-5-命令行模式（Command-Mode）"><a href="#1-5-命令行模式（Command-Mode）" class="headerlink" title="1.5 命令行模式（Command Mode）"></a>1.5 命令行模式（Command Mode）</h3><p>在正常模式下输入 <code>:</code> 进入命令行模式。</p>
+<p><strong>文件操作：</strong></p>
+<p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>:w</code> | </p>
+<p>保存</p>
+<p> |<br>| <code>:w 文件名</code> | </p>
+<p>另存为</p>
+<p> |<br>| <code>:q</code> | </p>
+<p>退出（未修改时）</p>
+<p> |<br>| <code>:q!</code> | </p>
+<p>强制退出不保存</p>
+<p> |<br>| <code>:wq</code> | </p>
+<p>保存并退出</p>
+<p> |<br>| <code>:x</code> | </p>
+<p>保存并退出（仅当有修改时才写入）</p>
+<p> |<br>| <code>ZZ</code> | </p>
+<p>保存并退出（正常模式下直接按）</p>
+<p> |<br>| <code>:wq!</code> | </p>
+<p>强制保存并退出</p>
+<p> |</p>
+<p><strong>搜索与替换：</strong></p>
+<p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>/关键词</code> | </p>
+<p>向下搜索关键词</p>
+<p> |<br>| <code>?关键词</code> | </p>
+<p>向上搜索关键词</p>
+<p> |<br>| <code>n</code> | </p>
+<p>跳到下一个匹配</p>
+<p> |<br>| <code>N</code> | </p>
+<p>跳到上一个匹配</p>
+<p> |<br>| <code>:s/旧/新/</code> | </p>
+<p>替换当前行第一个匹配</p>
+<p> |<br>| <code>:s/旧/新/g</code> | </p>
+<p>替换当前行所有匹配</p>
+<p> |<br>| <code>:%s/旧/新/g</code> | </p>
+<p>全文替换所有匹配</p>
+<p> |<br>| <code>:%s/旧/新/gc</code> | </p>
+<p>全文替换，逐个确认</p>
+<p> |<br>| <code>:n,ms/旧/新/g</code> | </p>
+<p>替换第 n 行到第 m 行</p>
+<p> |</p>
+<p><strong>其他常用：</strong></p>
+<p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>:set nu</code> | </p>
+<p>显示行号</p>
+<p> |<br>| <code>:set nonu</code> | </p>
+<p>取消行号</p>
+<p> |<br>| <code>:set ai</code> | </p>
+<p>自动缩进</p>
+<p> |<br>| <code>:set ts=4</code> | </p>
+<p>设置 Tab 宽度为 4</p>
+<p> |<br>| <code>:set hlsearch</code> | </p>
+<p>高亮搜索结果</p>
+<p> |<br>| <code>:set paste</code> | </p>
+<p>粘贴模式（防止自动缩进干扰）</p>
+<p> |<br>| <code>:set nopaste</code> | </p>
+<p>关闭粘贴模式</p>
+<p> |<br>| <code>:!命令</code> | </p>
+<p>执行外部 Shell 命令（如 <code>:!ls</code>）</p>
+<p> |<br>| <code>:r 文件名</code> | </p>
+<p>将另一文件内容读入当前文件</p>
+<p> |<br>| <code>:r !命令</code> | </p>
+<p>将命令输出读入文件（如 <code>:r !date</code>）</p>
+<p> |<br>| <code>:sp 文件名</code> | </p>
+<p>水平分屏打开文件</p>
+<p> |<br>| <code>:vsp 文件名</code> | </p>
+<p>垂直分屏打开文件</p>
+<p> |<br>| <code>Ctrl + w w</code> | </p>
+<p>在分屏窗口间切换</p>
+<p> |</p>
+<h3 id="1-6-可视模式（Visual-Mode）"><a href="#1-6-可视模式（Visual-Mode）" class="headerlink" title="1.6 可视模式（Visual Mode）"></a>1.6 可视模式（Visual Mode）</h3><p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>v</code> | </p>
+<p>字符可视模式（按字符选择）</p>
+<p> |<br>| <code>V</code> | </p>
+<p>行可视模式（按行选择）</p>
+<p> |<br>| <code>Ctrl + v</code> | </p>
+<p>块可视模式（列选择，批量注释利器）</p>
+<p> |<br>| </p>
+<p>选中后 <code>y</code></p>
+<p> | </p>
+<p>复制选中文本</p>
+<p> |<br>| </p>
+<p>选中后 <code>d</code></p>
+<p> | </p>
+<p>删除选中文本</p>
+<p> |<br>| </p>
+<p>选中后 <code>&gt;</code></p>
+<p> | </p>
+<p>右移选中区域</p>
+<p> |</p>
+<hr>
+<h2 id="-3"><a href="#-3" class="headerlink" title=""></a></h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/blog/tags/%E8%BF%90%E7%BB%B4/" rel="tag"># 运维</a>
+              <a href="/blog/tags/%E7%B3%BB%E7%BB%9F/" rel="tag"># 系统</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2026/07/03/005-Linux%E8%BF%9C%E7%A8%8B/" rel="prev" title="004 Linux远程">
+                  <i class="fa fa-angle-left"></i> 004 Linux远程
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2026/07/04/007-Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86-%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E3%80%81%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E4%B8%8E%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB/" rel="next" title="006 Linux系统管理 关机重启、用户登录与运行级别">
+                  006 Linux系统管理 关机重启、用户登录与运行级别 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Lyuu</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

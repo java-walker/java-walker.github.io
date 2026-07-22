@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lyuu.eu.cc","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat","show_result":true},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js" defer></script>
+
+    <meta name="description" content="记录技术、AI 与生活的个人博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lyuu 的博客">
+<meta property="og:url" content="https://lyuu.eu.cc/blog/page/2/index.html">
+<meta property="og:site_name" content="Lyuu 的博客">
+<meta property="og:description" content="记录技术、AI 与生活的个人博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Lyuu">
+<meta property="article:tag" content="博客">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lyuu.eu.cc/blog/page/2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"page/2/index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Lyuu 的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/blog/js/utils.js" defer></script><script src="/blog/js/motion.js" defer></script><script src="/blog/js/sidebar.js" defer></script><script src="/blog/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lyuu 的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code Create Life</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-portal"><a href="https://lyuu.eu.cc/" rel="section"><i class="fa fa-globe fa-fw"></i>主页</a></li><li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lyuu</p>
+  <div class="site-description" itemprop="description">记录技术、AI 与生活的个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/java-walker" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;java-walker" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/07/04/008-JQ2-Linux%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4%E5%85%A8%E6%94%BB%E7%95%A5%EF%BC%9Aman%E3%80%81help%E5%92%8C%E4%BA%92%E8%81%94%E7%BD%91%E6%90%9C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2026/07/04/008-JQ2-Linux%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4%E5%85%A8%E6%94%BB%E7%95%A5%EF%BC%9Aman%E3%80%81help%E5%92%8C%E4%BA%92%E8%81%94%E7%BD%91%E6%90%9C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="post-title-link" itemprop="url">JQ2 Linux帮助命令全攻略：man、help和互联网搜解决办法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-07-04 13:02:00" itemprop="dateCreated datePublished" datetime="2026-07-04T13:02:00+08:00">2026-07-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>原文转载自微信公众号「walker-行者」Linux 系列。<br>原始链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&mid=2247483818&idx=1&sn=ef97dd2e37df93eccbed70aa52da0ad9&chksm=c0bf7888f7c8f19ed8053e58ec8027048f03ea0651c84db3391ee022c4e77339144599c913d5&cur_album_id=4586547322464501762&scene=189#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&amp;mid=2247483818&amp;idx=1&amp;sn=ef97dd2e37df93eccbed70aa52da0ad9&amp;chksm=c0bf7888f7c8f19ed8053e58ec8027048f03ea0651c84db3391ee022c4e77339144599c913d5&amp;cur_album_id=4586547322464501762&amp;scene=189#wechat_redirect</a></p>
+</blockquote>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><blockquote>
+<p>不会就查，学会这些命令让你告别死记硬背</p>
+</blockquote>
+<h2 id="一、man命令：最权威的帮助手册"><a href="#一、man命令：最权威的帮助手册" class="headerlink" title="一、man命令：最权威的帮助手册"></a>一、man命令：最权威的帮助手册</h2><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man [命令或配置文件]</span><br></pre></td></tr></table></figure>
+
+<p><strong>功能</strong>：获得命令或配置文件的详细帮助信息（manual，手册）</p>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看ls命令的帮助信息</span><br></pre></td></tr></table></figure>
+
+<h3 id="man-页面导航"><a href="#man-页面导航" class="headerlink" title="man 页面导航"></a>man 页面导航</h3><p>进入man页面后，使用以下快捷键浏览：</p>
+<p>|<br>按键</p>
+<p> | </p>
+<p>功能</p>
+<p> |<br>| — | — |<br>| <code>空格键</code> | </p>
+<p>向下翻一页</p>
+<p> |<br>| <code>Enter</code> | </p>
+<p>向下翻一行</p>
+<p> |<br>| <code>b</code> | </p>
+<p>向上翻一页</p>
+<p> |<br>| <code>/关键词</code> | </p>
+<p>搜索关键词</p>
+<p> |<br>| <code>q</code> | </p>
+<p>退出man页面</p>
+<p> |</p>
+<h3 id="man的章节划分"><a href="#man的章节划分" class="headerlink" title="man的章节划分"></a>man的章节划分</h3><p>man手册分为多个章节，可以通过章节号精确查找：</p>
+<p>|<br>章节</p>
+<p> | </p>
+<p>内容</p>
+<p> |<br>| — | — |<br>| </p>
+<p>1</p>
+<p> | </p>
+<p>用户命令（最常用）</p>
+<p> |<br>| </p>
+<p>2</p>
+<p> | </p>
+<p>系统调用</p>
+<p> |<br>| </p>
+<p>3</p>
+<p> | </p>
+<p>C库函数</p>
+<p> |<br>| </p>
+<p>4</p>
+<p> | </p>
+<p>设备文件</p>
+<p> |<br>| </p>
+<p>5</p>
+<p> | </p>
+<p>配置文件格式</p>
+<p> |<br>| </p>
+<p>6</p>
+<p> | </p>
+<p>游戏</p>
+<p> |<br>| </p>
+<p>7</p>
+<p> | </p>
+<p>杂项</p>
+<p> |<br>| </p>
+<p>8</p>
+<p> | </p>
+<p>系统管理命令</p>
+<p> |</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man 5 passwd</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、help命令：内置命令的帮手"><a href="#二、help命令：内置命令的帮手" class="headerlink" title="二、help命令：内置命令的帮手"></a>二、help命令：内置命令的帮手</h2><h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><h2 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help 命令</span><br></pre></td></tr></table></figure>
+
+<p><strong>功能</strong>：获取Shell<strong>内置命令</strong>的帮助信息</p>
+<h3 id="使用示例-1"><a href="#使用示例-1" class="headerlink" title="使用示例"></a>使用示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看cd命令的帮助信息</span><br></pre></td></tr></table></figure>
+
+<h3 id="⚠️-man-vs-help-核心区别"><a href="#⚠️-man-vs-help-核心区别" class="headerlink" title="⚠️ man vs help 核心区别"></a>⚠️ man vs help 核心区别</h3><p>|<br>对比项</p>
+<p> | </p>
+<p>man</p>
+<p> | </p>
+<p>help</p>
+<p> |<br>| — | — | — |<br>| </p>
+<p>适用命令</p>
+<p> | <strong>外部命令</strong></p>
+<p>（如 ls、cp、rm）</p>
+<p> | <strong>Shell内置命令</strong></p>
+<p>（如 cd、exit）</p>
+<p> |<br>| </p>
+<p>信息详细程度</p>
+<p> | </p>
+<p>非常详细，包含参数、示例</p>
+<p> | </p>
+<p>简洁，只列出基本用法</p>
+<p> |<br>| </p>
+<p>退出方式</p>
+<p> | </p>
+<p>按 <code>q</code> 退出</p>
+<p> | </p>
+<p>直接显示在终端中</p>
+<p> |</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 判断命令是内置还是外部</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、认识Shell内置命令-vs-外部命令"><a href="#三、认识Shell内置命令-vs-外部命令" class="headerlink" title="三、认识Shell内置命令 vs 外部命令"></a>三、认识Shell内置命令 vs 外部命令</h2><p>理解这个区别，你就能准确判断该用 <code>man</code> 还是 <code>help</code>。</p>
+<p>|<br>类型</p>
+<p> | </p>
+<p>说明</p>
+<p> | </p>
+<p>常见命令</p>
+<p> |<br>| — | — | — |<br>| <strong>内置命令</strong></p>
+<p>（builtin）</p>
+<p> | </p>
+<p>由Shell程序自身提供，不依赖外部文件</p>
+<p> | <code>cd</code></p>
+<p>、<code>exit</code>、<code>echo</code>、<code>pwd</code>、<code>export</code></p>
+<p> |<br>| <strong>外部命令</strong> | </p>
+<p>独立可执行文件，位于 <code>/bin</code>、<code>/usr/bin</code> 等目录</p>
+<p> | <code>ls</code></p>
+<p>、<code>cp</code>、<code>rm</code>、<code>mkdir</code>、<code>find</code></p>
+<p> |</p>
+<p><strong>快速判断方法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 使用 type 命令判断</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>用 <code>help</code> 查内置命令</p>
+</li>
+<li><p>用 <code>man</code> 查外部命令</p>
+</li>
+<li><p>不确定时，先用 <code>help</code> 试试，不行再换 <code>man</code></p>
+</li>
+</ul>
+<h2 id="四、常见命令速查表"><a href="#四、常见命令速查表" class="headerlink" title="四、常见命令速查表"></a>四、常见命令速查表</h2><p>|<br>命令</p>
+<p> | </p>
+<p>类型</p>
+<p> | </p>
+<p>帮助方式</p>
+<p> | </p>
+<p>示例</p>
+<p> |<br>| — | — | — | — |<br>| <code>ls</code> | </p>
+<p>外部命令</p>
+<p> | <code>man ls</code> | </p>
+<p>查看文件列表</p>
+<p> |<br>| <code>cd</code> | </p>
+<p>内置命令</p>
+<p> | <code>help cd</code> | </p>
+<p>切换目录</p>
+<p> |<br>| <code>cp</code> | </p>
+<p>外部命令</p>
+<p> | <code>man cp</code> | </p>
+<p>复制文件</p>
+<p> |<br>| <code>rm</code> | </p>
+<p>外部命令</p>
+<p> | <code>man rm</code> | </p>
+<p>删除文件</p>
+<p> |<br>| <code>mkdir</code> | </p>
+<p>外部命令</p>
+<p> | <code>man mkdir</code> | </p>
+<p>创建目录</p>
+<p> |<br>| <code>pwd</code> | </p>
+<p>内置命令</p>
+<p> | <code>help pwd</code> | </p>
+<p>显示当前目录</p>
+<p> |<br>| <code>echo</code> | </p>
+<p>内置命令</p>
+<p> | <code>help echo</code> | </p>
+<p>输出内容</p>
+<p> |<br>| <code>exit</code> | </p>
+<p>内置命令</p>
+<p> | <code>help exit</code> | </p>
+<p>退出终端</p>
+<p> |<br>| <code>passwd</code> | </p>
+<p>外部命令</p>
+<p> | <code>man passwd</code> | </p>
+<p>修改密码</p>
+<p> |<br>| <code>find</code> | </p>
+<p>外部命令</p>
+<p> | <code>man find</code> | </p>
+<p>查找文件</p>
+<p> |</p>
+<h2 id="五、互联网搜索：最直接的学习方式"><a href="#五、互联网搜索：最直接的学习方式" class="headerlink" title="五、互联网搜索：最直接的学习方式"></a>五、互联网搜索：最直接的学习方式</h2><blockquote>
+<p>💡 <strong>名言</strong>：man pages 是知识库，Google 是找答案的方式。</p>
+</blockquote>
+<p>实际工作中，<strong>99%的Linux问题都可以通过搜索解决</strong>，而且速度比翻man手册快得多。</p>
+<h3 id="推荐搜索引擎"><a href="#推荐搜索引擎" class="headerlink" title="推荐搜索引擎"></a>推荐搜索引擎</h3><p>|<br>平台</p>
+<p> | </p>
+<p>适用场景</p>
+<p> |<br>| — | — |<br>| <strong>必应 &#x2F; Google</strong> | </p>
+<p>通用搜索，中英文问题都能解决</p>
+<p> |<br>| <strong>CSDN</strong> | </p>
+<p>国内技术博客，有大量实操案例和踩坑记录</p>
+<p> |<br>| <strong>知乎</strong> | </p>
+<p>深度讨论、最佳实践、经验分享</p>
+<p> |<br>| <strong>博客园</strong> | </p>
+<p>基础教程、学习笔记</p>
+<p> |<br>| <strong>Stack Overflow</strong> | </p>
+<p>英文技术问答，高质量解决方案</p>
+<p> |<br>| <strong>AI助手（豆包&#x2F;ChatGPT等）</strong> | </p>
+<p>直接提问，最直接不绕弯子的回答</p>
+<p> |</p>
+<h3 id="搜索技巧示例"><a href="#搜索技巧示例" class="headerlink" title="搜索技巧示例"></a>搜索技巧示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ❌ 不好的搜索方式</span><br></pre></td></tr></table></figure>
+
+<h3 id="搜索关键词公式"><a href="#搜索关键词公式" class="headerlink" title="搜索关键词公式"></a>搜索关键词公式</h3><blockquote>
+<p><strong>[操作系统版本] + [具体问题] + [错误提示&#x2F;关键报错]</strong></p>
+</blockquote>
+<h2 id="六、信息获取优先级建议"><a href="#六、信息获取优先级建议" class="headerlink" title="六、信息获取优先级建议"></a>六、信息获取优先级建议</h2><p>在实际工作中，遇到不熟悉的命令或报错时，按以下顺序查找答案：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1️⃣ help 命令 → 先试试内置命令</span><br></pre></td></tr></table></figure>
+
+<h3 id="help-补充说明"><a href="#help-补充说明" class="headerlink" title="--help 补充说明"></a><code>--help</code> 补充说明</h3><p>很多外部命令支持 <code>--help</code> 参数，输出比man更简洁：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls --help</span><br></pre></td></tr></table></figure>
+
+<h2 id="七、快速总结"><a href="#七、快速总结" class="headerlink" title="七、快速总结"></a>七、快速总结</h2><p>|<br>命令</p>
+<p> | </p>
+<p>用途</p>
+<p> | </p>
+<p>适用对象</p>
+<p> |<br>| — | — | — |<br>| <code>man 命令</code> | </p>
+<p>查看<strong>详细</strong>帮助手册</p>
+<p> | </p>
+<p>外部命令（ls、cp、rm等）</p>
+<p> |<br>| <code>help 命令</code> | </p>
+<p>查看<strong>简洁</strong>帮助信息</p>
+<p> | <strong>内置命令</strong></p>
+<p>（cd、exit、echo等）</p>
+<p> |<br>| <code>命令 --help</code> | </p>
+<p>查看<strong>简要</strong>帮助</p>
+<p> | </p>
+<p>大部分外部命令</p>
+<p> |<br>| <code>type 命令</code> | </p>
+<p>判断命令是内置还是外部</p>
+<p> | </p>
+<p>所有命令</p>
+<p> |<br>| <code>which 命令</code> | </p>
+<p>查看外部命令的位置</p>
+<p> | </p>
+<p>外部命令</p>
+<p> |</p>
+<h3 id="🎯-一句话记忆"><a href="#🎯-一句话记忆" class="headerlink" title="🎯 一句话记忆"></a>🎯 一句话记忆</h3><ul>
+<li><p>查 <strong>用法</strong> → <code>man</code> 或 <code>--help</code></p>
+</li>
+<li><p>查 <strong>内置命令</strong> → <code>help</code></p>
+</li>
+<li><p>查 <strong>答案</strong> → Google &#x2F; 必应 &#x2F; AI</p>
+</li>
+</ul>
+<hr>
+<blockquote>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/07/04/007-Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86-%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E3%80%81%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E4%B8%8E%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2026/07/04/007-Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86-%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF%E3%80%81%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E4%B8%8E%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB/" class="post-title-link" itemprop="url">006 Linux系统管理 关机重启、用户登录与运行级别</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-07-04 08:00:00" itemprop="dateCreated datePublished" datetime="2026-07-04T08:00:00+08:00">2026-07-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>原文转载自微信公众号「walker-行者」Linux 系列。<br>原始链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&mid=2247483816&idx=1&sn=a292fef1ba53964f5fc9514ad0c15be4&chksm=c0bf788af7c8f19c910fefa2b38f4fc11ec97f138d3edcf1f11c9d3562de61c961c6a2b9b5e5&cur_album_id=4586547322464501762&scene=189#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&amp;mid=2247483816&amp;idx=1&amp;sn=a292fef1ba53964f5fc9514ad0c15be4&amp;chksm=c0bf788af7c8f19c910fefa2b38f4fc11ec97f138d3edcf1f11c9d3562de61c961c6a2b9b5e5&amp;cur_album_id=4586547322464501762&amp;scene=189#wechat_redirect</a></p>
+</blockquote>
+<h1 id="Linux系统管理核心笔记：关机重启、用户登录与运行级别"><a href="#Linux系统管理核心笔记：关机重启、用户登录与运行级别" class="headerlink" title="Linux系统管理核心笔记：关机重启、用户登录与运行级别"></a>Linux系统管理核心笔记：关机重启、用户登录与运行级别</h1><blockquote>
+<p>一篇掌握Linux系统的基本管理操作</p>
+</blockquote>
+<h2 id="一、关机与重启命令"><a href="#一、关机与重启命令" class="headerlink" title="一、关机与重启命令"></a>一、关机与重启命令</h2><h3 id="1-1-常用命令速查表"><a href="#1-1-常用命令速查表" class="headerlink" title="1.1 常用命令速查表"></a>1.1 常用命令速查表</h3><p>|<br>命令</p>
+<p> | </p>
+<p>功能</p>
+<p> | </p>
+<p>示例</p>
+<p> |<br>| — | — | — |<br>| <code>shutdown -h now</code> | <strong>立即关机</strong> | <code>shutdown -h now</code> |<br>| <code>shutdown -h 1</code> | <strong>1分钟后关机</strong></p>
+<p>（可带提示信息）</p>
+<p> | <code>shutdown -h 1 &quot;系统将在1分钟后关机&quot;</code> |<br>| <code>shutdown -r now</code> | <strong>立即重启</strong> | <code>shutdown -r now</code> |<br>| <code>halt</code> | </p>
+<p>关机（作用和<code>shutdown -h</code>类似）</p>
+<p> | <code>halt</code> |<br>| <code>reboot</code> | </p>
+<p>重启（作用和<code>shutdown -r</code>类似）</p>
+<p> | <code>reboot</code> |<br>| <code>sync</code> | </p>
+<p>将内存数据<strong>同步到磁盘</strong></p>
+<p> | <code>sync</code> |</p>
+<h3 id="1-2-⚠️-重要提醒：先sync再关机！"><a href="#1-2-⚠️-重要提醒：先sync再关机！" class="headerlink" title="1.2 ⚠️ 重要提醒：先sync再关机！"></a>1.2 ⚠️ 重要提醒：先sync再关机！</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 标准安全流程(老教材、旧方法)</span><br></pre></td></tr></table></figure>
+
+<p>为什么需要sync？</p>
+<p>Linux为了提高性能，很多数据会暂存在内存中。如果不先sync就直接关机，内存中未写入磁盘的数据就会<strong>丢失</strong>，可能导致文件损坏。</p>
+<blockquote>
+<p>现在的 <code>shutdown</code>、<code>reboot</code>、<code>halt</code> 命令<strong>内部已经自动执行了sync</strong>，所以直接使用这些命令通常也是安全的。但养成手动sync的好习惯，好吧，我没养成[滑稽.jpg]（有必要吗，不知道，就像Windows关机前先把应用给关掉）</p>
+</blockquote>
+<h2 id="二、用户登录与注销"><a href="#二、用户登录与注销" class="headerlink" title="二、用户登录与注销"></a>二、用户登录与注销</h2><h3 id="2-1-基本使用规范"><a href="#2-1-基本使用规范" class="headerlink" title="2.1 基本使用规范"></a>2.1 基本使用规范</h3><p>|<br>规范</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <strong>避免直接使用root</strong> | </p>
+<p>root权限太大，一个误操作可能导致系统崩溃</p>
+<p> |<br>| <strong>推荐方式</strong> | </p>
+<p>用普通用户登录 → <code>su - 用户名</code> 切换到root</p>
+<p> |<br>| <strong>注销用户</strong> | </p>
+<p>在命令行输入 <code>logout</code> 退出当前用户</p>
+<p> |</p>
+<h3 id="2-2-操作流程示例"><a href="#2-2-操作流程示例" class="headerlink" title="2.2 操作流程示例"></a>2.2 操作流程示例</h3><p>bash</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 用普通用户 awl登录系统</span><br></pre></td></tr></table></figure>
+
+<p>2.3 使用细节</p>
+<ul>
+<li><p><code>logout</code> 命令在<strong>图形界面运行级别（5）</strong> 下<strong>无效</strong></p>
+</li>
+<li><p>在<strong>命令行运行级别（3）</strong> 下正常使用</p>
+</li>
+</ul>
+<h2 id="三、运行级别（Runlevel）"><a href="#三、运行级别（Runlevel）" class="headerlink" title="三、运行级别（Runlevel）"></a>三、运行级别（Runlevel）</h2><h3 id="3-1-传统SysV运行级别-vs-Systemd-Target"><a href="#3-1-传统SysV运行级别-vs-Systemd-Target" class="headerlink" title="3.1 传统SysV运行级别 vs Systemd Target"></a>3.1 传统SysV运行级别 vs Systemd Target</h3><p>|<br>级别</p>
+<p> | </p>
+<p>SysV Runlevel</p>
+<p> | </p>
+<p>systemd Target</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — | — | — |<br>| </p>
+<p>0</p>
+<p> | </p>
+<p>关机</p>
+<p> | <code>poweroff.target</code> | </p>
+<p>系统关机</p>
+<p> |<br>| </p>
+<p>1</p>
+<p> | </p>
+<p>单用户模式</p>
+<p> | <code>rescue.target</code> | <strong>救援模式</strong></p>
+<p>，用于找回root密码等维护操作</p>
+<p> |<br>| </p>
+<p>2</p>
+<p> | </p>
+<p>多用户无网络</p>
+<p> | </p>
+<p>—</p>
+<p> | </p>
+<p>传统定义，较少使用</p>
+<p> |<br>| </p>
+<p>3</p>
+<p> | <strong>多用户有网络</strong> | <code>multi-user.target</code> | <strong>纯命令行服务器模式</strong></p>
+<p>（最常用）</p>
+<p> |<br>| </p>
+<p>4</p>
+<p> | </p>
+<p>保留未使用</p>
+<p> | </p>
+<p>—</p>
+<p> | </p>
+<p>系统保留</p>
+<p> |<br>| </p>
+<p>5</p>
+<p> | <strong>图形界面</strong> | <code>graphical.target</code> | <strong>桌面图形模式</strong></p>
+<p>（个人电脑常用）</p>
+<p> |<br>| </p>
+<p>6</p>
+<p> | </p>
+<p>重启</p>
+<p> | <code>reboot.target</code> | </p>
+<p>系统重启</p>
+<p> |</p>
+<blockquote>
+<p>💡 <strong>最常用的是级别3和5</strong>：服务器用3（命令行），个人桌面用5（图形界面）</p>
+</blockquote>
+<h3 id="3-2-运行级别革新"><a href="#3-2-运行级别革新" class="headerlink" title="3.2 运行级别革新"></a>3.2 运行级别革新</h3><p>传统的 <code>/etc/inittab</code> 被简化，改用 <strong>systemd target</strong> 管理运行级别：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## 查看当前默认运行级别</span><br></pre></td></tr></table></figure>
+
+<p>3.3 级别切换实例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 方法一：临时切换（立即生效，重启后恢复）</span><br></pre></td></tr></table></figure>
+
+<p>3.4 常见应用场景</p>
+<p>|<br>场景</p>
+<p> | </p>
+<p>操作</p>
+<p> |<br>| — | — |<br>| <strong>忘记root密码</strong> | </p>
+<p>进入运行级别1（单用户模式）重置密码</p>
+<p> |<br>| <strong>服务器部署</strong> | </p>
+<p>设置默认级别3，节省资源</p>
+<p> |<br>| <strong>个人桌面使用</strong> | </p>
+<p>设置默认级别5，使用图形界面</p>
+<p> |<br>| <strong>临时维护</strong> | <code>init 3</code></p>
+<p> 切到命令行进行维护，完成后 <code>init 5</code> 切回图形</p>
+<p> |</p>
+<h2 id="四、快速参考卡片"><a href="#四、快速参考卡片" class="headerlink" title="四、快速参考卡片"></a>四、快速参考卡片</h2><h3 id="关机重启"><a href="#关机重启" class="headerlink" title="关机重启"></a>关机重启</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h now    </span><br></pre></td></tr></table></figure>
+
+<h3 id="用户切换"><a href="#用户切换" class="headerlink" title="用户切换"></a>用户切换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - root          </span><br></pre></td></tr></table></figure>
+
+<h3 id="运行级别管理"><a href="#运行级别管理" class="headerlink" title="运行级别管理"></a>运行级别管理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">init 3</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/07/03/006-Linux%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8%EF%BC%88%E6%96%87%E6%9C%AC%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2026/07/03/006-Linux%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8%EF%BC%88%E6%96%87%E6%9C%AC%EF%BC%89/" class="post-title-link" itemprop="url">005 Linux要了解的编辑器（文本）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-07-03 22:19:00" itemprop="dateCreated datePublished" datetime="2026-07-03T22:19:00+08:00">2026-07-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>原文转载自微信公众号「walker-行者」Linux 系列。<br>原始链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&mid=2247483815&idx=1&sn=57add2922e12a29ae92986530d0b37a0&chksm=c0bf7885f7c8f1937a09e6cfa36cd5f3a12112244184b675ddd91e99f60113cd53ce54e17aa0&cur_album_id=4586547322464501762&scene=189#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&amp;mid=2247483815&amp;idx=1&amp;sn=57add2922e12a29ae92986530d0b37a0&amp;chksm=c0bf7885f7c8f1937a09e6cfa36cd5f3a12112244184b675ddd91e99f60113cd53ce54e17aa0&amp;cur_album_id=4586547322464501762&amp;scene=189#wechat_redirect</a></p>
+</blockquote>
+<h2 id="Linux文本编辑器指南：Vim、Nano与主流编辑器盘点"><a href="#Linux文本编辑器指南：Vim、Nano与主流编辑器盘点" class="headerlink" title="Linux文本编辑器指南：Vim、Nano与主流编辑器盘点"></a>Linux文本编辑器指南：Vim、Nano与主流编辑器盘点</h2><h2 id="零、为什么需要学会命令行文本编辑器？"><a href="#零、为什么需要学会命令行文本编辑器？" class="headerlink" title="零、为什么需要学会命令行文本编辑器？"></a>零、为什么需要学会命令行文本编辑器？</h2><p>在Linux服务器上，很多场景下没有图形界面可用：</p>
+<ul>
+<li><p>修改系统配置文件（如 <code>/etc/nginx/nginx.conf</code>）</p>
+</li>
+<li><p>编写Shell脚本</p>
+</li>
+<li><p>提交Git commit message</p>
+</li>
+<li><p>快速编辑远程服务器上的代码</p>
+</li>
+</ul>
+<p>这时候，命令行文本编辑器就是你的<strong>救命稻草</strong>。下面介绍最主流的几款。</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h2 id="二、Nano-命令笔记"><a href="#二、Nano-命令笔记" class="headerlink" title="二、Nano 命令笔记"></a>二、Nano 命令笔记</h2><p>Nano 是一个轻量级、对新手友好的终端编辑器，所有快捷键都在屏幕底部显示（<code>^</code> 表示 <code>Ctrl</code>）。</p>
+<h3 id="2-1-启动"><a href="#2-1-启动" class="headerlink" title="2.1 启动"></a>2.1 启动</h3><p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>nano 文件名</code> | </p>
+<p>打开或新建文件</p>
+<p> |<br>| <code>nano -l 文件名</code> | </p>
+<p>显示行号</p>
+<p> |<br>| <code>nano -m 文件名</code> | </p>
+<p>启用鼠标支持</p>
+<p> |<br>| <code>nano -B 文件名</code> | </p>
+<p>保存前自动备份原文件</p>
+<p> |<br>| <code>nano -c 文件名</code> | </p>
+<p>显示光标位置信息</p>
+<p> |</p>
+<h3 id="2-2-核心快捷键（Ctrl-系列，-Ctrl）"><a href="#2-2-核心快捷键（Ctrl-系列，-Ctrl）" class="headerlink" title="2.2 核心快捷键（Ctrl 系列，^ &#x3D; Ctrl）"></a>2.2 核心快捷键（Ctrl 系列，<code>^</code> &#x3D; <code>Ctrl</code>）</h3><p>|<br>快捷键</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>Ctrl + O</code> | </p>
+<p>保存文件（Write Out）</p>
+<p> |<br>| <code>Ctrl + X</code> | </p>
+<p>退出（Exit）</p>
+<p> |<br>| <code>Ctrl + G</code> | </p>
+<p>查看帮助（Get Help）</p>
+<p> |<br>| <code>Ctrl + K</code> | </p>
+<p>剪切整行（Cut，相当于 vim 的 dd）</p>
+<p> |<br>| <code>Ctrl + U</code> | </p>
+<p>粘贴（Uncut，粘贴刚才剪切的行）</p>
+<p> |<br>| <code>Ctrl + W</code> | </p>
+<p>搜索（Where Is）</p>
+<p> |<br>| <code>Ctrl + \</code> | </p>
+<p>搜索并替换</p>
+<p> |<br>| <code>Ctrl + C</code> | </p>
+<p>显示当前光标位置（行号、列号）</p>
+<p> |<br>| <code>Ctrl + J</code> | </p>
+<p>段落对齐（Justify）</p>
+<p> |<br>| <code>Ctrl + T</code> | </p>
+<p>调用拼写检查</p>
+<p> |<br>| <code>Ctrl + R</code> | </p>
+<p>读取另一个文件插入当前位置</p>
+<p> |<br>| <code>Ctrl + _</code> | </p>
+<p>跳转到指定行号</p>
+<p> |</p>
+<h3 id="2-3-Alt-系列快捷键（M-Alt）"><a href="#2-3-Alt-系列快捷键（M-Alt）" class="headerlink" title="2.3 Alt 系列快捷键（M- &#x3D; Alt）"></a>2.3 Alt 系列快捷键（<code>M-</code> &#x3D; <code>Alt</code>）</h3><p>|<br>快捷键</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>Alt + 6</code> | </p>
+<p>复制当前行（不剪切）</p>
+<p> |<br>| <code>Alt + A</code> | </p>
+<p>开始标记选择（类似 vim 可视模式）</p>
+<p> |<br>| <code>Alt + #</code> | </p>
+<p>注释&#x2F;取消注释当前行</p>
+<p> |<br>| <code>Alt + U</code> | </p>
+<p>撤销（Undo）</p>
+<p> |<br>| <code>Alt + E</code> | </p>
+<p>重做（Redo）</p>
+<p> |<br>| <code>Alt + G</code> | </p>
+<p>跳转到指定行</p>
+<p> |</p>
+<h3 id="2-4-Nano-操作流程速记"><a href="#2-4-Nano-操作流程速记" class="headerlink" title="2.4 Nano 操作流程速记"></a>2.4 Nano 操作流程速记</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打开文件 → nano test.txt编辑内容 → 直接输入即可（无模式概念）保存     → Ctrl + O → 回车确认文件名退出     → Ctrl + X</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、其他高使用率编辑器"><a href="#三、其他高使用率编辑器" class="headerlink" title="三、其他高使用率编辑器"></a>三、其他高使用率编辑器</h2><h3 id="3-1-终端编辑器对比"><a href="#3-1-终端编辑器对比" class="headerlink" title="3.1 终端编辑器对比"></a>3.1 终端编辑器对比</h3><p>|<br>编辑器</p>
+<p> | </p>
+<p>特点</p>
+<p> | </p>
+<p>适用场景</p>
+<p> |<br>| — | — | — |<br>| <strong>vim &#x2F; vi</strong> | </p>
+<p>模式编辑，功能强大，几乎所有 Linux 预装</p>
+<p> | </p>
+<p>服务器运维、远程编辑、高效文本处理</p>
+<p> |<br>| <strong>nano</strong> | </p>
+<p>简单直观，无模式，底部提示快捷键</p>
+<p> | </p>
+<p>快速修改配置文件、新手入门</p>
+<p> |<br>| <strong>emacs</strong> | </p>
+<p>功能极其丰富（”伪装成编辑器的操作系统”），可收发邮件、浏览网页</p>
+<p> | </p>
+<p>重度 Lisp 用户、一站式工作流</p>
+<p> |<br>| <strong>micro</strong> | </p>
+<p>现代终端编辑器，支持鼠标、多光标、语法高亮，开箱即用</p>
+<p> | </p>
+<p>想要现代体验但不想学 vim 的用户</p>
+<p> |</p>
+<h3 id="3-2-图形界面编辑器"><a href="#3-2-图形界面编辑器" class="headerlink" title="3.2 图形界面编辑器"></a>3.2 图形界面编辑器</h3><p>|<br>编辑器</p>
+<p> | </p>
+<p>特点</p>
+<p> | </p>
+<p>适用场景</p>
+<p> |<br>| — | — | — |<br>| <strong>gedit</strong> | </p>
+<p>GNOME 桌面默认编辑器，轻量简洁</p>
+<p> | </p>
+<p>Ubuntu 桌面日常编辑</p>
+<p> |<br>| <strong>VS Code</strong> | </p>
+<p>微软出品，插件生态丰富，远程开发能力强</p>
+<p> | </p>
+<p>前后端开发、远程 SSH 开发</p>
+<p> |<br>| <strong>Sublime Text</strong> | </p>
+<p>极速启动，界面优雅，多光标编辑</p>
+<p> | </p>
+<p>快速查看和编辑大文件</p>
+<p> |</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="一、Vim-命令笔记"><a href="#一、Vim-命令笔记" class="headerlink" title="一、Vim 命令笔记"></a>一、Vim 命令笔记</h2><h3 id="1-1-Vim-的三种核心模式"><a href="#1-1-Vim-的三种核心模式" class="headerlink" title="1.1 Vim 的三种核心模式"></a>1.1 Vim 的三种核心模式</h3><p>Vim 是 Vi Improved 的缩写，是 Linux 下最强大的文本编辑器之一。它的核心设计理念是<strong>模式化编辑</strong>。</p>
+<p>Vim 核心分为<strong>普通模式</strong>、<strong>插入模式</strong>、<strong>命令行模式</strong>，三者可以互相切换，是使用 Vim 的基础。</p>
+<h3 id="1-普通模式（Normal-模式）"><a href="#1-普通模式（Normal-模式）" class="headerlink" title="1. 普通模式（Normal 模式）"></a>1. 普通模式（Normal 模式）</h3><p><strong>进入方式</strong></p>
+<ul>
+<li><p>打开文件默认就是普通模式</p>
+</li>
+<li><p>在其他模式按 <code>Esc</code> 退回此模式</p>
+</li>
+</ul>
+<p><strong>作用</strong></p>
+<p>不能输入文字，专门用来光标移动、复制、删除、粘贴、撤销、跳转等文本操作。</p>
+<p><strong>常用操作举例</strong></p>
+<p>|<br>按键</p>
+<p> | </p>
+<p>功能</p>
+<p> |<br>| — | — |<br>| <code>h</code></p>
+<p> &#x2F; <code>j</code> &#x2F; <code>k</code> &#x2F; <code>l</code></p>
+<p> | </p>
+<p>左 &#x2F; 下 &#x2F; 上 &#x2F; 右移动光标</p>
+<p> |<br>| <code>dd</code> | </p>
+<p>删除一整行</p>
+<p> |<br>| <code>yy</code> | </p>
+<p>复制一整行</p>
+<p> |<br>| <code>p</code> | </p>
+<p>粘贴</p>
+<p> |<br>| <code>u</code> | </p>
+<p>撤销修改</p>
+<p> |<br>| </p>
+<p> &#x2F;</p>
+<p> | </p>
+<p>查询，使用n查询下一个</p>
+<p> |<br>| </p>
+<p>gg&#x2F; G</p>
+<p> | </p>
+<p>gg 首行，3gg 第三行，大写G尾行</p>
+<p> |</p>
+<h3 id="备注：删除5行：5yy"><a href="#备注：删除5行：5yy" class="headerlink" title="备注：删除5行：5yy"></a>备注：删除5行：5yy</h3><hr>
+<h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3><h3 id="2-插入模式（Insert-模式、编辑模式）"><a href="#2-插入模式（Insert-模式、编辑模式）" class="headerlink" title="2. 插入模式（Insert 模式、编辑模式）"></a>2. 插入模式（Insert 模式、编辑模式）</h3><p><strong>进入方式</strong>（普通模式下按以下按键）</p>
+<p>|<br>按键</p>
+<p> | </p>
+<p>功能</p>
+<p> |<br>| — | — |<br>| <code>i</code> | </p>
+<p>光标前面插入文字（最常用）</p>
+<p> |<br>| <code>a</code> | </p>
+<p>光标后面插入文字</p>
+<p> |<br>| <code>o</code> | </p>
+<p>光标下方新开一行插入</p>
+<p> |<br>| <code>O</code> | </p>
+<p>光标上方新开一行插入</p>
+<p> |</p>
+<p><strong>作用</strong></p>
+<p>唯一可以输入、编辑文字的模式，屏幕底部会显示 <code>-- INSERT --</code> 标识。</p>
+<p><strong>退出</strong></p>
+<p>按下 <code>Esc</code> 回到普通模式。</p>
+<hr>
+<h3 id="3-命令行模式（Command-line-模式）"><a href="#3-命令行模式（Command-line-模式）" class="headerlink" title="3. 命令行模式（Command-line 模式）"></a>3. 命令行模式（Command-line 模式）</h3><p><strong>进入方式</strong></p>
+<p>普通模式下按英文冒号 <code>:</code>，底部出现 <code>:</code> 输入框。</p>
+<p><strong>作用</strong></p>
+<p>执行保存、退出、查找替换、设置参数、批量操作、调用工具等底层命令。</p>
+<p><strong>高频常用命令</strong></p>
+<p>|<br>命令</p>
+<p> | </p>
+<p>功能</p>
+<p> |<br>| — | — |<br>| <code>:w</code> | </p>
+<p>保存文件</p>
+<p> |<br>| <code>:q</code> | </p>
+<p>退出文件</p>
+<p> |<br>| <code>:wq</code> | </p>
+<p>保存并退出</p>
+<p> |<br>| <code>:q!</code> | </p>
+<p>强制退出，放弃修改</p>
+<p> |<br>| <code>:set nu</code> | </p>
+<p>显示行号  &#x2F; nonu取消显示</p>
+<p> |<br>| <code>:%s/旧文本/新文本/g</code> | </p>
+<p>全文替换</p>
+<p> |</p>
+<hr>
+<h3 id="模式切换简易流程图"><a href="#模式切换简易流程图" class="headerlink" title="模式切换简易流程图"></a>模式切换简易流程图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">普通模式  │  ├── i / a / o ──→ 插入模式 ──→ Esc ──→ 普通模式  │  └── : ──→ 命令行模式 ──→ 回车执行 / Esc 取消 ──→ 普通模式</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>要点：插入模式和命令行模式之间<strong>不能直接切换</strong>，必须先按 <code>Esc</code> 回到普通模式，再进入另一模式。普通模式是所有切换的枢纽。</p>
+</blockquote>
+<p>如上图所示，Vim 的三种模式是理解所有命令的基础。下面是完整的命令笔记。</p>
+<p><img src="/blog/../images/ops/006/img1.png" alt="vim键位图打印版简体中文"></p>
+<p>图片来自：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhlh/_xt/article/details/52458672">https://blog.csdn.net/zhlh\_xt/article/details/52458672</a></p>
+<hr>
+<h2 id="二-、Vim-命令详细笔记（可以跳过）"><a href="#二-、Vim-命令详细笔记（可以跳过）" class="headerlink" title="二++、Vim 命令详细笔记（可以跳过）"></a>二++、Vim 命令详细笔记（可以跳过）</h2><h3 id="1-1-启动与打开文件"><a href="#1-1-启动与打开文件" class="headerlink" title="1.1 启动与打开文件"></a>1.1 启动与打开文件</h3><p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>vim 文件名</code> | </p>
+<p>打开或新建文件</p>
+<p> |<br>| <code>vim +n 文件名</code> | </p>
+<p>打开文件并定位到第 n 行</p>
+<p> |<br>| <code>vim + 文件名</code> | </p>
+<p>打开文件并定位到最后一行</p>
+<p> |<br>| <code>vim +/关键词 文件名</code> | </p>
+<p>打开文件并定位到第一个匹配关键词处</p>
+<p> |<br>| <code>vim -R 文件名</code> | </p>
+<p>只读模式打开</p>
+<p> |<br>| <code>view 文件名</code> | </p>
+<p>只读模式打开（等同于 <code>vim -R</code>）</p>
+<p> |</p>
+<h3 id="1-2-正常模式（Normal-Mode）—-移动"><a href="#1-2-正常模式（Normal-Mode）—-移动" class="headerlink" title="1.2 正常模式（Normal Mode）— 移动"></a>1.2 正常模式（Normal Mode）— 移动</h3><p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>h</code> | </p>
+<p>左移一个字符</p>
+<p> |<br>| <code>j</code> | </p>
+<p>下移一行</p>
+<p> |<br>| <code>k</code> | </p>
+<p>上移一行</p>
+<p> |<br>| <code>l</code> | </p>
+<p>右移一个字符</p>
+<p> |<br>| <code>w</code> | </p>
+<p>跳到下一个单词开头</p>
+<p> |<br>| <code>b</code> | </p>
+<p>跳到上一个单词开头</p>
+<p> |<br>| <code>e</code> | </p>
+<p>跳到当前&#x2F;下一个单词末尾</p>
+<p> |<br>| <code>0</code> | </p>
+<p>跳到行首</p>
+<p> |<br>| <code>^</code> | </p>
+<p>跳到行首第一个非空字符</p>
+<p> |<br>| <code>$</code> | </p>
+<p>跳到行尾</p>
+<p> |<br>| <code>gg</code> | </p>
+<p>跳到文件第一行</p>
+<p> |<br>| <code>G</code> | </p>
+<p>跳到文件最后一行</p>
+<p> |<br>| <code>nG</code></p>
+<p> 或 <code>:n</code></p>
+<p> | </p>
+<p>跳到第 n 行</p>
+<p> |<br>| <code>Ctrl + f</code> | </p>
+<p>向下翻一页（Page Down）</p>
+<p> |<br>| <code>Ctrl + b</code> | </p>
+<p>向上翻一页（Page Up）</p>
+<p> |<br>| <code>Ctrl + d</code> | </p>
+<p>向下翻半页</p>
+<p> |<br>| <code>Ctrl + u</code> | </p>
+<p>向上翻半页</p>
+<p> |<br>| <code>&#123;</code> | </p>
+<p>跳到上一个段落</p>
+<p> |<br>| <code>&#125;</code> | </p>
+<p>跳到下一个段落</p>
+<p> |</p>
+<h3 id="1-3-正常模式-—-编辑操作"><a href="#1-3-正常模式-—-编辑操作" class="headerlink" title="1.3 正常模式 — 编辑操作"></a>1.3 正常模式 — 编辑操作</h3><p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>x</code> | </p>
+<p>删除光标处字符（向后删）</p>
+<p> |<br>| <code>X</code> | </p>
+<p>删除光标前字符（向前删）</p>
+<p> |<br>| <code>dd</code> | </p>
+<p>删除（剪切）整行</p>
+<p> |<br>| <code>ndd</code> | </p>
+<p>删除当前行起的 n 行（如 <code>3dd</code>）</p>
+<p> |<br>| <code>dw</code> | </p>
+<p>删除一个单词</p>
+<p> |<br>| <code>d$</code></p>
+<p> 或 <code>D</code></p>
+<p> | </p>
+<p>删除从光标到行尾</p>
+<p> |<br>| <code>d0</code> | </p>
+<p>删除从行首到光标</p>
+<p> |<br>| <code>dG</code> | </p>
+<p>删除从当前行到文件末尾</p>
+<p> |<br>| <code>dgg</code> | </p>
+<p>删除从文件开头到当前行</p>
+<p> |<br>| <code>yy</code> | </p>
+<p>复制（yank）整行</p>
+<p> |<br>| <code>nyy</code> | </p>
+<p>复制 n 行（如 <code>3yy</code>）</p>
+<p> |<br>| <code>yw</code> | </p>
+<p>复制一个单词</p>
+<p> |<br>| <code>y$</code> | </p>
+<p>复制从光标到行尾</p>
+<p> |<br>| <code>p</code> | </p>
+<p>粘贴到光标后&#x2F;下方</p>
+<p> |<br>| <code>P</code> | </p>
+<p>粘贴到光标前&#x2F;上方</p>
+<p> |<br>| <code>r</code> | </p>
+<p>替换光标处单个字符（按 r 后输入新字符）</p>
+<p> |<br>| <code>R</code> | </p>
+<p>进入替换模式，连续替换</p>
+<p> |<br>| <code>u</code> | </p>
+<p>撤销（undo）</p>
+<p> |<br>| <code>Ctrl + r</code> | </p>
+<p>重做（redo）</p>
+<p> |<br>| <code>.</code> | </p>
+<p>重复上一次操作</p>
+<p> |<br>| <code>~</code> | </p>
+<p>切换光标处字符大小写</p>
+<p> |<br>| <code>&gt;&gt;</code> | </p>
+<p>当前行右移（缩进）</p>
+<p> |<br>| <code>&lt;&lt;</code> | </p>
+<p>当前行左移（取消缩进）</p>
+<p> |</p>
+<h3 id="1-4-进入插入模式（Insert-Mode）"><a href="#1-4-进入插入模式（Insert-Mode）" class="headerlink" title="1.4 进入插入模式（Insert Mode）"></a>1.4 进入插入模式（Insert Mode）</h3><p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>i</code> | </p>
+<p>在光标前插入</p>
+<p> |<br>| <code>I</code> | </p>
+<p>在行首第一个非空字符前插入</p>
+<p> |<br>| <code>a</code> | </p>
+<p>在光标后插入（append）</p>
+<p> |<br>| <code>A</code> | </p>
+<p>在行尾插入</p>
+<p> |<br>| <code>o</code> | </p>
+<p>在下方新开一行并进入插入</p>
+<p> |<br>| <code>O</code> | </p>
+<p>在上方新开一行并进入插入</p>
+<p> |<br>| <code>s</code> | </p>
+<p>删除光标字符并进入插入</p>
+<p> |<br>| <code>S</code> | </p>
+<p>删除整行并进入插入</p>
+<p> |<br>| <code>cw</code> | </p>
+<p>删除当前单词并进入插入</p>
+<p> |<br>| <code>Esc</code> | </p>
+<p>退出插入模式，回到正常模式</p>
+<p> |</p>
+<h3 id="1-5-命令行模式（Command-Mode）"><a href="#1-5-命令行模式（Command-Mode）" class="headerlink" title="1.5 命令行模式（Command Mode）"></a>1.5 命令行模式（Command Mode）</h3><p>在正常模式下输入 <code>:</code> 进入命令行模式。</p>
+<p><strong>文件操作：</strong></p>
+<p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>:w</code> | </p>
+<p>保存</p>
+<p> |<br>| <code>:w 文件名</code> | </p>
+<p>另存为</p>
+<p> |<br>| <code>:q</code> | </p>
+<p>退出（未修改时）</p>
+<p> |<br>| <code>:q!</code> | </p>
+<p>强制退出不保存</p>
+<p> |<br>| <code>:wq</code> | </p>
+<p>保存并退出</p>
+<p> |<br>| <code>:x</code> | </p>
+<p>保存并退出（仅当有修改时才写入）</p>
+<p> |<br>| <code>ZZ</code> | </p>
+<p>保存并退出（正常模式下直接按）</p>
+<p> |<br>| <code>:wq!</code> | </p>
+<p>强制保存并退出</p>
+<p> |</p>
+<p><strong>搜索与替换：</strong></p>
+<p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>/关键词</code> | </p>
+<p>向下搜索关键词</p>
+<p> |<br>| <code>?关键词</code> | </p>
+<p>向上搜索关键词</p>
+<p> |<br>| <code>n</code> | </p>
+<p>跳到下一个匹配</p>
+<p> |<br>| <code>N</code> | </p>
+<p>跳到上一个匹配</p>
+<p> |<br>| <code>:s/旧/新/</code> | </p>
+<p>替换当前行第一个匹配</p>
+<p> |<br>| <code>:s/旧/新/g</code> | </p>
+<p>替换当前行所有匹配</p>
+<p> |<br>| <code>:%s/旧/新/g</code> | </p>
+<p>全文替换所有匹配</p>
+<p> |<br>| <code>:%s/旧/新/gc</code> | </p>
+<p>全文替换，逐个确认</p>
+<p> |<br>| <code>:n,ms/旧/新/g</code> | </p>
+<p>替换第 n 行到第 m 行</p>
+<p> |</p>
+<p><strong>其他常用：</strong></p>
+<p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>:set nu</code> | </p>
+<p>显示行号</p>
+<p> |<br>| <code>:set nonu</code> | </p>
+<p>取消行号</p>
+<p> |<br>| <code>:set ai</code> | </p>
+<p>自动缩进</p>
+<p> |<br>| <code>:set ts=4</code> | </p>
+<p>设置 Tab 宽度为 4</p>
+<p> |<br>| <code>:set hlsearch</code> | </p>
+<p>高亮搜索结果</p>
+<p> |<br>| <code>:set paste</code> | </p>
+<p>粘贴模式（防止自动缩进干扰）</p>
+<p> |<br>| <code>:set nopaste</code> | </p>
+<p>关闭粘贴模式</p>
+<p> |<br>| <code>:!命令</code> | </p>
+<p>执行外部 Shell 命令（如 <code>:!ls</code>）</p>
+<p> |<br>| <code>:r 文件名</code> | </p>
+<p>将另一文件内容读入当前文件</p>
+<p> |<br>| <code>:r !命令</code> | </p>
+<p>将命令输出读入文件（如 <code>:r !date</code>）</p>
+<p> |<br>| <code>:sp 文件名</code> | </p>
+<p>水平分屏打开文件</p>
+<p> |<br>| <code>:vsp 文件名</code> | </p>
+<p>垂直分屏打开文件</p>
+<p> |<br>| <code>Ctrl + w w</code> | </p>
+<p>在分屏窗口间切换</p>
+<p> |</p>
+<h3 id="1-6-可视模式（Visual-Mode）"><a href="#1-6-可视模式（Visual-Mode）" class="headerlink" title="1.6 可视模式（Visual Mode）"></a>1.6 可视模式（Visual Mode）</h3><p>|<br>命令</p>
+<p> | </p>
+<p>说明</p>
+<p> |<br>| — | — |<br>| <code>v</code> | </p>
+<p>字符可视模式（按字符选择）</p>
+<p> |<br>| <code>V</code> | </p>
+<p>行可视模式（按行选择）</p>
+<p> |<br>| <code>Ctrl + v</code> | </p>
+<p>块可视模式（列选择，批量注释利器）</p>
+<p> |<br>| </p>
+<p>选中后 <code>y</code></p>
+<p> | </p>
+<p>复制选中文本</p>
+<p> |<br>| </p>
+<p>选中后 <code>d</code></p>
+<p> | </p>
+<p>删除选中文本</p>
+<p> |<br>| </p>
+<p>选中后 <code>&gt;</code></p>
+<p> | </p>
+<p>右移选中区域</p>
+<p> |</p>
+<hr>
+<h2 id="-3"><a href="#-3" class="headerlink" title=""></a></h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/07/03/005-Linux%E8%BF%9C%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2026/07/03/005-Linux%E8%BF%9C%E7%A8%8B/" class="post-title-link" itemprop="url">004 Linux远程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-07-03 20:00:00" itemprop="dateCreated datePublished" datetime="2026-07-03T20:00:00+08:00">2026-07-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>原文转载自微信公众号「walker-行者」Linux 系列。<br>原始链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&mid=2247483800&idx=1&sn=057271f73891320fe87ceaf5c7899d03&chksm=c0bf78baf7c8f1ac9883b46f78fe9d73bb563fdcc3976cbee89503125f262af8f29e229574f6&cur_album_id=4586547322464501762&scene=189#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&amp;mid=2247483800&amp;idx=1&amp;sn=057271f73891320fe87ceaf5c7899d03&amp;chksm=c0bf78baf7c8f1ac9883b46f78fe9d73bb563fdcc3976cbee89503125f262af8f29e229574f6&amp;cur_album_id=4586547322464501762&amp;scene=189#wechat_redirect</a></p>
+</blockquote>
+<h2 id="一、SSH命令"><a href="#一、SSH命令" class="headerlink" title="一、SSH命令"></a>一、SSH命令</h2><p>bash</p>
+<p>ssh[options][user@]hostname [command]</p>
+<p>SSH（Secure Shell）是Linux远程管理的标准协议，所有操作都从这个命令开始。</p>
+<p><strong>常用选项：</strong></p>
+<ul>
+<li><p><code>-p</code> ：指定端口（默认22）</p>
+</li>
+<li><p><code>-v</code> ：调试模式，排错利器</p>
+</li>
+<li><p><code>-i</code> ：指定私钥文件（免密登录必备）</p>
+</li>
+</ul>
+<p><strong>举个栗子🌰：</strong></p>
+<p>bash</p>
+<p># 用root身份连接远程服务器ssh <a href="mailto:&#x72;&#111;&#111;&#116;&#64;&#49;&#57;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#x31;&#x2e;&#x31;&#x30;&#x30;">&#x72;&#111;&#111;&#116;&#64;&#49;&#57;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#x31;&#x2e;&#x31;&#x30;&#x30;</a># 指定端口连接ssh-p2222 <a href="mailto:&#116;&#111;&#109;&#64;&#49;&#57;&#50;&#46;&#x31;&#54;&#x38;&#x2e;&#x31;&#x2e;&#x31;&#x30;&#x30;">&#116;&#111;&#109;&#64;&#49;&#57;&#50;&#46;&#x31;&#54;&#x38;&#x2e;&#x31;&#x2e;&#x31;&#x30;&#x30;</a># 直接在远程执行命令（执行完自动退出）ssh <a href="mailto:&#114;&#x6f;&#111;&#116;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#x38;&#46;&#49;&#x2e;&#x31;&#x30;&#x30;">&#114;&#x6f;&#111;&#116;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#x38;&#46;&#49;&#x2e;&#x31;&#x30;&#x30;</a> “ls -la &#x2F;home”</p>
+<p>📖 <strong>推荐阅读</strong>：Linux ssh命令详解</p>
+<h2 id="二、SSH远程工具推荐（2026版）"><a href="#二、SSH远程工具推荐（2026版）" class="headerlink" title="二、SSH远程工具推荐（2026版）"></a>二、SSH远程工具推荐（2026版）</h2><p>图形化工具让远程管理更高效，以下按推荐度排序：</p>
+<h3 id="🥇-MobaXterm（强烈推荐）"><a href="#🥇-MobaXterm（强烈推荐）" class="headerlink" title="🥇 MobaXterm（强烈推荐）"></a>🥇 MobaXterm（强烈推荐）</h3><p><a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/">https://mobaxterm.mobatek.net/</a></p>
+<p><img src="/blog/../images/ops/005/img1.png" alt="Image"></p>
+<p>集成SSH、X11转发、SFTP、远程桌面等一堆功能，<strong>开箱即用</strong>，单文件免安装，对新手极其友好。</p>
+<h3 id="🥈-WinSCP（文件传输必备）"><a href="#🥈-WinSCP（文件传输必备）" class="headerlink" title="🥈 WinSCP（文件传输必备）"></a>🥈 WinSCP（文件传输必备）</h3><p>专注于SFTP&#x2F;SCP文件传输，支持断点续传、目录同步，和PuTTY无缝集成，传文件首选。</p>
+<h3 id="🥉-Terminus（颜值党最爱）"><a href="#🥉-Terminus（颜值党最爱）" class="headerlink" title="🥉 Terminus（颜值党最爱）"></a>🥉 Terminus（颜值党最爱）</h3><p>现代化UI设计，支持主题切换、插件扩展，但<strong>没有官方中文</strong>，适合喜欢折腾的用户。</p>
+<h3 id="⚠️-Xshell（老牌但渐显疲态）"><a href="#⚠️-Xshell（老牌但渐显疲态）" class="headerlink" title="⚠️ Xshell（老牌但渐显疲态）"></a>⚠️ Xshell（老牌但渐显疲态）</h3><p>功能强大、兼容性好（老旧协议支持完善），但<strong>免费版限制越来越多</strong>，已被MobaXterm超越。</p>
+<blockquote>
+<p><strong>小结</strong>：新用户直接上MobaXterm，够用了。</p>
+</blockquote>
+<h2 id="三、查看机器IP：告别ifconfig"><a href="#三、查看机器IP：告别ifconfig" class="headerlink" title="三、查看机器IP：告别ifconfig"></a>三、查看机器IP：告别ifconfig</h2><h3 id="Windows查IP"><a href="#Windows查IP" class="headerlink" title="Windows查IP"></a>Windows查IP</h3><p>cmd</p>
+<p>ipconfig</p>
+<h3 id="Linux查IP（新旧对比）"><a href="#Linux查IP（新旧对比）" class="headerlink" title="Linux查IP（新旧对比）"></a>Linux查IP（新旧对比）</h3><p>|<br>工具</p>
+<p> | </p>
+<p>命令</p>
+<p> | </p>
+<p>特点</p>
+<p> |<br>| — | — | — |<br>| </p>
+<p>老旧方式（net-tools）</p>
+<p> | <code>ifconfig</code> | </p>
+<p>已废弃，需要额外安装</p>
+<p> |<br>| <strong>现代方式（iproute2）</strong> | <code>ip link</code></p>
+<p>、<code>ip addr</code></p>
+<p> | <strong>系统自带，推荐使用</strong> |</p>
+<p><strong>举个栗子🌰：</strong></p>
+<p>bash</p>
+<p># 查看所有网络接口信息ip addr  </p>
+<p># 只看IP地址（过滤更优雅）ip-4 addr show |grep inet</p>
+<p># 简洁的 ip link</p>
+<blockquote>
+<p>⚠️ 新装Linux系统可能没有ifconfig，但ip命令一定在。</p>
+</blockquote>
+<p>📖 <strong>推荐阅读</strong>：Linux中ipconfig的替代命令</p>
+<h2 id="四、中文乱码？检查编码！"><a href="#四、中文乱码？检查编码！" class="headerlink" title="四、中文乱码？检查编码！"></a>四、中文乱码？检查编码！</h2><p>远程连接时出现中文乱码，<strong>99%是字符编码不匹配</strong>。</p>
+<p><strong>统一原则：</strong></p>
+<ul>
+<li><p>服务器字符集：<code>UTF-8</code></p>
+</li>
+<li><p>终端字符集：<code>UTF-8</code></p>
+</li>
+<li><p>SSH客户端字符集：<code>UTF-8</code></p>
+</li>
+</ul>
+<p><strong>Linux查看当前编码：</strong></p>
+<p>bash</p>
+<p>echo$LANG# 输出示例：en_US.UTF-8</p>
+<p><strong>Xshell解决方案：</strong> 属性 → 终端 → 编码 → 选择UTF-8</p>
+<p><strong>MobaXterm解决方案：</strong> 设置 → Terminal → Character set → UTF-8</p>
+<hr>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>|<br>场景</p>
+<p> | </p>
+<p>推荐方案</p>
+<p> |<br>| — | — |<br>| </p>
+<p>日常远程管理</p>
+<p> | </p>
+<p>MobaXterm</p>
+<p> |<br>| </p>
+<p>文件传输</p>
+<p> | </p>
+<p>WinSCP</p>
+<p> |<br>| </p>
+<p>快速SSH命令</p>
+<p> | </p>
+<p>系统终端直接ssh</p>
+<p> |<br>| </p>
+<p>查看IP地址</p>
+<p> | <code>ip addr、ip link</code> |<br>| </p>
+<p>解决乱码</p>
+<p> | </p>
+<p>统一UTF-8编码</p>
+<p> |</p>
+<p>掌握这些，你已经可以<strong>优雅地</strong>管理Linux服务器了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/07/03/004-JQ1_sudo%E4%B8%80%E7%9B%B4%E8%A6%81%E8%BE%93%E5%AF%86%E7%A0%81%E8%BF%99%E6%A0%B7%E5%AD%90%E8%A7%A3%E5%86%B3%EF%BC%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2026/07/03/004-JQ1_sudo%E4%B8%80%E7%9B%B4%E8%A6%81%E8%BE%93%E5%AF%86%E7%A0%81%E8%BF%99%E6%A0%B7%E5%AD%90%E8%A7%A3%E5%86%B3%EF%BC%81/" class="post-title-link" itemprop="url">JQ1_sudo一直要输密码?这样子解决！</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-07-03 16:59:00" itemprop="dateCreated datePublished" datetime="2026-07-03T16:59:00+08:00">2026-07-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>原文转载自微信公众号「walker-行者」Linux 系列。<br>原始链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&mid=2247483793&idx=1&sn=09d63c4ea061c8cd3ab09ac370236668&chksm=c0bf78b3f7c8f1a501c21628ed45f5880766359eb84e09dc100bfcdef433664aabba850124ca&cur_album_id=4586547322464501762&scene=189#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&amp;mid=2247483793&amp;idx=1&amp;sn=09d63c4ea061c8cd3ab09ac370236668&amp;chksm=c0bf78b3f7c8f1a501c21628ed45f5880766359eb84e09dc100bfcdef433664aabba850124ca&amp;cur_album_id=4586547322464501762&amp;scene=189#wechat_redirect</a></p>
+</blockquote>
+<p>配置 Linux 的 <code>sudo</code> 免密操作，核心就是修改 <code>/etc/sudoers</code> 这个权限管理文件。但<strong>绝对不要</strong>直接用文本编辑器去改它，语法错误可能导致整个 <code>sudo</code> 功能失效。</p>
+<p><strong>必须使用 <code>visudo</code> 命令</strong>来安全地编辑，它会在保存时自动检查语法。</p>
+<p>下面是一个完整的配置教程。</p>
+<h3 id="⚠️-安全警告"><a href="#⚠️-安全警告" class="headerlink" title="⚠️ 安全警告"></a>⚠️ 安全警告</h3><p>开启 <code>sudo</code> 免密会<strong>显著降低系统安全性</strong>。任何能登录该用户的人，都能无阻碍地执行任何破坏性命令。<strong>强烈建议仅在可信的开发、测试或自动化环境中使用</strong>。！！！！！！！！！！！</p>
+<hr>
+<h3 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h3><h4 id="1-打开-sudoers-文件"><a href="#1-打开-sudoers-文件" class="headerlink" title="1. 打开 sudoers 文件"></a>1. 打开 <code>sudoers</code> 文件</h4><p>在终端中执行以下命令：</p>
+<p>bash</p>
+<p>sudo visudo</p>
+<p>系统会使用默认编辑器（通常是 <code>nano</code> 或 <code>vi</code>）打开 <code>/etc/sudoers</code> 文件。</p>
+<h4 id="2-添加免密规则"><a href="#2-添加免密规则" class="headerlink" title="2. 添加免密规则"></a>2. 添加免密规则</h4><p>在文件末尾添加相应的配置行。</p>
+<ul>
+<li><p><strong>为特定用户配置（所有命令免密）</strong><br>这是最常用的方式。将 <code>username</code> 替换为实际的用户名。</p>
+<p>text</p>
+<p>username ALL&#x3D;(ALL) NOPASSWD: ALL</p>
+<p>这表示用户 <code>username</code> 可以在任何主机上，以任何用户身份，免密执行所有命令。</p>
+</li>
+<li><p><strong>为特定用户组配置（所有命令免密）</strong><br>如果想让整个用户组（如 <code>sudo</code> 组）都免密，在组名前加 <code>%</code>。</p>
+<p>text</p>
+<p>%sudo ALL&#x3D;(ALL) NOPASSWD: ALL</p>
+</li>
+<li><p><strong>为特定用户配置（仅特定命令免密）</strong><br>遵循<strong>最小权限原则</strong>，只对必要的命令免密，是更安全的选择。<br>例如，只允许用户 <code>deploy</code> 免密执行 <code>systemctl</code> 和 <code>journalctl</code> 命令：</p>
+<p>text</p>
+<p>deploy ALL&#x3D;(ALL) NOPASSWD: &#x2F;usr&#x2F;bin&#x2F;systemctl, &#x2F;usr&#x2F;bin&#x2F;journalctl</p>
+<p><strong>注意</strong>：命令必须使用<strong>绝对路径</strong>。可以通过 <code>which &lt;命令名&gt;</code> 来查找。</p>
+</li>
+</ul>
+<h4 id="3-保存并退出"><a href="#3-保存并退出" class="headerlink" title="3. 保存并退出"></a>3. 保存并退出</h4><ul>
+<li><p>如果编辑器是 **<code>nano</code>**：按 <code>Ctrl + X</code>，然后按 <code>Y</code> 确认，最后按 <code>Enter</code> 退出。</p>
+</li>
+<li><p>如果编辑器是 **<code>vi</code>&#x2F;<code>vim</code>**：按 <code>Esc</code> 键，输入 <code>:wq</code>，然后按 <code>Enter</code> 保存退出。</p>
+</li>
+</ul>
+<h4 id="4-（推荐）使用独立配置文件配置"><a href="#4-（推荐）使用独立配置文件配置" class="headerlink" title="4. （推荐）使用独立配置文件配置"></a>4. （推荐）使用独立配置文件配置</h4><p>为了避免直接修改主文件出错，最佳实践是在 <code>/etc/sudoers.d/</code> 目录下为每个用户创建独立的配置文件。</p>
+<p>bash</p>
+<p># 创建并编辑一个专属于用户 ‘username’ 的配置文件sudo visudo -f &#x2F;etc&#x2F;sudoers.d&#x2F;username-nopasswd</p>
+<p>在这个新文件里，直接写入规则即可（<strong>不需要</strong> <code>%sudo</code> 之类的头），例如：</p>
+<p>text</p>
+<p>username ALL&#x3D;(ALL) NOPASSWD: ALL</p>
+<p>这个方法的优点是便于管理和迁移，且不会影响主文件。</p>
+<h3 id="✅-验证配置"><a href="#✅-验证配置" class="headerlink" title="✅ 验证配置"></a>✅ 验证配置</h3><ol>
+<li><p><strong>重新登录</strong>：修改完 <code>sudoers</code> 文件后，建议退出当前会话并重新登录，使配置生效。</p>
+</li>
+<li><p><strong>测试命令</strong>：执行一个需要 <code>sudo</code> 权限的命令，例如：</p>
+<p>bash</p>
+<p>sudo whoami</p>
+<p>如果返回 <code>root</code> 且<strong>没有提示你输入密码</strong>，就说明配置成功了。</p>
+</li>
+</ol>
+<h3 id="🚨-排错指南"><a href="#🚨-排错指南" class="headerlink" title="🚨 排错指南"></a>🚨 排错指南</h3><ul>
+<li><p><strong>问题</strong>：修改后执行 <code>sudo</code> 命令，依然弹出密码输入框，或者仍然需要输密码。</p>
+</li>
+<li><p>检查是否存在其他规则（如 <code>%sudo</code> 组要求密码）覆盖了你的免密规则。<strong>解决方法</strong>：将你的免密规则（<code>username ALL=(ALL) NOPASSWD: ALL</code>）移动到文件<strong>最末尾</strong>。</p>
+</li>
+<li><p><strong>预期结果</strong>：如果配置成功，执行 <code>sudo ls /root</code> 会直接列出 <code>/root</code> 目录下的文件列表，<strong>且全程不会弹出 <code>[sudo] password for ...</code> 的提示</strong>。</p>
+</li>
+<li><p><strong>失败表现</strong>：如果弹出了密码输入框，说明免密配置<strong>未生效</strong>。</p>
+</li>
+<li><p><strong>第一步：正确验证（排除缓存干扰）</strong><br>不要直接测试，先清除当前会话的 <code>sudo</code> 时间戳缓存：</p>
+<p>bash</p>
+<p>sudo-ksudols &#x2F;root</p>
+</li>
+<li><p><strong>第二步：检查规则匹配顺序（覆盖问题）</strong><br><code>sudoers</code> 文件是<strong>从上到下</strong>解析的，<strong>最后匹配的规则生效</strong>。</p>
+</li>
+<li><p><strong>检查</strong>：用户是否同时属于多个组，且其他组的规则覆盖了免密设置？<code>sudoers</code> 文件是<strong>从上到下</strong>解析的，通常<strong>最后匹配的规则生效</strong>。确保你的免密规则放在文件靠后的位置。</p>
+</li>
+<li><p><strong>检查</strong>：是否不小心在 <code>NOPASSWD</code> 后面多加了一个逗号或空格？语法必须精确无误。</p>
+</li>
+<li><p><strong>问题</strong>：修改 <code>sudoers</code> 文件后，<code>sudo</code> 命令报错或无法使用。</p>
+</li>
+<li><p><strong>原因</strong>：<code>visudo</code> 的语法检查理论上会阻止这种情况，但如果你绕过了 <code>visudo</code> 直接编辑，就可能发生。</p>
+</li>
+<li><p><strong>修复</strong>：如果你还有另一个有 <code>sudo</code> 权限的用户，可以用它登录并修正。如果没有，则需要重启进入<strong>单用户模式</strong>或<strong>救援模式</strong>，以 <code>root</code> 身份登录后修正 <code>/etc/sudoers</code> 文件。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/07/02/003-Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2026/07/02/003-Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">003 Linux目录结构</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-07-02 22:20:00" itemprop="dateCreated datePublished" datetime="2026-07-02T22:20:00+08:00">2026-07-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>原文转载自微信公众号「walker-行者」Linux 系列。<br>原始链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&mid=2247483786&idx=1&sn=3a38bc100f1766ae263dd2882bba90df&chksm=c0bf78a8f7c8f1beaf93f3250e797cf5903e480730bf62f94073bed35112cf1be1417cbb36a7&cur_album_id=4586547322464501762&scene=189#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&amp;mid=2247483786&amp;idx=1&amp;sn=3a38bc100f1766ae263dd2882bba90df&amp;chksm=c0bf78a8f7c8f1beaf93f3250e797cf5903e480730bf62f94073bed35112cf1be1417cbb36a7&amp;cur_album_id=4586547322464501762&amp;scene=189#wechat_redirect</a></p>
+</blockquote>
+<p>Linux 的目录结构严格遵循 <strong>FHS（文件系统层次结构标准，Filesystem Hierarchy Standard）</strong>，其核心逻辑是<strong>一切从根（&#x2F;）开始</strong>，采用树形倒置结构。</p>
+<p>现代主流发行版普遍进行了 <strong><code>/usr</code> 合并</strong>，将根目录下的 <code>/bin</code>、<code>/sbin</code>、<code>/lib</code> 等通过软链接指向 <code>/usr</code> 对应目录。为了便于理解，下面按<strong>功能分区</strong>为你详细拆解：</p>
+<h3 id="1-系统启动与内核（开机必需-非必要不要动）"><a href="#1-系统启动与内核（开机必需-非必要不要动）" class="headerlink" title="1. 系统启动与内核（开机必需&#x2F;非必要不要动）"></a>1. 系统启动与内核（开机必需&#x2F;非必要不要动）</h3><ul>
+<li><p><strong><code>/boot</code><strong>：存放 Linux 内核文件（vmlinuz）、引导加载程序（GRUB）及初始化镜像（initramfs），</strong>建议单独分区（同时和引导方式有关，损坏无法正常启动）</strong>。</p>
+</li>
+<li><p>**<code>/root</code>**：超级管理员（root）的家目录，权限极高，普通用户无法访问。（这个可以动）</p>
+</li>
+<li><p><strong><code>/sys</code><strong>：虚拟文件系统（sysfs），将内核中的设备、总线、驱动等以文件形式呈现，供内核与用户态通信（如修改内核参数），</strong>不占硬盘空间</strong>。</p>
+</li>
+<li><p>**<code>/srv</code>**：服务数据仓库，存放本机提供的网络服务（如 Web 网站代码、FTP 上传文件）所产生的实际业务数据，占用硬盘空间，默认为空，由管理员按需使用。</p>
+</li>
+<li><p><strong><code>/proc</code><strong>：虚拟文件系统，存放当前运行进程和系统内核信息的映射（如 <code>/proc/cpuinfo</code> 查看 CPU），</strong>不占硬盘空间</strong>。</p>
+</li>
+<li><p><strong><code>/lost+found</code><strong>：文件系统的“急救失物招领处”，专用于系统意外崩溃或断电重启后，存放被 <code>fsck</code> 工具紧急抢救回来的失联文件（按 inode 编号命名），</strong>它不是垃圾箱，严禁随意清理</strong>。</p>
+</li>
+</ul>
+<hr>
+<h3 id="2-用户命令与基础库（核心软件）"><a href="#2-用户命令与基础库（核心软件）" class="headerlink" title="2. 用户命令与基础库（核心软件）"></a>2. 用户命令与基础库（核心软件）</h3><p><em>（注：现代系统下，<code>/bin</code>、<code>/sbin</code>、<code>/lib</code> 通常为软链接指向 <code>/usr</code> 下的同名目录）</em></p>
+<ul>
+<li><p><strong><code>/bin</code><strong>：（binary缩写）存放所有用户（包括普通用户）都可执行的</strong>基础系统命令</strong>（如 <code>ls</code>、<code>cp</code>、<code>cat</code>）。</p>
+</li>
+<li><p><strong><code>/sbin</code><strong>：（super bin）存放</strong>系统管理员专用</strong>的管理命令（如 <code>fdisk</code>、<code>mount</code>、<code>reboot</code>），普通用户通常无法直接执行。</p>
+</li>
+<li><p><strong><code>/lib</code></strong> 与 <strong><code>/lib64</code><strong>：存放 <code>/bin</code> 和 <code>/sbin</code> 中命令所需的</strong>动态链接库</strong>（类似 Windows 的 <code>.dll</code>）及内核模块。<code>/lib64</code> 专用于 64 位库。</p>
+</li>
+</ul>
+<hr>
+<h3 id="3-系统配置与运行时（核心数据）"><a href="#3-系统配置与运行时（核心数据）" class="headerlink" title="3. 系统配置与运行时（核心数据）"></a>3. 系统配置与运行时（核心数据）</h3><ul>
+<li><p><strong><code>/etc</code><strong>：（常用）</strong>系统配置文件的“心脏”</strong>。几乎所有服务的配置文件都在此（如网卡配置、<code>passwd</code> 用户密码、<code>hostname</code>、<code>nginx</code> 配置等）。<strong>普通用户只读，管理员可写</strong>。</p>
+</li>
+<li><p><strong><code>/var</code><strong>：存放</strong>经常变化的数据</strong>（Variable data）。重要子目录：</p>
+</li>
+<li><p><code>/var/log</code>：系统及服务的<strong>日志文件</strong>（排错必看）。</p>
+</li>
+<li><p><code>/var/spool</code>：打印队列、邮件队列（如 <code>/var/spool/mail</code>）。</p>
+</li>
+<li><p><code>/var/cache</code>：应用程序的缓存数据。</p>
+</li>
+<li><p><strong><code>/run</code><strong>：系统启动以来的</strong>运行时数据</strong>，存放 PID 文件、Socket 文件等。<strong>重启即清空</strong>（存在于内存中）。</p>
+</li>
+<li><p><strong><code>/tmp</code><strong>：</strong>临时文件</strong>。任何用户都可读写，系统重启或定期清理。现代系统常挂载为 <code>tmpfs</code>（内存文件系统）以提高速度。</p>
+</li>
+</ul>
+<hr>
+<h3 id="4-用户数据与应用程序（资源存放）"><a href="#4-用户数据与应用程序（资源存放）" class="headerlink" title="4. 用户数据与应用程序（资源存放）"></a>4. 用户数据与应用程序（资源存放）</h3><ul>
+<li><p>**<code>/home</code>**：（常用）    <strong>普通用户的家目录</strong>。每个用户拥有子目录（如 <code>/home/zhangsan</code>），存放个人文档、下载、代码及用户级配置文件（以 <code>.</code> 开头的隐藏文件）。</p>
+</li>
+<li><p><strong><code>/usr</code><strong>：（常用）</strong>用户系统资源</strong>（Unix System Resources），体积最大的目录。注意它不是“User”，而是类 Unix 系统软件包的存放地（类比Program Files）：</p>
+</li>
+<li><p><code>/usr/bin</code> 与 <code>/usr/sbin</code>：系统大部分可执行命令的真正住所。</p>
+</li>
+<li><p><code>/usr/lib</code>：应用程序共享库。</p>
+</li>
+<li><p><code>/usr/local</code>：（常用）<strong>管理员手动编译安装</strong>的软件默认路径（与系统包管理器软件隔离）。</p>
+</li>
+<li><p><code>/usr/share</code>：共享数据（如文档、字体、图标、时区信息）。</p>
+</li>
+<li><p><code>/usr/src</code>：内核源代码或下载的源码包。</p>
+</li>
+<li><p><strong><code>/opt</code><strong>：</strong>第三方大型商业软件</strong>的安装目录（如 Oracle JDK、Google Chrome、微信）。习惯上将每个软件放在单独的子目录中（如 <code>/opt/google</code>）。</p>
+</li>
+</ul>
+<hr>
+<h3 id="5-设备与挂载点（硬件接口）"><a href="#5-设备与挂载点（硬件接口）" class="headerlink" title="5. 设备与挂载点（硬件接口）"></a>5. 设备与挂载点（硬件接口）</h3><ul>
+<li><p><strong><code>/dev</code><strong>：</strong>设备文件目录</strong>。所有硬件（硬盘、鼠标、键盘、终端）都被抽象为文件（这也是为什么说linux一切皆文件）（类比Windows文件管理器）：</p>
+</li>
+<li><p><code>/dev/sda</code> 或 <code>/dev/nvme0n1</code>：代表第一块硬盘。</p>
+</li>
+<li><p><code>/dev/tty</code> 或 <code>/dev/pts</code>：终端设备。</p>
+</li>
+<li><p><strong><code>/mnt</code><strong>：（常用）</strong>临时挂载点</strong>。系统管理员常在此手动挂载其他文件系统（如 U 盘、ISO 镜像）。</p>
+</li>
+<li><p><strong><code>/media</code><strong>：（常用）</strong>自动挂载目录</strong>。现代桌面环境插入 U 盘或光盘时，系统默认自动挂载在此（如 <code>/media/username/USB_DISK</code>）。</p>
+</li>
+</ul>
+<hr>
+<p>快速记忆与查看技巧</p>
+<ol>
+<li><p><strong>核心记忆</strong>：**&#x2F;bin** 命令，**&#x2F;etc** 配，**&#x2F;var** 日志，**&#x2F;home** 家，**&#x2F;dev** 设备，**&#x2F;proc** 虚拟。</p>
+</li>
+<li><p><strong>查看命令</strong>：在终端输入 <code>ls -l /</code> 查看根目录，或输入 <code>man hier</code> 查看官方手册页（最权威的解释）。</p>
+</li>
+</ol>
+<p><strong>特别提醒</strong>：如果你的 Linux 是精简容器（如 Docker 镜像），通常只有 <code>/bin</code>、<code>/etc</code>、<code>/var</code> 等核心目录，没有 <code>/boot</code> 或 <code>/home</code>，因为容器共享宿主机内核，无需引导程序。</p>
+<p><img src="/blog/../images/ops/003/img1.png" alt="Image"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/07/02/002-Linux%E5%85%A5%E9%97%A8-%E5%BF%85%E8%A6%81%E7%9A%84%E5%87%86%E5%A4%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2026/07/02/002-Linux%E5%85%A5%E9%97%A8-%E5%BF%85%E8%A6%81%E7%9A%84%E5%87%86%E5%A4%87/" class="post-title-link" itemprop="url">002 Linux入门--必要的准备</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-07-02 15:13:00" itemprop="dateCreated datePublished" datetime="2026-07-02T15:13:00+08:00">2026-07-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>原文转载自微信公众号「walker-行者」Linux 系列。<br>原始链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&mid=2247483756&idx=1&sn=48c77b902021aa0cef11a96f29d6c241&chksm=c0bf784ef7c8f1587eed105c600997519423cc8af6ce562f5fc15c34c1ef1115705a7a346fe1&cur_album_id=4586547322464501762&scene=189#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&amp;mid=2247483756&amp;idx=1&amp;sn=48c77b902021aa0cef11a96f29d6c241&amp;chksm=c0bf784ef7c8f1587eed105c600997519423cc8af6ce562f5fc15c34c1ef1115705a7a346fe1&amp;cur_album_id=4586547322464501762&amp;scene=189#wechat_redirect</a></p>
+</blockquote>
+<p>1.学习一下VMware虚拟机的基本操作（安装，快照，迁移，删除，调整配置）</p>
+<p>2.Linux系统的安装</p>
+<p>3.安装vmtool</p>
+<p>4.或者买一台云服务器，ssh，（可使用mobaxterm），</p>
+<p><img src="/blog/../images/ops/002/img1.png" alt="Image"></p>
+<p>阿里云（或者直接搜一下 学生 云服务器，可以看到一些大厂的教育优惠或者新人优惠</p>
+<p>5.容我想想</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/07/02/001-Linux%E7%B3%BB%E5%88%97%E5%BC%80%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2026/07/02/001-Linux%E7%B3%BB%E5%88%97%E5%BC%80%E7%AF%87/" class="post-title-link" itemprop="url">001Linux系列开篇</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-07-02 14:35:00" itemprop="dateCreated datePublished" datetime="2026-07-02T14:35:00+08:00">2026-07-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>原文转载自微信公众号「walker-行者」Linux 系列。<br>原始链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&mid=2247483750&idx=1&sn=070d216896c416a3711a74a270071d8a&chksm=c0bf7844f7c8f152c02f4ecc4cc1c786819de1d50efdf7165d65d86aa2403e35bd091ff91b7b&cur_album_id=4586547322464501762&scene=190#rd">https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&amp;mid=2247483750&amp;idx=1&amp;sn=070d216896c416a3711a74a270071d8a&amp;chksm=c0bf7844f7c8f152c02f4ecc4cc1c786819de1d50efdf7165d65d86aa2403e35bd091ff91b7b&amp;cur_album_id=4586547322464501762&amp;scene=190#rd</a></p>
+</blockquote>
+<h2 id="Linux系列开篇，带你快速了解Linux的前世今生和2026年的最新格局"><a href="#Linux系列开篇，带你快速了解Linux的前世今生和2026年的最新格局" class="headerlink" title="Linux系列开篇，带你快速了解Linux的前世今生和2026年的最新格局"></a>Linux系列开篇，带你快速了解Linux的前世今生和2026年的最新格局</h2><h2 id="一、Linux到底用在哪里？"><a href="#一、Linux到底用在哪里？" class="headerlink" title="一、Linux到底用在哪里？"></a>一、Linux到底用在哪里？</h2><p>很多人以为Linux只是服务器上的“黑屏命令行”，但它的应用范围远超你的想象。在2026年，Linux的势力版图比任何时候都要广阔。</p>
+<h3 id="1-个人桌面领域"><a href="#1-个人桌面领域" class="headerlink" title="1. 个人桌面领域"></a>1. 个人桌面领域</h3><p>过去Linux桌面是它的薄弱环节，但2026年情况正在发生剧变。全球桌面操作系统中Linux已占据约**2.99%～4.7%**的市场份额。</p>
+<p>更值得关注的是，随着微软持续向Windows用户强推AI功能、推行月度订阅模式，大量Windows用户(实则也不多)开始“叛逃”到Linux。2026年初，原本不算主流的Linux发行版<strong>Zorin OS 18（windows转linux推荐这一个，很强烈的windows风格）</strong>，上线不到三个月下载量突破200万，其中超过75%来自Windows用户。</p>
+<p><img src="/blog/../images/ops/001/img1.jpg" alt="Zorin OS 18 desktop"></p>
+<p><strong>Zorin OS 18 （图片来源官网）</strong></p>
+<p>桌面环境方面，<strong>GNOME已正式告别X11，全面进入Wayland时代</strong>；<strong>KDE Plasma</strong>正在打造自己的Linux发行版，被业内视为2026年最值得期待的桌面事件；而System76打造的<strong>COSMIC桌面环境</strong>也有望成为年度热门。</p>
+<h3 id="2-服务器领域（绝对主场）"><a href="#2-服务器领域（绝对主场）" class="headerlink" title="2. 服务器领域（绝对主场）"></a>2. 服务器领域（绝对主场）</h3><p>这是Linux的<strong>绝对主场</strong>。2024年Linux在全球服务器操作系统市场占有44.8%的份额，<strong>2026年预计将达到51.3%<strong>。全球Linux操作系统市场2026年估值已达</strong>107.3亿美元</strong>，预计2029年将增长到180.7亿美元。</p>
+<p>在企业级Linux领域，**Red Hat（红帽）占43.1%、Ubuntu占33.9%、SUSE占11.2%**，三者合计占据超过88%的企业级Linux部署份额。</p>
+<p>在<strong>Web服务器领域，Nginx凭借卓越的高并发处理能力全面超越Apache</strong>，成为现代架构的首选。而<strong>全球最快的500台超级计算机，全部运行Linux</strong>，这一纪录自2017年11月以来从未中断。</p>
+<h3 id="3-嵌入式与新兴领域"><a href="#3-嵌入式与新兴领域" class="headerlink" title="3. 嵌入式与新兴领域"></a>3. 嵌入式与新兴领域</h3><p>Linux内核可裁剪（最小几百KB）、网络支持好、成本低的优势，使其在嵌入式领域持续扩张：</p>
+<ul>
+<li><p><strong>智能汽车</strong>：Linux正成为软件定义汽车的默认平台。Elektrobit在CES 2026展示了EB Linux for Safety Applications，支持符合ISO 26262安全标准的汽车系统。</p>
+</li>
+<li><p><strong>物联网与边缘AI</strong>：多家厂商在CES 2026将Linux确立为<strong>可扩展边缘AI和工业物联网的默认平台</strong>。Ubuntu Core已成为工业物联网设备的长期支持层。</p>
+</li>
+<li><p><strong>智能电视</strong>：LG的webOS和三星的Tizen OS都是基于Linux的操作系统。</p>
+</li>
+<li><p><strong>AI与云计算</strong>：2025至2026年，Red Hat OpenShift上运行的虚拟机数量实现了<strong>417%的大幅增长</strong>。Ubuntu 26.04 LTS更是被定位为“为智能体时代打造的AI操作系统”。</p>
+</li>
+</ul>
+<hr>
+<h2 id="二、Linux是什么？它和Unix什么关系？"><a href="#二、Linux是什么？它和Unix什么关系？" class="headerlink" title="二、Linux是什么？它和Unix什么关系？"></a>二、Linux是什么？它和Unix什么关系？</h2><h3 id="Linux概述"><a href="#Linux概述" class="headerlink" title="Linux概述"></a>Linux概述</h3><ul>
+<li><p>Linux是一个<strong>开源、免费</strong>的操作系统。</p>
+</li>
+<li><p>它的<strong>稳定性、安全性、高并发处理能力</strong>得到了业界公认。</p>
+</li>
+<li><p>常见的操作系统有Windows、macOS、Linux、Unix、Android、iOS等，Linux是其中重要的一员。</p>
+</li>
+</ul>
+<h3 id="Linux和Unix的渊源"><a href="#Linux和Unix的渊源" class="headerlink" title="Linux和Unix的渊源"></a>Linux和Unix的渊源</h3><p><strong>Unix怎么来的？</strong><br>Unix诞生于上世纪60年代末的贝尔实验室，是一个强大的多用户、多任务操作系统，但最初是收费且闭源的。</p>
+<p><strong>Linux怎么来的？</strong><br>1991年，芬兰大学生<strong>林纳斯·托瓦兹（Linus Torvalds）</strong> 为了学习操作系统，自己写了一个类Unix的内核，并把它开源了。这就是Linux的雏形（0.01版只有不到1万行代码）。后来在全球开发者的贡献下，Linux成长为一个功能完整的操作系统。</p>
+<p>值得一提的是，Linus也是<strong>Git</strong>的创作者。</p>
+<p><strong>2026年Linux内核的新里程碑</strong>：2026年4月13日，<strong>Linux 7.0内核正式发布</strong>。虽然版本号从6.19跃升至7.0主要是命名惯例（次版本号达到X.19后提升主版本号），但更新内容依然充实——新增对Intel Nova Lake处理器、ARM64原子指令及国产龙芯LoongArch架构的支持。更重要的是，<strong>Rust语言在内核中的支持已正式脱离实验状态</strong>，Debian已决定其核心APT包管理器将用Rust开发——这意味着Linux在内存安全方面迈出了历史性的一步。</p>
+<hr>
+<h2 id="三、2026年Linux的主要发行版"><a href="#三、2026年Linux的主要发行版" class="headerlink" title="三、2026年Linux的主要发行版"></a>三、2026年Linux的主要发行版</h2><p>Linux只是一个内核，我们平常说的“安装Linux”其实是指安装它的<strong>发行版</strong>。2026年的格局与几年前已有很大不同：</p>
+<p>|<br>发行版</p>
+<p> | </p>
+<p>特点</p>
+<p> | </p>
+<p>2026年动态</p>
+<p> |<br>| — | — | — |<br>| <strong>Ubuntu</strong> | </p>
+<p>最适合新手，AI&#x2F;云原生生态强大</p>
+<p> | </p>
+<p>Ubuntu 26.04 LTS已发布，深度优化GPU支持和AI工具链</p>
+<p> |<br>| <strong>Red Hat（RHEL）</strong> | </p>
+<p>企业级商业版，市场份额约34.2%</p>
+<p> | </p>
+<p>RHEL 10推出镜像化交付模式</p>
+<p> |<br>| <strong>CentOS</strong> | </p>
+<p>⚠️ <strong>已全面停更</strong></p>
+<p> | </p>
+<p>CentOS 7已于2024年6月EOL，<strong>不再推荐用于生产环境</strong></p>
+<p> |<br>| <strong>Rocky Linux &#x2F; AlmaLinux</strong> | </p>
+<p>CentOS的替代方案</p>
+<p> | </p>
+<p>免费二进制兼容RHEL，合计占2-4%份额</p>
+<p> |<br>| <strong>银河麒麟 &#x2F; 统信UOS</strong> | </p>
+<p>国产Linux发行版</p>
+<p> | </p>
+<p>党政办公市场占有率领先，金融核心系统占比超60%</p>
+<p> |<br>| <strong>CachyOS</strong> | </p>
+<p>2026年最热门的桌面发行版</p>
+<p> | </p>
+<p>基于Arch，已占据DistroWatch榜首超18个月</p>
+<p> |<br>| <strong>Linux Mint</strong> | </p>
+<p>最稳定的桌面选择</p>
+<p> | </p>
+<p>2026年1月发布22.3版本</p>
+<p> |<br>| <strong>Azure Linux</strong> | </p>
+<p>微软自有Linux发行版</p>
+<p> | </p>
+<p>Build 2026大会发布4.0版本</p>
+<p> |</p>
+<blockquote>
+<p>⚠️ <strong>特别提醒</strong>：在2026年，<strong>CentOS 7已于2024年6月30日停止维护（EOL）</strong>，不再收到安全更新。如果你现在学习Linux，建议改用<strong>Rocky Linux、AlmaLinux</strong>（CentOS的最佳替代）或<strong>Ubuntu LTS</strong>作为学习环境。</p>
+</blockquote>
+<hr>
+<h2 id="四、2026年学习Linux的新趋势"><a href="#四、2026年学习Linux的新趋势" class="headerlink" title="四、2026年学习Linux的新趋势"></a>四、2026年学习Linux的新趋势</h2><p>2026年有一些新动向值得关注：</p>
+<ol>
+<li><p><strong>“一切皆文件”</strong> ——Linux的核心哲学从未改变。</p>
+</li>
+<li><p><strong>容器化与不可变系统</strong>——<strong>不可变Linux发行版</strong>（如Fedora Silverblue、Ubuntu Core）正在获得企业青睐，只读系统镜像、原子更新显著简化了回滚并减少了“依赖地狱”。</p>
+</li>
+<li><p><strong>AI辅助运维</strong>——企业级Linux开始引入<strong>生成式AI辅助运维</strong>，自动分析日志异常、预测潜在风险。</p>
+</li>
+<li><p><strong>Rust语言</strong>——正在成为Linux内核开发的重要语言，提升系统安全性。</p>
+</li>
+<li><p><strong>国产操作系统崛起</strong>——在党政、金融、电力等关键基础设施领域，国产Linux发行版（银河麒麟、统信UOS、麒麟信安等）正在规模化部署。</p>
+</li>
+</ol>
+<p><img src="/blog/../images/ops/001/img2.png" alt="Image"></p>
+<h3 id="📚-参考来源"><a href="#📚-参考来源" class="headerlink" title="📚 参考来源"></a>📚 参考来源</h3><ol>
+<li><p><strong>FossPost</strong> – <em>Linux Market Share Statistics</em><br><a target="_blank" rel="noopener" href="https://fosspost.org/linux-market-share-statistics/">https://fosspost.org/linux-market-share-statistics/</a></p>
+</li>
+<li><p><strong>6sense</strong> – <em>Server &amp; Desktop OS Market Share</em><br><a target="_blank" rel="noopener" href="https://6sense.com/tech/server-and-desktop-os">https://6sense.com/tech/server-and-desktop-os</a></p>
+</li>
+<li><p><strong>Phoronix</strong> – <em>Linux 7.0 Released</em><br><a target="_blank" rel="noopener" href="https://www.phoronix.com/news/Linux-7.0-Released">https://www.phoronix.com/news/Linux-7.0-Released</a></p>
+</li>
+<li><p><strong>中关村在线</strong> – <em>Linux 7.0内核正式发布</em><br><a target="_blank" rel="noopener" href="https://ai.zol.com.cn/1164/11647451.html">https://ai.zol.com.cn/1164/11647451.html</a></p>
+</li>
+<li><p><strong>阿里云</strong> – <em>CentOS 7停止维护官方公告</em><br><a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/ecs/user-guide/options-for-dealing-with-centos-linux-end-of-life">https://www.alibabacloud.com/help/zh/ecs/user-guide/options-for-dealing-with-centos-linux-end-of-life</a></p>
+</li>
+<li><p><strong>Ubuntu官方</strong> – <em>Ubuntu 26.04 LTS Release Notes</em><br><a target="_blank" rel="noopener" href="https://documentation.ubuntu.com/release-notes/26.04/">https://documentation.ubuntu.com/release-notes/26.04/</a></p>
+</li>
+<li><p><strong>Ubuntu中文博客</strong> – <em>Canonical发布Ubuntu 26.04 LTS</em><br><a target="_blank" rel="noopener" href="https://ubuntu.cn/blog/canonical-releases-ubuntu-26-04-lts-resolute-raccoon/_cn">https://ubuntu.cn/blog/canonical-releases-ubuntu-26-04-lts-resolute-raccoon\_cn</a></p>
+</li>
+<li><p><strong>CloudSoftSol</strong> – <em>Which Linux Distribution Rules 2026?</em><br><a target="_blank" rel="noopener" href="https://cloudsoftsol.com/linux/which-linux-distribution-rules-2026/">https://cloudsoftsol.com/linux/which-linux-distribution-rules-2026/</a></p>
+</li>
+<li><p><strong>微信公众号</strong> – *2026年Linux发行版TOP 10*<br><a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzI4MDQwMzk3OQ==&mid=2247596948&idx=4&sn=b11de4fc961ace8cdee4a4a0bb405e57&scene=21#wechat_redirect">http://mp.weixin.qq.com/s?__biz&#x3D;MzI4MDQwMzk3OQ&#x3D;&#x3D;&amp;mid&#x3D;2247596948&amp;idx&#x3D;4&amp;sn&#x3D;b11de4fc961ace8cdee4a4a0bb405e57</a></p>
+</li>
+<li><p><strong>TechPowerUp</strong> – <em>Linux Desktop Market Share Reaches 3.07%</em><br><a target="_blank" rel="noopener" href="https://www.techpowerup.com/">https://www.techpowerup.com/</a></p>
+</li>
+</ol>
+<p>说明：AI在整理过程中协助了信息汇总</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/blog/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Lyuu</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

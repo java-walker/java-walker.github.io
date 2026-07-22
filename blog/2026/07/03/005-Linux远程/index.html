@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lyuu.eu.cc","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat","show_result":true},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js" defer></script>
+
+    <meta name="description" content="原文转载自微信公众号「walker-行者」Linux 系列。原始链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MzkwMDgyMTA2OQ&#x3D;&#x3D;&amp;mid&#x3D;2247483800&amp;idx&#x3D;1&amp;sn&#x3D;057271f73891320fe87ceaf5c7899d03&amp;chksm&#x3D;c0bf78baf7c8f1ac9883b46f78fe9d73bb5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="004 Linux远程">
+<meta property="og:url" content="https://lyuu.eu.cc/blog/2026/07/03/005-Linux%E8%BF%9C%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Lyuu 的博客">
+<meta property="og:description" content="原文转载自微信公众号「walker-行者」Linux 系列。原始链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MzkwMDgyMTA2OQ&#x3D;&#x3D;&amp;mid&#x3D;2247483800&amp;idx&#x3D;1&amp;sn&#x3D;057271f73891320fe87ceaf5c7899d03&amp;chksm&#x3D;c0bf78baf7c8f1ac9883b46f78fe9d73bb5">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lyuu.eu.cc/images/ops/005/img1.png">
+<meta property="article:published_time" content="2026-07-03T12:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-22T18:18:59.475Z">
+<meta property="article:author" content="Lyuu">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lyuu.eu.cc/images/ops/005/img1.png">
+
+
+<link rel="canonical" href="https://lyuu.eu.cc/blog/2026/07/03/005-Linux%E8%BF%9C%E7%A8%8B/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lyuu.eu.cc/blog/2026/07/03/005-Linux%E8%BF%9C%E7%A8%8B/","path":"2026/07/03/005-Linux远程/","title":"004 Linux远程"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>004 Linux远程 | Lyuu 的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/blog/js/utils.js" defer></script><script src="/blog/js/motion.js" defer></script><script src="/blog/js/sidebar.js" defer></script><script src="/blog/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Lyuu 的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code Create Life</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-portal"><a href="https://lyuu.eu.cc/" rel="section"><i class="fa fa-globe fa-fw"></i>主页</a></li><li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81SSH%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">一、SSH命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81SSH%E8%BF%9C%E7%A8%8B%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%EF%BC%882026%E7%89%88%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">二、SSH远程工具推荐（2026版）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%A5%87-MobaXterm%EF%BC%88%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">🥇 MobaXterm（强烈推荐）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%A5%88-WinSCP%EF%BC%88%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">🥈 WinSCP（文件传输必备）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%A5%89-Terminus%EF%BC%88%E9%A2%9C%E5%80%BC%E5%85%9A%E6%9C%80%E7%88%B1%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">🥉 Terminus（颜值党最爱）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9A%A0%EF%B8%8F-Xshell%EF%BC%88%E8%80%81%E7%89%8C%E4%BD%86%E6%B8%90%E6%98%BE%E7%96%B2%E6%80%81%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">⚠️ Xshell（老牌但渐显疲态）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%9F%A5%E7%9C%8B%E6%9C%BA%E5%99%A8IP%EF%BC%9A%E5%91%8A%E5%88%ABifconfig"><span class="nav-number">3.</span> <span class="nav-text">三、查看机器IP：告别ifconfig</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows%E6%9F%A5IP"><span class="nav-number">3.1.</span> <span class="nav-text">Windows查IP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E6%9F%A5IP%EF%BC%88%E6%96%B0%E6%97%A7%E5%AF%B9%E6%AF%94%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">Linux查IP（新旧对比）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%EF%BC%9F%E6%A3%80%E6%9F%A5%E7%BC%96%E7%A0%81%EF%BC%81"><span class="nav-number">4.</span> <span class="nav-text">四、中文乱码？检查编码！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lyuu</p>
+  <div class="site-description" itemprop="description">记录技术、AI 与生活的个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/java-walker" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;java-walker" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/07/03/005-Linux%E8%BF%9C%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="004 Linux远程 | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          004 Linux远程
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-07-03 20:00:00" itemprop="dateCreated datePublished" datetime="2026-07-03T20:00:00+08:00">2026-07-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>原文转载自微信公众号「walker-行者」Linux 系列。<br>原始链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&mid=2247483800&idx=1&sn=057271f73891320fe87ceaf5c7899d03&chksm=c0bf78baf7c8f1ac9883b46f78fe9d73bb563fdcc3976cbee89503125f262af8f29e229574f6&cur_album_id=4586547322464501762&scene=189#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&amp;mid=2247483800&amp;idx=1&amp;sn=057271f73891320fe87ceaf5c7899d03&amp;chksm=c0bf78baf7c8f1ac9883b46f78fe9d73bb563fdcc3976cbee89503125f262af8f29e229574f6&amp;cur_album_id=4586547322464501762&amp;scene=189#wechat_redirect</a></p>
+</blockquote>
+<h2 id="一、SSH命令"><a href="#一、SSH命令" class="headerlink" title="一、SSH命令"></a>一、SSH命令</h2><p>bash</p>
+<p>ssh[options][user@]hostname [command]</p>
+<p>SSH（Secure Shell）是Linux远程管理的标准协议，所有操作都从这个命令开始。</p>
+<p><strong>常用选项：</strong></p>
+<ul>
+<li><p><code>-p</code> ：指定端口（默认22）</p>
+</li>
+<li><p><code>-v</code> ：调试模式，排错利器</p>
+</li>
+<li><p><code>-i</code> ：指定私钥文件（免密登录必备）</p>
+</li>
+</ul>
+<p><strong>举个栗子🌰：</strong></p>
+<p>bash</p>
+<p># 用root身份连接远程服务器ssh <a href="mailto:&#x72;&#111;&#111;&#116;&#64;&#49;&#57;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#x31;&#x2e;&#x31;&#x30;&#x30;">&#x72;&#111;&#111;&#116;&#64;&#49;&#57;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#x31;&#x2e;&#x31;&#x30;&#x30;</a># 指定端口连接ssh-p2222 <a href="mailto:&#116;&#111;&#109;&#64;&#49;&#57;&#50;&#46;&#x31;&#54;&#x38;&#x2e;&#x31;&#x2e;&#x31;&#x30;&#x30;">&#116;&#111;&#109;&#64;&#49;&#57;&#50;&#46;&#x31;&#54;&#x38;&#x2e;&#x31;&#x2e;&#x31;&#x30;&#x30;</a># 直接在远程执行命令（执行完自动退出）ssh <a href="mailto:&#114;&#x6f;&#111;&#116;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#x38;&#46;&#49;&#x2e;&#x31;&#x30;&#x30;">&#114;&#x6f;&#111;&#116;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#x38;&#46;&#49;&#x2e;&#x31;&#x30;&#x30;</a> “ls -la &#x2F;home”</p>
+<p>📖 <strong>推荐阅读</strong>：Linux ssh命令详解</p>
+<h2 id="二、SSH远程工具推荐（2026版）"><a href="#二、SSH远程工具推荐（2026版）" class="headerlink" title="二、SSH远程工具推荐（2026版）"></a>二、SSH远程工具推荐（2026版）</h2><p>图形化工具让远程管理更高效，以下按推荐度排序：</p>
+<h3 id="🥇-MobaXterm（强烈推荐）"><a href="#🥇-MobaXterm（强烈推荐）" class="headerlink" title="🥇 MobaXterm（强烈推荐）"></a>🥇 MobaXterm（强烈推荐）</h3><p><a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/">https://mobaxterm.mobatek.net/</a></p>
+<p><img src="/blog/../images/ops/005/img1.png" alt="Image"></p>
+<p>集成SSH、X11转发、SFTP、远程桌面等一堆功能，<strong>开箱即用</strong>，单文件免安装，对新手极其友好。</p>
+<h3 id="🥈-WinSCP（文件传输必备）"><a href="#🥈-WinSCP（文件传输必备）" class="headerlink" title="🥈 WinSCP（文件传输必备）"></a>🥈 WinSCP（文件传输必备）</h3><p>专注于SFTP&#x2F;SCP文件传输，支持断点续传、目录同步，和PuTTY无缝集成，传文件首选。</p>
+<h3 id="🥉-Terminus（颜值党最爱）"><a href="#🥉-Terminus（颜值党最爱）" class="headerlink" title="🥉 Terminus（颜值党最爱）"></a>🥉 Terminus（颜值党最爱）</h3><p>现代化UI设计，支持主题切换、插件扩展，但<strong>没有官方中文</strong>，适合喜欢折腾的用户。</p>
+<h3 id="⚠️-Xshell（老牌但渐显疲态）"><a href="#⚠️-Xshell（老牌但渐显疲态）" class="headerlink" title="⚠️ Xshell（老牌但渐显疲态）"></a>⚠️ Xshell（老牌但渐显疲态）</h3><p>功能强大、兼容性好（老旧协议支持完善），但<strong>免费版限制越来越多</strong>，已被MobaXterm超越。</p>
+<blockquote>
+<p><strong>小结</strong>：新用户直接上MobaXterm，够用了。</p>
+</blockquote>
+<h2 id="三、查看机器IP：告别ifconfig"><a href="#三、查看机器IP：告别ifconfig" class="headerlink" title="三、查看机器IP：告别ifconfig"></a>三、查看机器IP：告别ifconfig</h2><h3 id="Windows查IP"><a href="#Windows查IP" class="headerlink" title="Windows查IP"></a>Windows查IP</h3><p>cmd</p>
+<p>ipconfig</p>
+<h3 id="Linux查IP（新旧对比）"><a href="#Linux查IP（新旧对比）" class="headerlink" title="Linux查IP（新旧对比）"></a>Linux查IP（新旧对比）</h3><p>|<br>工具</p>
+<p> | </p>
+<p>命令</p>
+<p> | </p>
+<p>特点</p>
+<p> |<br>| — | — | — |<br>| </p>
+<p>老旧方式（net-tools）</p>
+<p> | <code>ifconfig</code> | </p>
+<p>已废弃，需要额外安装</p>
+<p> |<br>| <strong>现代方式（iproute2）</strong> | <code>ip link</code></p>
+<p>、<code>ip addr</code></p>
+<p> | <strong>系统自带，推荐使用</strong> |</p>
+<p><strong>举个栗子🌰：</strong></p>
+<p>bash</p>
+<p># 查看所有网络接口信息ip addr  </p>
+<p># 只看IP地址（过滤更优雅）ip-4 addr show |grep inet</p>
+<p># 简洁的 ip link</p>
+<blockquote>
+<p>⚠️ 新装Linux系统可能没有ifconfig，但ip命令一定在。</p>
+</blockquote>
+<p>📖 <strong>推荐阅读</strong>：Linux中ipconfig的替代命令</p>
+<h2 id="四、中文乱码？检查编码！"><a href="#四、中文乱码？检查编码！" class="headerlink" title="四、中文乱码？检查编码！"></a>四、中文乱码？检查编码！</h2><p>远程连接时出现中文乱码，<strong>99%是字符编码不匹配</strong>。</p>
+<p><strong>统一原则：</strong></p>
+<ul>
+<li><p>服务器字符集：<code>UTF-8</code></p>
+</li>
+<li><p>终端字符集：<code>UTF-8</code></p>
+</li>
+<li><p>SSH客户端字符集：<code>UTF-8</code></p>
+</li>
+</ul>
+<p><strong>Linux查看当前编码：</strong></p>
+<p>bash</p>
+<p>echo$LANG# 输出示例：en_US.UTF-8</p>
+<p><strong>Xshell解决方案：</strong> 属性 → 终端 → 编码 → 选择UTF-8</p>
+<p><strong>MobaXterm解决方案：</strong> 设置 → Terminal → Character set → UTF-8</p>
+<hr>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>|<br>场景</p>
+<p> | </p>
+<p>推荐方案</p>
+<p> |<br>| — | — |<br>| </p>
+<p>日常远程管理</p>
+<p> | </p>
+<p>MobaXterm</p>
+<p> |<br>| </p>
+<p>文件传输</p>
+<p> | </p>
+<p>WinSCP</p>
+<p> |<br>| </p>
+<p>快速SSH命令</p>
+<p> | </p>
+<p>系统终端直接ssh</p>
+<p> |<br>| </p>
+<p>查看IP地址</p>
+<p> | <code>ip addr、ip link</code> |<br>| </p>
+<p>解决乱码</p>
+<p> | </p>
+<p>统一UTF-8编码</p>
+<p> |</p>
+<p>掌握这些，你已经可以<strong>优雅地</strong>管理Linux服务器了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/blog/tags/%E8%BF%90%E7%BB%B4/" rel="tag"># 运维</a>
+              <a href="/blog/tags/%E7%B3%BB%E7%BB%9F/" rel="tag"># 系统</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2026/07/03/004-JQ1_sudo%E4%B8%80%E7%9B%B4%E8%A6%81%E8%BE%93%E5%AF%86%E7%A0%81%E8%BF%99%E6%A0%B7%E5%AD%90%E8%A7%A3%E5%86%B3%EF%BC%81/" rel="prev" title="JQ1_sudo一直要输密码?这样子解决！">
+                  <i class="fa fa-angle-left"></i> JQ1_sudo一直要输密码?这样子解决！
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2026/07/03/006-Linux%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8%EF%BC%88%E6%96%87%E6%9C%AC%EF%BC%89/" rel="next" title="005 Linux要了解的编辑器（文本）">
+                  005 Linux要了解的编辑器（文本） <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Lyuu</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
