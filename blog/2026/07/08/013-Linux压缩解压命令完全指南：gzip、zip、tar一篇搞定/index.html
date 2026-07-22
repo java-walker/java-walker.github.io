@@ -28,7 +28,7 @@
 <meta property="og:description" content="原文转载自微信公众号「walker-行者」Linux 系列。原始链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MzkwMDgyMTA2OQ&#x3D;&#x3D;&amp;mid&#x3D;2247483835&amp;idx&#x3D;1&amp;sn&#x3D;9b4eced4740cbd8f113b585794ca7718&amp;chksm&#x3D;c0bf7899f7c8f18fb053686545e9c3303f9">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-08T16:03:00.000Z">
-<meta property="article:modified_time" content="2026-07-22T18:18:59.475Z">
+<meta property="article:modified_time" content="2026-07-22T18:45:54.008Z">
 <meta property="article:author" content="Lyuu">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="运维">
@@ -222,7 +222,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -267,36 +267,50 @@
 <h3 id="实操演示"><a href="#实操演示" class="headerlink" title="实操演示"></a>实操演示</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 1. 打包压缩网站目录</span><br></pre></td></tr></table></figure>
 
 <h2 id="三、tar-—-Linux最强大的打包工具"><a href="#三、tar-—-Linux最强大的打包工具" class="headerlink" title="三、tar — Linux最强大的打包工具"></a>三、tar — Linux最强大的打包工具</h2><p><code>tar</code> 是Linux下<strong>最核心的归档工具</strong>，常与 <code>gzip</code> 配合生成 <code>.tar.gz</code> 文件。核心功能是<strong>打包</strong>（把多个文件&#x2F;目录合成一个文件），压缩功能依赖 <code>-z</code>（gzip）等参数调用外部压缩程序。</p>
-<h3 id="参数说明（⚠️-f-必须放最后！）"><a href="#参数说明（⚠️-f-必须放最后！）" class="headerlink" title="参数说明（⚠️ -f 必须放最后！）"></a>参数说明（⚠️ -f 必须放最后！）</h3><p>|<br>参数</p>
-<p> | </p>
-<p>含义</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — | — |<br>| <code>-c</code> | </p>
-<p>create</p>
-<p> | </p>
-<p>创建压缩包</p>
-<p> |<br>| <code>-x</code> | </p>
-<p>extract</p>
-<p> | </p>
-<p>解压包</p>
-<p> |<br>| <code>-v</code> | </p>
-<p>verbose</p>
-<p> | </p>
-<p>显示过程日志</p>
-<p> |<br>| <code>-f</code> | </p>
-<p>file</p>
-<p> | <strong>指定压缩包文件名（必须紧跟包名）</strong> |<br>| <code>-z</code> | </p>
-<p>gzip</p>
-<p> | </p>
-<p>使用gzip压缩&#x2F;解压（生成 <code>.tar.gz</code>）</p>
-<p> |<br>| <code>-C</code> | </p>
-<p>指定目录</p>
-<p> | <strong>解压到指定目录</strong> |<br>| <code>-t</code> | </p>
-<p>list</p>
-<p> | </p>
-<p>查看压缩包内容（不解压）</p>
-<p> |</p>
+<h3 id="参数说明（⚠️-f-必须放最后！）"><a href="#参数说明（⚠️-f-必须放最后！）" class="headerlink" title="参数说明（⚠️ -f 必须放最后！）"></a>参数说明（⚠️ -f 必须放最后！）</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-c</code></td>
+<td>create</td>
+<td>创建压缩包</td>
+</tr>
+<tr>
+<td><code>-x</code></td>
+<td>extract</td>
+<td>解压包</td>
+</tr>
+<tr>
+<td><code>-v</code></td>
+<td>verbose</td>
+<td>显示过程日志</td>
+</tr>
+<tr>
+<td><code>-f</code></td>
+<td>file</td>
+<td><strong>指定压缩包文件名（必须紧跟包名）</strong></td>
+</tr>
+<tr>
+<td><code>-z</code></td>
+<td>gzip</td>
+<td>使用gzip压缩&#x2F;解压（生成 <code>.tar.gz</code>）</td>
+</tr>
+<tr>
+<td><code>-C</code></td>
+<td>指定目录</td>
+<td><strong>解压到指定目录</strong></td>
+</tr>
+<tr>
+<td><code>-t</code></td>
+<td>list</td>
+<td>查看压缩包内容（不解压）</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>🎯 <strong>记忆口诀</strong>：<code>tar -zcvf</code> &#x3D; 打包压缩，<code>tar -zxvf</code> &#x3D; 解压。参数顺序随意，<strong>但 <code>-f</code> 必须在最后</strong>，因为它后面紧跟文件名。</p>
 </blockquote>
@@ -311,128 +325,194 @@
 <blockquote>
 <p>💡 <strong>本质理解</strong>：<code>tar</code> 负责<strong>打包</strong>（归档），<code>-z</code> 负责<strong>压缩</strong>（调用gzip），两者通过管道配合完成完整流程。<code>tar</code> 本身不压缩，它把多个文件拼成一个 <code>.tar</code>；<code>-z</code> 再把这个 <code>.tar</code> 压缩成 <code>.tar.gz</code>。同理，<code>-j</code> 调用 <code>bzip2</code> 生成 <code>.tar.bz2</code>，<code>-J</code> 调用 <code>xz</code> 生成 <code>.tar.xz</code>。</p>
 </blockquote>
-<h2 id="四、三种格式对比"><a href="#四、三种格式对比" class="headerlink" title="四、三种格式对比"></a>四、三种格式对比</h2><p>|<br>格式</p>
-<p> | </p>
-<p>工具</p>
-<p> | </p>
-<p>支持目录</p>
-<p> | </p>
-<p>跨平台</p>
-<p> | </p>
-<p>压缩率</p>
-<p> | </p>
-<p>常见用途</p>
-<p> |<br>| — | — | — | — | — | — |<br>| <code>.gz</code> | <code>gzip</code></p>
-<p>&#x2F;<code>gunzip</code></p>
-<p> | </p>
-<p>❌ 不支持</p>
-<p> | </p>
-<p>一般</p>
-<p> | </p>
-<p>中等</p>
-<p> | <strong>单文件压缩</strong></p>
-<p>，配合tar</p>
-<p> |<br>| <code>.zip</code> | <code>zip</code></p>
-<p>&#x2F;<code>unzip</code></p>
-<p> | </p>
-<p>✅ 支持（-r）</p>
-<p> | </p>
-<p>✅ Windows通用</p>
-<p> | </p>
-<p>中等</p>
-<p> | <strong>跨平台文件传输</strong> |<br>| <code>.tar.gz</code> | <code>tar -zcvf</code></p>
-<p>&#x2F;<code>tar -zxvf</code></p>
-<p> | </p>
-<p>✅ 支持</p>
-<p> | </p>
-<p>Linux主流</p>
-<p> | </p>
-<p>较高</p>
-<p> | <strong>Linux服务器首选</strong> |</p>
-<h3 id="选择建议"><a href="#选择建议" class="headerlink" title="选择建议"></a>选择建议</h3><p>|<br>场景</p>
-<p> | </p>
-<p>推荐格式</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>Linux服务器备份</p>
-<p> | <code>.tar.gz</code> | <code>tar -zcvf backup.tar.gz /path/</code> |<br>| </p>
-<p>分享给Windows用户</p>
-<p> | <code>.zip</code> | <code>zip -r share.zip /path/</code> |<br>| </p>
-<p>仅压缩单个日志文件</p>
-<p> | <code>.gz</code> | <code>gzip app.log</code> |<br>| </p>
-<p>发送源码包</p>
-<p> | <code>.tar.gz</code> | <code>tar -zcvf source.tar.gz src/</code> |</p>
+<h2 id="四、三种格式对比"><a href="#四、三种格式对比" class="headerlink" title="四、三种格式对比"></a>四、三种格式对比</h2><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>工具</th>
+<th>支持目录</th>
+<th>跨平台</th>
+<th>压缩率</th>
+<th>常见用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.gz</code></td>
+<td><code>gzip</code>  &#x2F;<code>gunzip</code></td>
+<td>❌ 不支持</td>
+<td>一般</td>
+<td>中等</td>
+<td><strong>单文件压缩</strong>  ，配合tar</td>
+</tr>
+<tr>
+<td><code>.zip</code></td>
+<td><code>zip</code>  &#x2F;<code>unzip</code></td>
+<td>✅ 支持（-r）</td>
+<td>✅ Windows通用</td>
+<td>中等</td>
+<td><strong>跨平台文件传输</strong></td>
+</tr>
+<tr>
+<td><code>.tar.gz</code></td>
+<td><code>tar -zcvf</code>  &#x2F;<code>tar -zxvf</code></td>
+<td>✅ 支持</td>
+<td>Linux主流</td>
+<td>较高</td>
+<td><strong>Linux服务器首选</strong></td>
+</tr>
+</tbody></table>
+<h3 id="选择建议"><a href="#选择建议" class="headerlink" title="选择建议"></a>选择建议</h3><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐格式</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linux服务器备份</td>
+<td><code>.tar.gz</code></td>
+<td><code>tar -zcvf backup.tar.gz /path/</code></td>
+</tr>
+<tr>
+<td>分享给Windows用户</td>
+<td><code>.zip</code></td>
+<td><code>zip -r share.zip /path/</code></td>
+</tr>
+<tr>
+<td>仅压缩单个日志文件</td>
+<td><code>.gz</code></td>
+<td><code>gzip app.log</code></td>
+</tr>
+<tr>
+<td>发送源码包</td>
+<td><code>.tar.gz</code></td>
+<td><code>tar -zcvf source.tar.gz src/</code></td>
+</tr>
+</tbody></table>
 <h2 id="五、高频实操示例"><a href="#五、高频实操示例" class="headerlink" title="五、高频实操示例"></a>五、高频实操示例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 1. 备份整个项目目录（最常用）</span><br></pre></td></tr></table></figure>
 
-<h2 id="六、命令速查卡片"><a href="#六、命令速查卡片" class="headerlink" title="六、命令速查卡片"></a>六、命令速查卡片</h2><h2 id="gzip-系列"><a href="#gzip-系列" class="headerlink" title="gzip 系列"></a>gzip 系列</h2><p>|<br>操作</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — |<br>| </p>
-<p>压缩（原文件消失）</p>
-<p> | <code>gzip file.txt</code> |<br>| </p>
-<p>解压（压缩包消失）</p>
-<p> | <code>gunzip file.txt.gz</code> |<br>| </p>
-<p>压缩并保留原文件</p>
-<p> | <code>gzip -c file.txt &gt; file.txt.gz</code> |<br>| </p>
-<p>解压并保留压缩包</p>
-<p> | <code>gunzip -c file.txt.gz &gt; file.txt</code> |<br>| </p>
-<p>查看压缩文件内容</p>
-<p> | <code>zcat file.txt.gz</code> |<br>| </p>
-<p>批量压缩</p>
-<p> | <code>gzip *.log</code> |</p>
-<h3 id="zip-系列"><a href="#zip-系列" class="headerlink" title="zip 系列"></a>zip 系列</h3><p>|<br>操作</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — |<br>| </p>
-<p>压缩文件</p>
-<p> | <code>zip file.zip a.txt b.txt</code> |<br>| </p>
-<p>压缩目录（必加-r）</p>
-<p> | <code>zip -r pack.zip dir/</code> |<br>| </p>
-<p>解压到当前目录</p>
-<p> | <code>unzip pack.zip</code> |<br>| </p>
-<p>解压到指定目录</p>
-<p> | <code>unzip pack.zip -d /tmp/</code> |<br>| </p>
-<p>查看压缩包内容</p>
-<p> | <code>unzip -l pack.zip</code> |</p>
-<h3 id="tar-系列"><a href="#tar-系列" class="headerlink" title="tar 系列"></a>tar 系列</h3><p>|<br>操作</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — |<br>| </p>
-<p>打包压缩（.tar.gz）</p>
-<p> | <code>tar -zcvf backup.tar.gz /path/</code> |<br>| </p>
-<p>解压（.tar.gz）</p>
-<p> | <code>tar -zxvf backup.tar.gz</code> |<br>| </p>
-<p>解压到指定目录</p>
-<p> | <code>tar -zxvf backup.tar.gz -C /tmp/</code> |<br>| </p>
-<p>仅打包不压缩（.tar）</p>
-<p> | <code>tar -cvf archive.tar /path/</code> |<br>| </p>
-<p>查看压缩包内容</p>
-<p> | <code>tar -ztvf backup.tar.gz</code> |<br>| </p>
-<p>解压单个文件</p>
-<p> | <code>tar -zxvf backup.tar.gz file.txt</code> |</p>
-<h2 id="提示：你可以用help来获取帮助，eg-tar-–help"><a href="#提示：你可以用help来获取帮助，eg-tar-–help" class="headerlink" title="提示：你可以用help来获取帮助，eg. tar –help"></a>提示：你可以用help来获取帮助，eg. tar –help</h2><h2 id="七、常见报错与解决"><a href="#七、常见报错与解决" class="headerlink" title="七、常见报错与解决"></a>七、常见报错与解决</h2><p>|<br>报错</p>
-<p> | </p>
-<p>原因</p>
-<p> | </p>
-<p>解决</p>
-<p> |<br>| — | — | — |<br>| <code>tar: You must specify one of the &#39;-Acdtrux&#39; options</code> | </p>
-<p>参数顺序错误</p>
-<p> | </p>
-<p>确保 <code>-f</code> 在最后</p>
-<p> |<br>| <code>gzip: stdin: unexpected end of file</code> | </p>
-<p>压缩包损坏</p>
-<p> | </p>
-<p>尝试 <code>gunzip -c</code> 恢复部分数据</p>
-<p> |<br>| <code>zip error: Nothing to do!</code> | </p>
-<p>压缩目录未加 <code>-r</code></p>
-<p> | </p>
-<p>加上 <code>-r</code> 参数</p>
-<p> |<br>| <code>Cannot open: No such file or directory</code> | </p>
-<p>文件路径错误</p>
-<p> | </p>
-<p>检查文件是否存在</p>
-<p> |</p>
+<h2 id="六、命令速查卡片"><a href="#六、命令速查卡片" class="headerlink" title="六、命令速查卡片"></a>六、命令速查卡片</h2><h2 id="gzip-系列"><a href="#gzip-系列" class="headerlink" title="gzip 系列"></a>gzip 系列</h2><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>压缩（原文件消失）</td>
+<td><code>gzip file.txt</code></td>
+</tr>
+<tr>
+<td>解压（压缩包消失）</td>
+<td><code>gunzip file.txt.gz</code></td>
+</tr>
+<tr>
+<td>压缩并保留原文件</td>
+<td><code>gzip -c file.txt &gt; file.txt.gz</code></td>
+</tr>
+<tr>
+<td>解压并保留压缩包</td>
+<td><code>gunzip -c file.txt.gz &gt; file.txt</code></td>
+</tr>
+<tr>
+<td>查看压缩文件内容</td>
+<td><code>zcat file.txt.gz</code></td>
+</tr>
+<tr>
+<td>批量压缩</td>
+<td><code>gzip *.log</code></td>
+</tr>
+</tbody></table>
+<h3 id="zip-系列"><a href="#zip-系列" class="headerlink" title="zip 系列"></a>zip 系列</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>压缩文件</td>
+<td><code>zip file.zip a.txt b.txt</code></td>
+</tr>
+<tr>
+<td>压缩目录（必加-r）</td>
+<td><code>zip -r pack.zip dir/</code></td>
+</tr>
+<tr>
+<td>解压到当前目录</td>
+<td><code>unzip pack.zip</code></td>
+</tr>
+<tr>
+<td>解压到指定目录</td>
+<td><code>unzip pack.zip -d /tmp/</code></td>
+</tr>
+<tr>
+<td>查看压缩包内容</td>
+<td><code>unzip -l pack.zip</code></td>
+</tr>
+</tbody></table>
+<h3 id="tar-系列"><a href="#tar-系列" class="headerlink" title="tar 系列"></a>tar 系列</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>打包压缩（.tar.gz）</td>
+<td><code>tar -zcvf backup.tar.gz /path/</code></td>
+</tr>
+<tr>
+<td>解压（.tar.gz）</td>
+<td><code>tar -zxvf backup.tar.gz</code></td>
+</tr>
+<tr>
+<td>解压到指定目录</td>
+<td><code>tar -zxvf backup.tar.gz -C /tmp/</code></td>
+</tr>
+<tr>
+<td>仅打包不压缩（.tar）</td>
+<td><code>tar -cvf archive.tar /path/</code></td>
+</tr>
+<tr>
+<td>查看压缩包内容</td>
+<td><code>tar -ztvf backup.tar.gz</code></td>
+</tr>
+<tr>
+<td>解压单个文件</td>
+<td><code>tar -zxvf backup.tar.gz file.txt</code></td>
+</tr>
+</tbody></table>
+<h2 id="提示：你可以用help来获取帮助，eg-tar-–help"><a href="#提示：你可以用help来获取帮助，eg-tar-–help" class="headerlink" title="提示：你可以用help来获取帮助，eg. tar –help"></a>提示：你可以用help来获取帮助，eg. tar –help</h2><h2 id="七、常见报错与解决"><a href="#七、常见报错与解决" class="headerlink" title="七、常见报错与解决"></a>七、常见报错与解决</h2><table>
+<thead>
+<tr>
+<th>报错</th>
+<th>原因</th>
+<th>解决</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tar: You must specify one of the &#39;-Acdtrux&#39; options</code></td>
+<td>参数顺序错误</td>
+<td>确保 <code>-f</code> 在最后</td>
+</tr>
+<tr>
+<td><code>gzip: stdin: unexpected end of file</code></td>
+<td>压缩包损坏</td>
+<td>尝试 <code>gunzip -c</code> 恢复部分数据</td>
+</tr>
+<tr>
+<td><code>zip error: Nothing to do!</code></td>
+<td>压缩目录未加 <code>-r</code></td>
+<td>加上 <code>-r</code> 参数</td>
+</tr>
+<tr>
+<td><code>Cannot open: No such file or directory</code></td>
+<td>文件路径错误</td>
+<td>检查文件是否存在</td>
+</tr>
+</tbody></table>
 <hr>
 <blockquote>
 <p>📌 <strong>如果觉得有用，欢迎****点赞、在看、转发</strong>三连！</p>

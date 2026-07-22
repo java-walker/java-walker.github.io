@@ -28,7 +28,7 @@
 <meta property="og:description" content="原文转载自微信公众号「walker-行者」Linux 系列。原始链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MzkwMDgyMTA2OQ&#x3D;&#x3D;&amp;mid&#x3D;2247483819&amp;idx&#x3D;1&amp;sn&#x3D;39a10e5d9763aef8cd58381b48f9e6ca&amp;chksm&#x3D;c0bf7889f7c8f19f430d183b254d1ff67cc">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-04T08:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-22T18:18:59.475Z">
+<meta property="article:modified_time" content="2026-07-22T18:45:54.008Z">
 <meta property="article:author" content="Lyuu">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="运维">
@@ -222,7 +222,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -272,18 +272,22 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法</span><br></pre></td></tr></table></figure>
 
 <p>是否保留家目录？</p>
-<p>|<br>场景</p>
-<p> | </p>
-<p>推荐操作</p>
-<p> |<br>| — | — |<br>| </p>
-<p>普通员工离职</p>
-<p> | <code>userdel 用户名</code></p>
-<p>（保留家目录，归档数据）</p>
-<p> |<br>| </p>
-<p>测试账号清理</p>
-<p> | <code>userdel -r 用户名</code></p>
-<p>（彻底删除，不留痕迹）</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通员工离职</td>
+<td><code>userdel 用户名</code>  （保留家目录，归档数据）</td>
+</tr>
+<tr>
+<td>测试账号清理</td>
+<td><code>userdel -r 用户名</code>  （彻底删除，不留痕迹）</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>💡 一般建议<strong>保留家目录</strong>，以防有重要数据需要备份。</p>
 </blockquote>
@@ -298,17 +302,30 @@
 <li><p><code>groups</code>：所有所属组</p>
 </li>
 </ul>
-<h2 id="二、身份查询与切换"><a href="#二、身份查询与切换" class="headerlink" title="二、身份查询与切换"></a>二、身份查询与切换</h2><h3 id="2-1-查看当前登录用户"><a href="#2-1-查看当前登录用户" class="headerlink" title="2.1 查看当前登录用户"></a>2.1 查看当前登录用户</h3><p>|<br>命令</p>
-<p> | </p>
-<p>功能</p>
-<p> |<br>| — | — |<br>| <code>whoami</code> | </p>
-<p>显示当前<strong>有效用户</strong>名（简单快捷）</p>
-<p> |<br>| <code>who am i</code> | </p>
-<p>显示<strong>登录时</strong>的用户信息（更详细，含终端、时间、IP）</p>
-<p> |<br>| <code>who</code> | </p>
-<p>显示所有当前<strong>登录用户</strong>的列表</p>
-<p> |</p>
-<p><strong>三者区别：</strong></p>
+<h2 id="二、身份查询与切换"><a href="#二、身份查询与切换" class="headerlink" title="二、身份查询与切换"></a>二、身份查询与切换</h2><h3 id="2-1-查看当前登录用户"><a href="#2-1-查看当前登录用户" class="headerlink" title="2.1 查看当前登录用户"></a>2.1 查看当前登录用户</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>whoami</code></td>
+<td>显示当前<strong>有效用户</strong>名（简单快捷）</td>
+</tr>
+<tr>
+<td><code>who am i</code></td>
+<td>显示<strong>登录时</strong>的用户信息（更详细，含终端、时间、IP）</td>
+</tr>
+<tr>
+<td><code>who</code></td>
+<td>显示所有当前<strong>登录用户</strong>的列表</td>
+</tr>
+<tr>
+<td><strong>三者区别：</strong></td>
+<td></td>
+</tr>
+</tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[wal@localhost home]$ who am i</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -316,32 +333,40 @@
 </blockquote>
 <h3 id="2-2-切换用户：su"><a href="#2-2-切换用户：su" class="headerlink" title="2.2 切换用户：su"></a>2.2 切换用户：<code>su</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-3-⚠️-su-root-vs-su-root-核心区别"><a href="#2-3-⚠️-su-root-vs-su-root-核心区别" class="headerlink" title="2.3 ⚠️ su root vs su - root 核心区别"></a>2.3 ⚠️ <code>su root</code> vs <code>su - root</code> 核心区别</h3><p>|<br>对比项</p>
-<p> | <code>su root</code> | <code>su - root</code> |<br>| — | — | — |<br>| </p>
-<p>用户身份</p>
-<p> | </p>
-<p>✅ 切换为root</p>
-<p> | </p>
-<p>✅ 切换为root</p>
-<p> |<br>| </p>
-<p>环境变量</p>
-<p> | </p>
-<p>❌ 保留原用户</p>
-<p> | </p>
-<p>✅ 重置为root环境</p>
-<p> |<br>| </p>
-<p>PATH路径</p>
-<p> | </p>
-<p>❌ 原用户PATH</p>
-<p> | </p>
-<p>✅ root完整PATH</p>
-<p> |<br>| </p>
-<p>当前目录</p>
-<p> | </p>
-<p>❌ 留在原目录</p>
-<p> | </p>
-<p>✅ 切换到 <code>/root</code></p>
-<p> |<br>| <strong>命令找不到？</strong> | <strong>有风险 ⚠️</strong> | <strong>✅ 正常</strong> |</p>
+<h3 id="2-3-⚠️-su-root-vs-su-root-核心区别"><a href="#2-3-⚠️-su-root-vs-su-root-核心区别" class="headerlink" title="2.3 ⚠️ su root vs su - root 核心区别"></a>2.3 ⚠️ <code>su root</code> vs <code>su - root</code> 核心区别</h3><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th><code>su root</code></th>
+<th><code>su - root</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户身份</td>
+<td>✅ 切换为root</td>
+<td>✅ 切换为root</td>
+</tr>
+<tr>
+<td>环境变量</td>
+<td>❌ 保留原用户</td>
+<td>✅ 重置为root环境</td>
+</tr>
+<tr>
+<td>PATH路径</td>
+<td>❌ 原用户PATH</td>
+<td>✅ root完整PATH</td>
+</tr>
+<tr>
+<td>当前目录</td>
+<td>❌ 留在原目录</td>
+<td>✅ 切换到 <code>/root</code></td>
+</tr>
+<tr>
+<td><strong>命令找不到？</strong></td>
+<td><strong>有风险 ⚠️</strong></td>
+<td><strong>✅ 正常</strong></td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>🎯 <strong>日常运维必须用 <code>su -</code><strong>，避免环境变量错乱导致命令找不到！<code>su -</code> 等价于 <code>su - root</code>。<code>su</code>（不加参数）默认切换到 root，但和 <code>su root</code> 一样是</strong>不完整切换</strong>，同样不推荐。</p>
 </blockquote>
@@ -358,36 +383,42 @@
 <p>Linux的用户信息存储在三个核心文件中：</p>
 <h3 id="4-1-etc-passwd-——-用户信息"><a href="#4-1-etc-passwd-——-用户信息" class="headerlink" title="4.1 /etc/passwd —— 用户信息"></a>4.1 <code>/etc/passwd</code> —— 用户信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看内容</span><br></pre></td></tr></table></figure>
 
-<p>|<br>字段</p>
-<p> | </p>
-<p>含义</p>
-<p> |<br>| — | — |<br>| </p>
-<p>用户名</p>
-<p> | </p>
-<p>登录名</p>
-<p> |<br>| <code>x</code> | </p>
-<p>密码占位符（实际密码在 <code>/etc/shadow</code>）</p>
-<p> |<br>| </p>
-<p>UID</p>
-<p> | </p>
-<p>用户ID（0&#x3D;root，1000+为普通用户）</p>
-<p> |<br>| </p>
-<p>GID</p>
-<p> | </p>
-<p>主组ID</p>
-<p> |<br>| </p>
-<p>注释</p>
-<p> | </p>
-<p>用户描述信息</p>
-<p> |<br>| </p>
-<p>家目录</p>
-<p> | </p>
-<p>用户登录后的起始目录</p>
-<p> |<br>| </p>
-<p>登录Shell</p>
-<p> | </p>
-<p>用户使用的Shell程序</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户名</td>
+<td>登录名</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>密码占位符（实际密码在 <code>/etc/shadow</code>）</td>
+</tr>
+<tr>
+<td>UID</td>
+<td>用户ID（0&#x3D;root，1000+为普通用户）</td>
+</tr>
+<tr>
+<td>GID</td>
+<td>主组ID</td>
+</tr>
+<tr>
+<td>注释</td>
+<td>用户描述信息</td>
+</tr>
+<tr>
+<td>家目录</td>
+<td>用户登录后的起始目录</td>
+</tr>
+<tr>
+<td>登录Shell</td>
+<td>用户使用的Shell程序</td>
+</tr>
+</tbody></table>
 <h3 id="4-2-etc-shadow-——-加密密码"><a href="#4-2-etc-shadow-——-加密密码" class="headerlink" title="4.2 /etc/shadow —— 加密密码"></a>4.2 <code>/etc/shadow</code> —— 加密密码</h3><blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看内容（需要root权限）</span><br></pre></td></tr></table></figure>
 
@@ -395,67 +426,122 @@
 </blockquote>
 <h3 id="4-3-etc-group-——-组信息"><a href="#4-3-etc-group-——-组信息" class="headerlink" title="4.3 /etc/group —— 组信息"></a>4.3 <code>/etc/group</code> —— 组信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看内容</span><br></pre></td></tr></table></figure>
 
-<p>|<br>字段</p>
-<p> | </p>
-<p>含义</p>
-<p> |<br>| — | — |<br>| </p>
-<p>组名</p>
-<p> | </p>
-<p>组的名称</p>
-<p> |<br>| <code>x</code> | </p>
-<p>组密码占位符</p>
-<p> |<br>| </p>
-<p>GID</p>
-<p> | </p>
-<p>组ID</p>
-<p> |<br>| </p>
-<p>组内用户列表</p>
-<p> | </p>
-<p>属于该组的用户（逗号分隔）</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>组名</td>
+<td>组的名称</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>组密码占位符</td>
+</tr>
+<tr>
+<td>GID</td>
+<td>组ID</td>
+</tr>
+<tr>
+<td>组内用户列表</td>
+<td>属于该组的用户（逗号分隔）</td>
+</tr>
+</tbody></table>
 <h2 id="五、完整实战演练"><a href="#五、完整实战演练" class="headerlink" title="五、完整实战演练"></a>五、完整实战演练</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 1. 添加新用户wol</span><br></pre></td></tr></table></figure>
 
 <p>六、命令速查卡片</p>
-<p>|<br>操作</p>
-<p> | </p>
-<p>命令</p>
-<p> | </p>
-<p>示例</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>添加用户</p>
-<p> | <code>useradd 用户名</code> | <code>useradd wol</code> |<br>| </p>
-<p>指定家目录添加</p>
-<p> | <code>useradd -d 目录 用户名</code> | <code>useradd -d /opt/wol wol</code> |<br>| </p>
-<p>设置密码</p>
-<p> | <code>passwd 用户名</code> | <code>passwd wol</code> |<br>| </p>
-<p>删除用户</p>
-<p> | <code>userdel 用户名</code> | <code>userdel wol</code> |<br>| </p>
-<p>删除用户+家目录</p>
-<p> | <code>userdel -r 用户名</code> | <code>userdel -r wol</code> |<br>| </p>
-<p>查询用户信息</p>
-<p> | <code>id 用户名</code> | <code>id wol</code> |<br>| </p>
-<p>查看当前用户</p>
-<p> | <code>whoami</code> | <code>whoami</code> |<br>| </p>
-<p>查看登录用户</p>
-<p> | <code>who am i</code> | <code>who am i</code> |<br>| </p>
-<p>切换用户（完整）</p>
-<p> | <code>su - 用户名</code> | <code>su - wol</code> |<br>| </p>
-<p>添加组</p>
-<p> | <code>groupadd 组名</code> | <code>groupadd devops</code> |<br>| </p>
-<p>删除组</p>
-<p> | <code>groupdel 组名</code> | <code>groupdel devops</code> |<br>| </p>
-<p>修改用户组</p>
-<p> | <code>usermod -g 组名 用户名</code> | <code>usermod -g devops wol</code> |</p>
-<h3 id="三个关键文件"><a href="#三个关键文件" class="headerlink" title="三个关键文件"></a>三个关键文件</h3><p>|<br>文件</p>
-<p> | </p>
-<p>作用</p>
-<p> |<br>| — | — |<br>| <code>/etc/passwd</code> | </p>
-<p>用户基本信息</p>
-<p> |<br>| <code>/etc/shadow</code> | </p>
-<p>用户加密密码</p>
-<p> |<br>| <code>/etc/group</code> | </p>
-<p>组信息</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>添加用户</td>
+<td><code>useradd 用户名</code></td>
+<td><code>useradd wol</code></td>
+</tr>
+<tr>
+<td>指定家目录添加</td>
+<td><code>useradd -d 目录 用户名</code></td>
+<td><code>useradd -d /opt/wol wol</code></td>
+</tr>
+<tr>
+<td>设置密码</td>
+<td><code>passwd 用户名</code></td>
+<td><code>passwd wol</code></td>
+</tr>
+<tr>
+<td>删除用户</td>
+<td><code>userdel 用户名</code></td>
+<td><code>userdel wol</code></td>
+</tr>
+<tr>
+<td>删除用户+家目录</td>
+<td><code>userdel -r 用户名</code></td>
+<td><code>userdel -r wol</code></td>
+</tr>
+<tr>
+<td>查询用户信息</td>
+<td><code>id 用户名</code></td>
+<td><code>id wol</code></td>
+</tr>
+<tr>
+<td>查看当前用户</td>
+<td><code>whoami</code></td>
+<td><code>whoami</code></td>
+</tr>
+<tr>
+<td>查看登录用户</td>
+<td><code>who am i</code></td>
+<td><code>who am i</code></td>
+</tr>
+<tr>
+<td>切换用户（完整）</td>
+<td><code>su - 用户名</code></td>
+<td><code>su - wol</code></td>
+</tr>
+<tr>
+<td>添加组</td>
+<td><code>groupadd 组名</code></td>
+<td><code>groupadd devops</code></td>
+</tr>
+<tr>
+<td>删除组</td>
+<td><code>groupdel 组名</code></td>
+<td><code>groupdel devops</code></td>
+</tr>
+<tr>
+<td>修改用户组</td>
+<td><code>usermod -g 组名 用户名</code></td>
+<td><code>usermod -g devops wol</code></td>
+</tr>
+</tbody></table>
+<h3 id="三个关键文件"><a href="#三个关键文件" class="headerlink" title="三个关键文件"></a>三个关键文件</h3><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/etc/passwd</code></td>
+<td>用户基本信息</td>
+</tr>
+<tr>
+<td><code>/etc/shadow</code></td>
+<td>用户加密密码</td>
+</tr>
+<tr>
+<td><code>/etc/group</code></td>
+<td>组信息</td>
+</tr>
+</tbody></table>
 <blockquote>
 </blockquote>
 

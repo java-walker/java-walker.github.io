@@ -28,7 +28,7 @@
 <meta property="og:description" content="原文转载自微信公众号「walker-行者」Linux 系列。原始链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MzkwMDgyMTA2OQ&#x3D;&#x3D;&amp;mid&#x3D;2247483828&amp;idx&#x3D;1&amp;sn&#x3D;86f8395ced0a7fd493ae3d55b1331cb0&amp;chksm&#x3D;c0bf7896f7c8f1809480193f6485949bf2e">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-05T14:55:00.000Z">
-<meta property="article:modified_time" content="2026-07-22T18:18:59.475Z">
+<meta property="article:modified_time" content="2026-07-22T18:45:54.008Z">
 <meta property="article:author" content="Lyuu">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="运维">
@@ -222,7 +222,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -365,24 +365,40 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec /sbin/init</span><br></pre></td></tr></table></figure>
 
-<h2 id="三、RHEL系-vs-Ubuntu-重置密码核心区别"><a href="#三、RHEL系-vs-Ubuntu-重置密码核心区别" class="headerlink" title="三、RHEL系 vs Ubuntu 重置密码核心区别"></a>三、RHEL系 vs Ubuntu 重置密码核心区别</h2><p>|<br>对比项</p>
-<p> | </p>
-<p>RHEL系（CentOS&#x2F;Rocky&#x2F;RHEL）</p>
-<p> | </p>
-<p>Ubuntu&#x2F;Debian</p>
-<p> |<br>| — | — | — |<br>| <strong>救援模式关键字</strong> | <code>rd.break</code> | </p>
-<p>recovery mode &#x2F; <code>init=/bin/bash</code></p>
-<p> |<br>| <strong>SELinux处理</strong> | </p>
-<p>✅ <strong>必须</strong> <code>touch /.autorelabel</code></p>
-<p> | </p>
-<p>❌ 默认无SELinux，<strong>不需要</strong></p>
-<p> |<br>| <strong>根分区挂载</strong> | <code>/sysroot</code> | <code>/</code> |<br>| <strong>重置对象</strong> | <code>passwd root</code> | <code>passwd 普通用户</code></p>
-<p>（或root）</p>
-<p> |<br>| <strong>默认root登录</strong> | </p>
-<p>启用</p>
-<p> | </p>
-<p>禁用（用sudo）</p>
-<p> |</p>
+<h2 id="三、RHEL系-vs-Ubuntu-重置密码核心区别"><a href="#三、RHEL系-vs-Ubuntu-重置密码核心区别" class="headerlink" title="三、RHEL系 vs Ubuntu 重置密码核心区别"></a>三、RHEL系 vs Ubuntu 重置密码核心区别</h2><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>RHEL系（CentOS&#x2F;Rocky&#x2F;RHEL）</th>
+<th>Ubuntu&#x2F;Debian</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>救援模式关键字</strong></td>
+<td><code>rd.break</code></td>
+<td>recovery mode &#x2F; <code>init=/bin/bash</code></td>
+</tr>
+<tr>
+<td><strong>SELinux处理</strong></td>
+<td>✅ <strong>必须</strong> <code>touch /.autorelabel</code></td>
+<td>❌ 默认无SELinux，<strong>不需要</strong></td>
+</tr>
+<tr>
+<td><strong>根分区挂载</strong></td>
+<td><code>/sysroot</code></td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td><strong>重置对象</strong></td>
+<td><code>passwd root</code></td>
+<td><code>passwd 普通用户</code>  （或root）</td>
+</tr>
+<tr>
+<td><strong>默认root登录</strong></td>
+<td>启用</td>
+<td>禁用（用sudo）</td>
+</tr>
+</tbody></table>
 <h2 id="四、常见报错与解决方案"><a href="#四、常见报错与解决方案" class="headerlink" title="四、常见报错与解决方案"></a>四、常见报错与解决方案</h2><h2 id="报错1：Authentication-token-manipulation-error"><a href="#报错1：Authentication-token-manipulation-error" class="headerlink" title="报错1：Authentication token manipulation error"></a>报错1：Authentication token manipulation error</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd: Authentication token manipulation error</span><br></pre></td></tr></table></figure>
 
 <p><strong>原因</strong>：文件系统是<strong>只读</strong>状态，无法写入新密码</p>
@@ -432,30 +448,30 @@
 <blockquote>
 <p>🎯 <strong>记住</strong>：RHEL系无论用哪种方法，**修改密码后一定要执行 <code>touch /.autorelabel</code>**！Ubuntu用户直接跳过这步。</p>
 </blockquote>
-<h2 id="六、云服务器特别提醒"><a href="#六、云服务器特别提醒" class="headerlink" title="六、云服务器特别提醒"></a>六、云服务器特别提醒</h2><p>|<br>云平台</p>
-<p> | </p>
-<p>推荐方式</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>阿里云</p>
-<p> | </p>
-<p>控制台 → 重置实例密码</p>
-<p> | </p>
-<p>官方功能，最省事</p>
-<p> |<br>| </p>
-<p>腾讯云</p>
-<p> | </p>
-<p>控制台 → 重置密码</p>
-<p> | </p>
-<p>不需要进GRUB</p>
-<p> |<br>| </p>
-<p>AWS EC2</p>
-<p> | </p>
-<p>分离根卷 → 挂载到临时实例修改</p>
-<p> | </p>
-<p>官方推荐方法</p>
-<p> |</p>
+<h2 id="六、云服务器特别提醒"><a href="#六、云服务器特别提醒" class="headerlink" title="六、云服务器特别提醒"></a>六、云服务器特别提醒</h2><table>
+<thead>
+<tr>
+<th>云平台</th>
+<th>推荐方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>阿里云</td>
+<td>控制台 → 重置实例密码</td>
+<td>官方功能，最省事</td>
+</tr>
+<tr>
+<td>腾讯云</td>
+<td>控制台 → 重置密码</td>
+<td>不需要进GRUB</td>
+</tr>
+<tr>
+<td>AWS EC2</td>
+<td>分离根卷 → 挂载到临时实例修改</td>
+<td>官方推荐方法</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>💡 <strong>强烈建议</strong>：云服务器优先使用云厂商提供的**「重置密码」**功能，远比手动进GRUB更安全、更方便！</p>
 </blockquote>
@@ -467,28 +483,50 @@
 
 <h3 id="Ubuntu-—-init-bin-bash-方式（备用）"><a href="#Ubuntu-—-init-bin-bash-方式（备用）" class="headerlink" title="Ubuntu — init&#x3D;&#x2F;bin&#x2F;bash 方式（备用）"></a>Ubuntu — init&#x3D;&#x2F;bin&#x2F;bash 方式（备用）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># GRUB界面按 e，linux 行把 ro 改成 rw，行尾加 init=/bin/bash</span><br></pre></td></tr></table></figure>
 
-<h2 id="八、快速对比总结表"><a href="#八、快速对比总结表" class="headerlink" title="八、快速对比总结表"></a>八、快速对比总结表</h2><p>|<br>操作步骤</p>
-<p> | </p>
-<p>RHEL系（CentOS&#x2F;Rocky）</p>
-<p> | </p>
-<p>Ubuntu&#x2F;Debian</p>
-<p> |<br>| — | — | — |<br>| <strong>GRUB按键</strong> | </p>
-<p>按 <code>e</code></p>
-<p> | <code>Shift</code></p>
-<p>（BIOS）&#x2F; <code>Esc</code>（UEFI）</p>
-<p> |<br>| <strong>内核参数</strong> | </p>
-<p>行尾加 <code>rd.break</code></p>
-<p> | </p>
-<p>recovery mode 或 <code>init=/bin/bash</code></p>
-<p> |<br>| <strong>挂载命令</strong> | <code>mount -o remount,rw /sysroot</code> | <code>mount -o rw,remount /</code> |<br>| <strong>切换环境</strong> | <code>chroot /sysroot</code> | </p>
-<p>不需要（直接在 &#x2F; 下操作）</p>
-<p> |<br>| <strong>SELinux重标记</strong> | </p>
-<p>✅ <code>touch /.autorelabel</code></p>
-<p> | </p>
-<p>❌ 不需要</p>
-<p> |<br>| <strong>重置密码</strong> | <code>passwd root</code> | <code>passwd 用户名</code> |<br>| <strong>重启</strong> | <code>exit</code></p>
-<p>（自动重启）</p>
-<p> | <code>exec /sbin/init</code> |</p>
+<h2 id="八、快速对比总结表"><a href="#八、快速对比总结表" class="headerlink" title="八、快速对比总结表"></a>八、快速对比总结表</h2><table>
+<thead>
+<tr>
+<th>操作步骤</th>
+<th>RHEL系（CentOS&#x2F;Rocky）</th>
+<th>Ubuntu&#x2F;Debian</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>GRUB按键</strong></td>
+<td>按 <code>e</code></td>
+<td><code>Shift</code>  （BIOS）&#x2F; <code>Esc</code>（UEFI）</td>
+</tr>
+<tr>
+<td><strong>内核参数</strong></td>
+<td>行尾加 <code>rd.break</code></td>
+<td>recovery mode 或 <code>init=/bin/bash</code></td>
+</tr>
+<tr>
+<td><strong>挂载命令</strong></td>
+<td><code>mount -o remount,rw /sysroot</code></td>
+<td><code>mount -o rw,remount /</code></td>
+</tr>
+<tr>
+<td><strong>切换环境</strong></td>
+<td><code>chroot /sysroot</code></td>
+<td>不需要（直接在 &#x2F; 下操作）</td>
+</tr>
+<tr>
+<td><strong>SELinux重标记</strong></td>
+<td>✅ <code>touch /.autorelabel</code></td>
+<td>❌ 不需要</td>
+</tr>
+<tr>
+<td><strong>重置密码</strong></td>
+<td><code>passwd root</code></td>
+<td><code>passwd 用户名</code></td>
+</tr>
+<tr>
+<td><strong>重启</strong></td>
+<td><code>exit</code>  （自动重启）</td>
+<td><code>exec /sbin/init</code></td>
+</tr>
+</tbody></table>
 <hr>
 <blockquote>
 <p>📌</p>

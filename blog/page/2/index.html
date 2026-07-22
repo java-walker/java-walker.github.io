@@ -219,7 +219,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -253,57 +253,75 @@
 <h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看ls命令的帮助信息</span><br></pre></td></tr></table></figure>
 
 <h3 id="man-页面导航"><a href="#man-页面导航" class="headerlink" title="man 页面导航"></a>man 页面导航</h3><p>进入man页面后，使用以下快捷键浏览：</p>
-<p>|<br>按键</p>
-<p> | </p>
-<p>功能</p>
-<p> |<br>| — | — |<br>| <code>空格键</code> | </p>
-<p>向下翻一页</p>
-<p> |<br>| <code>Enter</code> | </p>
-<p>向下翻一行</p>
-<p> |<br>| <code>b</code> | </p>
-<p>向上翻一页</p>
-<p> |<br>| <code>/关键词</code> | </p>
-<p>搜索关键词</p>
-<p> |<br>| <code>q</code> | </p>
-<p>退出man页面</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>空格键</code></td>
+<td>向下翻一页</td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td>向下翻一行</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>向上翻一页</td>
+</tr>
+<tr>
+<td><code>/关键词</code></td>
+<td>搜索关键词</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>退出man页面</td>
+</tr>
+</tbody></table>
 <h3 id="man的章节划分"><a href="#man的章节划分" class="headerlink" title="man的章节划分"></a>man的章节划分</h3><p>man手册分为多个章节，可以通过章节号精确查找：</p>
-<p>|<br>章节</p>
-<p> | </p>
-<p>内容</p>
-<p> |<br>| — | — |<br>| </p>
-<p>1</p>
-<p> | </p>
-<p>用户命令（最常用）</p>
-<p> |<br>| </p>
-<p>2</p>
-<p> | </p>
-<p>系统调用</p>
-<p> |<br>| </p>
-<p>3</p>
-<p> | </p>
-<p>C库函数</p>
-<p> |<br>| </p>
-<p>4</p>
-<p> | </p>
-<p>设备文件</p>
-<p> |<br>| </p>
-<p>5</p>
-<p> | </p>
-<p>配置文件格式</p>
-<p> |<br>| </p>
-<p>6</p>
-<p> | </p>
-<p>游戏</p>
-<p> |<br>| </p>
-<p>7</p>
-<p> | </p>
-<p>杂项</p>
-<p> |<br>| </p>
-<p>8</p>
-<p> | </p>
-<p>系统管理命令</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>章节</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>用户命令（最常用）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>系统调用</td>
+</tr>
+<tr>
+<td>3</td>
+<td>C库函数</td>
+</tr>
+<tr>
+<td>4</td>
+<td>设备文件</td>
+</tr>
+<tr>
+<td>5</td>
+<td>配置文件格式</td>
+</tr>
+<tr>
+<td>6</td>
+<td>游戏</td>
+</tr>
+<tr>
+<td>7</td>
+<td>杂项</td>
+</tr>
+<tr>
+<td>8</td>
+<td>系统管理命令</td>
+</tr>
+</tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man 5 passwd</span><br></pre></td></tr></table></figure>
 
 <h2 id="二、help命令：内置命令的帮手"><a href="#二、help命令：内置命令的帮手" class="headerlink" title="二、help命令：内置命令的帮手"></a>二、help命令：内置命令的帮手</h2><h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><h2 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help 命令</span><br></pre></td></tr></table></figure>
@@ -311,50 +329,57 @@
 <p><strong>功能</strong>：获取Shell<strong>内置命令</strong>的帮助信息</p>
 <h3 id="使用示例-1"><a href="#使用示例-1" class="headerlink" title="使用示例"></a>使用示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看cd命令的帮助信息</span><br></pre></td></tr></table></figure>
 
-<h3 id="⚠️-man-vs-help-核心区别"><a href="#⚠️-man-vs-help-核心区别" class="headerlink" title="⚠️ man vs help 核心区别"></a>⚠️ man vs help 核心区别</h3><p>|<br>对比项</p>
-<p> | </p>
-<p>man</p>
-<p> | </p>
-<p>help</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>适用命令</p>
-<p> | <strong>外部命令</strong></p>
-<p>（如 ls、cp、rm）</p>
-<p> | <strong>Shell内置命令</strong></p>
-<p>（如 cd、exit）</p>
-<p> |<br>| </p>
-<p>信息详细程度</p>
-<p> | </p>
-<p>非常详细，包含参数、示例</p>
-<p> | </p>
-<p>简洁，只列出基本用法</p>
-<p> |<br>| </p>
-<p>退出方式</p>
-<p> | </p>
-<p>按 <code>q</code> 退出</p>
-<p> | </p>
-<p>直接显示在终端中</p>
-<p> |</p>
+<h3 id="⚠️-man-vs-help-核心区别"><a href="#⚠️-man-vs-help-核心区别" class="headerlink" title="⚠️ man vs help 核心区别"></a>⚠️ man vs help 核心区别</h3><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>man</th>
+<th>help</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>适用命令</td>
+<td><strong>外部命令</strong>  （如 ls、cp、rm）</td>
+<td><strong>Shell内置命令</strong>  （如 cd、exit）</td>
+</tr>
+<tr>
+<td>信息详细程度</td>
+<td>非常详细，包含参数、示例</td>
+<td>简洁，只列出基本用法</td>
+</tr>
+<tr>
+<td>退出方式</td>
+<td>按 <code>q</code> 退出</td>
+<td>直接显示在终端中</td>
+</tr>
+</tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 判断命令是内置还是外部</span><br></pre></td></tr></table></figure>
 
 <h2 id="三、认识Shell内置命令-vs-外部命令"><a href="#三、认识Shell内置命令-vs-外部命令" class="headerlink" title="三、认识Shell内置命令 vs 外部命令"></a>三、认识Shell内置命令 vs 外部命令</h2><p>理解这个区别，你就能准确判断该用 <code>man</code> 还是 <code>help</code>。</p>
-<p>|<br>类型</p>
-<p> | </p>
-<p>说明</p>
-<p> | </p>
-<p>常见命令</p>
-<p> |<br>| — | — | — |<br>| <strong>内置命令</strong></p>
-<p>（builtin）</p>
-<p> | </p>
-<p>由Shell程序自身提供，不依赖外部文件</p>
-<p> | <code>cd</code></p>
-<p>、<code>exit</code>、<code>echo</code>、<code>pwd</code>、<code>export</code></p>
-<p> |<br>| <strong>外部命令</strong> | </p>
-<p>独立可执行文件，位于 <code>/bin</code>、<code>/usr/bin</code> 等目录</p>
-<p> | <code>ls</code></p>
-<p>、<code>cp</code>、<code>rm</code>、<code>mkdir</code>、<code>find</code></p>
-<p> |</p>
-<p><strong>快速判断方法：</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+<th>常见命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>内置命令</strong>  （builtin）</td>
+<td>由Shell程序自身提供，不依赖外部文件</td>
+<td><code>cd</code>  、<code>exit</code>、<code>echo</code>、<code>pwd</code>、<code>export</code></td>
+</tr>
+<tr>
+<td><strong>外部命令</strong></td>
+<td>独立可执行文件，位于 <code>/bin</code>、<code>/usr/bin</code> 等目录</td>
+<td><code>ls</code>  、<code>cp</code>、<code>rm</code>、<code>mkdir</code>、<code>find</code></td>
+</tr>
+<tr>
+<td><strong>快速判断方法：</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 使用 type 命令判断</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -365,74 +390,112 @@
 <li><p>不确定时，先用 <code>help</code> 试试，不行再换 <code>man</code></p>
 </li>
 </ul>
-<h2 id="四、常见命令速查表"><a href="#四、常见命令速查表" class="headerlink" title="四、常见命令速查表"></a>四、常见命令速查表</h2><p>|<br>命令</p>
-<p> | </p>
-<p>类型</p>
-<p> | </p>
-<p>帮助方式</p>
-<p> | </p>
-<p>示例</p>
-<p> |<br>| — | — | — | — |<br>| <code>ls</code> | </p>
-<p>外部命令</p>
-<p> | <code>man ls</code> | </p>
-<p>查看文件列表</p>
-<p> |<br>| <code>cd</code> | </p>
-<p>内置命令</p>
-<p> | <code>help cd</code> | </p>
-<p>切换目录</p>
-<p> |<br>| <code>cp</code> | </p>
-<p>外部命令</p>
-<p> | <code>man cp</code> | </p>
-<p>复制文件</p>
-<p> |<br>| <code>rm</code> | </p>
-<p>外部命令</p>
-<p> | <code>man rm</code> | </p>
-<p>删除文件</p>
-<p> |<br>| <code>mkdir</code> | </p>
-<p>外部命令</p>
-<p> | <code>man mkdir</code> | </p>
-<p>创建目录</p>
-<p> |<br>| <code>pwd</code> | </p>
-<p>内置命令</p>
-<p> | <code>help pwd</code> | </p>
-<p>显示当前目录</p>
-<p> |<br>| <code>echo</code> | </p>
-<p>内置命令</p>
-<p> | <code>help echo</code> | </p>
-<p>输出内容</p>
-<p> |<br>| <code>exit</code> | </p>
-<p>内置命令</p>
-<p> | <code>help exit</code> | </p>
-<p>退出终端</p>
-<p> |<br>| <code>passwd</code> | </p>
-<p>外部命令</p>
-<p> | <code>man passwd</code> | </p>
-<p>修改密码</p>
-<p> |<br>| <code>find</code> | </p>
-<p>外部命令</p>
-<p> | <code>man find</code> | </p>
-<p>查找文件</p>
-<p> |</p>
+<h2 id="四、常见命令速查表"><a href="#四、常见命令速查表" class="headerlink" title="四、常见命令速查表"></a>四、常见命令速查表</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>类型</th>
+<th>帮助方式</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ls</code></td>
+<td>外部命令</td>
+<td><code>man ls</code></td>
+<td>查看文件列表</td>
+</tr>
+<tr>
+<td><code>cd</code></td>
+<td>内置命令</td>
+<td><code>help cd</code></td>
+<td>切换目录</td>
+</tr>
+<tr>
+<td><code>cp</code></td>
+<td>外部命令</td>
+<td><code>man cp</code></td>
+<td>复制文件</td>
+</tr>
+<tr>
+<td><code>rm</code></td>
+<td>外部命令</td>
+<td><code>man rm</code></td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td><code>mkdir</code></td>
+<td>外部命令</td>
+<td><code>man mkdir</code></td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td><code>pwd</code></td>
+<td>内置命令</td>
+<td><code>help pwd</code></td>
+<td>显示当前目录</td>
+</tr>
+<tr>
+<td><code>echo</code></td>
+<td>内置命令</td>
+<td><code>help echo</code></td>
+<td>输出内容</td>
+</tr>
+<tr>
+<td><code>exit</code></td>
+<td>内置命令</td>
+<td><code>help exit</code></td>
+<td>退出终端</td>
+</tr>
+<tr>
+<td><code>passwd</code></td>
+<td>外部命令</td>
+<td><code>man passwd</code></td>
+<td>修改密码</td>
+</tr>
+<tr>
+<td><code>find</code></td>
+<td>外部命令</td>
+<td><code>man find</code></td>
+<td>查找文件</td>
+</tr>
+</tbody></table>
 <h2 id="五、互联网搜索：最直接的学习方式"><a href="#五、互联网搜索：最直接的学习方式" class="headerlink" title="五、互联网搜索：最直接的学习方式"></a>五、互联网搜索：最直接的学习方式</h2><blockquote>
 <p>💡 <strong>名言</strong>：man pages 是知识库，Google 是找答案的方式。</p>
 </blockquote>
 <p>实际工作中，<strong>99%的Linux问题都可以通过搜索解决</strong>，而且速度比翻man手册快得多。</p>
-<h3 id="推荐搜索引擎"><a href="#推荐搜索引擎" class="headerlink" title="推荐搜索引擎"></a>推荐搜索引擎</h3><p>|<br>平台</p>
-<p> | </p>
-<p>适用场景</p>
-<p> |<br>| — | — |<br>| <strong>必应 &#x2F; Google</strong> | </p>
-<p>通用搜索，中英文问题都能解决</p>
-<p> |<br>| <strong>CSDN</strong> | </p>
-<p>国内技术博客，有大量实操案例和踩坑记录</p>
-<p> |<br>| <strong>知乎</strong> | </p>
-<p>深度讨论、最佳实践、经验分享</p>
-<p> |<br>| <strong>博客园</strong> | </p>
-<p>基础教程、学习笔记</p>
-<p> |<br>| <strong>Stack Overflow</strong> | </p>
-<p>英文技术问答，高质量解决方案</p>
-<p> |<br>| <strong>AI助手（豆包&#x2F;ChatGPT等）</strong> | </p>
-<p>直接提问，最直接不绕弯子的回答</p>
-<p> |</p>
+<h3 id="推荐搜索引擎"><a href="#推荐搜索引擎" class="headerlink" title="推荐搜索引擎"></a>推荐搜索引擎</h3><table>
+<thead>
+<tr>
+<th>平台</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>必应 &#x2F; Google</strong></td>
+<td>通用搜索，中英文问题都能解决</td>
+</tr>
+<tr>
+<td><strong>CSDN</strong></td>
+<td>国内技术博客，有大量实操案例和踩坑记录</td>
+</tr>
+<tr>
+<td><strong>知乎</strong></td>
+<td>深度讨论、最佳实践、经验分享</td>
+</tr>
+<tr>
+<td><strong>博客园</strong></td>
+<td>基础教程、学习笔记</td>
+</tr>
+<tr>
+<td><strong>Stack Overflow</strong></td>
+<td>英文技术问答，高质量解决方案</td>
+</tr>
+<tr>
+<td><strong>AI助手（豆包&#x2F;ChatGPT等）</strong></td>
+<td>直接提问，最直接不绕弯子的回答</td>
+</tr>
+</tbody></table>
 <h3 id="搜索技巧示例"><a href="#搜索技巧示例" class="headerlink" title="搜索技巧示例"></a>搜索技巧示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ❌ 不好的搜索方式</span><br></pre></td></tr></table></figure>
 
 <h3 id="搜索关键词公式"><a href="#搜索关键词公式" class="headerlink" title="搜索关键词公式"></a>搜索关键词公式</h3><blockquote>
@@ -444,32 +507,40 @@
 <h3 id="help-补充说明"><a href="#help-补充说明" class="headerlink" title="--help 补充说明"></a><code>--help</code> 补充说明</h3><p>很多外部命令支持 <code>--help</code> 参数，输出比man更简洁：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls --help</span><br></pre></td></tr></table></figure>
 
-<h2 id="七、快速总结"><a href="#七、快速总结" class="headerlink" title="七、快速总结"></a>七、快速总结</h2><p>|<br>命令</p>
-<p> | </p>
-<p>用途</p>
-<p> | </p>
-<p>适用对象</p>
-<p> |<br>| — | — | — |<br>| <code>man 命令</code> | </p>
-<p>查看<strong>详细</strong>帮助手册</p>
-<p> | </p>
-<p>外部命令（ls、cp、rm等）</p>
-<p> |<br>| <code>help 命令</code> | </p>
-<p>查看<strong>简洁</strong>帮助信息</p>
-<p> | <strong>内置命令</strong></p>
-<p>（cd、exit、echo等）</p>
-<p> |<br>| <code>命令 --help</code> | </p>
-<p>查看<strong>简要</strong>帮助</p>
-<p> | </p>
-<p>大部分外部命令</p>
-<p> |<br>| <code>type 命令</code> | </p>
-<p>判断命令是内置还是外部</p>
-<p> | </p>
-<p>所有命令</p>
-<p> |<br>| <code>which 命令</code> | </p>
-<p>查看外部命令的位置</p>
-<p> | </p>
-<p>外部命令</p>
-<p> |</p>
+<h2 id="七、快速总结"><a href="#七、快速总结" class="headerlink" title="七、快速总结"></a>七、快速总结</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+<th>适用对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>man 命令</code></td>
+<td>查看<strong>详细</strong>帮助手册</td>
+<td>外部命令（ls、cp、rm等）</td>
+</tr>
+<tr>
+<td><code>help 命令</code></td>
+<td>查看<strong>简洁</strong>帮助信息</td>
+<td><strong>内置命令</strong>  （cd、exit、echo等）</td>
+</tr>
+<tr>
+<td><code>命令 --help</code></td>
+<td>查看<strong>简要</strong>帮助</td>
+<td>大部分外部命令</td>
+</tr>
+<tr>
+<td><code>type 命令</code></td>
+<td>判断命令是内置还是外部</td>
+<td>所有命令</td>
+</tr>
+<tr>
+<td><code>which 命令</code></td>
+<td>查看外部命令的位置</td>
+<td>外部命令</td>
+</tr>
+</tbody></table>
 <h3 id="🎯-一句话记忆"><a href="#🎯-一句话记忆" class="headerlink" title="🎯 一句话记忆"></a>🎯 一句话记忆</h3><ul>
 <li><p>查 <strong>用法</strong> → <code>man</code> 或 <code>--help</code></p>
 </li>
@@ -543,7 +614,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -571,20 +642,45 @@
 <h1 id="Linux系统管理核心笔记：关机重启、用户登录与运行级别"><a href="#Linux系统管理核心笔记：关机重启、用户登录与运行级别" class="headerlink" title="Linux系统管理核心笔记：关机重启、用户登录与运行级别"></a>Linux系统管理核心笔记：关机重启、用户登录与运行级别</h1><blockquote>
 <p>一篇掌握Linux系统的基本管理操作</p>
 </blockquote>
-<h2 id="一、关机与重启命令"><a href="#一、关机与重启命令" class="headerlink" title="一、关机与重启命令"></a>一、关机与重启命令</h2><h3 id="1-1-常用命令速查表"><a href="#1-1-常用命令速查表" class="headerlink" title="1.1 常用命令速查表"></a>1.1 常用命令速查表</h3><p>|<br>命令</p>
-<p> | </p>
-<p>功能</p>
-<p> | </p>
-<p>示例</p>
-<p> |<br>| — | — | — |<br>| <code>shutdown -h now</code> | <strong>立即关机</strong> | <code>shutdown -h now</code> |<br>| <code>shutdown -h 1</code> | <strong>1分钟后关机</strong></p>
-<p>（可带提示信息）</p>
-<p> | <code>shutdown -h 1 &quot;系统将在1分钟后关机&quot;</code> |<br>| <code>shutdown -r now</code> | <strong>立即重启</strong> | <code>shutdown -r now</code> |<br>| <code>halt</code> | </p>
-<p>关机（作用和<code>shutdown -h</code>类似）</p>
-<p> | <code>halt</code> |<br>| <code>reboot</code> | </p>
-<p>重启（作用和<code>shutdown -r</code>类似）</p>
-<p> | <code>reboot</code> |<br>| <code>sync</code> | </p>
-<p>将内存数据<strong>同步到磁盘</strong></p>
-<p> | <code>sync</code> |</p>
+<h2 id="一、关机与重启命令"><a href="#一、关机与重启命令" class="headerlink" title="一、关机与重启命令"></a>一、关机与重启命令</h2><h3 id="1-1-常用命令速查表"><a href="#1-1-常用命令速查表" class="headerlink" title="1.1 常用命令速查表"></a>1.1 常用命令速查表</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>shutdown -h now</code></td>
+<td><strong>立即关机</strong></td>
+<td><code>shutdown -h now</code></td>
+</tr>
+<tr>
+<td><code>shutdown -h 1</code></td>
+<td><strong>1分钟后关机</strong>  （可带提示信息）</td>
+<td><code>shutdown -h 1 &quot;系统将在1分钟后关机&quot;</code></td>
+</tr>
+<tr>
+<td><code>shutdown -r now</code></td>
+<td><strong>立即重启</strong></td>
+<td><code>shutdown -r now</code></td>
+</tr>
+<tr>
+<td><code>halt</code></td>
+<td>关机（作用和<code>shutdown -h</code>类似）</td>
+<td><code>halt</code></td>
+</tr>
+<tr>
+<td><code>reboot</code></td>
+<td>重启（作用和<code>shutdown -r</code>类似）</td>
+<td><code>reboot</code></td>
+</tr>
+<tr>
+<td><code>sync</code></td>
+<td>将内存数据<strong>同步到磁盘</strong></td>
+<td><code>sync</code></td>
+</tr>
+</tbody></table>
 <h3 id="1-2-⚠️-重要提醒：先sync再关机！"><a href="#1-2-⚠️-重要提醒：先sync再关机！" class="headerlink" title="1.2 ⚠️ 重要提醒：先sync再关机！"></a>1.2 ⚠️ 重要提醒：先sync再关机！</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 标准安全流程(老教材、旧方法)</span><br></pre></td></tr></table></figure>
 
 <p>为什么需要sync？</p>
@@ -592,16 +688,26 @@
 <blockquote>
 <p>现在的 <code>shutdown</code>、<code>reboot</code>、<code>halt</code> 命令<strong>内部已经自动执行了sync</strong>，所以直接使用这些命令通常也是安全的。但养成手动sync的好习惯，好吧，我没养成[滑稽.jpg]（有必要吗，不知道，就像Windows关机前先把应用给关掉）</p>
 </blockquote>
-<h2 id="二、用户登录与注销"><a href="#二、用户登录与注销" class="headerlink" title="二、用户登录与注销"></a>二、用户登录与注销</h2><h3 id="2-1-基本使用规范"><a href="#2-1-基本使用规范" class="headerlink" title="2.1 基本使用规范"></a>2.1 基本使用规范</h3><p>|<br>规范</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <strong>避免直接使用root</strong> | </p>
-<p>root权限太大，一个误操作可能导致系统崩溃</p>
-<p> |<br>| <strong>推荐方式</strong> | </p>
-<p>用普通用户登录 → <code>su - 用户名</code> 切换到root</p>
-<p> |<br>| <strong>注销用户</strong> | </p>
-<p>在命令行输入 <code>logout</code> 退出当前用户</p>
-<p> |</p>
+<h2 id="二、用户登录与注销"><a href="#二、用户登录与注销" class="headerlink" title="二、用户登录与注销"></a>二、用户登录与注销</h2><h3 id="2-1-基本使用规范"><a href="#2-1-基本使用规范" class="headerlink" title="2.1 基本使用规范"></a>2.1 基本使用规范</h3><table>
+<thead>
+<tr>
+<th>规范</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>避免直接使用root</strong></td>
+<td>root权限太大，一个误操作可能导致系统崩溃</td>
+</tr>
+<tr>
+<td><strong>推荐方式</strong></td>
+<td>用普通用户登录 → <code>su - 用户名</code> 切换到root</td>
+</tr>
+<tr>
+<td><strong>注销用户</strong></td>
+<td>在命令行输入 <code>logout</code> 退出当前用户</td>
+</tr>
+</tbody></table>
 <h3 id="2-2-操作流程示例"><a href="#2-2-操作流程示例" class="headerlink" title="2.2 操作流程示例"></a>2.2 操作流程示例</h3><p>bash</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 用普通用户 awl登录系统</span><br></pre></td></tr></table></figure>
 
@@ -612,56 +718,58 @@
 <li><p>在<strong>命令行运行级别（3）</strong> 下正常使用</p>
 </li>
 </ul>
-<h2 id="三、运行级别（Runlevel）"><a href="#三、运行级别（Runlevel）" class="headerlink" title="三、运行级别（Runlevel）"></a>三、运行级别（Runlevel）</h2><h3 id="3-1-传统SysV运行级别-vs-Systemd-Target"><a href="#3-1-传统SysV运行级别-vs-Systemd-Target" class="headerlink" title="3.1 传统SysV运行级别 vs Systemd Target"></a>3.1 传统SysV运行级别 vs Systemd Target</h3><p>|<br>级别</p>
-<p> | </p>
-<p>SysV Runlevel</p>
-<p> | </p>
-<p>systemd Target</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — | — | — |<br>| </p>
-<p>0</p>
-<p> | </p>
-<p>关机</p>
-<p> | <code>poweroff.target</code> | </p>
-<p>系统关机</p>
-<p> |<br>| </p>
-<p>1</p>
-<p> | </p>
-<p>单用户模式</p>
-<p> | <code>rescue.target</code> | <strong>救援模式</strong></p>
-<p>，用于找回root密码等维护操作</p>
-<p> |<br>| </p>
-<p>2</p>
-<p> | </p>
-<p>多用户无网络</p>
-<p> | </p>
-<p>—</p>
-<p> | </p>
-<p>传统定义，较少使用</p>
-<p> |<br>| </p>
-<p>3</p>
-<p> | <strong>多用户有网络</strong> | <code>multi-user.target</code> | <strong>纯命令行服务器模式</strong></p>
-<p>（最常用）</p>
-<p> |<br>| </p>
-<p>4</p>
-<p> | </p>
-<p>保留未使用</p>
-<p> | </p>
-<p>—</p>
-<p> | </p>
-<p>系统保留</p>
-<p> |<br>| </p>
-<p>5</p>
-<p> | <strong>图形界面</strong> | <code>graphical.target</code> | <strong>桌面图形模式</strong></p>
-<p>（个人电脑常用）</p>
-<p> |<br>| </p>
-<p>6</p>
-<p> | </p>
-<p>重启</p>
-<p> | <code>reboot.target</code> | </p>
-<p>系统重启</p>
-<p> |</p>
+<h2 id="三、运行级别（Runlevel）"><a href="#三、运行级别（Runlevel）" class="headerlink" title="三、运行级别（Runlevel）"></a>三、运行级别（Runlevel）</h2><h3 id="3-1-传统SysV运行级别-vs-Systemd-Target"><a href="#3-1-传统SysV运行级别-vs-Systemd-Target" class="headerlink" title="3.1 传统SysV运行级别 vs Systemd Target"></a>3.1 传统SysV运行级别 vs Systemd Target</h3><table>
+<thead>
+<tr>
+<th>级别</th>
+<th>SysV Runlevel</th>
+<th>systemd Target</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>关机</td>
+<td><code>poweroff.target</code></td>
+<td>系统关机</td>
+</tr>
+<tr>
+<td>1</td>
+<td>单用户模式</td>
+<td><code>rescue.target</code></td>
+<td><strong>救援模式</strong>  ，用于找回root密码等维护操作</td>
+</tr>
+<tr>
+<td>2</td>
+<td>多用户无网络</td>
+<td>—</td>
+<td>传统定义，较少使用</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>多用户有网络</strong></td>
+<td><code>multi-user.target</code></td>
+<td><strong>纯命令行服务器模式</strong>  （最常用）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>保留未使用</td>
+<td>—</td>
+<td>系统保留</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>图形界面</strong></td>
+<td><code>graphical.target</code></td>
+<td><strong>桌面图形模式</strong>  （个人电脑常用）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>重启</td>
+<td><code>reboot.target</code></td>
+<td>系统重启</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>💡 <strong>最常用的是级别3和5</strong>：服务器用3（命令行），个人桌面用5（图形界面）</p>
 </blockquote>
@@ -672,18 +780,30 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 方法一：临时切换（立即生效，重启后恢复）</span><br></pre></td></tr></table></figure>
 
 <p>3.4 常见应用场景</p>
-<p>|<br>场景</p>
-<p> | </p>
-<p>操作</p>
-<p> |<br>| — | — |<br>| <strong>忘记root密码</strong> | </p>
-<p>进入运行级别1（单用户模式）重置密码</p>
-<p> |<br>| <strong>服务器部署</strong> | </p>
-<p>设置默认级别3，节省资源</p>
-<p> |<br>| <strong>个人桌面使用</strong> | </p>
-<p>设置默认级别5，使用图形界面</p>
-<p> |<br>| <strong>临时维护</strong> | <code>init 3</code></p>
-<p> 切到命令行进行维护，完成后 <code>init 5</code> 切回图形</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>忘记root密码</strong></td>
+<td>进入运行级别1（单用户模式）重置密码</td>
+</tr>
+<tr>
+<td><strong>服务器部署</strong></td>
+<td>设置默认级别3，节省资源</td>
+</tr>
+<tr>
+<td><strong>个人桌面使用</strong></td>
+<td>设置默认级别5，使用图形界面</td>
+</tr>
+<tr>
+<td><strong>临时维护</strong></td>
+<td><code>init 3</code>   切到命令行进行维护，完成后 <code>init 5</code> 切回图形</td>
+</tr>
+</tbody></table>
 <h2 id="四、快速参考卡片"><a href="#四、快速参考卡片" class="headerlink" title="四、快速参考卡片"></a>四、快速参考卡片</h2><h3 id="关机重启"><a href="#关机重启" class="headerlink" title="关机重启"></a>关机重启</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h now    </span><br></pre></td></tr></table></figure>
 
 <h3 id="用户切换"><a href="#用户切换" class="headerlink" title="用户切换"></a>用户切换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - root          </span><br></pre></td></tr></table></figure>
@@ -751,7 +871,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -789,107 +909,178 @@
 </ul>
 <p>这时候，命令行文本编辑器就是你的<strong>救命稻草</strong>。下面介绍最主流的几款。</p>
 <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h2 id="二、Nano-命令笔记"><a href="#二、Nano-命令笔记" class="headerlink" title="二、Nano 命令笔记"></a>二、Nano 命令笔记</h2><p>Nano 是一个轻量级、对新手友好的终端编辑器，所有快捷键都在屏幕底部显示（<code>^</code> 表示 <code>Ctrl</code>）。</p>
-<h3 id="2-1-启动"><a href="#2-1-启动" class="headerlink" title="2.1 启动"></a>2.1 启动</h3><p>|<br>命令</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <code>nano 文件名</code> | </p>
-<p>打开或新建文件</p>
-<p> |<br>| <code>nano -l 文件名</code> | </p>
-<p>显示行号</p>
-<p> |<br>| <code>nano -m 文件名</code> | </p>
-<p>启用鼠标支持</p>
-<p> |<br>| <code>nano -B 文件名</code> | </p>
-<p>保存前自动备份原文件</p>
-<p> |<br>| <code>nano -c 文件名</code> | </p>
-<p>显示光标位置信息</p>
-<p> |</p>
-<h3 id="2-2-核心快捷键（Ctrl-系列，-Ctrl）"><a href="#2-2-核心快捷键（Ctrl-系列，-Ctrl）" class="headerlink" title="2.2 核心快捷键（Ctrl 系列，^ &#x3D; Ctrl）"></a>2.2 核心快捷键（Ctrl 系列，<code>^</code> &#x3D; <code>Ctrl</code>）</h3><p>|<br>快捷键</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <code>Ctrl + O</code> | </p>
-<p>保存文件（Write Out）</p>
-<p> |<br>| <code>Ctrl + X</code> | </p>
-<p>退出（Exit）</p>
-<p> |<br>| <code>Ctrl + G</code> | </p>
-<p>查看帮助（Get Help）</p>
-<p> |<br>| <code>Ctrl + K</code> | </p>
-<p>剪切整行（Cut，相当于 vim 的 dd）</p>
-<p> |<br>| <code>Ctrl + U</code> | </p>
-<p>粘贴（Uncut，粘贴刚才剪切的行）</p>
-<p> |<br>| <code>Ctrl + W</code> | </p>
-<p>搜索（Where Is）</p>
-<p> |<br>| <code>Ctrl + \</code> | </p>
-<p>搜索并替换</p>
-<p> |<br>| <code>Ctrl + C</code> | </p>
-<p>显示当前光标位置（行号、列号）</p>
-<p> |<br>| <code>Ctrl + J</code> | </p>
-<p>段落对齐（Justify）</p>
-<p> |<br>| <code>Ctrl + T</code> | </p>
-<p>调用拼写检查</p>
-<p> |<br>| <code>Ctrl + R</code> | </p>
-<p>读取另一个文件插入当前位置</p>
-<p> |<br>| <code>Ctrl + _</code> | </p>
-<p>跳转到指定行号</p>
-<p> |</p>
-<h3 id="2-3-Alt-系列快捷键（M-Alt）"><a href="#2-3-Alt-系列快捷键（M-Alt）" class="headerlink" title="2.3 Alt 系列快捷键（M- &#x3D; Alt）"></a>2.3 Alt 系列快捷键（<code>M-</code> &#x3D; <code>Alt</code>）</h3><p>|<br>快捷键</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <code>Alt + 6</code> | </p>
-<p>复制当前行（不剪切）</p>
-<p> |<br>| <code>Alt + A</code> | </p>
-<p>开始标记选择（类似 vim 可视模式）</p>
-<p> |<br>| <code>Alt + #</code> | </p>
-<p>注释&#x2F;取消注释当前行</p>
-<p> |<br>| <code>Alt + U</code> | </p>
-<p>撤销（Undo）</p>
-<p> |<br>| <code>Alt + E</code> | </p>
-<p>重做（Redo）</p>
-<p> |<br>| <code>Alt + G</code> | </p>
-<p>跳转到指定行</p>
-<p> |</p>
+<h3 id="2-1-启动"><a href="#2-1-启动" class="headerlink" title="2.1 启动"></a>2.1 启动</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>nano 文件名</code></td>
+<td>打开或新建文件</td>
+</tr>
+<tr>
+<td><code>nano -l 文件名</code></td>
+<td>显示行号</td>
+</tr>
+<tr>
+<td><code>nano -m 文件名</code></td>
+<td>启用鼠标支持</td>
+</tr>
+<tr>
+<td><code>nano -B 文件名</code></td>
+<td>保存前自动备份原文件</td>
+</tr>
+<tr>
+<td><code>nano -c 文件名</code></td>
+<td>显示光标位置信息</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-核心快捷键（Ctrl-系列，-Ctrl）"><a href="#2-2-核心快捷键（Ctrl-系列，-Ctrl）" class="headerlink" title="2.2 核心快捷键（Ctrl 系列，^ &#x3D; Ctrl）"></a>2.2 核心快捷键（Ctrl 系列，<code>^</code> &#x3D; <code>Ctrl</code>）</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Ctrl + O</code></td>
+<td>保存文件（Write Out）</td>
+</tr>
+<tr>
+<td><code>Ctrl + X</code></td>
+<td>退出（Exit）</td>
+</tr>
+<tr>
+<td><code>Ctrl + G</code></td>
+<td>查看帮助（Get Help）</td>
+</tr>
+<tr>
+<td><code>Ctrl + K</code></td>
+<td>剪切整行（Cut，相当于 vim 的 dd）</td>
+</tr>
+<tr>
+<td><code>Ctrl + U</code></td>
+<td>粘贴（Uncut，粘贴刚才剪切的行）</td>
+</tr>
+<tr>
+<td><code>Ctrl + W</code></td>
+<td>搜索（Where Is）</td>
+</tr>
+<tr>
+<td><code>Ctrl + \</code></td>
+<td>搜索并替换</td>
+</tr>
+<tr>
+<td><code>Ctrl + C</code></td>
+<td>显示当前光标位置（行号、列号）</td>
+</tr>
+<tr>
+<td><code>Ctrl + J</code></td>
+<td>段落对齐（Justify）</td>
+</tr>
+<tr>
+<td><code>Ctrl + T</code></td>
+<td>调用拼写检查</td>
+</tr>
+<tr>
+<td><code>Ctrl + R</code></td>
+<td>读取另一个文件插入当前位置</td>
+</tr>
+<tr>
+<td><code>Ctrl + _</code></td>
+<td>跳转到指定行号</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-Alt-系列快捷键（M-Alt）"><a href="#2-3-Alt-系列快捷键（M-Alt）" class="headerlink" title="2.3 Alt 系列快捷键（M- &#x3D; Alt）"></a>2.3 Alt 系列快捷键（<code>M-</code> &#x3D; <code>Alt</code>）</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Alt + 6</code></td>
+<td>复制当前行（不剪切）</td>
+</tr>
+<tr>
+<td><code>Alt + A</code></td>
+<td>开始标记选择（类似 vim 可视模式）</td>
+</tr>
+<tr>
+<td><code>Alt + #</code></td>
+<td>注释&#x2F;取消注释当前行</td>
+</tr>
+<tr>
+<td><code>Alt + U</code></td>
+<td>撤销（Undo）</td>
+</tr>
+<tr>
+<td><code>Alt + E</code></td>
+<td>重做（Redo）</td>
+</tr>
+<tr>
+<td><code>Alt + G</code></td>
+<td>跳转到指定行</td>
+</tr>
+</tbody></table>
 <h3 id="2-4-Nano-操作流程速记"><a href="#2-4-Nano-操作流程速记" class="headerlink" title="2.4 Nano 操作流程速记"></a>2.4 Nano 操作流程速记</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打开文件 → nano test.txt编辑内容 → 直接输入即可（无模式概念）保存     → Ctrl + O → 回车确认文件名退出     → Ctrl + X</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="三、其他高使用率编辑器"><a href="#三、其他高使用率编辑器" class="headerlink" title="三、其他高使用率编辑器"></a>三、其他高使用率编辑器</h2><h3 id="3-1-终端编辑器对比"><a href="#3-1-终端编辑器对比" class="headerlink" title="3.1 终端编辑器对比"></a>3.1 终端编辑器对比</h3><p>|<br>编辑器</p>
-<p> | </p>
-<p>特点</p>
-<p> | </p>
-<p>适用场景</p>
-<p> |<br>| — | — | — |<br>| <strong>vim &#x2F; vi</strong> | </p>
-<p>模式编辑，功能强大，几乎所有 Linux 预装</p>
-<p> | </p>
-<p>服务器运维、远程编辑、高效文本处理</p>
-<p> |<br>| <strong>nano</strong> | </p>
-<p>简单直观，无模式，底部提示快捷键</p>
-<p> | </p>
-<p>快速修改配置文件、新手入门</p>
-<p> |<br>| <strong>emacs</strong> | </p>
-<p>功能极其丰富（”伪装成编辑器的操作系统”），可收发邮件、浏览网页</p>
-<p> | </p>
-<p>重度 Lisp 用户、一站式工作流</p>
-<p> |<br>| <strong>micro</strong> | </p>
-<p>现代终端编辑器，支持鼠标、多光标、语法高亮，开箱即用</p>
-<p> | </p>
-<p>想要现代体验但不想学 vim 的用户</p>
-<p> |</p>
-<h3 id="3-2-图形界面编辑器"><a href="#3-2-图形界面编辑器" class="headerlink" title="3.2 图形界面编辑器"></a>3.2 图形界面编辑器</h3><p>|<br>编辑器</p>
-<p> | </p>
-<p>特点</p>
-<p> | </p>
-<p>适用场景</p>
-<p> |<br>| — | — | — |<br>| <strong>gedit</strong> | </p>
-<p>GNOME 桌面默认编辑器，轻量简洁</p>
-<p> | </p>
-<p>Ubuntu 桌面日常编辑</p>
-<p> |<br>| <strong>VS Code</strong> | </p>
-<p>微软出品，插件生态丰富，远程开发能力强</p>
-<p> | </p>
-<p>前后端开发、远程 SSH 开发</p>
-<p> |<br>| <strong>Sublime Text</strong> | </p>
-<p>极速启动，界面优雅，多光标编辑</p>
-<p> | </p>
-<p>快速查看和编辑大文件</p>
-<p> |</p>
+<h2 id="三、其他高使用率编辑器"><a href="#三、其他高使用率编辑器" class="headerlink" title="三、其他高使用率编辑器"></a>三、其他高使用率编辑器</h2><h3 id="3-1-终端编辑器对比"><a href="#3-1-终端编辑器对比" class="headerlink" title="3.1 终端编辑器对比"></a>3.1 终端编辑器对比</h3><table>
+<thead>
+<tr>
+<th>编辑器</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>vim &#x2F; vi</strong></td>
+<td>模式编辑，功能强大，几乎所有 Linux 预装</td>
+<td>服务器运维、远程编辑、高效文本处理</td>
+</tr>
+<tr>
+<td><strong>nano</strong></td>
+<td>简单直观，无模式，底部提示快捷键</td>
+<td>快速修改配置文件、新手入门</td>
+</tr>
+<tr>
+<td><strong>emacs</strong></td>
+<td>功能极其丰富（”伪装成编辑器的操作系统”），可收发邮件、浏览网页</td>
+<td>重度 Lisp 用户、一站式工作流</td>
+</tr>
+<tr>
+<td><strong>micro</strong></td>
+<td>现代终端编辑器，支持鼠标、多光标、语法高亮，开箱即用</td>
+<td>想要现代体验但不想学 vim 的用户</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-图形界面编辑器"><a href="#3-2-图形界面编辑器" class="headerlink" title="3.2 图形界面编辑器"></a>3.2 图形界面编辑器</h3><table>
+<thead>
+<tr>
+<th>编辑器</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>gedit</strong></td>
+<td>GNOME 桌面默认编辑器，轻量简洁</td>
+<td>Ubuntu 桌面日常编辑</td>
+</tr>
+<tr>
+<td><strong>VS Code</strong></td>
+<td>微软出品，插件生态丰富，远程开发能力强</td>
+<td>前后端开发、远程 SSH 开发</td>
+</tr>
+<tr>
+<td><strong>Sublime Text</strong></td>
+<td>极速启动，界面优雅，多光标编辑</td>
+<td>快速查看和编辑大文件</td>
+</tr>
+</tbody></table>
 <h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="一、Vim-命令笔记"><a href="#一、Vim-命令笔记" class="headerlink" title="一、Vim 命令笔记"></a>一、Vim 命令笔记</h2><h3 id="1-1-Vim-的三种核心模式"><a href="#1-1-Vim-的三种核心模式" class="headerlink" title="1.1 Vim 的三种核心模式"></a>1.1 Vim 的三种核心模式</h3><p>Vim 是 Vi Improved 的缩写，是 Linux 下最强大的文本编辑器之一。它的核心设计理念是<strong>模式化编辑</strong>。</p>
 <p>Vim 核心分为<strong>普通模式</strong>、<strong>插入模式</strong>、<strong>命令行模式</strong>，三者可以互相切换，是使用 Vim 的基础。</p>
 <h3 id="1-普通模式（Normal-模式）"><a href="#1-普通模式（Normal-模式）" class="headerlink" title="1. 普通模式（Normal 模式）"></a>1. 普通模式（Normal 模式）</h3><p><strong>进入方式</strong></p>
@@ -902,45 +1093,72 @@
 <p><strong>作用</strong></p>
 <p>不能输入文字，专门用来光标移动、复制、删除、粘贴、撤销、跳转等文本操作。</p>
 <p><strong>常用操作举例</strong></p>
-<p>|<br>按键</p>
-<p> | </p>
-<p>功能</p>
-<p> |<br>| — | — |<br>| <code>h</code></p>
-<p> &#x2F; <code>j</code> &#x2F; <code>k</code> &#x2F; <code>l</code></p>
-<p> | </p>
-<p>左 &#x2F; 下 &#x2F; 上 &#x2F; 右移动光标</p>
-<p> |<br>| <code>dd</code> | </p>
-<p>删除一整行</p>
-<p> |<br>| <code>yy</code> | </p>
-<p>复制一整行</p>
-<p> |<br>| <code>p</code> | </p>
-<p>粘贴</p>
-<p> |<br>| <code>u</code> | </p>
-<p>撤销修改</p>
-<p> |<br>| </p>
-<p> &#x2F;</p>
-<p> | </p>
-<p>查询，使用n查询下一个</p>
-<p> |<br>| </p>
-<p>gg&#x2F; G</p>
-<p> | </p>
-<p>gg 首行，3gg 第三行，大写G尾行</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>h</code>   &#x2F; <code>j</code> &#x2F; <code>k</code> &#x2F; <code>l</code></td>
+<td>左 &#x2F; 下 &#x2F; 上 &#x2F; 右移动光标</td>
+</tr>
+<tr>
+<td><code>dd</code></td>
+<td>删除一整行</td>
+</tr>
+<tr>
+<td><code>yy</code></td>
+<td>复制一整行</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>粘贴</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>撤销修改</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>查询，使用n查询下一个</td>
+</tr>
+<tr>
+<td>gg&#x2F; G</td>
+<td>gg 首行，3gg 第三行，大写G尾行</td>
+</tr>
+</tbody></table>
 <h3 id="备注：删除5行：5yy"><a href="#备注：删除5行：5yy" class="headerlink" title="备注：删除5行：5yy"></a>备注：删除5行：5yy</h3><hr>
 <h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3><h3 id="2-插入模式（Insert-模式、编辑模式）"><a href="#2-插入模式（Insert-模式、编辑模式）" class="headerlink" title="2. 插入模式（Insert 模式、编辑模式）"></a>2. 插入模式（Insert 模式、编辑模式）</h3><p><strong>进入方式</strong>（普通模式下按以下按键）</p>
-<p>|<br>按键</p>
-<p> | </p>
-<p>功能</p>
-<p> |<br>| — | — |<br>| <code>i</code> | </p>
-<p>光标前面插入文字（最常用）</p>
-<p> |<br>| <code>a</code> | </p>
-<p>光标后面插入文字</p>
-<p> |<br>| <code>o</code> | </p>
-<p>光标下方新开一行插入</p>
-<p> |<br>| <code>O</code> | </p>
-<p>光标上方新开一行插入</p>
-<p> |</p>
-<p><strong>作用</strong></p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>i</code></td>
+<td>光标前面插入文字（最常用）</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>光标后面插入文字</td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>光标下方新开一行插入</td>
+</tr>
+<tr>
+<td><code>O</code></td>
+<td>光标上方新开一行插入</td>
+</tr>
+<tr>
+<td><strong>作用</strong></td>
+<td></td>
+</tr>
+</tbody></table>
 <p>唯一可以输入、编辑文字的模式，屏幕底部会显示 <code>-- INSERT --</code> 标识。</p>
 <p><strong>退出</strong></p>
 <p>按下 <code>Esc</code> 回到普通模式。</p>
@@ -950,22 +1168,38 @@
 <p><strong>作用</strong></p>
 <p>执行保存、退出、查找替换、设置参数、批量操作、调用工具等底层命令。</p>
 <p><strong>高频常用命令</strong></p>
-<p>|<br>命令</p>
-<p> | </p>
-<p>功能</p>
-<p> |<br>| — | — |<br>| <code>:w</code> | </p>
-<p>保存文件</p>
-<p> |<br>| <code>:q</code> | </p>
-<p>退出文件</p>
-<p> |<br>| <code>:wq</code> | </p>
-<p>保存并退出</p>
-<p> |<br>| <code>:q!</code> | </p>
-<p>强制退出，放弃修改</p>
-<p> |<br>| <code>:set nu</code> | </p>
-<p>显示行号  &#x2F; nonu取消显示</p>
-<p> |<br>| <code>:%s/旧文本/新文本/g</code> | </p>
-<p>全文替换</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>:w</code></td>
+<td>保存文件</td>
+</tr>
+<tr>
+<td><code>:q</code></td>
+<td>退出文件</td>
+</tr>
+<tr>
+<td><code>:wq</code></td>
+<td>保存并退出</td>
+</tr>
+<tr>
+<td><code>:q!</code></td>
+<td>强制退出，放弃修改</td>
+</tr>
+<tr>
+<td><code>:set nu</code></td>
+<td>显示行号  &#x2F; nonu取消显示</td>
+</tr>
+<tr>
+<td><code>:%s/旧文本/新文本/g</code></td>
+<td>全文替换</td>
+</tr>
+</tbody></table>
 <hr>
 <h3 id="模式切换简易流程图"><a href="#模式切换简易流程图" class="headerlink" title="模式切换简易流程图"></a>模式切换简易流程图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">普通模式  │  ├── i / a / o ──→ 插入模式 ──→ Esc ──→ 普通模式  │  └── : ──→ 命令行模式 ──→ 回车执行 / Esc 取消 ──→ 普通模式</span><br></pre></td></tr></table></figure>
 
@@ -977,240 +1211,305 @@
 <p>图片来自：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhlh/_xt/article/details/52458672">https://blog.csdn.net/zhlh\_xt/article/details/52458672</a></p>
 <hr>
-<h2 id="二-、Vim-命令详细笔记（可以跳过）"><a href="#二-、Vim-命令详细笔记（可以跳过）" class="headerlink" title="二++、Vim 命令详细笔记（可以跳过）"></a>二++、Vim 命令详细笔记（可以跳过）</h2><h3 id="1-1-启动与打开文件"><a href="#1-1-启动与打开文件" class="headerlink" title="1.1 启动与打开文件"></a>1.1 启动与打开文件</h3><p>|<br>命令</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <code>vim 文件名</code> | </p>
-<p>打开或新建文件</p>
-<p> |<br>| <code>vim +n 文件名</code> | </p>
-<p>打开文件并定位到第 n 行</p>
-<p> |<br>| <code>vim + 文件名</code> | </p>
-<p>打开文件并定位到最后一行</p>
-<p> |<br>| <code>vim +/关键词 文件名</code> | </p>
-<p>打开文件并定位到第一个匹配关键词处</p>
-<p> |<br>| <code>vim -R 文件名</code> | </p>
-<p>只读模式打开</p>
-<p> |<br>| <code>view 文件名</code> | </p>
-<p>只读模式打开（等同于 <code>vim -R</code>）</p>
-<p> |</p>
-<h3 id="1-2-正常模式（Normal-Mode）—-移动"><a href="#1-2-正常模式（Normal-Mode）—-移动" class="headerlink" title="1.2 正常模式（Normal Mode）— 移动"></a>1.2 正常模式（Normal Mode）— 移动</h3><p>|<br>命令</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <code>h</code> | </p>
-<p>左移一个字符</p>
-<p> |<br>| <code>j</code> | </p>
-<p>下移一行</p>
-<p> |<br>| <code>k</code> | </p>
-<p>上移一行</p>
-<p> |<br>| <code>l</code> | </p>
-<p>右移一个字符</p>
-<p> |<br>| <code>w</code> | </p>
-<p>跳到下一个单词开头</p>
-<p> |<br>| <code>b</code> | </p>
-<p>跳到上一个单词开头</p>
-<p> |<br>| <code>e</code> | </p>
-<p>跳到当前&#x2F;下一个单词末尾</p>
-<p> |<br>| <code>0</code> | </p>
-<p>跳到行首</p>
-<p> |<br>| <code>^</code> | </p>
-<p>跳到行首第一个非空字符</p>
-<p> |<br>| <code>$</code> | </p>
-<p>跳到行尾</p>
-<p> |<br>| <code>gg</code> | </p>
-<p>跳到文件第一行</p>
-<p> |<br>| <code>G</code> | </p>
-<p>跳到文件最后一行</p>
-<p> |<br>| <code>nG</code></p>
-<p> 或 <code>:n</code></p>
-<p> | </p>
-<p>跳到第 n 行</p>
-<p> |<br>| <code>Ctrl + f</code> | </p>
-<p>向下翻一页（Page Down）</p>
-<p> |<br>| <code>Ctrl + b</code> | </p>
-<p>向上翻一页（Page Up）</p>
-<p> |<br>| <code>Ctrl + d</code> | </p>
-<p>向下翻半页</p>
-<p> |<br>| <code>Ctrl + u</code> | </p>
-<p>向上翻半页</p>
-<p> |<br>| <code>&#123;</code> | </p>
-<p>跳到上一个段落</p>
-<p> |<br>| <code>&#125;</code> | </p>
-<p>跳到下一个段落</p>
-<p> |</p>
-<h3 id="1-3-正常模式-—-编辑操作"><a href="#1-3-正常模式-—-编辑操作" class="headerlink" title="1.3 正常模式 — 编辑操作"></a>1.3 正常模式 — 编辑操作</h3><p>|<br>命令</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <code>x</code> | </p>
-<p>删除光标处字符（向后删）</p>
-<p> |<br>| <code>X</code> | </p>
-<p>删除光标前字符（向前删）</p>
-<p> |<br>| <code>dd</code> | </p>
-<p>删除（剪切）整行</p>
-<p> |<br>| <code>ndd</code> | </p>
-<p>删除当前行起的 n 行（如 <code>3dd</code>）</p>
-<p> |<br>| <code>dw</code> | </p>
-<p>删除一个单词</p>
-<p> |<br>| <code>d$</code></p>
-<p> 或 <code>D</code></p>
-<p> | </p>
-<p>删除从光标到行尾</p>
-<p> |<br>| <code>d0</code> | </p>
-<p>删除从行首到光标</p>
-<p> |<br>| <code>dG</code> | </p>
-<p>删除从当前行到文件末尾</p>
-<p> |<br>| <code>dgg</code> | </p>
-<p>删除从文件开头到当前行</p>
-<p> |<br>| <code>yy</code> | </p>
-<p>复制（yank）整行</p>
-<p> |<br>| <code>nyy</code> | </p>
-<p>复制 n 行（如 <code>3yy</code>）</p>
-<p> |<br>| <code>yw</code> | </p>
-<p>复制一个单词</p>
-<p> |<br>| <code>y$</code> | </p>
-<p>复制从光标到行尾</p>
-<p> |<br>| <code>p</code> | </p>
-<p>粘贴到光标后&#x2F;下方</p>
-<p> |<br>| <code>P</code> | </p>
-<p>粘贴到光标前&#x2F;上方</p>
-<p> |<br>| <code>r</code> | </p>
-<p>替换光标处单个字符（按 r 后输入新字符）</p>
-<p> |<br>| <code>R</code> | </p>
-<p>进入替换模式，连续替换</p>
-<p> |<br>| <code>u</code> | </p>
-<p>撤销（undo）</p>
-<p> |<br>| <code>Ctrl + r</code> | </p>
-<p>重做（redo）</p>
-<p> |<br>| <code>.</code> | </p>
-<p>重复上一次操作</p>
-<p> |<br>| <code>~</code> | </p>
-<p>切换光标处字符大小写</p>
-<p> |<br>| <code>&gt;&gt;</code> | </p>
-<p>当前行右移（缩进）</p>
-<p> |<br>| <code>&lt;&lt;</code> | </p>
-<p>当前行左移（取消缩进）</p>
-<p> |</p>
-<h3 id="1-4-进入插入模式（Insert-Mode）"><a href="#1-4-进入插入模式（Insert-Mode）" class="headerlink" title="1.4 进入插入模式（Insert Mode）"></a>1.4 进入插入模式（Insert Mode）</h3><p>|<br>命令</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <code>i</code> | </p>
-<p>在光标前插入</p>
-<p> |<br>| <code>I</code> | </p>
-<p>在行首第一个非空字符前插入</p>
-<p> |<br>| <code>a</code> | </p>
-<p>在光标后插入（append）</p>
-<p> |<br>| <code>A</code> | </p>
-<p>在行尾插入</p>
-<p> |<br>| <code>o</code> | </p>
-<p>在下方新开一行并进入插入</p>
-<p> |<br>| <code>O</code> | </p>
-<p>在上方新开一行并进入插入</p>
-<p> |<br>| <code>s</code> | </p>
-<p>删除光标字符并进入插入</p>
-<p> |<br>| <code>S</code> | </p>
-<p>删除整行并进入插入</p>
-<p> |<br>| <code>cw</code> | </p>
-<p>删除当前单词并进入插入</p>
-<p> |<br>| <code>Esc</code> | </p>
-<p>退出插入模式，回到正常模式</p>
-<p> |</p>
+<h2 id="二-、Vim-命令详细笔记（可以跳过）"><a href="#二-、Vim-命令详细笔记（可以跳过）" class="headerlink" title="二++、Vim 命令详细笔记（可以跳过）"></a>二++、Vim 命令详细笔记（可以跳过）</h2><h3 id="1-1-启动与打开文件"><a href="#1-1-启动与打开文件" class="headerlink" title="1.1 启动与打开文件"></a>1.1 启动与打开文件</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>vim 文件名</code></td>
+<td>打开或新建文件</td>
+</tr>
+<tr>
+<td><code>vim +n 文件名</code></td>
+<td>打开文件并定位到第 n 行</td>
+</tr>
+<tr>
+<td><code>vim + 文件名</code></td>
+<td>打开文件并定位到最后一行</td>
+</tr>
+<tr>
+<td><code>vim +/关键词 文件名</code></td>
+<td>打开文件并定位到第一个匹配关键词处</td>
+</tr>
+<tr>
+<td><code>vim -R 文件名</code></td>
+<td>只读模式打开</td>
+</tr>
+<tr>
+<td><code>view 文件名</code></td>
+<td>只读模式打开（等同于 <code>vim -R</code>）</td>
+</tr>
+</tbody></table>
+<h3 id="1-2-正常模式（Normal-Mode）—-移动"><a href="#1-2-正常模式（Normal-Mode）—-移动" class="headerlink" title="1.2 正常模式（Normal Mode）— 移动"></a>1.2 正常模式（Normal Mode）— 移动</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>h</code></td>
+<td>左移一个字符</td>
+</tr>
+<tr>
+<td><code>j</code></td>
+<td>下移一行</td>
+</tr>
+<tr>
+<td><code>k</code></td>
+<td>上移一行</td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td>右移一个字符</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>跳到下一个单词开头</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>跳到上一个单词开头</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td>跳到当前&#x2F;下一个单词末尾</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td>跳到行首</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>跳到行首第一个非空字符</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>跳到行尾</td>
+</tr>
+<tr>
+<td><code>gg</code></td>
+<td>跳到文件第一行</td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>跳到文件最后一行</td>
+</tr>
+<tr>
+<td><code>nG</code>   或 <code>:n</code></td>
+<td>跳到第 n 行</td>
+</tr>
+<tr>
+<td><code>Ctrl + f</code></td>
+<td>向下翻一页（Page Down）</td>
+</tr>
+<tr>
+<td><code>Ctrl + b</code></td>
+<td>向上翻一页（Page Up）</td>
+</tr>
+<tr>
+<td><code>Ctrl + d</code></td>
+<td>向下翻半页</td>
+</tr>
+<tr>
+<td><code>Ctrl + u</code></td>
+<td>向上翻半页</td>
+</tr>
+<tr>
+<td><code>&#123;</code></td>
+<td>跳到上一个段落</td>
+</tr>
+<tr>
+<td><code>&#125;</code></td>
+<td>跳到下一个段落</td>
+</tr>
+</tbody></table>
+<h3 id="1-3-正常模式-—-编辑操作"><a href="#1-3-正常模式-—-编辑操作" class="headerlink" title="1.3 正常模式 — 编辑操作"></a>1.3 正常模式 — 编辑操作</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>x</code></td>
+<td>删除光标处字符（向后删）</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td>删除光标前字符（向前删）</td>
+</tr>
+<tr>
+<td><code>dd</code></td>
+<td>删除（剪切）整行</td>
+</tr>
+<tr>
+<td><code>ndd</code></td>
+<td>删除当前行起的 n 行（如 <code>3dd</code>）</td>
+</tr>
+<tr>
+<td><code>dw</code></td>
+<td>删除一个单词</td>
+</tr>
+<tr>
+<td><code>d$</code>   或 <code>D</code></td>
+<td>删除从光标到行尾</td>
+</tr>
+<tr>
+<td><code>d0</code></td>
+<td>删除从行首到光标</td>
+</tr>
+<tr>
+<td><code>dG</code></td>
+<td>删除从当前行到文件末尾</td>
+</tr>
+<tr>
+<td><code>dgg</code></td>
+<td>删除从文件开头到当前行</td>
+</tr>
+<tr>
+<td><code>yy</code></td>
+<td>复制（yank）整行</td>
+</tr>
+<tr>
+<td><code>nyy</code></td>
+<td>复制 n 行（如 <code>3yy</code>）</td>
+</tr>
+<tr>
+<td><code>yw</code></td>
+<td>复制一个单词</td>
+</tr>
+<tr>
+<td><code>y$</code></td>
+<td>复制从光标到行尾</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>粘贴到光标后&#x2F;下方</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>粘贴到光标前&#x2F;上方</td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>替换光标处单个字符（按 r 后输入新字符）</td>
+</tr>
+<tr>
+<td><code>R</code></td>
+<td>进入替换模式，连续替换</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>撤销（undo）</td>
+</tr>
+<tr>
+<td><code>Ctrl + r</code></td>
+<td>重做（redo）</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>重复上一次操作</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>切换光标处字符大小写</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td>当前行右移（缩进）</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;</code></td>
+<td>当前行左移（取消缩进）</td>
+</tr>
+</tbody></table>
+<h3 id="1-4-进入插入模式（Insert-Mode）"><a href="#1-4-进入插入模式（Insert-Mode）" class="headerlink" title="1.4 进入插入模式（Insert Mode）"></a>1.4 进入插入模式（Insert Mode）</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>i</code></td>
+<td>在光标前插入</td>
+</tr>
+<tr>
+<td><code>I</code></td>
+<td>在行首第一个非空字符前插入</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>在光标后插入（append）</td>
+</tr>
+<tr>
+<td><code>A</code></td>
+<td>在行尾插入</td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>在下方新开一行并进入插入</td>
+</tr>
+<tr>
+<td><code>O</code></td>
+<td>在上方新开一行并进入插入</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>删除光标字符并进入插入</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>删除整行并进入插入</td>
+</tr>
+<tr>
+<td><code>cw</code></td>
+<td>删除当前单词并进入插入</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>退出插入模式，回到正常模式</td>
+</tr>
+</tbody></table>
 <h3 id="1-5-命令行模式（Command-Mode）"><a href="#1-5-命令行模式（Command-Mode）" class="headerlink" title="1.5 命令行模式（Command Mode）"></a>1.5 命令行模式（Command Mode）</h3><p>在正常模式下输入 <code>:</code> 进入命令行模式。</p>
 <p><strong>文件操作：</strong></p>
-<p>|<br>命令</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <code>:w</code> | </p>
-<p>保存</p>
-<p> |<br>| <code>:w 文件名</code> | </p>
-<p>另存为</p>
-<p> |<br>| <code>:q</code> | </p>
-<p>退出（未修改时）</p>
-<p> |<br>| <code>:q!</code> | </p>
-<p>强制退出不保存</p>
-<p> |<br>| <code>:wq</code> | </p>
-<p>保存并退出</p>
-<p> |<br>| <code>:x</code> | </p>
-<p>保存并退出（仅当有修改时才写入）</p>
-<p> |<br>| <code>ZZ</code> | </p>
-<p>保存并退出（正常模式下直接按）</p>
-<p> |<br>| <code>:wq!</code> | </p>
-<p>强制保存并退出</p>
-<p> |</p>
-<p><strong>搜索与替换：</strong></p>
-<p>|<br>命令</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <code>/关键词</code> | </p>
-<p>向下搜索关键词</p>
-<p> |<br>| <code>?关键词</code> | </p>
-<p>向上搜索关键词</p>
-<p> |<br>| <code>n</code> | </p>
-<p>跳到下一个匹配</p>
-<p> |<br>| <code>N</code> | </p>
-<p>跳到上一个匹配</p>
-<p> |<br>| <code>:s/旧/新/</code> | </p>
-<p>替换当前行第一个匹配</p>
-<p> |<br>| <code>:s/旧/新/g</code> | </p>
-<p>替换当前行所有匹配</p>
-<p> |<br>| <code>:%s/旧/新/g</code> | </p>
-<p>全文替换所有匹配</p>
-<p> |<br>| <code>:%s/旧/新/gc</code> | </p>
-<p>全文替换，逐个确认</p>
-<p> |<br>| <code>:n,ms/旧/新/g</code> | </p>
-<p>替换第 n 行到第 m 行</p>
-<p> |</p>
-<p><strong>其他常用：</strong></p>
-<p>|<br>命令</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <code>:set nu</code> | </p>
-<p>显示行号</p>
-<p> |<br>| <code>:set nonu</code> | </p>
-<p>取消行号</p>
-<p> |<br>| <code>:set ai</code> | </p>
-<p>自动缩进</p>
-<p> |<br>| <code>:set ts=4</code> | </p>
-<p>设置 Tab 宽度为 4</p>
-<p> |<br>| <code>:set hlsearch</code> | </p>
-<p>高亮搜索结果</p>
-<p> |<br>| <code>:set paste</code> | </p>
-<p>粘贴模式（防止自动缩进干扰）</p>
-<p> |<br>| <code>:set nopaste</code> | </p>
-<p>关闭粘贴模式</p>
-<p> |<br>| <code>:!命令</code> | </p>
-<p>执行外部 Shell 命令（如 <code>:!ls</code>）</p>
-<p> |<br>| <code>:r 文件名</code> | </p>
-<p>将另一文件内容读入当前文件</p>
-<p> |<br>| <code>:r !命令</code> | </p>
-<p>将命令输出读入文件（如 <code>:r !date</code>）</p>
-<p> |<br>| <code>:sp 文件名</code> | </p>
-<p>水平分屏打开文件</p>
-<p> |<br>| <code>:vsp 文件名</code> | </p>
-<p>垂直分屏打开文件</p>
-<p> |<br>| <code>Ctrl + w w</code> | </p>
-<p>在分屏窗口间切换</p>
-<p> |</p>
-<h3 id="1-6-可视模式（Visual-Mode）"><a href="#1-6-可视模式（Visual-Mode）" class="headerlink" title="1.6 可视模式（Visual Mode）"></a>1.6 可视模式（Visual Mode）</h3><p>|<br>命令</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <code>v</code> | </p>
-<p>字符可视模式（按字符选择）</p>
-<p> |<br>| <code>V</code> | </p>
-<p>行可视模式（按行选择）</p>
-<p> |<br>| <code>Ctrl + v</code> | </p>
-<p>块可视模式（列选择，批量注释利器）</p>
-<p> |<br>| </p>
-<p>选中后 <code>y</code></p>
-<p> | </p>
-<p>复制选中文本</p>
-<p> |<br>| </p>
-<p>选中后 <code>d</code></p>
-<p> | </p>
-<p>删除选中文本</p>
-<p> |<br>| </p>
-<p>选中后 <code>&gt;</code></p>
-<p> | </p>
-<p>右移选中区域</p>
-<p> |</p>
+<p>| 命令 | 说明 |<br>| — | — | — | — | — | — |<br>| <code>:w 文件名</code> | 另存为 | <code>:q</code> | 退出（未修改时） | <code>:q!</code> | 强制退出不保存 |<br>| <code>:wq</code> | 保存并退出 | <code>:x</code> | 保存并退出（仅当有修改时才写入） | <code>ZZ</code> | 保存并退出（正常模式下直接按） |<br>| <code>:wq!</code> | 强制保存并退出 | <strong>搜索与替换：</strong> | 命令 | 说明 | — |<br>| — | <code>/关键词</code> | 向下搜索关键词 | <code>?关键词</code> | 向上搜索关键词 | <code>n</code> |<br>| 跳到下一个匹配 | <code>N</code> | 跳到上一个匹配 | <code>:s/旧/新/</code> | 替换当前行第一个匹配 | <code>:s/旧/新/g</code> |<br>| 替换当前行所有匹配 | <code>:%s/旧/新/g</code> | 全文替换所有匹配 | <code>:%s/旧/新/gc</code> | 全文替换，逐个确认 | <code>:n,ms/旧/新/g</code> |<br>| 替换第 n 行到第 m 行 | <strong>其他常用：</strong> | 命令 | 说明 | — | — |<br>| <code>:set nu</code> | 显示行号 | <code>:set nonu</code> | 取消行号 | <code>:set ai</code> | 自动缩进 |<br>| <code>:set ts=4</code> | 设置 Tab 宽度为 4 | <code>:set hlsearch</code> | 高亮搜索结果 | <code>:set paste</code> | 粘贴模式（防止自动缩进干扰） |<br>| <code>:set nopaste</code> | 关闭粘贴模式 | <code>:!命令</code> | 执行外部 Shell 命令（如 <code>:!ls</code>） | <code>:r 文件名</code> | 将另一文件内容读入当前文件 |<br>| <code>:r !命令</code> | 将命令输出读入文件（如 <code>:r !date</code>） | <code>:sp 文件名</code> | 水平分屏打开文件 | <code>:vsp 文件名</code> | 垂直分屏打开文件 |<br>| <code>Ctrl + w w</code> | 在分屏窗口间切换 |  |  |  |  |</p>
+<h3 id="1-6-可视模式（Visual-Mode）"><a href="#1-6-可视模式（Visual-Mode）" class="headerlink" title="1.6 可视模式（Visual Mode）"></a>1.6 可视模式（Visual Mode）</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>v</code></td>
+<td>字符可视模式（按字符选择）</td>
+</tr>
+<tr>
+<td><code>V</code></td>
+<td>行可视模式（按行选择）</td>
+</tr>
+<tr>
+<td><code>Ctrl + v</code></td>
+<td>块可视模式（列选择，批量注释利器）</td>
+</tr>
+<tr>
+<td>选中后 <code>y</code></td>
+<td>复制选中文本</td>
+</tr>
+<tr>
+<td>选中后 <code>d</code></td>
+<td>删除选中文本</td>
+</tr>
+<tr>
+<td>选中后 <code>&gt;</code></td>
+<td>右移选中区域</td>
+</tr>
+</tbody></table>
 <hr>
 <h2 id="-3"><a href="#-3" class="headerlink" title=""></a></h2>
       
@@ -1274,7 +1573,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1313,7 +1612,7 @@
 </ul>
 <p><strong>举个栗子🌰：</strong></p>
 <p>bash</p>
-<p># 用root身份连接远程服务器ssh <a href="mailto:&#x72;&#111;&#111;&#116;&#64;&#49;&#57;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#x31;&#x2e;&#x31;&#x30;&#x30;">&#x72;&#111;&#111;&#116;&#64;&#49;&#57;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#x31;&#x2e;&#x31;&#x30;&#x30;</a># 指定端口连接ssh-p2222 <a href="mailto:&#116;&#111;&#109;&#64;&#49;&#57;&#50;&#46;&#x31;&#54;&#x38;&#x2e;&#x31;&#x2e;&#x31;&#x30;&#x30;">&#116;&#111;&#109;&#64;&#49;&#57;&#50;&#46;&#x31;&#54;&#x38;&#x2e;&#x31;&#x2e;&#x31;&#x30;&#x30;</a># 直接在远程执行命令（执行完自动退出）ssh <a href="mailto:&#114;&#x6f;&#111;&#116;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#x38;&#46;&#49;&#x2e;&#x31;&#x30;&#x30;">&#114;&#x6f;&#111;&#116;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#x38;&#46;&#49;&#x2e;&#x31;&#x30;&#x30;</a> “ls -la &#x2F;home”</p>
+<p># 用root身份连接远程服务器ssh <a href="mailto:&#114;&#111;&#111;&#116;&#64;&#49;&#57;&#50;&#x2e;&#x31;&#54;&#x38;&#46;&#49;&#46;&#49;&#x30;&#48;">&#114;&#111;&#111;&#116;&#64;&#49;&#57;&#50;&#x2e;&#x31;&#54;&#x38;&#46;&#49;&#46;&#49;&#x30;&#48;</a># 指定端口连接ssh-p2222 <a href="mailto:&#116;&#x6f;&#x6d;&#x40;&#x31;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#46;&#49;&#x2e;&#49;&#x30;&#x30;">&#116;&#x6f;&#x6d;&#x40;&#x31;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#46;&#49;&#x2e;&#49;&#x30;&#x30;</a># 直接在远程执行命令（执行完自动退出）ssh <a href="mailto:&#x72;&#111;&#111;&#x74;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#46;&#49;&#x2e;&#49;&#x30;&#48;">&#x72;&#111;&#111;&#x74;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#46;&#49;&#x2e;&#49;&#x30;&#48;</a> “ls -la &#x2F;home”</p>
 <p>📖 <strong>推荐阅读</strong>：Linux ssh命令详解</p>
 <h2 id="二、SSH远程工具推荐（2026版）"><a href="#二、SSH远程工具推荐（2026版）" class="headerlink" title="二、SSH远程工具推荐（2026版）"></a>二、SSH远程工具推荐（2026版）</h2><p>图形化工具让远程管理更高效，以下按推荐度排序：</p>
 <h3 id="🥇-MobaXterm（强烈推荐）"><a href="#🥇-MobaXterm（强烈推荐）" class="headerlink" title="🥇 MobaXterm（强烈推荐）"></a>🥇 MobaXterm（强烈推荐）</h3><p><a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/">https://mobaxterm.mobatek.net/</a></p>
@@ -1327,19 +1626,30 @@
 </blockquote>
 <h2 id="三、查看机器IP：告别ifconfig"><a href="#三、查看机器IP：告别ifconfig" class="headerlink" title="三、查看机器IP：告别ifconfig"></a>三、查看机器IP：告别ifconfig</h2><h3 id="Windows查IP"><a href="#Windows查IP" class="headerlink" title="Windows查IP"></a>Windows查IP</h3><p>cmd</p>
 <p>ipconfig</p>
-<h3 id="Linux查IP（新旧对比）"><a href="#Linux查IP（新旧对比）" class="headerlink" title="Linux查IP（新旧对比）"></a>Linux查IP（新旧对比）</h3><p>|<br>工具</p>
-<p> | </p>
-<p>命令</p>
-<p> | </p>
-<p>特点</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>老旧方式（net-tools）</p>
-<p> | <code>ifconfig</code> | </p>
-<p>已废弃，需要额外安装</p>
-<p> |<br>| <strong>现代方式（iproute2）</strong> | <code>ip link</code></p>
-<p>、<code>ip addr</code></p>
-<p> | <strong>系统自带，推荐使用</strong> |</p>
-<p><strong>举个栗子🌰：</strong></p>
+<h3 id="Linux查IP（新旧对比）"><a href="#Linux查IP（新旧对比）" class="headerlink" title="Linux查IP（新旧对比）"></a>Linux查IP（新旧对比）</h3><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>命令</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>老旧方式（net-tools）</td>
+<td><code>ifconfig</code></td>
+<td>已废弃，需要额外安装</td>
+</tr>
+<tr>
+<td><strong>现代方式（iproute2）</strong></td>
+<td><code>ip link</code>  、<code>ip addr</code></td>
+<td><strong>系统自带，推荐使用</strong></td>
+</tr>
+<tr>
+<td><strong>举个栗子🌰：</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <p>bash</p>
 <p># 查看所有网络接口信息ip addr  </p>
 <p># 只看IP地址（过滤更优雅）ip-4 addr show |grep inet</p>
@@ -1364,29 +1674,38 @@
 <p><strong>Xshell解决方案：</strong> 属性 → 终端 → 编码 → 选择UTF-8</p>
 <p><strong>MobaXterm解决方案：</strong> 设置 → Terminal → Character set → UTF-8</p>
 <hr>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>|<br>场景</p>
-<p> | </p>
-<p>推荐方案</p>
-<p> |<br>| — | — |<br>| </p>
-<p>日常远程管理</p>
-<p> | </p>
-<p>MobaXterm</p>
-<p> |<br>| </p>
-<p>文件传输</p>
-<p> | </p>
-<p>WinSCP</p>
-<p> |<br>| </p>
-<p>快速SSH命令</p>
-<p> | </p>
-<p>系统终端直接ssh</p>
-<p> |<br>| </p>
-<p>查看IP地址</p>
-<p> | <code>ip addr、ip link</code> |<br>| </p>
-<p>解决乱码</p>
-<p> | </p>
-<p>统一UTF-8编码</p>
-<p> |</p>
-<p>掌握这些，你已经可以<strong>优雅地</strong>管理Linux服务器了。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>日常远程管理</td>
+<td>MobaXterm</td>
+</tr>
+<tr>
+<td>文件传输</td>
+<td>WinSCP</td>
+</tr>
+<tr>
+<td>快速SSH命令</td>
+<td>系统终端直接ssh</td>
+</tr>
+<tr>
+<td>查看IP地址</td>
+<td><code>ip addr、ip link</code></td>
+</tr>
+<tr>
+<td>解决乱码</td>
+<td>统一UTF-8编码</td>
+</tr>
+<tr>
+<td>掌握这些，你已经可以<strong>优雅地</strong>管理Linux服务器了。</td>
+<td></td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -1449,7 +1768,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1610,7 +1929,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1782,7 +2101,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1876,7 +2195,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1936,44 +2255,55 @@
 <p><strong>2026年Linux内核的新里程碑</strong>：2026年4月13日，<strong>Linux 7.0内核正式发布</strong>。虽然版本号从6.19跃升至7.0主要是命名惯例（次版本号达到X.19后提升主版本号），但更新内容依然充实——新增对Intel Nova Lake处理器、ARM64原子指令及国产龙芯LoongArch架构的支持。更重要的是，<strong>Rust语言在内核中的支持已正式脱离实验状态</strong>，Debian已决定其核心APT包管理器将用Rust开发——这意味着Linux在内存安全方面迈出了历史性的一步。</p>
 <hr>
 <h2 id="三、2026年Linux的主要发行版"><a href="#三、2026年Linux的主要发行版" class="headerlink" title="三、2026年Linux的主要发行版"></a>三、2026年Linux的主要发行版</h2><p>Linux只是一个内核，我们平常说的“安装Linux”其实是指安装它的<strong>发行版</strong>。2026年的格局与几年前已有很大不同：</p>
-<p>|<br>发行版</p>
-<p> | </p>
-<p>特点</p>
-<p> | </p>
-<p>2026年动态</p>
-<p> |<br>| — | — | — |<br>| <strong>Ubuntu</strong> | </p>
-<p>最适合新手，AI&#x2F;云原生生态强大</p>
-<p> | </p>
-<p>Ubuntu 26.04 LTS已发布，深度优化GPU支持和AI工具链</p>
-<p> |<br>| <strong>Red Hat（RHEL）</strong> | </p>
-<p>企业级商业版，市场份额约34.2%</p>
-<p> | </p>
-<p>RHEL 10推出镜像化交付模式</p>
-<p> |<br>| <strong>CentOS</strong> | </p>
-<p>⚠️ <strong>已全面停更</strong></p>
-<p> | </p>
-<p>CentOS 7已于2024年6月EOL，<strong>不再推荐用于生产环境</strong></p>
-<p> |<br>| <strong>Rocky Linux &#x2F; AlmaLinux</strong> | </p>
-<p>CentOS的替代方案</p>
-<p> | </p>
-<p>免费二进制兼容RHEL，合计占2-4%份额</p>
-<p> |<br>| <strong>银河麒麟 &#x2F; 统信UOS</strong> | </p>
-<p>国产Linux发行版</p>
-<p> | </p>
-<p>党政办公市场占有率领先，金融核心系统占比超60%</p>
-<p> |<br>| <strong>CachyOS</strong> | </p>
-<p>2026年最热门的桌面发行版</p>
-<p> | </p>
-<p>基于Arch，已占据DistroWatch榜首超18个月</p>
-<p> |<br>| <strong>Linux Mint</strong> | </p>
-<p>最稳定的桌面选择</p>
-<p> | </p>
-<p>2026年1月发布22.3版本</p>
-<p> |<br>| <strong>Azure Linux</strong> | </p>
-<p>微软自有Linux发行版</p>
-<p> | </p>
-<p>Build 2026大会发布4.0版本</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>发行版</th>
+<th>特点</th>
+<th>2026年动态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Ubuntu</strong></td>
+<td>最适合新手，AI&#x2F;云原生生态强大</td>
+<td>Ubuntu 26.04 LTS已发布，深度优化GPU支持和AI工具链</td>
+</tr>
+<tr>
+<td><strong>Red Hat（RHEL）</strong></td>
+<td>企业级商业版，市场份额约34.2%</td>
+<td>RHEL 10推出镜像化交付模式</td>
+</tr>
+<tr>
+<td><strong>CentOS</strong></td>
+<td>⚠️ <strong>已全面停更</strong></td>
+<td>CentOS 7已于2024年6月EOL，<strong>不再推荐用于生产环境</strong></td>
+</tr>
+<tr>
+<td><strong>Rocky Linux &#x2F; AlmaLinux</strong></td>
+<td>CentOS的替代方案</td>
+<td>免费二进制兼容RHEL，合计占2-4%份额</td>
+</tr>
+<tr>
+<td><strong>银河麒麟 &#x2F; 统信UOS</strong></td>
+<td>国产Linux发行版</td>
+<td>党政办公市场占有率领先，金融核心系统占比超60%</td>
+</tr>
+<tr>
+<td><strong>CachyOS</strong></td>
+<td>2026年最热门的桌面发行版</td>
+<td>基于Arch，已占据DistroWatch榜首超18个月</td>
+</tr>
+<tr>
+<td><strong>Linux Mint</strong></td>
+<td>最稳定的桌面选择</td>
+<td>2026年1月发布22.3版本</td>
+</tr>
+<tr>
+<td><strong>Azure Linux</strong></td>
+<td>微软自有Linux发行版</td>
+<td>Build 2026大会发布4.0版本</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>⚠️ <strong>特别提醒</strong>：在2026年，<strong>CentOS 7已于2024年6月30日停止维护（EOL）</strong>，不再收到安全更新。如果你现在学习Linux，建议改用<strong>Rocky Linux、AlmaLinux</strong>（CentOS的最佳替代）或<strong>Ubuntu LTS</strong>作为学习环境。</p>
 </blockquote>

@@ -28,7 +28,7 @@
 <meta property="og:description" content="原文转载自微信公众号「walker-行者」Linux 系列。原始链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MzkwMDgyMTA2OQ&#x3D;&#x3D;&amp;mid&#x3D;2247483841&amp;idx&#x3D;1&amp;sn&#x3D;712b54b09098495bc2547853226e3ae4&amp;chksm&#x3D;c0bf78e3f7c8f1f5ab37c4c49eb5dfc32bc">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-09T11:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-22T18:18:59.475Z">
+<meta property="article:modified_time" content="2026-07-22T18:45:54.008Z">
 <meta property="article:author" content="Lyuu">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="运维">
@@ -222,7 +222,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -252,23 +252,40 @@
 <h2 id="一、权限字符串完整拆解"><a href="#一、权限字符串完整拆解" class="headerlink" title="一、权限字符串完整拆解"></a>一、权限字符串完整拆解</h2><h3 id="1-1-10位权限格式"><a href="#1-1-10位权限格式" class="headerlink" title="1.1 10位权限格式"></a>1.1 10位权限格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r--. 1 root root 1213 Feb 2 09:39 abc.txt</span><br></pre></td></tr></table></figure>
 
 <p>格式：<code>[1位文件类型][9位权限]</code></p>
-<p>|<br>位置</p>
-<p> | </p>
-<p>含义</p>
-<p> | </p>
-<p>示例</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>第1位</p>
-<p> | <strong>文件类型</strong> | <code>-</code></p>
-<p>（普通文件）<code>d</code>（目录）<code>l</code>（软链接）<code>c</code>（字符设备）<code>b</code>（块设备）</p>
-<p> |<br>| </p>
-<p>第2-4位</p>
-<p> | <strong>属主权限（u）</strong> | <code>rw-</code> |<br>| </p>
-<p>第5-7位</p>
-<p> | <strong>属组权限（g）</strong> | <code>r--</code> |<br>| </p>
-<p>第8-10位</p>
-<p> | <strong>其他用户权限（o）</strong> | <code>r--</code> |</p>
-<p><strong>示例解读</strong>：<code>-rw-r--r--</code></p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第1位</td>
+<td><strong>文件类型</strong></td>
+<td><code>-</code>  （普通文件）<code>d</code>（目录）<code>l</code>（软链接）<code>c</code>（字符设备）<code>b</code>（块设备）</td>
+</tr>
+<tr>
+<td>第2-4位</td>
+<td><strong>属主权限（u）</strong></td>
+<td><code>rw-</code></td>
+</tr>
+<tr>
+<td>第5-7位</td>
+<td><strong>属组权限（g）</strong></td>
+<td><code>r--</code></td>
+</tr>
+<tr>
+<td>第8-10位</td>
+<td><strong>其他用户权限（o）</strong></td>
+<td><code>r--</code></td>
+</tr>
+<tr>
+<td><strong>示例解读</strong>：<code>-rw-r--r--</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <ul>
 <li><p><code>-</code> → 普通文件</p>
 </li>
@@ -279,162 +296,179 @@
 <li><p><code>r--</code> → 其他用户只读</p>
 </li>
 </ul>
-<h3 id="1-2-文件类型标识大全"><a href="#1-2-文件类型标识大全" class="headerlink" title="1.2 文件类型标识大全"></a>1.2 文件类型标识大全</h3><p>|<br>符号</p>
-<p> | </p>
-<p>类型</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — | — |<br>| <code>-</code> | </p>
-<p>普通文件</p>
-<p> | </p>
-<p>文本、二进制、数据文件</p>
-<p> |<br>| <code>d</code> | </p>
-<p>目录</p>
-<p> | </p>
-<p>文件夹</p>
-<p> |<br>| <code>l</code> | </p>
-<p>软链接</p>
-<p> | </p>
-<p>符号链接（快捷方式）</p>
-<p> |<br>| <code>c</code> | </p>
-<p>字符设备</p>
-<p> | </p>
-<p>键盘、鼠标、串口</p>
-<p> |<br>| <code>b</code> | </p>
-<p>块设备</p>
-<p> | </p>
-<p>硬盘、U盘</p>
-<p> |<br>| <code>s</code> | </p>
-<p>套接字</p>
-<p> | </p>
-<p>进程间通信</p>
-<p> |<br>| <code>p</code> | </p>
-<p>管道</p>
-<p> | </p>
-<p>FIFO文件</p>
-<p> |</p>
-<h3 id="1-3-rwx对文件和目录的区别（核心难点！）"><a href="#1-3-rwx对文件和目录的区别（核心难点！）" class="headerlink" title="1.3 rwx对文件和目录的区别（核心难点！）"></a>1.3 rwx对文件和目录的区别（核心难点！）</h3><p>|<br>权限</p>
-<p> | </p>
-<p>对<strong>普通文件</strong>的作用</p>
-<p> | </p>
-<p>对<strong>目录</strong>的作用</p>
-<p> |<br>| — | — | — |<br>| <strong>r（读）</strong> | </p>
-<p>查看文件内容（<code>cat</code>、<code>less</code>）</p>
-<p> | <strong>列出目录内容</strong></p>
-<p>（<code>ls</code>）</p>
-<p> |<br>| <strong>w（写）</strong> | </p>
-<p>修改&#x2F;覆盖文件内容</p>
-<p> | <strong>创建、删除、重命名</strong></p>
-<p>目录内文件（需配合x）</p>
-<p> |<br>| <strong>x（执行）</strong> | </p>
-<p>运行脚本&#x2F;程序</p>
-<p> | <strong>进入目录</strong></p>
-<p>（<code>cd</code>）</p>
-<p> |</p>
+<h3 id="1-2-文件类型标识大全"><a href="#1-2-文件类型标识大全" class="headerlink" title="1.2 文件类型标识大全"></a>1.2 文件类型标识大全</h3><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-</code></td>
+<td>普通文件</td>
+<td>文本、二进制、数据文件</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>目录</td>
+<td>文件夹</td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td>软链接</td>
+<td>符号链接（快捷方式）</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>字符设备</td>
+<td>键盘、鼠标、串口</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>块设备</td>
+<td>硬盘、U盘</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>套接字</td>
+<td>进程间通信</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>管道</td>
+<td>FIFO文件</td>
+</tr>
+</tbody></table>
+<h3 id="1-3-rwx对文件和目录的区别（核心难点！）"><a href="#1-3-rwx对文件和目录的区别（核心难点！）" class="headerlink" title="1.3 rwx对文件和目录的区别（核心难点！）"></a>1.3 rwx对文件和目录的区别（核心难点！）</h3><table>
+<thead>
+<tr>
+<th>权限</th>
+<th>对<strong>普通文件</strong>的作用</th>
+<th>对<strong>目录</strong>的作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>r（读）</strong></td>
+<td>查看文件内容（<code>cat</code>、<code>less</code>）</td>
+<td><strong>列出目录内容</strong>  （<code>ls</code>）</td>
+</tr>
+<tr>
+<td><strong>w（写）</strong></td>
+<td>修改&#x2F;覆盖文件内容</td>
+<td><strong>创建、删除、重命名</strong>  目录内文件（需配合x）</td>
+</tr>
+<tr>
+<td><strong>x（执行）</strong></td>
+<td>运行脚本&#x2F;程序</td>
+<td><strong>进入目录</strong>  （<code>cd</code>）</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>⚠️ <strong>重点理解</strong>：对目录有<code>w</code>权限，<strong>不需要</strong>对目录内的文件有<code>w</code>权限，就能删除该文件！因为删除文件是修改<strong>目录内容</strong>，不是修改文件本身。</p>
 </blockquote>
 <p><strong>目录权限组合实战理解：</strong></p>
-<p>|<br>目录权限</p>
-<p> | </p>
-<p>能否<code>ls</code></p>
-<p> | </p>
-<p>能否<code>cd</code>进入</p>
-<p> | </p>
-<p>能否删除&#x2F;创建文件</p>
-<p> |<br>| — | — | — | — |<br>| <code>r--</code></p>
-<p>（只读）</p>
-<p> | </p>
-<p>✅ 能（但看不到属性细节）</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> |<br>| <code>-w-</code></p>
-<p>（只写，无x）</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> | </p>
-<p>❌ 不能（没有x连进入都不行）</p>
-<p> |<br>| <code>--x</code></p>
-<p>（只执行）</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> | </p>
-<p>✅ 能</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> |<br>| <code>rw-</code></p>
-<p>（读写，无x）</p>
-<p> | </p>
-<p>✅ 能</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> |<br>| <code>rwx</code></p>
-<p>（全开）</p>
-<p> | </p>
-<p>✅ 能</p>
-<p> | </p>
-<p>✅ 能</p>
-<p> | </p>
-<p>✅ 能</p>
-<p> |<br>| <code>-wx</code></p>
-<p>（写+执行，无读）</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> | </p>
-<p>✅ 能</p>
-<p> | </p>
-<p>✅ 能（知道文件名才能操作）</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>目录权限</th>
+<th>能否<code>ls</code></th>
+<th>能否<code>cd</code>进入</th>
+<th>能否删除&#x2F;创建文件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>r--</code>  （只读）</td>
+<td>✅ 能（但看不到属性细节）</td>
+<td>❌ 不能</td>
+<td>❌ 不能</td>
+</tr>
+<tr>
+<td><code>-w-</code>  （只写，无x）</td>
+<td>❌ 不能</td>
+<td>❌ 不能</td>
+<td>❌ 不能（没有x连进入都不行）</td>
+</tr>
+<tr>
+<td><code>--x</code>  （只执行）</td>
+<td>❌ 不能</td>
+<td>✅ 能</td>
+<td>❌ 不能</td>
+</tr>
+<tr>
+<td><code>rw-</code>  （读写，无x）</td>
+<td>✅ 能</td>
+<td>❌ 不能</td>
+<td>❌ 不能</td>
+</tr>
+<tr>
+<td><code>rwx</code>  （全开）</td>
+<td>✅ 能</td>
+<td>✅ 能</td>
+<td>✅ 能</td>
+</tr>
+<tr>
+<td><code>-wx</code>  （写+执行，无读）</td>
+<td>❌ 不能</td>
+<td>✅ 能</td>
+<td>✅ 能（知道文件名才能操作）</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>💡 <strong>实战启发</strong>：目录的<code>x</code>权限是进入目录的“门票”，没有了它，<code>r</code>和<code>w</code>都无法发挥作用。这就是为什么文件夹至少需要<code>r-x</code>才能正常浏览访问。</p>
 </blockquote>
 <h2 id="二、chmod-—-修改权限"><a href="#二、chmod-—-修改权限" class="headerlink" title="二、chmod — 修改权限"></a>二、chmod — 修改权限</h2><h3 id="2-1-字符方式（u-g-o-）"><a href="#2-1-字符方式（u-g-o-）" class="headerlink" title="2.1 字符方式（u&#x2F;g&#x2F;o + - &#x3D;）"></a>2.1 字符方式（u&#x2F;g&#x2F;o + - &#x3D;）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 语法：chmod [u/g/o/a] [+/-/=] [rwx] 文件</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-2-数字方式（r-4-w-2-x-1）"><a href="#2-2-数字方式（r-4-w-2-x-1）" class="headerlink" title="2.2 数字方式（r&#x3D;4, w&#x3D;2, x&#x3D;1）"></a>2.2 数字方式（r&#x3D;4, w&#x3D;2, x&#x3D;1）</h3><p><strong>权限值计算表：</strong></p>
-<p>|<br>权限组合</p>
-<p> | </p>
-<p>数值</p>
-<p> | </p>
-<p>含义</p>
-<p> |<br>| — | — | — |<br>| <code>---</code> | </p>
-<p>0</p>
-<p> | </p>
-<p>无权限</p>
-<p> |<br>| <code>--x</code> | </p>
-<p>1</p>
-<p> | </p>
-<p>仅执行</p>
-<p> |<br>| <code>-w-</code> | </p>
-<p>2</p>
-<p> | </p>
-<p>仅写</p>
-<p> |<br>| <code>-wx</code> | </p>
-<p>3</p>
-<p> | </p>
-<p>写+执行</p>
-<p> |<br>| <code>r--</code> | </p>
-<p>4</p>
-<p> | </p>
-<p>仅读</p>
-<p> |<br>| <code>r-x</code> | </p>
-<p>5</p>
-<p> | </p>
-<p>读+执行</p>
-<p> |<br>| <code>rw-</code> | </p>
-<p>6</p>
-<p> | </p>
-<p>读+写</p>
-<p> |<br>| <code>rwx</code> | </p>
-<p>7</p>
-<p> | </p>
-<p>全部权限</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>权限组合</th>
+<th>数值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>---</code></td>
+<td>0</td>
+<td>无权限</td>
+</tr>
+<tr>
+<td><code>--x</code></td>
+<td>1</td>
+<td>仅执行</td>
+</tr>
+<tr>
+<td><code>-w-</code></td>
+<td>2</td>
+<td>仅写</td>
+</tr>
+<tr>
+<td><code>-wx</code></td>
+<td>3</td>
+<td>写+执行</td>
+</tr>
+<tr>
+<td><code>r--</code></td>
+<td>4</td>
+<td>仅读</td>
+</tr>
+<tr>
+<td><code>r-x</code></td>
+<td>5</td>
+<td>读+执行</td>
+</tr>
+<tr>
+<td><code>rw-</code></td>
+<td>6</td>
+<td>读+写</td>
+</tr>
+<tr>
+<td><code>rwx</code></td>
+<td>7</td>
+<td>全部权限</td>
+</tr>
+</tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 语法：chmod 三位数字 文件</span><br></pre></td></tr></table></figure>
 
 <p>2.3 递归修改 -R</p>
@@ -475,95 +509,141 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 典型示例：/tmp 目录</span><br></pre></td></tr></table></figure>
 
 <p>特殊权限速查表</p>
-<p>|<br>特殊权限</p>
-<p> | </p>
-<p>数字位</p>
-<p> | </p>
-<p>字符表现</p>
-<p> | </p>
-<p>典型用途</p>
-<p> |<br>| — | — | — | — |<br>| </p>
-<p>SUID</p>
-<p> | </p>
-<p>4xxx</p>
-<p> | <code>s</code></p>
-<p>替代属主的<code>x</code></p>
-<p> | </p>
-<p>passwd命令</p>
-<p> |<br>| </p>
-<p>SGID</p>
-<p> | </p>
-<p>2xxx</p>
-<p> | <code>s</code></p>
-<p>替代属组的<code>x</code></p>
-<p> | </p>
-<p>共享目录</p>
-<p> |<br>| </p>
-<p>Sticky Bit</p>
-<p> | </p>
-<p>1xxx</p>
-<p> | <code>t</code></p>
-<p>替代other的<code>x</code></p>
-<p> | </p>
-<p>&#x2F;tmp目录</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>特殊权限</th>
+<th>数字位</th>
+<th>字符表现</th>
+<th>典型用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SUID</td>
+<td>4xxx</td>
+<td><code>s</code>  替代属主的<code>x</code></td>
+<td>passwd命令</td>
+</tr>
+<tr>
+<td>SGID</td>
+<td>2xxx</td>
+<td><code>s</code>  替代属组的<code>x</code></td>
+<td>共享目录</td>
+</tr>
+<tr>
+<td>Sticky Bit</td>
+<td>1xxx</td>
+<td><code>t</code>  替代other的<code>x</code></td>
+<td>&#x2F;tmp目录</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>💡 <strong>设置技巧</strong>：将特殊权限数字放在普通权限前，如 <code>chmod 4755 file</code>（SUID + rwxr-xr-x）</p>
 </blockquote>
-<h2 id="七、权限最佳实践（避坑指南）"><a href="#七、权限最佳实践（避坑指南）" class="headerlink" title="七、权限最佳实践（避坑指南）"></a>七、权限最佳实践（避坑指南）</h2><p>|<br>最佳实践</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <strong>目录权限 ≥ 755</strong> | </p>
-<p>目录有执行(x)才能cd进入，建议至少755</p>
-<p> |<br>| <strong>配置文件权限 644</strong> | </p>
-<p>只有属主可写，防止误修改</p>
-<p> |<br>| <strong>脚本权限 755</strong> | </p>
-<p>需要执行权限</p>
-<p> |<br>| <strong>敏感文件 600</strong> | </p>
-<p>如私钥、密码文件，仅属主可读写</p>
-<p> |<br>| <strong>共享目录 1777</strong> | </p>
-<p>加粘滞位，防止他人删除</p>
-<p> |<br>| <strong>Web目录 755&#x2F;644</strong> | </p>
-<p>目录755，文件644，避免安全风险</p>
-<p> |<br>| <strong>避免使用777</strong> | </p>
-<p>任何人可写是安全灾难！</p>
-<p> |</p>
-<h2 id="八、命令速查卡片"><a href="#八、命令速查卡片" class="headerlink" title="八、命令速查卡片"></a>八、命令速查卡片</h2><p>|<br>操作</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — |<br>| </p>
-<p>查看文件详情</p>
-<p> | <code>ll</code></p>
-<p> 或 <code>ls -l</code></p>
-<p> |<br>| </p>
-<p>查看所有文件（含隐藏）</p>
-<p> | <code>ls -al</code> |<br>| </p>
-<p>数字改权限</p>
-<p> | <code>chmod 755 file</code> |<br>| </p>
-<p>字符改权限</p>
-<p> | <code>chmod u+x file</code> |<br>| </p>
-<p>递归改权限</p>
-<p> | <code>chmod -R 755 /dir</code> |<br>| </p>
-<p>修改属主</p>
-<p> | <code>chown user1 file</code> |<br>| </p>
-<p>修改属组</p>
-<p> | <code>chgrp group1 file</code> |<br>| </p>
-<p>同时修改属主+属组</p>
-<p> | <code>chown user1:group1 file</code> |<br>| </p>
-<p>递归修改</p>
-<p> | <code>chown -R user1:group1 /dir</code> |<br>| </p>
-<p>创建组</p>
-<p> | <code>groupadd grp</code> |<br>| </p>
-<p>创建用户并指定组</p>
-<p> | <code>useradd -g grp user1</code> |<br>| </p>
-<p>修改用户组</p>
-<p> | <code>usermod -g grp user1</code> |<br>| </p>
-<p>删除用户（含家目录）</p>
-<p> | <code>userdel -r user1</code> |<br>| </p>
-<p>查看所有用户</p>
-<p> | <code>tail /etc/passwd</code> |<br>| </p>
-<p>查看所有组</p>
-<p> | <code>tail /etc/group</code> |</p>
+<h2 id="七、权限最佳实践（避坑指南）"><a href="#七、权限最佳实践（避坑指南）" class="headerlink" title="七、权限最佳实践（避坑指南）"></a>七、权限最佳实践（避坑指南）</h2><table>
+<thead>
+<tr>
+<th>最佳实践</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>目录权限 ≥ 755</strong></td>
+<td>目录有执行(x)才能cd进入，建议至少755</td>
+</tr>
+<tr>
+<td><strong>配置文件权限 644</strong></td>
+<td>只有属主可写，防止误修改</td>
+</tr>
+<tr>
+<td><strong>脚本权限 755</strong></td>
+<td>需要执行权限</td>
+</tr>
+<tr>
+<td><strong>敏感文件 600</strong></td>
+<td>如私钥、密码文件，仅属主可读写</td>
+</tr>
+<tr>
+<td><strong>共享目录 1777</strong></td>
+<td>加粘滞位，防止他人删除</td>
+</tr>
+<tr>
+<td><strong>Web目录 755&#x2F;644</strong></td>
+<td>目录755，文件644，避免安全风险</td>
+</tr>
+<tr>
+<td><strong>避免使用777</strong></td>
+<td>任何人可写是安全灾难！</td>
+</tr>
+</tbody></table>
+<h2 id="八、命令速查卡片"><a href="#八、命令速查卡片" class="headerlink" title="八、命令速查卡片"></a>八、命令速查卡片</h2><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查看文件详情</td>
+<td><code>ll</code>   或 <code>ls -l</code></td>
+</tr>
+<tr>
+<td>查看所有文件（含隐藏）</td>
+<td><code>ls -al</code></td>
+</tr>
+<tr>
+<td>数字改权限</td>
+<td><code>chmod 755 file</code></td>
+</tr>
+<tr>
+<td>字符改权限</td>
+<td><code>chmod u+x file</code></td>
+</tr>
+<tr>
+<td>递归改权限</td>
+<td><code>chmod -R 755 /dir</code></td>
+</tr>
+<tr>
+<td>修改属主</td>
+<td><code>chown user1 file</code></td>
+</tr>
+<tr>
+<td>修改属组</td>
+<td><code>chgrp group1 file</code></td>
+</tr>
+<tr>
+<td>同时修改属主+属组</td>
+<td><code>chown user1:group1 file</code></td>
+</tr>
+<tr>
+<td>递归修改</td>
+<td><code>chown -R user1:group1 /dir</code></td>
+</tr>
+<tr>
+<td>创建组</td>
+<td><code>groupadd grp</code></td>
+</tr>
+<tr>
+<td>创建用户并指定组</td>
+<td><code>useradd -g grp user1</code></td>
+</tr>
+<tr>
+<td>修改用户组</td>
+<td><code>usermod -g grp user1</code></td>
+</tr>
+<tr>
+<td>删除用户（含家目录）</td>
+<td><code>userdel -r user1</code></td>
+</tr>
+<tr>
+<td>查看所有用户</td>
+<td><code>tail /etc/passwd</code></td>
+</tr>
+<tr>
+<td>查看所有组</td>
+<td><code>tail /etc/group</code></td>
+</tr>
+</tbody></table>
 <hr>
 <blockquote>
 <p>📌如果觉得有用，欢迎<strong>点赞、在看、转发</strong>三连！</p>

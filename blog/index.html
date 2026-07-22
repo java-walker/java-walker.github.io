@@ -438,7 +438,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -473,188 +473,245 @@
 </blockquote>
 <h2 id="二、第一步：识别磁盘"><a href="#二、第一步：识别磁盘" class="headerlink" title="二、第一步：识别磁盘"></a>二、第一步：识别磁盘</h2><p>加装物理硬盘后，系统无法即时识别，<strong>需重启服务器</strong>方可识别新磁盘。</p>
 <p><code>  1  2  3  4  lsblk -f              # 查看块设备、分区、文件系统、挂载状态（最常用）   fdisk -l              # 查看系统所有磁盘详细分区表   df -h                 # 查看已挂载磁盘的容量、使用情况   blkid                 # 查看所有块设备UUID（永久唯一标识）      </code></p>
-<h3 id="设备命名规则"><a href="#设备命名规则" class="headerlink" title="设备命名规则"></a>设备命名规则</h3><p>|<br>命名</p>
-<p> | </p>
-<p>含义</p>
-<p> |<br>| — | — |<br>| <code>/dev/sda</code> | </p>
-<p>第1块物理硬盘</p>
-<p> |<br>| <code>/dev/sdb</code> | </p>
-<p>第2块物理硬盘</p>
-<p> |<br>| <code>/dev/sdc</code> | </p>
-<p>第3块物理硬盘</p>
-<p> |<br>| <code>/dev/sdc1</code> | </p>
-<p>第3块硬盘的<strong>第1个分区</strong></p>
-<p> |<br>| <code>/dev/sdc2</code> | </p>
-<p>第3块硬盘的<strong>第2个分区</strong></p>
-<p> |</p>
+<h3 id="设备命名规则"><a href="#设备命名规则" class="headerlink" title="设备命名规则"></a>设备命名规则</h3><table>
+<thead>
+<tr>
+<th>命名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/dev/sda</code></td>
+<td>第1块物理硬盘</td>
+</tr>
+<tr>
+<td><code>/dev/sdb</code></td>
+<td>第2块物理硬盘</td>
+</tr>
+<tr>
+<td><code>/dev/sdc</code></td>
+<td>第3块物理硬盘</td>
+</tr>
+<tr>
+<td><code>/dev/sdc1</code></td>
+<td>第3块硬盘的<strong>第1个分区</strong></td>
+</tr>
+<tr>
+<td><code>/dev/sdc2</code></td>
+<td>第3块硬盘的<strong>第2个分区</strong></td>
+</tr>
+</tbody></table>
 <h2 id="三、第二步：分区（fdisk）"><a href="#三、第二步：分区（fdisk）" class="headerlink" title="三、第二步：分区（fdisk）"></a>三、第二步：分区（fdisk）</h2><p>以新磁盘 <code>/dev/sdc</code> 为例：</p>
 <p><code>  1  2  # 进入分区编辑界面   fdisk /dev/sdc      </code></p>
-<h3 id="fdisk-交互命令"><a href="#fdisk-交互命令" class="headerlink" title="fdisk 交互命令"></a>fdisk 交互命令</h3><p>|<br>命令</p>
-<p> | </p>
-<p>作用</p>
-<p> |<br>| — | — |<br>| <code>n</code> | <strong>新建</strong></p>
-<p>磁盘分区</p>
-<p> |<br>| <code>p</code> | <strong>查看</strong></p>
-<p>当前磁盘分区表</p>
-<p> |<br>| <code>d</code> | <strong>删除</strong></p>
-<p>已有分区</p>
-<p> |<br>| <code>w</code> | <strong>保存并退出</strong></p>
-<p>（⚠️ 不执行则所有分区操作失效！）</p>
-<p> |<br>| <code>q</code> | <strong>直接退出</strong></p>
-<p>，不保存任何修改</p>
-<p> |</p>
+<h3 id="fdisk-交互命令"><a href="#fdisk-交互命令" class="headerlink" title="fdisk 交互命令"></a>fdisk 交互命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>n</code></td>
+<td><strong>新建</strong>  磁盘分区</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td><strong>查看</strong>  当前磁盘分区表</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td><strong>删除</strong>  已有分区</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td><strong>保存并退出</strong>  （⚠️ 不执行则所有分区操作失效！）</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td><strong>直接退出</strong>  ，不保存任何修改</td>
+</tr>
+</tbody></table>
 <h3 id="✅-快速分区流程"><a href="#✅-快速分区流程" class="headerlink" title="✅ 快速分区流程"></a>✅ 快速分区流程</h3><p><code>  1  2  fdisk /dev/sdc   # 输入 n → 回车（默认主分区）→ 回车（默认起始扇区）→ 回车（默认结束扇区）→ 输入 w（保存退出）      </code></p>
 <p>完成后生成 <code>/dev/sdc1</code> 分区。</p>
 <h2 id="四、第三步：格式化"><a href="#四、第三步：格式化" class="headerlink" title="四、第三步：格式化"></a>四、第三步：格式化</h2><p>新建分区无文件系统，<strong>必须格式化</strong>后才可挂载使用。</p>
 <p><code>  1  2  3  4  5  # 标准写法1（通用）   mkfs -t ext4 /dev/sdc1       # 标准写法2（简写，效果一致）   mkfs.ext4 /dev/sdc1      </code></p>
-<h3 id="常用文件系统格式"><a href="#常用文件系统格式" class="headerlink" title="常用文件系统格式"></a>常用文件系统格式</h3><p>|<br>格式</p>
-<p> | </p>
-<p>特点</p>
-<p> | </p>
-<p>适用场景</p>
-<p> |<br>| — | — | — |<br>| <code>ext4</code> | </p>
-<p>稳定通用，兼容所有Linux</p>
-<p> | </p>
-<p>通用推荐</p>
-<p> |<br>| <code>xfs</code> | </p>
-<p>高性能，支持大文件</p>
-<p> | </p>
-<p>CentOS 7+ 默认</p>
-<p> |</p>
+<h3 id="常用文件系统格式"><a href="#常用文件系统格式" class="headerlink" title="常用文件系统格式"></a>常用文件系统格式</h3><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ext4</code></td>
+<td>稳定通用，兼容所有Linux</td>
+<td>通用推荐</td>
+</tr>
+<tr>
+<td><code>xfs</code></td>
+<td>高性能，支持大文件</td>
+<td>CentOS 7+ 默认</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>⚠️ 注意：必须写完整分区名 <code>/dev/sdc1</code>，不能写成 <code>/dev/sdc</code> 或 <code>/dev/sd1</code>！</p>
 </blockquote>
 <h2 id="五、第四步：临时挂载（mount）"><a href="#五、第四步：临时挂载（mount）" class="headerlink" title="五、第四步：临时挂载（mount）"></a>五、第四步：临时挂载（mount）</h2><p>临时挂载<strong>仅当前系统生效</strong>，服务器重启后全部失效，适用于测试或临时使用场景。</p>
 <p><code>  1  2  3  4  5  6  7  8  # 1. 创建挂载目录   mkdir -p /xinmulu       # 2. 执行挂载   mount /dev/sdc1 /xinmulu       # 3. 查看挂载结果   df -h      </code></p>
 <h3 id="卸载（取消挂载）"><a href="#卸载（取消挂载）" class="headerlink" title="卸载（取消挂载）"></a>卸载（取消挂载）</h3><p><code>  1  2  3  4  5  # 方式1：通过设备名卸载   umount /dev/sdc1       # 方式2：通过挂载点卸载   umount /xinmulu      </code></p>
-<h2 id="六、第五步：永久挂载（-etc-fstab）"><a href="#六、第五步：永久挂载（-etc-fstab）" class="headerlink" title="六、第五步：永久挂载（&#x2F;etc&#x2F;fstab）"></a>六、第五步：永久挂载（&#x2F;etc&#x2F;fstab）</h2><h3 id="6-1-为什么用UUID？"><a href="#6-1-为什么用UUID？" class="headerlink" title="6.1 为什么用UUID？"></a>6.1 为什么用UUID？</h3><p>|<br>挂载方式</p>
-<p> | </p>
-<p>稳定性</p>
-<p> | </p>
-<p>风险</p>
-<p> |<br>| — | — | — |<br>| <code>/dev/sdc1</code> | </p>
-<p>❌ 不稳定</p>
-<p> | </p>
-<p>硬盘顺序变更（如拔插）会导致挂载到错误设备</p>
-<p> |<br>| <code>UUID=xxx</code> | </p>
-<p>✅ 稳定</p>
-<p> | <strong>唯一标识</strong></p>
-<p>，硬盘顺序变化不影响</p>
-<p> |</p>
+<h2 id="六、第五步：永久挂载（-etc-fstab）"><a href="#六、第五步：永久挂载（-etc-fstab）" class="headerlink" title="六、第五步：永久挂载（&#x2F;etc&#x2F;fstab）"></a>六、第五步：永久挂载（&#x2F;etc&#x2F;fstab）</h2><h3 id="6-1-为什么用UUID？"><a href="#6-1-为什么用UUID？" class="headerlink" title="6.1 为什么用UUID？"></a>6.1 为什么用UUID？</h3><table>
+<thead>
+<tr>
+<th>挂载方式</th>
+<th>稳定性</th>
+<th>风险</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/dev/sdc1</code></td>
+<td>❌ 不稳定</td>
+<td>硬盘顺序变更（如拔插）会导致挂载到错误设备</td>
+</tr>
+<tr>
+<td><code>UUID=xxx</code></td>
+<td>✅ 稳定</td>
+<td><strong>唯一标识</strong>  ，硬盘顺序变化不影响</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>🎯 <strong>生产环境强制使用UUID挂载！</strong></p>
 </blockquote>
 <h3 id="6-2-获取UUID"><a href="#6-2-获取UUID" class="headerlink" title="6.2 获取UUID"></a>6.2 获取UUID</h3><p><code>  1  2  blkid /dev/sdc1   # 输出示例：/dev/sdc1: UUID=&quot;a1b2c3d4-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot; TYPE=&quot;ext4&quot;      </code></p>
 <h3 id="6-3-编辑配置文件"><a href="#6-3-编辑配置文件" class="headerlink" title="6.3 编辑配置文件"></a>6.3 编辑配置文件</h3><p><code>  1  vim /etc/fstab      </code></p>
 <h3 id="6-4-添加挂载配置"><a href="#6-4-添加挂载配置" class="headerlink" title="6.4 添加挂载配置"></a>6.4 添加挂载配置</h3><p><code>  1  UUID=xxxx-xxxx-xxxx-xxxx  /xinmulu  ext4  defaults  0  0      </code></p>
-<h3 id="6-5-fstab-六字段详解"><a href="#6-5-fstab-六字段详解" class="headerlink" title="6.5 fstab 六字段详解"></a>6.5 fstab 六字段详解</h3><p>|<br>字段顺序</p>
-<p> | </p>
-<p>含义</p>
-<p> | </p>
-<p>示例值</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>第1列</p>
-<p> | </p>
-<p>设备标识（<strong>推荐UUID</strong>）</p>
-<p> | <code>UUID=xxx-xxx</code></p>
-<p> 或 <code>/dev/sdc1</code></p>
-<p> |<br>| </p>
-<p>第2列</p>
-<p> | </p>
-<p>挂载点目录</p>
-<p> | <code>/xinmulu</code> |<br>| </p>
-<p>第3列</p>
-<p> | </p>
-<p>文件系统类型</p>
-<p> | <code>ext4</code></p>
-<p> &#x2F; <code>xfs</code></p>
-<p> |<br>| </p>
-<p>第4列</p>
-<p> | </p>
-<p>挂载权限参数</p>
-<p> | <code>defaults</code></p>
-<p>（默认读写）</p>
-<p> |<br>| </p>
-<p>第5列</p>
-<p> | </p>
-<p>dump备份标记</p>
-<p> | <code>0</code></p>
-<p>（不备份）</p>
-<p> |<br>| </p>
-<p>第6列</p>
-<p> | </p>
-<p>fsck开机自检顺序</p>
-<p> | <code>0</code></p>
-<p>（不检测）</p>
-<p> |</p>
+<h3 id="6-5-fstab-六字段详解"><a href="#6-5-fstab-六字段详解" class="headerlink" title="6.5 fstab 六字段详解"></a>6.5 fstab 六字段详解</h3><table>
+<thead>
+<tr>
+<th>字段顺序</th>
+<th>含义</th>
+<th>示例值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第1列</td>
+<td>设备标识（<strong>推荐UUID</strong>）</td>
+<td><code>UUID=xxx-xxx</code>   或 <code>/dev/sdc1</code></td>
+</tr>
+<tr>
+<td>第2列</td>
+<td>挂载点目录</td>
+<td><code>/xinmulu</code></td>
+</tr>
+<tr>
+<td>第3列</td>
+<td>文件系统类型</td>
+<td><code>ext4</code>   &#x2F; <code>xfs</code></td>
+</tr>
+<tr>
+<td>第4列</td>
+<td>挂载权限参数</td>
+<td><code>defaults</code>  （默认读写）</td>
+</tr>
+<tr>
+<td>第5列</td>
+<td>dump备份标记</td>
+<td><code>0</code>  （不备份）</td>
+</tr>
+<tr>
+<td>第6列</td>
+<td>fsck开机自检顺序</td>
+<td><code>0</code>  （不检测）</td>
+</tr>
+</tbody></table>
 <h3 id="6-6-校验配置（不重启生效）"><a href="#6-6-校验配置（不重启生效）" class="headerlink" title="6.6 校验配置（不重启生效）"></a>6.6 校验配置（不重启生效）</h3><p><code>  1  2  3  4  5  # 加载fstab所有配置，无报错则配置无误   mount -a       # 确认挂载生效   df -h      </code></p>
 <h2 id="七、完整标准实操流程"><a href="#七、完整标准实操流程" class="headerlink" title="七、完整标准实操流程"></a>七、完整标准实操流程</h2><p><code>  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  # 1. 重启后查看新磁盘设备   lsblk -f      # 2. 磁盘分区   fdisk /dev/sdc   # 操作步骤：n → 回车 → 回车 → w      # 3. 格式化分区   mkfs -t ext4 /dev/sdc1      # 4. 创建挂载目录   mkdir /xinmulu      # 5. 临时挂载（测试）   mount /dev/sdc1 /xinmulu      # 6. 获取UUID   blkid /dev/sdc1      # 7. 配置永久挂载   vim /etc/fstab   # 添加：UUID=xxx-xxx /xinmulu ext4 defaults 0 0      # 8. 校验配置   mount -a      # 9. 确认生效   df -h      </code></p>
-<h2 id="八、高频易错点汇总"><a href="#八、高频易错点汇总" class="headerlink" title="八、高频易错点汇总"></a>八、高频易错点汇总</h2><p>|<br>❌ 错误操作</p>
-<p> | </p>
-<p>✅ 正确操作</p>
-<p> | </p>
-<p>后果</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>格式化写成 <code>/dev/sd1</code></p>
-<p> | </p>
-<p>必须写完整分区名 <code>/dev/sdc1</code></p>
-<p> | </p>
-<p>找不到设备，操作失败</p>
-<p> |<br>| </p>
-<p>分区后未执行 <code>w</code> 保存</p>
-<p> | </p>
-<p>必须执行 <code>w</code> 写入并退出</p>
-<p> | </p>
-<p>所有分区操作无效</p>
-<p> |<br>| </p>
-<p>未格式化直接挂载</p>
-<p> | </p>
-<p>先 <code>mkfs</code> 格式化再挂载</p>
-<p> | </p>
-<p>挂载报错，无法使用</p>
-<p> |<br>| </p>
-<p>仅临时挂载，不配置fstab</p>
-<p> | </p>
-<p>配置 <code>/etc/fstab</code> 永久挂载</p>
-<p> | </p>
-<p>重启后挂载失效</p>
-<p> |<br>| </p>
-<p>使用 <code>/dev/sdc1</code> 设备名挂载</p>
-<p> | </p>
-<p>使用 <code>UUID=xxx</code> 挂载</p>
-<p> | </p>
-<p>硬盘顺序变更导致挂载异常</p>
-<p> |</p>
-<h2 id="九、命令速查卡片"><a href="#九、命令速查卡片" class="headerlink" title="九、命令速查卡片"></a>九、命令速查卡片</h2><p>|<br>操作</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — |<br>| </p>
-<p>查看磁盘&#x2F;分区&#x2F;挂载状态</p>
-<p> | <code>lsblk -f</code> |<br>| </p>
-<p>查看所有磁盘分区</p>
-<p> | <code>fdisk -l</code> |<br>| </p>
-<p>查看已挂载磁盘容量</p>
-<p> | <code>df -h</code> |<br>| </p>
-<p>查看设备UUID</p>
-<p> | <code>blkid</code></p>
-<p> 或 <code>blkid /dev/sdc1</code></p>
-<p> |<br>| </p>
-<p>进入分区编辑</p>
-<p> | <code>fdisk /dev/sdc</code> |<br>| </p>
-<p>格式化分区（通用）</p>
-<p> | <code>mkfs -t ext4 /dev/sdc1</code> |<br>| </p>
-<p>格式化分区（简写）</p>
-<p> | <code>mkfs.ext4 /dev/sdc1</code> |<br>| </p>
-<p>临时挂载</p>
-<p> | <code>mount /dev/sdc1 /xinmulu</code> |<br>| </p>
-<p>卸载磁盘</p>
-<p> | <code>umount /dev/sdc1</code></p>
-<p> 或 <code>umount /xinmulu</code></p>
-<p> |<br>| </p>
-<p>编辑永久挂载配置</p>
-<p> | <code>vim /etc/fstab</code> |<br>| </p>
-<p>加载&#x2F;校验fstab配置</p>
-<p> | <code>mount -a</code> |</p>
+<h2 id="八、高频易错点汇总"><a href="#八、高频易错点汇总" class="headerlink" title="八、高频易错点汇总"></a>八、高频易错点汇总</h2><table>
+<thead>
+<tr>
+<th>❌ 错误操作</th>
+<th>✅ 正确操作</th>
+<th>后果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>格式化写成 <code>/dev/sd1</code></td>
+<td>必须写完整分区名 <code>/dev/sdc1</code></td>
+<td>找不到设备，操作失败</td>
+</tr>
+<tr>
+<td>分区后未执行 <code>w</code> 保存</td>
+<td>必须执行 <code>w</code> 写入并退出</td>
+<td>所有分区操作无效</td>
+</tr>
+<tr>
+<td>未格式化直接挂载</td>
+<td>先 <code>mkfs</code> 格式化再挂载</td>
+<td>挂载报错，无法使用</td>
+</tr>
+<tr>
+<td>仅临时挂载，不配置fstab</td>
+<td>配置 <code>/etc/fstab</code> 永久挂载</td>
+<td>重启后挂载失效</td>
+</tr>
+<tr>
+<td>使用 <code>/dev/sdc1</code> 设备名挂载</td>
+<td>使用 <code>UUID=xxx</code> 挂载</td>
+<td>硬盘顺序变更导致挂载异常</td>
+</tr>
+</tbody></table>
+<h2 id="九、命令速查卡片"><a href="#九、命令速查卡片" class="headerlink" title="九、命令速查卡片"></a>九、命令速查卡片</h2><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查看磁盘&#x2F;分区&#x2F;挂载状态</td>
+<td><code>lsblk -f</code></td>
+</tr>
+<tr>
+<td>查看所有磁盘分区</td>
+<td><code>fdisk -l</code></td>
+</tr>
+<tr>
+<td>查看已挂载磁盘容量</td>
+<td><code>df -h</code></td>
+</tr>
+<tr>
+<td>查看设备UUID</td>
+<td><code>blkid</code>   或 <code>blkid /dev/sdc1</code></td>
+</tr>
+<tr>
+<td>进入分区编辑</td>
+<td><code>fdisk /dev/sdc</code></td>
+</tr>
+<tr>
+<td>格式化分区（通用）</td>
+<td><code>mkfs -t ext4 /dev/sdc1</code></td>
+</tr>
+<tr>
+<td>格式化分区（简写）</td>
+<td><code>mkfs.ext4 /dev/sdc1</code></td>
+</tr>
+<tr>
+<td>临时挂载</td>
+<td><code>mount /dev/sdc1 /xinmulu</code></td>
+</tr>
+<tr>
+<td>卸载磁盘</td>
+<td><code>umount /dev/sdc1</code>   或 <code>umount /xinmulu</code></td>
+</tr>
+<tr>
+<td>编辑永久挂载配置</td>
+<td><code>vim /etc/fstab</code></td>
+</tr>
+<tr>
+<td>加载&#x2F;校验fstab配置</td>
+<td><code>mount -a</code></td>
+</tr>
+</tbody></table>
 <hr>
 <h2 id="生产场景：无法重启服务器，如何识别新硬盘？"><a href="#生产场景：无法重启服务器，如何识别新硬盘？" class="headerlink" title="生产场景：无法重启服务器，如何识别新硬盘？"></a>生产场景：无法重启服务器，如何识别新硬盘？</h2><p><strong>场景说明</strong>：线上服务器业务运行中，<strong>禁止重启</strong>，新增物理硬盘后系统未识别，无需重启可手动扫描识别磁盘。</p>
 <h2 id="重新扫描-SCSI-SATA-总线"><a href="#重新扫描-SCSI-SATA-总线" class="headerlink" title="重新扫描 SCSI&#x2F;SATA 总线"></a>重新扫描 SCSI&#x2F;SATA 总线</h2><h3 id="1-找到-SCSI-Host-控制器"><a href="#1-找到-SCSI-Host-控制器" class="headerlink" title="1. 找到 SCSI Host 控制器"></a>1. 找到 SCSI Host 控制器</h3><p><code>  1  2  ls /sys/class/scsi_host/   # 输出示例：host0  host1  host2      </code></p>
@@ -737,7 +794,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -770,41 +827,69 @@
 <h2 id="二、crond-—-周期性定时任务"><a href="#二、crond-—-周期性定时任务" class="headerlink" title="二、crond — 周期性定时任务"></a>二、crond — 周期性定时任务</h2><h3 id="2-1-基本介绍"><a href="#2-1-基本介绍" class="headerlink" title="2.1 基本介绍"></a>2.1 基本介绍</h3><p>crond 是Linux的后台守护进程，负责周期性执行用户设定的任务。安装系统后默认已启动。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看crond服务状态</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-2-crontab-命令"><a href="#2-2-crontab-命令" class="headerlink" title="2.2 crontab 命令"></a>2.2 crontab 命令</h3><p>|<br>选项</p>
-<p> | </p>
-<p>功能</p>
-<p> | </p>
-<p>示例</p>
-<p> |<br>| — | — | — |<br>| <code>-e</code> | <strong>编辑</strong></p>
-<p>当前用户的定时任务</p>
-<p> | <code>crontab -e</code> |<br>| <code>-l</code> | <strong>列出</strong></p>
-<p>当前用户的所有任务</p>
-<p> | <code>crontab -l</code> |<br>| <code>-r</code> | <strong>删除</strong></p>
-<p>当前用户的所有任务</p>
-<p> | <code>crontab -r</code> |<br>| <code>-u</code> | </p>
-<p>管理<strong>指定用户</strong>的任务（root专用）</p>
-<p> | <code>crontab -u tom -e</code> |</p>
+<h3 id="2-2-crontab-命令"><a href="#2-2-crontab-命令" class="headerlink" title="2.2 crontab 命令"></a>2.2 crontab 命令</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-e</code></td>
+<td><strong>编辑</strong>  当前用户的定时任务</td>
+<td><code>crontab -e</code></td>
+</tr>
+<tr>
+<td><code>-l</code></td>
+<td><strong>列出</strong>  当前用户的所有任务</td>
+<td><code>crontab -l</code></td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td><strong>删除</strong>  当前用户的所有任务</td>
+<td><code>crontab -r</code></td>
+</tr>
+<tr>
+<td><code>-u</code></td>
+<td>管理<strong>指定用户</strong>的任务（root专用）</td>
+<td><code>crontab -u tom -e</code></td>
+</tr>
+</tbody></table>
 <h3 id="2-3-时间格式（5个占位符）"><a href="#2-3-时间格式（5个占位符）" class="headerlink" title="2.3 时间格式（5个占位符）"></a>2.3 时间格式（5个占位符）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * *</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>💡 如果忘记了格式，可以查看 &#x2F;etc&#x2F;crontab 文件，里面有详细的注释说明。</p>
 </blockquote>
-<h3 id="2-4-特殊符号"><a href="#2-4-特殊符号" class="headerlink" title="2.4 特殊符号"></a>2.4 特殊符号</h3><p>|<br>符号</p>
-<p> | </p>
-<p>含义</p>
-<p> | </p>
-<p>示例</p>
-<p> |<br>| — | — | — |<br>| <code>*</code> | <strong>任意值</strong></p>
-<p>（每分钟&#x2F;每小时&#x2F;每天…）</p>
-<p> | <code>* * * * *</code></p>
-<p> &#x3D; 每分钟</p>
-<p> |<br>| <code>,</code> | <strong>列举多个值</strong> | <code>0 8,12,16 * * *</code></p>
-<p> &#x3D; 每天8点、12点、16点</p>
-<p> |<br>| <code>-</code> | <strong>范围</strong> | <code>0 5 * * 1-5</code></p>
-<p> &#x3D; 周一到周五的5点</p>
-<p> |<br>| <code>*/n</code> | <strong>每隔n单位</strong> | <code>*/5 * * * *</code></p>
-<p> &#x3D; 每5分钟</p>
-<p> |</p>
+<h3 id="2-4-特殊符号"><a href="#2-4-特殊符号" class="headerlink" title="2.4 特殊符号"></a>2.4 特殊符号</h3><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>*</code></td>
+<td><strong>任意值</strong>  （每分钟&#x2F;每小时&#x2F;每天…）</td>
+<td><code>* * * * *</code>   &#x3D; 每分钟</td>
+</tr>
+<tr>
+<td><code>,</code></td>
+<td><strong>列举多个值</strong></td>
+<td><code>0 8,12,16 * * *</code>   &#x3D; 每天8点、12点、16点</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td><strong>范围</strong></td>
+<td><code>0 5 * * 1-5</code>   &#x3D; 周一到周五的5点</td>
+</tr>
+<tr>
+<td><code>*/n</code></td>
+<td><strong>每隔n单位</strong></td>
+<td><code>*/5 * * * *</code>   &#x3D; 每5分钟</td>
+</tr>
+</tbody></table>
 <h3 id="2-5-时间配置示例"><a href="#2-5-时间配置示例" class="headerlink" title="2.5 时间配置示例"></a>2.5 时间配置示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 每分钟执行一次</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-6-⚠️-crontab-注意事项"><a href="#2-6-⚠️-crontab-注意事项" class="headerlink" title="2.6 ⚠️ crontab 注意事项"></a>2.6 ⚠️ crontab 注意事项</h3><p>1. 命令必须使用绝对路径</p>
@@ -835,106 +920,167 @@
 <h3 id="3-2-at-命令格式"><a href="#3-2-at-命令格式" class="headerlink" title="3.2 at 命令格式"></a>3.2 at 命令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">at [选项] [时间]</span><br></pre></td></tr></table></figure>
 
 <p>时间格式示例：</p>
-<h3 id="3-3-相关命令"><a href="#3-3-相关命令" class="headerlink" title="3.3 相关命令"></a>3.3 相关命令</h3><p>|<br>命令</p>
-<p> | </p>
-<p>功能</p>
-<p> |<br>| — | — |<br>| <code>atq</code> | </p>
-<p>查看待执行的任务列表</p>
-<p> |<br>| <code>atrm 任务编号</code> | </p>
-<p>删除指定任务</p>
-<p> |<br>| <code>at -c 任务编号</code> | </p>
-<p>查看任务具体内容</p>
-<p> |</p>
+<h3 id="3-3-相关命令"><a href="#3-3-相关命令" class="headerlink" title="3.3 相关命令"></a>3.3 相关命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>atq</code></td>
+<td>查看待执行的任务列表</td>
+</tr>
+<tr>
+<td><code>atrm 任务编号</code></td>
+<td>删除指定任务</td>
+</tr>
+<tr>
+<td><code>at -c 任务编号</code></td>
+<td>查看任务具体内容</td>
+</tr>
+</tbody></table>
 <h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="3-4-使用步骤"><a href="#3-4-使用步骤" class="headerlink" title="3.4 使用步骤"></a>3.4 使用步骤</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 1. 输入 at 命令 + 时间</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-5-实战示例"><a href="#3-5-实战示例" class="headerlink" title="3.5 实战示例"></a>3.5 实战示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 5分钟后输出时间到文件</span><br></pre></td></tr></table></figure>
 
-<h2 id="四、crond-vs-atd-对比"><a href="#四、crond-vs-atd-对比" class="headerlink" title="四、crond vs atd 对比"></a>四、crond vs atd 对比</h2><p>|<br>对比项</p>
-<p> | </p>
-<p>crond</p>
-<p> | </p>
-<p>atd</p>
-<p> |<br>| — | — | — |<br>| <strong>执行频率</strong> | <strong>周期性</strong></p>
-<p>（多次执行）</p>
-<p> | <strong>一次性</strong></p>
-<p>（仅执行一次）</p>
-<p> |<br>| <strong>适用场景</strong> | </p>
-<p>定期备份、监控、清理</p>
-<p> | </p>
-<p>临时性任务、延迟操作</p>
-<p> |<br>| <strong>配置方式</strong> | <code>crontab -e</code></p>
-<p> 编辑</p>
-<p> | <code>at 时间</code></p>
-<p> 交互输入</p>
-<p> |<br>| <strong>任务保存</strong> | </p>
-<p>永久有效（直到删除）</p>
-<p> | </p>
-<p>执行后自动移除</p>
-<p> |<br>| <strong>查看任务</strong> | <code>crontab -l</code> | <code>atq</code> |<br>| <strong>删除任务</strong> | <code>crontab -r</code></p>
-<p>（删除全部）或编辑删除</p>
-<p> | <code>atrm 编号</code> |</p>
-<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="五、常见报错与解决"><a href="#五、常见报错与解决" class="headerlink" title="五、常见报错与解决"></a>五、常见报错与解决</h2><p>|<br>报错</p>
-<p> | </p>
-<p>原因</p>
-<p> | </p>
-<p>解决</p>
-<p> |<br>| — | — | — |<br>| <code>command not found</code> | </p>
-<p>命令未用绝对路径</p>
-<p> | </p>
-<p>使用 <code>which 命令</code> 查看路径后修改</p>
-<p> |<br>| <code>crontab: command not found</code> | </p>
-<p>未安装cron</p>
-<p> | <code>yum install -y cronie</code></p>
-<p> &#x2F; <code>apt install -y cron</code></p>
-<p> |<br>| <code>Can&#39;t open /var/run/atd.pid</code> | </p>
-<p>atd服务未启动</p>
-<p> | <code>systemctl start atd</code> |<br>| <code>你输入的文本没有结束</code> | </p>
-<p>忘记Ctrl+D退出</p>
-<p> | </p>
-<p>按 <code>Ctrl+D</code> 完成输入</p>
-<p> |<br>| <code>%</code></p>
-<p> 被识别为特殊字符</p>
-<p> | </p>
-<p>crontab中%有特殊含义</p>
-<p> | </p>
-<p>使用 <code>\%</code> 转义</p>
-<p> |</p>
-<h2 id="-2"><a href="#-2" class="headerlink" title=""></a></h2><h2 id="六、命令速查卡片"><a href="#六、命令速查卡片" class="headerlink" title="六、命令速查卡片"></a>六、命令速查卡片</h2><h3 id="crond-速查"><a href="#crond-速查" class="headerlink" title="crond 速查"></a>crond 速查</h3><p>|<br>操作</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — |<br>| </p>
-<p>编辑任务</p>
-<p> | <code>crontab -e</code> |<br>| </p>
-<p>查看任务</p>
-<p> | <code>crontab -l</code> |<br>| </p>
-<p>删除所有任务</p>
-<p> | <code>crontab -r</code> |<br>| </p>
-<p>重启crond服务</p>
-<p> | <code>systemctl restart crond</code> |<br>| </p>
-<p>时间格式记忆</p>
-<p> | <code>cat /etc/crontab</code></p>
-<p> 查看注释</p>
-<p> |<br>| </p>
-<p>每5分钟执行</p>
-<p> | <code>*/5 * * * *</code> |</p>
-<h3 id="-3"><a href="#-3" class="headerlink" title=""></a></h3><h3 id="atd-速查"><a href="#atd-速查" class="headerlink" title="atd 速查"></a>atd 速查</h3><p>|<br>操作</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — |<br>| </p>
-<p>创建任务</p>
-<p> | <code>at 时间</code></p>
-<p> → 输入命令 → <code>Ctrl+D</code> 两次</p>
-<p> |<br>| </p>
-<p>查看任务</p>
-<p> | <code>atq</code> |<br>| </p>
-<p>查看任务内容</p>
-<p> | <code>at -c 编号</code> |<br>| </p>
-<p>删除任务</p>
-<p> | <code>atrm 编号</code> |<br>| </p>
-<p>5分钟后执行</p>
-<p> | <code>at now + 5 minutes</code> |<br>| </p>
-<p>明天下午6点</p>
-<p> | <code>at 6pm tomorrow</code> |</p>
+<h2 id="四、crond-vs-atd-对比"><a href="#四、crond-vs-atd-对比" class="headerlink" title="四、crond vs atd 对比"></a>四、crond vs atd 对比</h2><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>crond</th>
+<th>atd</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>执行频率</strong></td>
+<td><strong>周期性</strong>  （多次执行）</td>
+<td><strong>一次性</strong>  （仅执行一次）</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>定期备份、监控、清理</td>
+<td>临时性任务、延迟操作</td>
+</tr>
+<tr>
+<td><strong>配置方式</strong></td>
+<td><code>crontab -e</code>   编辑</td>
+<td><code>at 时间</code>   交互输入</td>
+</tr>
+<tr>
+<td><strong>任务保存</strong></td>
+<td>永久有效（直到删除）</td>
+<td>执行后自动移除</td>
+</tr>
+<tr>
+<td><strong>查看任务</strong></td>
+<td><code>crontab -l</code></td>
+<td><code>atq</code></td>
+</tr>
+<tr>
+<td><strong>删除任务</strong></td>
+<td><code>crontab -r</code>  （删除全部）或编辑删除</td>
+<td><code>atrm 编号</code></td>
+</tr>
+</tbody></table>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="五、常见报错与解决"><a href="#五、常见报错与解决" class="headerlink" title="五、常见报错与解决"></a>五、常见报错与解决</h2><table>
+<thead>
+<tr>
+<th>报错</th>
+<th>原因</th>
+<th>解决</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>command not found</code></td>
+<td>命令未用绝对路径</td>
+<td>使用 <code>which 命令</code> 查看路径后修改</td>
+</tr>
+<tr>
+<td><code>crontab: command not found</code></td>
+<td>未安装cron</td>
+<td><code>yum install -y cronie</code>   &#x2F; <code>apt install -y cron</code></td>
+</tr>
+<tr>
+<td><code>Can&#39;t open /var/run/atd.pid</code></td>
+<td>atd服务未启动</td>
+<td><code>systemctl start atd</code></td>
+</tr>
+<tr>
+<td><code>你输入的文本没有结束</code></td>
+<td>忘记Ctrl+D退出</td>
+<td>按 <code>Ctrl+D</code> 完成输入</td>
+</tr>
+<tr>
+<td><code>%</code>   被识别为特殊字符</td>
+<td>crontab中%有特殊含义</td>
+<td>使用 <code>\%</code> 转义</td>
+</tr>
+</tbody></table>
+<h2 id="-2"><a href="#-2" class="headerlink" title=""></a></h2><h2 id="六、命令速查卡片"><a href="#六、命令速查卡片" class="headerlink" title="六、命令速查卡片"></a>六、命令速查卡片</h2><h3 id="crond-速查"><a href="#crond-速查" class="headerlink" title="crond 速查"></a>crond 速查</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>编辑任务</td>
+<td><code>crontab -e</code></td>
+</tr>
+<tr>
+<td>查看任务</td>
+<td><code>crontab -l</code></td>
+</tr>
+<tr>
+<td>删除所有任务</td>
+<td><code>crontab -r</code></td>
+</tr>
+<tr>
+<td>重启crond服务</td>
+<td><code>systemctl restart crond</code></td>
+</tr>
+<tr>
+<td>时间格式记忆</td>
+<td><code>cat /etc/crontab</code>   查看注释</td>
+</tr>
+<tr>
+<td>每5分钟执行</td>
+<td><code>*/5 * * * *</code></td>
+</tr>
+</tbody></table>
+<h3 id="-3"><a href="#-3" class="headerlink" title=""></a></h3><h3 id="atd-速查"><a href="#atd-速查" class="headerlink" title="atd 速查"></a>atd 速查</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>创建任务</td>
+<td><code>at 时间</code>   → 输入命令 → <code>Ctrl+D</code> 两次</td>
+</tr>
+<tr>
+<td>查看任务</td>
+<td><code>atq</code></td>
+</tr>
+<tr>
+<td>查看任务内容</td>
+<td><code>at -c 编号</code></td>
+</tr>
+<tr>
+<td>删除任务</td>
+<td><code>atrm 编号</code></td>
+</tr>
+<tr>
+<td>5分钟后执行</td>
+<td><code>at now + 5 minutes</code></td>
+</tr>
+<tr>
+<td>明天下午6点</td>
+<td><code>at 6pm tomorrow</code></td>
+</tr>
+</tbody></table>
 <h3 id="-4"><a href="#-4" class="headerlink" title=""></a></h3><hr>
 <blockquote>
 <p>📌 &gt; 如果觉得有用，欢迎点赞、在看、转发三连！</p>
@@ -1001,7 +1147,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1032,23 +1178,40 @@
 <h2 id="一、权限字符串完整拆解"><a href="#一、权限字符串完整拆解" class="headerlink" title="一、权限字符串完整拆解"></a>一、权限字符串完整拆解</h2><h3 id="1-1-10位权限格式"><a href="#1-1-10位权限格式" class="headerlink" title="1.1 10位权限格式"></a>1.1 10位权限格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r--. 1 root root 1213 Feb 2 09:39 abc.txt</span><br></pre></td></tr></table></figure>
 
 <p>格式：<code>[1位文件类型][9位权限]</code></p>
-<p>|<br>位置</p>
-<p> | </p>
-<p>含义</p>
-<p> | </p>
-<p>示例</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>第1位</p>
-<p> | <strong>文件类型</strong> | <code>-</code></p>
-<p>（普通文件）<code>d</code>（目录）<code>l</code>（软链接）<code>c</code>（字符设备）<code>b</code>（块设备）</p>
-<p> |<br>| </p>
-<p>第2-4位</p>
-<p> | <strong>属主权限（u）</strong> | <code>rw-</code> |<br>| </p>
-<p>第5-7位</p>
-<p> | <strong>属组权限（g）</strong> | <code>r--</code> |<br>| </p>
-<p>第8-10位</p>
-<p> | <strong>其他用户权限（o）</strong> | <code>r--</code> |</p>
-<p><strong>示例解读</strong>：<code>-rw-r--r--</code></p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第1位</td>
+<td><strong>文件类型</strong></td>
+<td><code>-</code>  （普通文件）<code>d</code>（目录）<code>l</code>（软链接）<code>c</code>（字符设备）<code>b</code>（块设备）</td>
+</tr>
+<tr>
+<td>第2-4位</td>
+<td><strong>属主权限（u）</strong></td>
+<td><code>rw-</code></td>
+</tr>
+<tr>
+<td>第5-7位</td>
+<td><strong>属组权限（g）</strong></td>
+<td><code>r--</code></td>
+</tr>
+<tr>
+<td>第8-10位</td>
+<td><strong>其他用户权限（o）</strong></td>
+<td><code>r--</code></td>
+</tr>
+<tr>
+<td><strong>示例解读</strong>：<code>-rw-r--r--</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <ul>
 <li><p><code>-</code> → 普通文件</p>
 </li>
@@ -1059,162 +1222,179 @@
 <li><p><code>r--</code> → 其他用户只读</p>
 </li>
 </ul>
-<h3 id="1-2-文件类型标识大全"><a href="#1-2-文件类型标识大全" class="headerlink" title="1.2 文件类型标识大全"></a>1.2 文件类型标识大全</h3><p>|<br>符号</p>
-<p> | </p>
-<p>类型</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — | — |<br>| <code>-</code> | </p>
-<p>普通文件</p>
-<p> | </p>
-<p>文本、二进制、数据文件</p>
-<p> |<br>| <code>d</code> | </p>
-<p>目录</p>
-<p> | </p>
-<p>文件夹</p>
-<p> |<br>| <code>l</code> | </p>
-<p>软链接</p>
-<p> | </p>
-<p>符号链接（快捷方式）</p>
-<p> |<br>| <code>c</code> | </p>
-<p>字符设备</p>
-<p> | </p>
-<p>键盘、鼠标、串口</p>
-<p> |<br>| <code>b</code> | </p>
-<p>块设备</p>
-<p> | </p>
-<p>硬盘、U盘</p>
-<p> |<br>| <code>s</code> | </p>
-<p>套接字</p>
-<p> | </p>
-<p>进程间通信</p>
-<p> |<br>| <code>p</code> | </p>
-<p>管道</p>
-<p> | </p>
-<p>FIFO文件</p>
-<p> |</p>
-<h3 id="1-3-rwx对文件和目录的区别（核心难点！）"><a href="#1-3-rwx对文件和目录的区别（核心难点！）" class="headerlink" title="1.3 rwx对文件和目录的区别（核心难点！）"></a>1.3 rwx对文件和目录的区别（核心难点！）</h3><p>|<br>权限</p>
-<p> | </p>
-<p>对<strong>普通文件</strong>的作用</p>
-<p> | </p>
-<p>对<strong>目录</strong>的作用</p>
-<p> |<br>| — | — | — |<br>| <strong>r（读）</strong> | </p>
-<p>查看文件内容（<code>cat</code>、<code>less</code>）</p>
-<p> | <strong>列出目录内容</strong></p>
-<p>（<code>ls</code>）</p>
-<p> |<br>| <strong>w（写）</strong> | </p>
-<p>修改&#x2F;覆盖文件内容</p>
-<p> | <strong>创建、删除、重命名</strong></p>
-<p>目录内文件（需配合x）</p>
-<p> |<br>| <strong>x（执行）</strong> | </p>
-<p>运行脚本&#x2F;程序</p>
-<p> | <strong>进入目录</strong></p>
-<p>（<code>cd</code>）</p>
-<p> |</p>
+<h3 id="1-2-文件类型标识大全"><a href="#1-2-文件类型标识大全" class="headerlink" title="1.2 文件类型标识大全"></a>1.2 文件类型标识大全</h3><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-</code></td>
+<td>普通文件</td>
+<td>文本、二进制、数据文件</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>目录</td>
+<td>文件夹</td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td>软链接</td>
+<td>符号链接（快捷方式）</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>字符设备</td>
+<td>键盘、鼠标、串口</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>块设备</td>
+<td>硬盘、U盘</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>套接字</td>
+<td>进程间通信</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>管道</td>
+<td>FIFO文件</td>
+</tr>
+</tbody></table>
+<h3 id="1-3-rwx对文件和目录的区别（核心难点！）"><a href="#1-3-rwx对文件和目录的区别（核心难点！）" class="headerlink" title="1.3 rwx对文件和目录的区别（核心难点！）"></a>1.3 rwx对文件和目录的区别（核心难点！）</h3><table>
+<thead>
+<tr>
+<th>权限</th>
+<th>对<strong>普通文件</strong>的作用</th>
+<th>对<strong>目录</strong>的作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>r（读）</strong></td>
+<td>查看文件内容（<code>cat</code>、<code>less</code>）</td>
+<td><strong>列出目录内容</strong>  （<code>ls</code>）</td>
+</tr>
+<tr>
+<td><strong>w（写）</strong></td>
+<td>修改&#x2F;覆盖文件内容</td>
+<td><strong>创建、删除、重命名</strong>  目录内文件（需配合x）</td>
+</tr>
+<tr>
+<td><strong>x（执行）</strong></td>
+<td>运行脚本&#x2F;程序</td>
+<td><strong>进入目录</strong>  （<code>cd</code>）</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>⚠️ <strong>重点理解</strong>：对目录有<code>w</code>权限，<strong>不需要</strong>对目录内的文件有<code>w</code>权限，就能删除该文件！因为删除文件是修改<strong>目录内容</strong>，不是修改文件本身。</p>
 </blockquote>
 <p><strong>目录权限组合实战理解：</strong></p>
-<p>|<br>目录权限</p>
-<p> | </p>
-<p>能否<code>ls</code></p>
-<p> | </p>
-<p>能否<code>cd</code>进入</p>
-<p> | </p>
-<p>能否删除&#x2F;创建文件</p>
-<p> |<br>| — | — | — | — |<br>| <code>r--</code></p>
-<p>（只读）</p>
-<p> | </p>
-<p>✅ 能（但看不到属性细节）</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> |<br>| <code>-w-</code></p>
-<p>（只写，无x）</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> | </p>
-<p>❌ 不能（没有x连进入都不行）</p>
-<p> |<br>| <code>--x</code></p>
-<p>（只执行）</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> | </p>
-<p>✅ 能</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> |<br>| <code>rw-</code></p>
-<p>（读写，无x）</p>
-<p> | </p>
-<p>✅ 能</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> |<br>| <code>rwx</code></p>
-<p>（全开）</p>
-<p> | </p>
-<p>✅ 能</p>
-<p> | </p>
-<p>✅ 能</p>
-<p> | </p>
-<p>✅ 能</p>
-<p> |<br>| <code>-wx</code></p>
-<p>（写+执行，无读）</p>
-<p> | </p>
-<p>❌ 不能</p>
-<p> | </p>
-<p>✅ 能</p>
-<p> | </p>
-<p>✅ 能（知道文件名才能操作）</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>目录权限</th>
+<th>能否<code>ls</code></th>
+<th>能否<code>cd</code>进入</th>
+<th>能否删除&#x2F;创建文件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>r--</code>  （只读）</td>
+<td>✅ 能（但看不到属性细节）</td>
+<td>❌ 不能</td>
+<td>❌ 不能</td>
+</tr>
+<tr>
+<td><code>-w-</code>  （只写，无x）</td>
+<td>❌ 不能</td>
+<td>❌ 不能</td>
+<td>❌ 不能（没有x连进入都不行）</td>
+</tr>
+<tr>
+<td><code>--x</code>  （只执行）</td>
+<td>❌ 不能</td>
+<td>✅ 能</td>
+<td>❌ 不能</td>
+</tr>
+<tr>
+<td><code>rw-</code>  （读写，无x）</td>
+<td>✅ 能</td>
+<td>❌ 不能</td>
+<td>❌ 不能</td>
+</tr>
+<tr>
+<td><code>rwx</code>  （全开）</td>
+<td>✅ 能</td>
+<td>✅ 能</td>
+<td>✅ 能</td>
+</tr>
+<tr>
+<td><code>-wx</code>  （写+执行，无读）</td>
+<td>❌ 不能</td>
+<td>✅ 能</td>
+<td>✅ 能（知道文件名才能操作）</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>💡 <strong>实战启发</strong>：目录的<code>x</code>权限是进入目录的“门票”，没有了它，<code>r</code>和<code>w</code>都无法发挥作用。这就是为什么文件夹至少需要<code>r-x</code>才能正常浏览访问。</p>
 </blockquote>
 <h2 id="二、chmod-—-修改权限"><a href="#二、chmod-—-修改权限" class="headerlink" title="二、chmod — 修改权限"></a>二、chmod — 修改权限</h2><h3 id="2-1-字符方式（u-g-o-）"><a href="#2-1-字符方式（u-g-o-）" class="headerlink" title="2.1 字符方式（u&#x2F;g&#x2F;o + - &#x3D;）"></a>2.1 字符方式（u&#x2F;g&#x2F;o + - &#x3D;）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 语法：chmod [u/g/o/a] [+/-/=] [rwx] 文件</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-2-数字方式（r-4-w-2-x-1）"><a href="#2-2-数字方式（r-4-w-2-x-1）" class="headerlink" title="2.2 数字方式（r&#x3D;4, w&#x3D;2, x&#x3D;1）"></a>2.2 数字方式（r&#x3D;4, w&#x3D;2, x&#x3D;1）</h3><p><strong>权限值计算表：</strong></p>
-<p>|<br>权限组合</p>
-<p> | </p>
-<p>数值</p>
-<p> | </p>
-<p>含义</p>
-<p> |<br>| — | — | — |<br>| <code>---</code> | </p>
-<p>0</p>
-<p> | </p>
-<p>无权限</p>
-<p> |<br>| <code>--x</code> | </p>
-<p>1</p>
-<p> | </p>
-<p>仅执行</p>
-<p> |<br>| <code>-w-</code> | </p>
-<p>2</p>
-<p> | </p>
-<p>仅写</p>
-<p> |<br>| <code>-wx</code> | </p>
-<p>3</p>
-<p> | </p>
-<p>写+执行</p>
-<p> |<br>| <code>r--</code> | </p>
-<p>4</p>
-<p> | </p>
-<p>仅读</p>
-<p> |<br>| <code>r-x</code> | </p>
-<p>5</p>
-<p> | </p>
-<p>读+执行</p>
-<p> |<br>| <code>rw-</code> | </p>
-<p>6</p>
-<p> | </p>
-<p>读+写</p>
-<p> |<br>| <code>rwx</code> | </p>
-<p>7</p>
-<p> | </p>
-<p>全部权限</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>权限组合</th>
+<th>数值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>---</code></td>
+<td>0</td>
+<td>无权限</td>
+</tr>
+<tr>
+<td><code>--x</code></td>
+<td>1</td>
+<td>仅执行</td>
+</tr>
+<tr>
+<td><code>-w-</code></td>
+<td>2</td>
+<td>仅写</td>
+</tr>
+<tr>
+<td><code>-wx</code></td>
+<td>3</td>
+<td>写+执行</td>
+</tr>
+<tr>
+<td><code>r--</code></td>
+<td>4</td>
+<td>仅读</td>
+</tr>
+<tr>
+<td><code>r-x</code></td>
+<td>5</td>
+<td>读+执行</td>
+</tr>
+<tr>
+<td><code>rw-</code></td>
+<td>6</td>
+<td>读+写</td>
+</tr>
+<tr>
+<td><code>rwx</code></td>
+<td>7</td>
+<td>全部权限</td>
+</tr>
+</tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 语法：chmod 三位数字 文件</span><br></pre></td></tr></table></figure>
 
 <p>2.3 递归修改 -R</p>
@@ -1255,95 +1435,141 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 典型示例：/tmp 目录</span><br></pre></td></tr></table></figure>
 
 <p>特殊权限速查表</p>
-<p>|<br>特殊权限</p>
-<p> | </p>
-<p>数字位</p>
-<p> | </p>
-<p>字符表现</p>
-<p> | </p>
-<p>典型用途</p>
-<p> |<br>| — | — | — | — |<br>| </p>
-<p>SUID</p>
-<p> | </p>
-<p>4xxx</p>
-<p> | <code>s</code></p>
-<p>替代属主的<code>x</code></p>
-<p> | </p>
-<p>passwd命令</p>
-<p> |<br>| </p>
-<p>SGID</p>
-<p> | </p>
-<p>2xxx</p>
-<p> | <code>s</code></p>
-<p>替代属组的<code>x</code></p>
-<p> | </p>
-<p>共享目录</p>
-<p> |<br>| </p>
-<p>Sticky Bit</p>
-<p> | </p>
-<p>1xxx</p>
-<p> | <code>t</code></p>
-<p>替代other的<code>x</code></p>
-<p> | </p>
-<p>&#x2F;tmp目录</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>特殊权限</th>
+<th>数字位</th>
+<th>字符表现</th>
+<th>典型用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SUID</td>
+<td>4xxx</td>
+<td><code>s</code>  替代属主的<code>x</code></td>
+<td>passwd命令</td>
+</tr>
+<tr>
+<td>SGID</td>
+<td>2xxx</td>
+<td><code>s</code>  替代属组的<code>x</code></td>
+<td>共享目录</td>
+</tr>
+<tr>
+<td>Sticky Bit</td>
+<td>1xxx</td>
+<td><code>t</code>  替代other的<code>x</code></td>
+<td>&#x2F;tmp目录</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>💡 <strong>设置技巧</strong>：将特殊权限数字放在普通权限前，如 <code>chmod 4755 file</code>（SUID + rwxr-xr-x）</p>
 </blockquote>
-<h2 id="七、权限最佳实践（避坑指南）"><a href="#七、权限最佳实践（避坑指南）" class="headerlink" title="七、权限最佳实践（避坑指南）"></a>七、权限最佳实践（避坑指南）</h2><p>|<br>最佳实践</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — |<br>| <strong>目录权限 ≥ 755</strong> | </p>
-<p>目录有执行(x)才能cd进入，建议至少755</p>
-<p> |<br>| <strong>配置文件权限 644</strong> | </p>
-<p>只有属主可写，防止误修改</p>
-<p> |<br>| <strong>脚本权限 755</strong> | </p>
-<p>需要执行权限</p>
-<p> |<br>| <strong>敏感文件 600</strong> | </p>
-<p>如私钥、密码文件，仅属主可读写</p>
-<p> |<br>| <strong>共享目录 1777</strong> | </p>
-<p>加粘滞位，防止他人删除</p>
-<p> |<br>| <strong>Web目录 755&#x2F;644</strong> | </p>
-<p>目录755，文件644，避免安全风险</p>
-<p> |<br>| <strong>避免使用777</strong> | </p>
-<p>任何人可写是安全灾难！</p>
-<p> |</p>
-<h2 id="八、命令速查卡片"><a href="#八、命令速查卡片" class="headerlink" title="八、命令速查卡片"></a>八、命令速查卡片</h2><p>|<br>操作</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — |<br>| </p>
-<p>查看文件详情</p>
-<p> | <code>ll</code></p>
-<p> 或 <code>ls -l</code></p>
-<p> |<br>| </p>
-<p>查看所有文件（含隐藏）</p>
-<p> | <code>ls -al</code> |<br>| </p>
-<p>数字改权限</p>
-<p> | <code>chmod 755 file</code> |<br>| </p>
-<p>字符改权限</p>
-<p> | <code>chmod u+x file</code> |<br>| </p>
-<p>递归改权限</p>
-<p> | <code>chmod -R 755 /dir</code> |<br>| </p>
-<p>修改属主</p>
-<p> | <code>chown user1 file</code> |<br>| </p>
-<p>修改属组</p>
-<p> | <code>chgrp group1 file</code> |<br>| </p>
-<p>同时修改属主+属组</p>
-<p> | <code>chown user1:group1 file</code> |<br>| </p>
-<p>递归修改</p>
-<p> | <code>chown -R user1:group1 /dir</code> |<br>| </p>
-<p>创建组</p>
-<p> | <code>groupadd grp</code> |<br>| </p>
-<p>创建用户并指定组</p>
-<p> | <code>useradd -g grp user1</code> |<br>| </p>
-<p>修改用户组</p>
-<p> | <code>usermod -g grp user1</code> |<br>| </p>
-<p>删除用户（含家目录）</p>
-<p> | <code>userdel -r user1</code> |<br>| </p>
-<p>查看所有用户</p>
-<p> | <code>tail /etc/passwd</code> |<br>| </p>
-<p>查看所有组</p>
-<p> | <code>tail /etc/group</code> |</p>
+<h2 id="七、权限最佳实践（避坑指南）"><a href="#七、权限最佳实践（避坑指南）" class="headerlink" title="七、权限最佳实践（避坑指南）"></a>七、权限最佳实践（避坑指南）</h2><table>
+<thead>
+<tr>
+<th>最佳实践</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>目录权限 ≥ 755</strong></td>
+<td>目录有执行(x)才能cd进入，建议至少755</td>
+</tr>
+<tr>
+<td><strong>配置文件权限 644</strong></td>
+<td>只有属主可写，防止误修改</td>
+</tr>
+<tr>
+<td><strong>脚本权限 755</strong></td>
+<td>需要执行权限</td>
+</tr>
+<tr>
+<td><strong>敏感文件 600</strong></td>
+<td>如私钥、密码文件，仅属主可读写</td>
+</tr>
+<tr>
+<td><strong>共享目录 1777</strong></td>
+<td>加粘滞位，防止他人删除</td>
+</tr>
+<tr>
+<td><strong>Web目录 755&#x2F;644</strong></td>
+<td>目录755，文件644，避免安全风险</td>
+</tr>
+<tr>
+<td><strong>避免使用777</strong></td>
+<td>任何人可写是安全灾难！</td>
+</tr>
+</tbody></table>
+<h2 id="八、命令速查卡片"><a href="#八、命令速查卡片" class="headerlink" title="八、命令速查卡片"></a>八、命令速查卡片</h2><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查看文件详情</td>
+<td><code>ll</code>   或 <code>ls -l</code></td>
+</tr>
+<tr>
+<td>查看所有文件（含隐藏）</td>
+<td><code>ls -al</code></td>
+</tr>
+<tr>
+<td>数字改权限</td>
+<td><code>chmod 755 file</code></td>
+</tr>
+<tr>
+<td>字符改权限</td>
+<td><code>chmod u+x file</code></td>
+</tr>
+<tr>
+<td>递归改权限</td>
+<td><code>chmod -R 755 /dir</code></td>
+</tr>
+<tr>
+<td>修改属主</td>
+<td><code>chown user1 file</code></td>
+</tr>
+<tr>
+<td>修改属组</td>
+<td><code>chgrp group1 file</code></td>
+</tr>
+<tr>
+<td>同时修改属主+属组</td>
+<td><code>chown user1:group1 file</code></td>
+</tr>
+<tr>
+<td>递归修改</td>
+<td><code>chown -R user1:group1 /dir</code></td>
+</tr>
+<tr>
+<td>创建组</td>
+<td><code>groupadd grp</code></td>
+</tr>
+<tr>
+<td>创建用户并指定组</td>
+<td><code>useradd -g grp user1</code></td>
+</tr>
+<tr>
+<td>修改用户组</td>
+<td><code>usermod -g grp user1</code></td>
+</tr>
+<tr>
+<td>删除用户（含家目录）</td>
+<td><code>userdel -r user1</code></td>
+</tr>
+<tr>
+<td>查看所有用户</td>
+<td><code>tail /etc/passwd</code></td>
+</tr>
+<tr>
+<td>查看所有组</td>
+<td><code>tail /etc/group</code></td>
+</tr>
+</tbody></table>
 <hr>
 <blockquote>
 <p>📌如果觉得有用，欢迎<strong>点赞、在看、转发</strong>三连！</p>
@@ -1410,7 +1636,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1456,36 +1682,50 @@
 <h3 id="实操演示"><a href="#实操演示" class="headerlink" title="实操演示"></a>实操演示</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 1. 打包压缩网站目录</span><br></pre></td></tr></table></figure>
 
 <h2 id="三、tar-—-Linux最强大的打包工具"><a href="#三、tar-—-Linux最强大的打包工具" class="headerlink" title="三、tar — Linux最强大的打包工具"></a>三、tar — Linux最强大的打包工具</h2><p><code>tar</code> 是Linux下<strong>最核心的归档工具</strong>，常与 <code>gzip</code> 配合生成 <code>.tar.gz</code> 文件。核心功能是<strong>打包</strong>（把多个文件&#x2F;目录合成一个文件），压缩功能依赖 <code>-z</code>（gzip）等参数调用外部压缩程序。</p>
-<h3 id="参数说明（⚠️-f-必须放最后！）"><a href="#参数说明（⚠️-f-必须放最后！）" class="headerlink" title="参数说明（⚠️ -f 必须放最后！）"></a>参数说明（⚠️ -f 必须放最后！）</h3><p>|<br>参数</p>
-<p> | </p>
-<p>含义</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — | — |<br>| <code>-c</code> | </p>
-<p>create</p>
-<p> | </p>
-<p>创建压缩包</p>
-<p> |<br>| <code>-x</code> | </p>
-<p>extract</p>
-<p> | </p>
-<p>解压包</p>
-<p> |<br>| <code>-v</code> | </p>
-<p>verbose</p>
-<p> | </p>
-<p>显示过程日志</p>
-<p> |<br>| <code>-f</code> | </p>
-<p>file</p>
-<p> | <strong>指定压缩包文件名（必须紧跟包名）</strong> |<br>| <code>-z</code> | </p>
-<p>gzip</p>
-<p> | </p>
-<p>使用gzip压缩&#x2F;解压（生成 <code>.tar.gz</code>）</p>
-<p> |<br>| <code>-C</code> | </p>
-<p>指定目录</p>
-<p> | <strong>解压到指定目录</strong> |<br>| <code>-t</code> | </p>
-<p>list</p>
-<p> | </p>
-<p>查看压缩包内容（不解压）</p>
-<p> |</p>
+<h3 id="参数说明（⚠️-f-必须放最后！）"><a href="#参数说明（⚠️-f-必须放最后！）" class="headerlink" title="参数说明（⚠️ -f 必须放最后！）"></a>参数说明（⚠️ -f 必须放最后！）</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-c</code></td>
+<td>create</td>
+<td>创建压缩包</td>
+</tr>
+<tr>
+<td><code>-x</code></td>
+<td>extract</td>
+<td>解压包</td>
+</tr>
+<tr>
+<td><code>-v</code></td>
+<td>verbose</td>
+<td>显示过程日志</td>
+</tr>
+<tr>
+<td><code>-f</code></td>
+<td>file</td>
+<td><strong>指定压缩包文件名（必须紧跟包名）</strong></td>
+</tr>
+<tr>
+<td><code>-z</code></td>
+<td>gzip</td>
+<td>使用gzip压缩&#x2F;解压（生成 <code>.tar.gz</code>）</td>
+</tr>
+<tr>
+<td><code>-C</code></td>
+<td>指定目录</td>
+<td><strong>解压到指定目录</strong></td>
+</tr>
+<tr>
+<td><code>-t</code></td>
+<td>list</td>
+<td>查看压缩包内容（不解压）</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>🎯 <strong>记忆口诀</strong>：<code>tar -zcvf</code> &#x3D; 打包压缩，<code>tar -zxvf</code> &#x3D; 解压。参数顺序随意，<strong>但 <code>-f</code> 必须在最后</strong>，因为它后面紧跟文件名。</p>
 </blockquote>
@@ -1500,128 +1740,194 @@
 <blockquote>
 <p>💡 <strong>本质理解</strong>：<code>tar</code> 负责<strong>打包</strong>（归档），<code>-z</code> 负责<strong>压缩</strong>（调用gzip），两者通过管道配合完成完整流程。<code>tar</code> 本身不压缩，它把多个文件拼成一个 <code>.tar</code>；<code>-z</code> 再把这个 <code>.tar</code> 压缩成 <code>.tar.gz</code>。同理，<code>-j</code> 调用 <code>bzip2</code> 生成 <code>.tar.bz2</code>，<code>-J</code> 调用 <code>xz</code> 生成 <code>.tar.xz</code>。</p>
 </blockquote>
-<h2 id="四、三种格式对比"><a href="#四、三种格式对比" class="headerlink" title="四、三种格式对比"></a>四、三种格式对比</h2><p>|<br>格式</p>
-<p> | </p>
-<p>工具</p>
-<p> | </p>
-<p>支持目录</p>
-<p> | </p>
-<p>跨平台</p>
-<p> | </p>
-<p>压缩率</p>
-<p> | </p>
-<p>常见用途</p>
-<p> |<br>| — | — | — | — | — | — |<br>| <code>.gz</code> | <code>gzip</code></p>
-<p>&#x2F;<code>gunzip</code></p>
-<p> | </p>
-<p>❌ 不支持</p>
-<p> | </p>
-<p>一般</p>
-<p> | </p>
-<p>中等</p>
-<p> | <strong>单文件压缩</strong></p>
-<p>，配合tar</p>
-<p> |<br>| <code>.zip</code> | <code>zip</code></p>
-<p>&#x2F;<code>unzip</code></p>
-<p> | </p>
-<p>✅ 支持（-r）</p>
-<p> | </p>
-<p>✅ Windows通用</p>
-<p> | </p>
-<p>中等</p>
-<p> | <strong>跨平台文件传输</strong> |<br>| <code>.tar.gz</code> | <code>tar -zcvf</code></p>
-<p>&#x2F;<code>tar -zxvf</code></p>
-<p> | </p>
-<p>✅ 支持</p>
-<p> | </p>
-<p>Linux主流</p>
-<p> | </p>
-<p>较高</p>
-<p> | <strong>Linux服务器首选</strong> |</p>
-<h3 id="选择建议"><a href="#选择建议" class="headerlink" title="选择建议"></a>选择建议</h3><p>|<br>场景</p>
-<p> | </p>
-<p>推荐格式</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>Linux服务器备份</p>
-<p> | <code>.tar.gz</code> | <code>tar -zcvf backup.tar.gz /path/</code> |<br>| </p>
-<p>分享给Windows用户</p>
-<p> | <code>.zip</code> | <code>zip -r share.zip /path/</code> |<br>| </p>
-<p>仅压缩单个日志文件</p>
-<p> | <code>.gz</code> | <code>gzip app.log</code> |<br>| </p>
-<p>发送源码包</p>
-<p> | <code>.tar.gz</code> | <code>tar -zcvf source.tar.gz src/</code> |</p>
+<h2 id="四、三种格式对比"><a href="#四、三种格式对比" class="headerlink" title="四、三种格式对比"></a>四、三种格式对比</h2><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>工具</th>
+<th>支持目录</th>
+<th>跨平台</th>
+<th>压缩率</th>
+<th>常见用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.gz</code></td>
+<td><code>gzip</code>  &#x2F;<code>gunzip</code></td>
+<td>❌ 不支持</td>
+<td>一般</td>
+<td>中等</td>
+<td><strong>单文件压缩</strong>  ，配合tar</td>
+</tr>
+<tr>
+<td><code>.zip</code></td>
+<td><code>zip</code>  &#x2F;<code>unzip</code></td>
+<td>✅ 支持（-r）</td>
+<td>✅ Windows通用</td>
+<td>中等</td>
+<td><strong>跨平台文件传输</strong></td>
+</tr>
+<tr>
+<td><code>.tar.gz</code></td>
+<td><code>tar -zcvf</code>  &#x2F;<code>tar -zxvf</code></td>
+<td>✅ 支持</td>
+<td>Linux主流</td>
+<td>较高</td>
+<td><strong>Linux服务器首选</strong></td>
+</tr>
+</tbody></table>
+<h3 id="选择建议"><a href="#选择建议" class="headerlink" title="选择建议"></a>选择建议</h3><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐格式</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linux服务器备份</td>
+<td><code>.tar.gz</code></td>
+<td><code>tar -zcvf backup.tar.gz /path/</code></td>
+</tr>
+<tr>
+<td>分享给Windows用户</td>
+<td><code>.zip</code></td>
+<td><code>zip -r share.zip /path/</code></td>
+</tr>
+<tr>
+<td>仅压缩单个日志文件</td>
+<td><code>.gz</code></td>
+<td><code>gzip app.log</code></td>
+</tr>
+<tr>
+<td>发送源码包</td>
+<td><code>.tar.gz</code></td>
+<td><code>tar -zcvf source.tar.gz src/</code></td>
+</tr>
+</tbody></table>
 <h2 id="五、高频实操示例"><a href="#五、高频实操示例" class="headerlink" title="五、高频实操示例"></a>五、高频实操示例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 1. 备份整个项目目录（最常用）</span><br></pre></td></tr></table></figure>
 
-<h2 id="六、命令速查卡片"><a href="#六、命令速查卡片" class="headerlink" title="六、命令速查卡片"></a>六、命令速查卡片</h2><h2 id="gzip-系列"><a href="#gzip-系列" class="headerlink" title="gzip 系列"></a>gzip 系列</h2><p>|<br>操作</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — |<br>| </p>
-<p>压缩（原文件消失）</p>
-<p> | <code>gzip file.txt</code> |<br>| </p>
-<p>解压（压缩包消失）</p>
-<p> | <code>gunzip file.txt.gz</code> |<br>| </p>
-<p>压缩并保留原文件</p>
-<p> | <code>gzip -c file.txt &gt; file.txt.gz</code> |<br>| </p>
-<p>解压并保留压缩包</p>
-<p> | <code>gunzip -c file.txt.gz &gt; file.txt</code> |<br>| </p>
-<p>查看压缩文件内容</p>
-<p> | <code>zcat file.txt.gz</code> |<br>| </p>
-<p>批量压缩</p>
-<p> | <code>gzip *.log</code> |</p>
-<h3 id="zip-系列"><a href="#zip-系列" class="headerlink" title="zip 系列"></a>zip 系列</h3><p>|<br>操作</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — |<br>| </p>
-<p>压缩文件</p>
-<p> | <code>zip file.zip a.txt b.txt</code> |<br>| </p>
-<p>压缩目录（必加-r）</p>
-<p> | <code>zip -r pack.zip dir/</code> |<br>| </p>
-<p>解压到当前目录</p>
-<p> | <code>unzip pack.zip</code> |<br>| </p>
-<p>解压到指定目录</p>
-<p> | <code>unzip pack.zip -d /tmp/</code> |<br>| </p>
-<p>查看压缩包内容</p>
-<p> | <code>unzip -l pack.zip</code> |</p>
-<h3 id="tar-系列"><a href="#tar-系列" class="headerlink" title="tar 系列"></a>tar 系列</h3><p>|<br>操作</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — |<br>| </p>
-<p>打包压缩（.tar.gz）</p>
-<p> | <code>tar -zcvf backup.tar.gz /path/</code> |<br>| </p>
-<p>解压（.tar.gz）</p>
-<p> | <code>tar -zxvf backup.tar.gz</code> |<br>| </p>
-<p>解压到指定目录</p>
-<p> | <code>tar -zxvf backup.tar.gz -C /tmp/</code> |<br>| </p>
-<p>仅打包不压缩（.tar）</p>
-<p> | <code>tar -cvf archive.tar /path/</code> |<br>| </p>
-<p>查看压缩包内容</p>
-<p> | <code>tar -ztvf backup.tar.gz</code> |<br>| </p>
-<p>解压单个文件</p>
-<p> | <code>tar -zxvf backup.tar.gz file.txt</code> |</p>
-<h2 id="提示：你可以用help来获取帮助，eg-tar-–help"><a href="#提示：你可以用help来获取帮助，eg-tar-–help" class="headerlink" title="提示：你可以用help来获取帮助，eg. tar –help"></a>提示：你可以用help来获取帮助，eg. tar –help</h2><h2 id="七、常见报错与解决"><a href="#七、常见报错与解决" class="headerlink" title="七、常见报错与解决"></a>七、常见报错与解决</h2><p>|<br>报错</p>
-<p> | </p>
-<p>原因</p>
-<p> | </p>
-<p>解决</p>
-<p> |<br>| — | — | — |<br>| <code>tar: You must specify one of the &#39;-Acdtrux&#39; options</code> | </p>
-<p>参数顺序错误</p>
-<p> | </p>
-<p>确保 <code>-f</code> 在最后</p>
-<p> |<br>| <code>gzip: stdin: unexpected end of file</code> | </p>
-<p>压缩包损坏</p>
-<p> | </p>
-<p>尝试 <code>gunzip -c</code> 恢复部分数据</p>
-<p> |<br>| <code>zip error: Nothing to do!</code> | </p>
-<p>压缩目录未加 <code>-r</code></p>
-<p> | </p>
-<p>加上 <code>-r</code> 参数</p>
-<p> |<br>| <code>Cannot open: No such file or directory</code> | </p>
-<p>文件路径错误</p>
-<p> | </p>
-<p>检查文件是否存在</p>
-<p> |</p>
+<h2 id="六、命令速查卡片"><a href="#六、命令速查卡片" class="headerlink" title="六、命令速查卡片"></a>六、命令速查卡片</h2><h2 id="gzip-系列"><a href="#gzip-系列" class="headerlink" title="gzip 系列"></a>gzip 系列</h2><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>压缩（原文件消失）</td>
+<td><code>gzip file.txt</code></td>
+</tr>
+<tr>
+<td>解压（压缩包消失）</td>
+<td><code>gunzip file.txt.gz</code></td>
+</tr>
+<tr>
+<td>压缩并保留原文件</td>
+<td><code>gzip -c file.txt &gt; file.txt.gz</code></td>
+</tr>
+<tr>
+<td>解压并保留压缩包</td>
+<td><code>gunzip -c file.txt.gz &gt; file.txt</code></td>
+</tr>
+<tr>
+<td>查看压缩文件内容</td>
+<td><code>zcat file.txt.gz</code></td>
+</tr>
+<tr>
+<td>批量压缩</td>
+<td><code>gzip *.log</code></td>
+</tr>
+</tbody></table>
+<h3 id="zip-系列"><a href="#zip-系列" class="headerlink" title="zip 系列"></a>zip 系列</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>压缩文件</td>
+<td><code>zip file.zip a.txt b.txt</code></td>
+</tr>
+<tr>
+<td>压缩目录（必加-r）</td>
+<td><code>zip -r pack.zip dir/</code></td>
+</tr>
+<tr>
+<td>解压到当前目录</td>
+<td><code>unzip pack.zip</code></td>
+</tr>
+<tr>
+<td>解压到指定目录</td>
+<td><code>unzip pack.zip -d /tmp/</code></td>
+</tr>
+<tr>
+<td>查看压缩包内容</td>
+<td><code>unzip -l pack.zip</code></td>
+</tr>
+</tbody></table>
+<h3 id="tar-系列"><a href="#tar-系列" class="headerlink" title="tar 系列"></a>tar 系列</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>打包压缩（.tar.gz）</td>
+<td><code>tar -zcvf backup.tar.gz /path/</code></td>
+</tr>
+<tr>
+<td>解压（.tar.gz）</td>
+<td><code>tar -zxvf backup.tar.gz</code></td>
+</tr>
+<tr>
+<td>解压到指定目录</td>
+<td><code>tar -zxvf backup.tar.gz -C /tmp/</code></td>
+</tr>
+<tr>
+<td>仅打包不压缩（.tar）</td>
+<td><code>tar -cvf archive.tar /path/</code></td>
+</tr>
+<tr>
+<td>查看压缩包内容</td>
+<td><code>tar -ztvf backup.tar.gz</code></td>
+</tr>
+<tr>
+<td>解压单个文件</td>
+<td><code>tar -zxvf backup.tar.gz file.txt</code></td>
+</tr>
+</tbody></table>
+<h2 id="提示：你可以用help来获取帮助，eg-tar-–help"><a href="#提示：你可以用help来获取帮助，eg-tar-–help" class="headerlink" title="提示：你可以用help来获取帮助，eg. tar –help"></a>提示：你可以用help来获取帮助，eg. tar –help</h2><h2 id="七、常见报错与解决"><a href="#七、常见报错与解决" class="headerlink" title="七、常见报错与解决"></a>七、常见报错与解决</h2><table>
+<thead>
+<tr>
+<th>报错</th>
+<th>原因</th>
+<th>解决</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tar: You must specify one of the &#39;-Acdtrux&#39; options</code></td>
+<td>参数顺序错误</td>
+<td>确保 <code>-f</code> 在最后</td>
+</tr>
+<tr>
+<td><code>gzip: stdin: unexpected end of file</code></td>
+<td>压缩包损坏</td>
+<td>尝试 <code>gunzip -c</code> 恢复部分数据</td>
+</tr>
+<tr>
+<td><code>zip error: Nothing to do!</code></td>
+<td>压缩目录未加 <code>-r</code></td>
+<td>加上 <code>-r</code> 参数</td>
+</tr>
+<tr>
+<td><code>Cannot open: No such file or directory</code></td>
+<td>文件路径错误</td>
+<td>检查文件是否存在</td>
+</tr>
+</tbody></table>
 <hr>
 <blockquote>
 <p>📌 <strong>如果觉得有用，欢迎****点赞、在看、转发</strong>三连！</p>
@@ -1688,7 +1994,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1719,40 +2025,74 @@
 <h2 id="一、find-—-最强文件查找工具"><a href="#一、find-—-最强文件查找工具" class="headerlink" title="一、find — 最强文件查找工具"></a>一、find — 最强文件查找工具</h2><p><code>find</code> 是Linux下<strong>最强大、最灵活</strong>的文件查找命令，可以在指定目录中按各种条件搜索文件。</p>
 <h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find [搜索范围] [选项] [匹配条件]</span><br></pre></td></tr></table></figure>
 
-<h3 id="常用选项"><a href="#常用选项" class="headerlink" title="常用选项"></a>常用选项</h3><p>|<br>选项</p>
-<p> | </p>
-<p>功能</p>
-<p> | </p>
-<p>示例</p>
-<p> |<br>| — | — | — |<br>| <code>-name</code> | </p>
-<p>按<strong>文件名</strong>查找（<strong>区分大小写</strong>）</p>
-<p> | <code>find /home -name &quot;hello.txt&quot;</code> |<br>| <code>-iname</code> | </p>
-<p>按文件名查找（<strong>忽略大小写</strong>）(iname没有空格)</p>
-<p> | <code>find /home -iname &quot;Hello.TXT&quot;</code> |<br>| <code>-user</code> | </p>
-<p>按<strong>所有者</strong>查找</p>
-<p> | <code>find /opt -user tom</code> |<br>| <code>-size</code> | </p>
-<p>按<strong>文件大小</strong>查找</p>
-<p> | <code>find / -size +100M</code> |<br>| <code>-type</code> | </p>
-<p>按<strong>文件类型</strong>查找（f&#x3D;文件，d&#x3D;目录）</p>
-<p> | <code>find / -type d -name &quot;logs&quot;</code> |<br>| <code>-mtime</code> | </p>
-<p>按<strong>修改时间</strong>查找</p>
-<p> | <code>find / -mtime -7</code></p>
-<p>（7天内修改）</p>
-<p> |<br>| <code>-exec</code> | </p>
-<p>对查找到的文件执行操作</p>
-<p> | <code>find /tmp -name &quot;*.log&quot; -exec rm &#123;&#125; \;</code> |</p>
-<h3 id="搜索范围写法"><a href="#搜索范围写法" class="headerlink" title="搜索范围写法"></a>搜索范围写法</h3><p>|<br>写法</p>
-<p> | </p>
-<p>含义</p>
-<p> |<br>| — | — |<br>| <code>/</code> | </p>
-<p>从<strong>根目录</strong>开始搜索（整个系统）</p>
-<p> |<br>| <code>.</code> | </p>
-<p>从<strong>当前目录</strong>开始搜索</p>
-<p> |<br>| <code>~</code> | </p>
-<p>从<strong>当前用户家目录</strong>开始搜索</p>
-<p> |<br>| <code>/home</code> | </p>
-<p>从指定目录开始搜索</p>
-<p> |</p>
+<h3 id="常用选项"><a href="#常用选项" class="headerlink" title="常用选项"></a>常用选项</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-name</code></td>
+<td>按<strong>文件名</strong>查找（<strong>区分大小写</strong>）</td>
+<td><code>find /home -name &quot;hello.txt&quot;</code></td>
+</tr>
+<tr>
+<td><code>-iname</code></td>
+<td>按文件名查找（<strong>忽略大小写</strong>）(iname没有空格)</td>
+<td><code>find /home -iname &quot;Hello.TXT&quot;</code></td>
+</tr>
+<tr>
+<td><code>-user</code></td>
+<td>按<strong>所有者</strong>查找</td>
+<td><code>find /opt -user tom</code></td>
+</tr>
+<tr>
+<td><code>-size</code></td>
+<td>按<strong>文件大小</strong>查找</td>
+<td><code>find / -size +100M</code></td>
+</tr>
+<tr>
+<td><code>-type</code></td>
+<td>按<strong>文件类型</strong>查找（f&#x3D;文件，d&#x3D;目录）</td>
+<td><code>find / -type d -name &quot;logs&quot;</code></td>
+</tr>
+<tr>
+<td><code>-mtime</code></td>
+<td>按<strong>修改时间</strong>查找</td>
+<td><code>find / -mtime -7</code>  （7天内修改）</td>
+</tr>
+<tr>
+<td><code>-exec</code></td>
+<td>对查找到的文件执行操作</td>
+<td><code>find /tmp -name &quot;*.log&quot; -exec rm &#123;&#125; \;</code></td>
+</tr>
+</tbody></table>
+<h3 id="搜索范围写法"><a href="#搜索范围写法" class="headerlink" title="搜索范围写法"></a>搜索范围写法</h3><table>
+<thead>
+<tr>
+<th>写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/</code></td>
+<td>从<strong>根目录</strong>开始搜索（整个系统）</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>从<strong>当前目录</strong>开始搜索</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>从<strong>当前用户家目录</strong>开始搜索</td>
+</tr>
+<tr>
+<td><code>/home</code></td>
+<td>从指定目录开始搜索</td>
+</tr>
+</tbody></table>
 <h3 id="实战案例"><a href="#实战案例" class="headerlink" title="实战案例"></a>实战案例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 1. 按文件名查找（区分大小写）</span><br></pre></td></tr></table></figure>
 
 <h2 id="二、locate-—-极速文件查找"><a href="#二、locate-—-极速文件查找" class="headerlink" title="二、locate — 极速文件查找"></a>二、locate — 极速文件查找</h2><p><code>locate</code> 通过<strong>预建数据库</strong>快速定位文件，速度比 <code>find</code> 快得多，但依赖数据库的时效性。</p>
@@ -1760,58 +2100,90 @@
 
 <h3 id="实战案例-1"><a href="#实战案例-1" class="headerlink" title="实战案例"></a>实战案例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查找nginx.conf</span><br></pre></td></tr></table></figure>
 
-<h3 id="locate-vs-find-对比"><a href="#locate-vs-find-对比" class="headerlink" title="locate vs find 对比"></a>locate vs find 对比</h3><p>|<br>对比项</p>
-<p> | </p>
-<p>locate</p>
-<p> | </p>
-<p>find</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>搜索速度</p>
-<p> | </p>
-<p>⚡ 极快（查数据库）</p>
-<p> | </p>
-<p>🐢 较慢（遍历磁盘）</p>
-<p> |<br>| </p>
-<p>实时性</p>
-<p> | </p>
-<p>❌ 依赖数据库更新</p>
-<p> | </p>
-<p>✅ 实时搜索</p>
-<p> |<br>| </p>
-<p>灵活性</p>
-<p> | </p>
-<p>仅按文件名</p>
-<p> | </p>
-<p>✅ 支持多种条件（大小、时间、类型等）</p>
-<p> |</p>
+<h3 id="locate-vs-find-对比"><a href="#locate-vs-find-对比" class="headerlink" title="locate vs find 对比"></a>locate vs find 对比</h3><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>locate</th>
+<th>find</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>搜索速度</td>
+<td>⚡ 极快（查数据库）</td>
+<td>🐢 较慢（遍历磁盘）</td>
+</tr>
+<tr>
+<td>实时性</td>
+<td>❌ 依赖数据库更新</td>
+<td>✅ 实时搜索</td>
+</tr>
+<tr>
+<td>灵活性</td>
+<td>仅按文件名</td>
+<td>✅ 支持多种条件（大小、时间、类型等）</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>💡 <strong>建议</strong>：快速查找已知文件用 <code>locate</code>，复杂条件搜索用 <code>find</code>。</p>
 </blockquote>
 <h2 id="三、grep-—-文件内容搜索（含管道符实战）"><a href="#三、grep-—-文件内容搜索（含管道符实战）" class="headerlink" title="三、grep — 文件内容搜索（含管道符实战）"></a>三、grep — 文件内容搜索（含管道符实战）</h2><p><code>grep</code> 用于<strong>搜索文件内容</strong>，而非文件名。它从文本中筛选包含指定模式的行，是日志分析和文本处理的绝对主力。</p>
 <h3 id="基本语法-2"><a href="#基本语法-2" class="headerlink" title="基本语法"></a>基本语法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [选项] ”搜索内容” 文件</span><br></pre></td></tr></table></figure>
 
-<h3 id="常用选项-1"><a href="#常用选项-1" class="headerlink" title="常用选项"></a>常用选项</h3><p>|<br>选项</p>
-<p> | </p>
-<p>功能</p>
-<p> | </p>
-<p>示例</p>
-<p> |<br>| — | — | — |<br>| <code>-n</code> | </p>
-<p>显示匹配行的<strong>行号</strong></p>
-<p> | <code>grep -n &quot;root&quot; /etc/passwd</code> |<br>| <code>-i</code> | <strong>忽略大小写</strong> | <code>grep -i &quot;error&quot; app.log</code> |<br>| <code>-r</code> | <strong>递归搜索</strong></p>
-<p>目录下所有文件</p>
-<p> | <code>grep -r &quot;passwd&quot; /etc/</code> |<br>| <code>-v</code> | <strong>反向匹配</strong></p>
-<p>（显示不含关键词的行）</p>
-<p> | <code>grep -v &quot;debug&quot; app.log</code> |<br>| <code>-c</code> | </p>
-<p>只统计<strong>匹配行数</strong>（不显示内容）</p>
-<p> | <code>grep -c &quot;error&quot; app.log</code> |<br>| <code>-l</code> | </p>
-<p>只显示<strong>包含匹配内容的文件名</strong></p>
-<p> | <code>grep -l &quot;root&quot; /etc/*</code> |<br>| <code>-w</code> | </p>
-<p>按<strong>完整单词</strong>匹配</p>
-<p> | <code>grep -w &quot;to&quot; file.txt</code></p>
-<p>（不匹配”tom”）</p>
-<p> |<br>| <code>-E</code> | </p>
-<p>支持<strong>扩展正则表达式</strong></p>
-<p> | <code>grep -E &quot;error|fail&quot; app.log</code> |</p>
+<h3 id="常用选项-1"><a href="#常用选项-1" class="headerlink" title="常用选项"></a>常用选项</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-n</code></td>
+<td>显示匹配行的<strong>行号</strong></td>
+<td><code>grep -n &quot;root&quot; /etc/passwd</code></td>
+</tr>
+<tr>
+<td><code>-i</code></td>
+<td><strong>忽略大小写</strong></td>
+<td><code>grep -i &quot;error&quot; app.log</code></td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td><strong>递归搜索</strong>  目录下所有文件</td>
+<td><code>grep -r &quot;passwd&quot; /etc/</code></td>
+</tr>
+<tr>
+<td><code>-v</code></td>
+<td><strong>反向匹配</strong>  （显示不含关键词的行）</td>
+<td><code>grep -v &quot;debug&quot; app.log</code></td>
+</tr>
+<tr>
+<td><code>-c</code></td>
+<td>只统计<strong>匹配行数</strong>（不显示内容）</td>
+<td><code>grep -c &quot;error&quot; app.log</code></td>
+</tr>
+<tr>
+<td><code>-l</code></td>
+<td>只显示<strong>包含匹配内容的文件名</strong></td>
+<td><code>grep -l &quot;root&quot; /etc/*</code></td>
+</tr>
+<tr>
+<td><code>-w</code></td>
+<td>按<strong>完整单词</strong>匹配</td>
+<td><code>grep -w &quot;to&quot; file.txt</code>  （不匹配”tom”）</td>
+</tr>
+<tr>
+<td><code>-E</code></td>
+<td>支持<strong>扩展正则表达式</strong></td>
+<td>&#96;grep -E “error</td>
+</tr>
+<tr>
+<td>fail” app.log&#96;</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <h3 id="基础搜索案例"><a href="#基础搜索案例" class="headerlink" title="基础搜索案例"></a>基础搜索案例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 1. 在文件中搜索关键词</span><br></pre></td></tr></table></figure>
 
 <h3 id="🔥-管道符（-）配合-grep-—-最常用组合拳"><a href="#🔥-管道符（-）配合-grep-—-最常用组合拳" class="headerlink" title="🔥 管道符（|）配合 grep — 最常用组合拳"></a>🔥 管道符（|）配合 grep — 最常用组合拳</h3><p><strong>管道符 <code>|</code> 的作用</strong>：将前一个命令的输出结果，传递给后一个命令作为输入。</p>
@@ -1833,72 +2205,168 @@
 
 <h4 id="场景6：结合cut提取特定列"><a href="#场景6：结合cut提取特定列" class="headerlink" title="场景6：结合cut提取特定列"></a>场景6：结合cut提取特定列</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看passwd → 筛选root → 提取第1列（用户名）</span><br></pre></td></tr></table></figure>
 
-<h3 id="grep-实战场景速查"><a href="#grep-实战场景速查" class="headerlink" title="grep 实战场景速查"></a>grep 实战场景速查</h3><p>|<br>场景</p>
-<p> | </p>
-<p>命令</p>
-<p> |<br>| — | — |<br>| </p>
-<p>文件内容搜索</p>
-<p> | <code>grep &quot;关键词&quot; 文件名</code> |<br>| </p>
-<p>文件内容搜索+行号</p>
-<p> | <code>grep -n &quot;关键词&quot; 文件名</code> |<br>| </p>
-<p>目录递归搜索</p>
-<p> | <code>grep -r &quot;关键词&quot; 目录/</code> |<br>| </p>
-<p>查看并筛选文件</p>
-<p> | <code>cat 文件 | grep -n &quot;关键词&quot;</code> |<br>| </p>
-<p>查看进程</p>
-<p> | <code>ps aux | grep 进程名</code> |<br>| </p>
-<p>查看进程（不含grep自身）</p>
-<p> | <code>ps aux | grep [进]程名</code> |<br>| </p>
-<p>历史命令搜索</p>
-<p> | <code>history | grep 关键词</code> |<br>| </p>
-<p>实时日志过滤</p>
-<p> | <code>tail -f 日志 | grep 关键词</code> |<br>| </p>
-<p>统计匹配行数</p>
-<p> | <code>grep -c &quot;关键词&quot; 文件</code> |<br>| </p>
-<p>排除匹配行</p>
-<p> | <code>grep -v &quot;关键词&quot; 文件</code> |<br>| </p>
-<p>多关键词匹配</p>
-<p> | <code>grep -E &quot;关键词1|关键词2&quot; 文件</code> |</p>
+<h3 id="grep-实战场景速查"><a href="#grep-实战场景速查" class="headerlink" title="grep 实战场景速查"></a>grep 实战场景速查</h3><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文件内容搜索</td>
+<td><code>grep &quot;关键词&quot; 文件名</code></td>
+</tr>
+<tr>
+<td>文件内容搜索+行号</td>
+<td><code>grep -n &quot;关键词&quot; 文件名</code></td>
+</tr>
+<tr>
+<td>目录递归搜索</td>
+<td><code>grep -r &quot;关键词&quot; 目录/</code></td>
+</tr>
+<tr>
+<td>查看并筛选文件</td>
+<td>&#96;cat 文件</td>
+</tr>
+<tr>
+<td>grep -n “关键词”&#96;</td>
+<td>查看进程</td>
+</tr>
+<tr>
+<td>&#96;ps aux</td>
+<td>grep 进程名&#96;</td>
+</tr>
+<tr>
+<td>查看进程（不含grep自身）</td>
+<td>&#96;ps aux</td>
+</tr>
+<tr>
+<td>grep [进]程名&#96;</td>
+<td>历史命令搜索</td>
+</tr>
+<tr>
+<td>&#96;history</td>
+<td>grep 关键词&#96;</td>
+</tr>
+<tr>
+<td>实时日志过滤</td>
+<td>&#96;tail -f 日志</td>
+</tr>
+<tr>
+<td>grep 关键词&#96;</td>
+<td>统计匹配行数</td>
+</tr>
+<tr>
+<td><code>grep -c &quot;关键词&quot; 文件</code></td>
+<td>排除匹配行</td>
+</tr>
+<tr>
+<td><code>grep -v &quot;关键词&quot; 文件</code></td>
+<td>多关键词匹配</td>
+</tr>
+<tr>
+<td>&#96;grep -E “关键词1</td>
+<td>关键词2” 文件&#96;</td>
+</tr>
+</tbody></table>
 <h2 id="四、三者核心区别（一张图看懂）"><a href="#四、三者核心区别（一张图看懂）" class="headerlink" title="四、三者核心区别（一张图看懂）"></a>四、三者核心区别（一张图看懂）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────────────────────────────────┐ </span><br></pre></td></tr></table></figure>
 
 <h2 id="五、实战综合演练"><a href="#五、实战综合演练" class="headerlink" title="五、实战综合演练"></a>五、实战综合演练</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 场景1：查找大于100M的日志文件</span><br></pre></td></tr></table></figure>
 
-<h2 id="六、命令速查卡片"><a href="#六、命令速查卡片" class="headerlink" title="六、命令速查卡片"></a>六、命令速查卡片</h2><p>|<br>命令</p>
-<p> | </p>
-<p>用途</p>
-<p> | </p>
-<p>最常用法</p>
-<p> |<br>| — | — | — |<br>| <code>find / -name &quot;文件名&quot;</code> | </p>
-<p>按文件名找文件</p>
-<p> | <code>find /home -name &quot;*.txt&quot;</code> |<br>| <code>find / -size +100M</code> | </p>
-<p>按文件大小找文件</p>
-<p> | <code>find / -size +200M</code> |<br>| <code>find . -type d</code> | </p>
-<p>只找目录</p>
-<p> | <code>find . -type d -name &quot;logs&quot;</code> |<br>| <code>find . -mtime -7</code> | </p>
-<p>找7天内修改的文件</p>
-<p> | <code>find . -mtime -3</code> |<br>| <code>find . -exec 命令 &#123;&#125; \;</code> | </p>
-<p>找到后执行操作</p>
-<p> | <code>find . -name &quot;*.log&quot; -exec rm &#123;&#125; \;</code> |<br>| <code>locate 文件名</code> | </p>
-<p>快速定位文件</p>
-<p> | <code>locate nginx.conf</code> |<br>| <code>updatedb</code> | </p>
-<p>更新locate数据库</p>
-<p> | <code>sudo updatedb</code> |<br>| <code>grep &quot;关键词&quot; 文件</code> | </p>
-<p>在文件中搜索内容</p>
-<p> | <code>grep &quot;error&quot; app.log</code> |<br>| <code>grep -r &quot;关键词&quot; 目录/</code> | </p>
-<p>递归搜索目录内容</p>
-<p> | <code>grep -r &quot;passwd&quot; /etc/</code> |<br>| <code>grep -n &quot;关键词&quot; 文件</code> | </p>
-<p>搜索并显示行号</p>
-<p> | <code>grep -n &quot;root&quot; passwd</code> |<br>| <code>grep -i &quot;关键词&quot; 文件</code> | </p>
-<p>忽略大小写搜索</p>
-<p> | <code>grep -i &quot;error&quot; log</code> |<br>| <code>grep -c &quot;关键词&quot; 文件</code> | </p>
-<p>统计匹配行数</p>
-<p> | <code>grep -c &quot;error&quot; log</code> |<br>| <code>命令 | grep xxx</code> | </p>
-<p>管道配合搜索</p>
-<p> | <code>ps aux | grep nginx</code> |<br>| <code>cat 文件 | grep -n &quot;关键词&quot;</code> | </p>
-<p>查看并筛选内容</p>
-<p> | <code>cat 55.sh | grep -n &quot;int&quot;</code> |<br>| <code>tail -f 日志 | grep 关键词</code> | </p>
-<p>实时日志过滤</p>
-<p> | <code>tail -f app.log | grep ERROR</code> |</p>
+<h2 id="六、命令速查卡片"><a href="#六、命令速查卡片" class="headerlink" title="六、命令速查卡片"></a>六、命令速查卡片</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+<th>最常用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>find / -name &quot;文件名&quot;</code></td>
+<td>按文件名找文件</td>
+<td><code>find /home -name &quot;*.txt&quot;</code></td>
+</tr>
+<tr>
+<td><code>find / -size +100M</code></td>
+<td>按文件大小找文件</td>
+<td><code>find / -size +200M</code></td>
+</tr>
+<tr>
+<td><code>find . -type d</code></td>
+<td>只找目录</td>
+<td><code>find . -type d -name &quot;logs&quot;</code></td>
+</tr>
+<tr>
+<td><code>find . -mtime -7</code></td>
+<td>找7天内修改的文件</td>
+<td><code>find . -mtime -3</code></td>
+</tr>
+<tr>
+<td><code>find . -exec 命令 &#123;&#125; \;</code></td>
+<td>找到后执行操作</td>
+<td><code>find . -name &quot;*.log&quot; -exec rm &#123;&#125; \;</code></td>
+</tr>
+<tr>
+<td><code>locate 文件名</code></td>
+<td>快速定位文件</td>
+<td><code>locate nginx.conf</code></td>
+</tr>
+<tr>
+<td><code>updatedb</code></td>
+<td>更新locate数据库</td>
+<td><code>sudo updatedb</code></td>
+</tr>
+<tr>
+<td><code>grep &quot;关键词&quot; 文件</code></td>
+<td>在文件中搜索内容</td>
+<td><code>grep &quot;error&quot; app.log</code></td>
+</tr>
+<tr>
+<td><code>grep -r &quot;关键词&quot; 目录/</code></td>
+<td>递归搜索目录内容</td>
+<td><code>grep -r &quot;passwd&quot; /etc/</code></td>
+</tr>
+<tr>
+<td><code>grep -n &quot;关键词&quot; 文件</code></td>
+<td>搜索并显示行号</td>
+<td><code>grep -n &quot;root&quot; passwd</code></td>
+</tr>
+<tr>
+<td><code>grep -i &quot;关键词&quot; 文件</code></td>
+<td>忽略大小写搜索</td>
+<td><code>grep -i &quot;error&quot; log</code></td>
+</tr>
+<tr>
+<td><code>grep -c &quot;关键词&quot; 文件</code></td>
+<td>统计匹配行数</td>
+<td><code>grep -c &quot;error&quot; log</code></td>
+</tr>
+<tr>
+<td>&#96;命令</td>
+<td>grep xxx&#96;</td>
+<td>管道配合搜索</td>
+</tr>
+<tr>
+<td>&#96;ps aux</td>
+<td>grep nginx&#96;</td>
+<td>&#96;cat 文件</td>
+</tr>
+<tr>
+<td>grep -n “关键词”&#96;</td>
+<td>查看并筛选内容</td>
+<td>&#96;cat 55.sh</td>
+</tr>
+<tr>
+<td>grep -n “int”&#96;</td>
+<td>&#96;tail -f 日志</td>
+<td>grep 关键词&#96;</td>
+</tr>
+<tr>
+<td>实时日志过滤</td>
+<td>&#96;tail -f app.log</td>
+<td>grep ERROR&#96;</td>
+</tr>
+</tbody></table>
 <hr>
 <blockquote>
 <p>📌 如果觉得有用，欢迎<strong>点赞、在看、转发</strong>三连！</p>
@@ -1965,7 +2433,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2000,46 +2468,68 @@
 <p><strong>示例输出解读：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@server ~]</span><br></pre></td></tr></table></figure>
 
-<p>|<br>字段</p>
-<p> | </p>
-<p>含义</p>
-<p> |<br>| — | — |<br>| <code>-rw-r--r--</code> | </p>
-<p>文件类型和权限</p>
-<p> |<br>| <code>1</code> | </p>
-<p>硬链接数</p>
-<p> |<br>| <code>root</code> | </p>
-<p>所有者</p>
-<p> |<br>| <code>root</code> | </p>
-<p>所属组</p>
-<p> |<br>| <code>1213</code> | </p>
-<p>文件大小（字节）</p>
-<p> |<br>| <code>Feb 2 09:39</code> | </p>
-<p>最后修改时间</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-rw-r--r--</code></td>
+<td>文件类型和权限</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>硬链接数</td>
+</tr>
+<tr>
+<td><code>root</code></td>
+<td>所有者</td>
+</tr>
+<tr>
+<td><code>root</code></td>
+<td>所属组</td>
+</tr>
+<tr>
+<td><code>1213</code></td>
+<td>文件大小（字节）</td>
+</tr>
+<tr>
+<td><code>Feb 2 09:39</code></td>
+<td>最后修改时间</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>💡 <strong>隐藏文件</strong>：Linux下以 <code>.</code> 开头的文件&#x2F;目录是隐藏的，需要用 <code>ls -a</code> 才能看到。</p>
 </blockquote>
 <h3 id="1-3-cd-—-切换目录"><a href="#1-3-cd-—-切换目录" class="headerlink" title="1.3 cd — 切换目录"></a>1.3 cd — 切换目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法</span><br></pre></td></tr></table></figure>
 
 <p><strong>路径类型：</strong></p>
-<p>|<br>路径类型</p>
-<p> | </p>
-<p>示例</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>绝对路径</p>
-<p> | <code>cd /etc/nginx</code> | </p>
-<p>从根目录开始完整路径</p>
-<p> |<br>| </p>
-<p>相对路径</p>
-<p> | <code>cd ../tom</code> | </p>
-<p>相对于当前目录的路径</p>
-<p> |<br>| </p>
-<p>家目录</p>
-<p> | <code>cd ~</code> | </p>
-<p>当前用户的家目录</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>路径类型</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>绝对路径</td>
+<td><code>cd /etc/nginx</code></td>
+<td>从根目录开始完整路径</td>
+</tr>
+<tr>
+<td>相对路径</td>
+<td><code>cd ../tom</code></td>
+<td>相对于当前目录的路径</td>
+</tr>
+<tr>
+<td>家目录</td>
+<td><code>cd ~</code></td>
+<td>当前用户的家目录</td>
+</tr>
+</tbody></table>
 <h2 id="二、目录创建与删除"><a href="#二、目录创建与删除" class="headerlink" title="二、目录创建与删除"></a>二、目录创建与删除</h2><h2 id="2-1-mkdir-—-创建目录"><a href="#2-1-mkdir-—-创建目录" class="headerlink" title="2.1 mkdir — 创建目录"></a>2.1 mkdir — 创建目录</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-2-rmdir-—-删除空目录"><a href="#2-2-rmdir-—-删除空目录" class="headerlink" title="2.2 rmdir — 删除空目录"></a>2.2 rmdir — 删除空目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法</span><br></pre></td></tr></table></figure>
@@ -2084,18 +2574,30 @@
 
 <h3 id="5-2-和-—-重定向"><a href="#5-2-和-—-重定向" class="headerlink" title="5.2 &gt; 和 &gt;&gt; — 重定向"></a>5.2 <code>&gt;</code> 和 <code>&gt;&gt;</code> — 重定向</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># &gt;：覆盖写入（会覆盖原有内容）</span><br></pre></td></tr></table></figure>
 
-<p>|<br>符号</p>
-<p> | </p>
-<p>功能</p>
-<p> | </p>
-<p>示例</p>
-<p> |<br>| — | — | — |<br>| <code>&gt;</code> | <strong>覆盖</strong></p>
-<p>写入</p>
-<p> | <code>ls -l /home &gt; list.txt</code> |<br>| <code>&gt;&gt;</code> | <strong>追加</strong></p>
-<p>写入</p>
-<p> | <code>date &gt;&gt; list.txt</code> |<br>| <code>2&gt;</code> | </p>
-<p>错误重定向</p>
-<p> | <code>ls 不存在 2&gt; error.log</code> |</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>功能</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&gt;</code></td>
+<td><strong>覆盖</strong>  写入</td>
+<td><code>ls -l /home &gt; list.txt</code></td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td><strong>追加</strong>  写入</td>
+<td><code>date &gt;&gt; list.txt</code></td>
+</tr>
+<tr>
+<td><code>2&gt;</code></td>
+<td>错误重定向</td>
+<td><code>ls 不存在 2&gt; error.log</code></td>
+</tr>
+</tbody></table>
 <h2 id="六、链接命令"><a href="#六、链接命令" class="headerlink" title="六、链接命令"></a>六、链接命令</h2><h1 id=""><a href="#" class="headerlink" title=""></a></h1><h2 id="ln-s-—-创建软链接（快捷方式）"><a href="#ln-s-—-创建软链接（快捷方式）" class="headerlink" title="ln -s — 创建软链接（快捷方式）"></a>ln -s — 创建软链接（快捷方式）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -2112,52 +2614,115 @@
 <p><strong>应用场景：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 场景1：想重新执行一个很长的命令</span><br></pre></td></tr></table></figure>
 
-<h2 id="八、命令速查卡片"><a href="#八、命令速查卡片" class="headerlink" title="八、命令速查卡片"></a>八、命令速查卡片</h2><p>|<br>命令</p>
-<p> | </p>
-<p>功能</p>
-<p> | </p>
-<p>示例</p>
-<p> |<br>| — | — | — |<br>| <code>pwd</code> | </p>
-<p>显示当前目录</p>
-<p> | <code>pwd</code> |<br>| <code>ls -al</code> | </p>
-<p>列出所有文件的详细信息</p>
-<p> | <code>ls -al /home</code> |<br>| <code>cd ~</code> | </p>
-<p>回到家目录</p>
-<p> | <code>cd ~</code> |<br>| <code>mkdir -p</code> | </p>
-<p>递归创建目录</p>
-<p> | <code>mkdir -p a/b/c</code> |<br>| <code>rmdir</code> | </p>
-<p>删除空目录</p>
-<p> | <code>rmdir empty_dir</code> |<br>| <code>touch</code> | </p>
-<p>创建空文件</p>
-<p> | <code>touch file.txt</code> |<br>| <code>cp -r</code> | </p>
-<p>递归复制目录</p>
-<p> | <code>cp -r dir1 dir2</code> |<br>| <code>mv</code> | </p>
-<p>移动&#x2F;重命名</p>
-<p> | <code>mv old.txt new.txt</code> |<br>| <code>rm -rf</code> | </p>
-<p>强制递归删除</p>
-<p> | <code>rm -rf /tmp/cache</code> |<br>| <code>cat -n</code> | </p>
-<p>带行号显示内容</p>
-<p> | <code>cat -n file</code> |<br>| <code>more</code> | </p>
-<p>分页查看</p>
-<p> | <code>more file</code> |<br>| <code>less</code> | </p>
-<p>更强大分页</p>
-<p> | <code>less file</code> |<br>| <code>echo</code> | </p>
-<p>输出内容</p>
-<p> | <code>echo &quot;hello&quot;</code> |<br>| <code>head -n 5</code> | </p>
-<p>显示前5行</p>
-<p> | <code>head -n 5 file</code> |<br>| <code>tail -f</code> | </p>
-<p>实时追踪</p>
-<p> | <code>tail -f log</code> |<br>| <code>&gt;</code> | </p>
-<p>覆盖重定向</p>
-<p> | <code>echo a &gt; file</code> |<br>| <code>&gt;&gt;</code> | </p>
-<p>追加重定向</p>
-<p> | <code>echo b &gt;&gt; file</code> |<br>| <code>ln -s</code> | </p>
-<p>创建软链接</p>
-<p> | <code>ln -s /root link</code> |<br>| <code>history</code> | </p>
-<p>查看历史</p>
-<p> | <code>history</code> |<br>| <code>!5</code> | </p>
-<p>执行第5条历史</p>
-<p> | <code>!5</code> |</p>
+<h2 id="八、命令速查卡片"><a href="#八、命令速查卡片" class="headerlink" title="八、命令速查卡片"></a>八、命令速查卡片</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pwd</code></td>
+<td>显示当前目录</td>
+<td><code>pwd</code></td>
+</tr>
+<tr>
+<td><code>ls -al</code></td>
+<td>列出所有文件的详细信息</td>
+<td><code>ls -al /home</code></td>
+</tr>
+<tr>
+<td><code>cd ~</code></td>
+<td>回到家目录</td>
+<td><code>cd ~</code></td>
+</tr>
+<tr>
+<td><code>mkdir -p</code></td>
+<td>递归创建目录</td>
+<td><code>mkdir -p a/b/c</code></td>
+</tr>
+<tr>
+<td><code>rmdir</code></td>
+<td>删除空目录</td>
+<td><code>rmdir empty_dir</code></td>
+</tr>
+<tr>
+<td><code>touch</code></td>
+<td>创建空文件</td>
+<td><code>touch file.txt</code></td>
+</tr>
+<tr>
+<td><code>cp -r</code></td>
+<td>递归复制目录</td>
+<td><code>cp -r dir1 dir2</code></td>
+</tr>
+<tr>
+<td><code>mv</code></td>
+<td>移动&#x2F;重命名</td>
+<td><code>mv old.txt new.txt</code></td>
+</tr>
+<tr>
+<td><code>rm -rf</code></td>
+<td>强制递归删除</td>
+<td><code>rm -rf /tmp/cache</code></td>
+</tr>
+<tr>
+<td><code>cat -n</code></td>
+<td>带行号显示内容</td>
+<td><code>cat -n file</code></td>
+</tr>
+<tr>
+<td><code>more</code></td>
+<td>分页查看</td>
+<td><code>more file</code></td>
+</tr>
+<tr>
+<td><code>less</code></td>
+<td>更强大分页</td>
+<td><code>less file</code></td>
+</tr>
+<tr>
+<td><code>echo</code></td>
+<td>输出内容</td>
+<td><code>echo &quot;hello&quot;</code></td>
+</tr>
+<tr>
+<td><code>head -n 5</code></td>
+<td>显示前5行</td>
+<td><code>head -n 5 file</code></td>
+</tr>
+<tr>
+<td><code>tail -f</code></td>
+<td>实时追踪</td>
+<td><code>tail -f log</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>覆盖重定向</td>
+<td><code>echo a &gt; file</code></td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td>追加重定向</td>
+<td><code>echo b &gt;&gt; file</code></td>
+</tr>
+<tr>
+<td><code>ln -s</code></td>
+<td>创建软链接</td>
+<td><code>ln -s /root link</code></td>
+</tr>
+<tr>
+<td><code>history</code></td>
+<td>查看历史</td>
+<td><code>history</code></td>
+</tr>
+<tr>
+<td><code>!5</code></td>
+<td>执行第5条历史</td>
+<td><code>!5</code></td>
+</tr>
+</tbody></table>
 <h2 id="九、实战小练习"><a href="#九、实战小练习" class="headerlink" title="九、实战小练习"></a>九、实战小练习</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 1. 创建目录结构</span><br></pre></td></tr></table></figure>
 
 <hr>
@@ -2226,7 +2791,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2370,24 +2935,40 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec /sbin/init</span><br></pre></td></tr></table></figure>
 
-<h2 id="三、RHEL系-vs-Ubuntu-重置密码核心区别"><a href="#三、RHEL系-vs-Ubuntu-重置密码核心区别" class="headerlink" title="三、RHEL系 vs Ubuntu 重置密码核心区别"></a>三、RHEL系 vs Ubuntu 重置密码核心区别</h2><p>|<br>对比项</p>
-<p> | </p>
-<p>RHEL系（CentOS&#x2F;Rocky&#x2F;RHEL）</p>
-<p> | </p>
-<p>Ubuntu&#x2F;Debian</p>
-<p> |<br>| — | — | — |<br>| <strong>救援模式关键字</strong> | <code>rd.break</code> | </p>
-<p>recovery mode &#x2F; <code>init=/bin/bash</code></p>
-<p> |<br>| <strong>SELinux处理</strong> | </p>
-<p>✅ <strong>必须</strong> <code>touch /.autorelabel</code></p>
-<p> | </p>
-<p>❌ 默认无SELinux，<strong>不需要</strong></p>
-<p> |<br>| <strong>根分区挂载</strong> | <code>/sysroot</code> | <code>/</code> |<br>| <strong>重置对象</strong> | <code>passwd root</code> | <code>passwd 普通用户</code></p>
-<p>（或root）</p>
-<p> |<br>| <strong>默认root登录</strong> | </p>
-<p>启用</p>
-<p> | </p>
-<p>禁用（用sudo）</p>
-<p> |</p>
+<h2 id="三、RHEL系-vs-Ubuntu-重置密码核心区别"><a href="#三、RHEL系-vs-Ubuntu-重置密码核心区别" class="headerlink" title="三、RHEL系 vs Ubuntu 重置密码核心区别"></a>三、RHEL系 vs Ubuntu 重置密码核心区别</h2><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>RHEL系（CentOS&#x2F;Rocky&#x2F;RHEL）</th>
+<th>Ubuntu&#x2F;Debian</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>救援模式关键字</strong></td>
+<td><code>rd.break</code></td>
+<td>recovery mode &#x2F; <code>init=/bin/bash</code></td>
+</tr>
+<tr>
+<td><strong>SELinux处理</strong></td>
+<td>✅ <strong>必须</strong> <code>touch /.autorelabel</code></td>
+<td>❌ 默认无SELinux，<strong>不需要</strong></td>
+</tr>
+<tr>
+<td><strong>根分区挂载</strong></td>
+<td><code>/sysroot</code></td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td><strong>重置对象</strong></td>
+<td><code>passwd root</code></td>
+<td><code>passwd 普通用户</code>  （或root）</td>
+</tr>
+<tr>
+<td><strong>默认root登录</strong></td>
+<td>启用</td>
+<td>禁用（用sudo）</td>
+</tr>
+</tbody></table>
 <h2 id="四、常见报错与解决方案"><a href="#四、常见报错与解决方案" class="headerlink" title="四、常见报错与解决方案"></a>四、常见报错与解决方案</h2><h2 id="报错1：Authentication-token-manipulation-error"><a href="#报错1：Authentication-token-manipulation-error" class="headerlink" title="报错1：Authentication token manipulation error"></a>报错1：Authentication token manipulation error</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd: Authentication token manipulation error</span><br></pre></td></tr></table></figure>
 
 <p><strong>原因</strong>：文件系统是<strong>只读</strong>状态，无法写入新密码</p>
@@ -2437,30 +3018,30 @@
 <blockquote>
 <p>🎯 <strong>记住</strong>：RHEL系无论用哪种方法，**修改密码后一定要执行 <code>touch /.autorelabel</code>**！Ubuntu用户直接跳过这步。</p>
 </blockquote>
-<h2 id="六、云服务器特别提醒"><a href="#六、云服务器特别提醒" class="headerlink" title="六、云服务器特别提醒"></a>六、云服务器特别提醒</h2><p>|<br>云平台</p>
-<p> | </p>
-<p>推荐方式</p>
-<p> | </p>
-<p>说明</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>阿里云</p>
-<p> | </p>
-<p>控制台 → 重置实例密码</p>
-<p> | </p>
-<p>官方功能，最省事</p>
-<p> |<br>| </p>
-<p>腾讯云</p>
-<p> | </p>
-<p>控制台 → 重置密码</p>
-<p> | </p>
-<p>不需要进GRUB</p>
-<p> |<br>| </p>
-<p>AWS EC2</p>
-<p> | </p>
-<p>分离根卷 → 挂载到临时实例修改</p>
-<p> | </p>
-<p>官方推荐方法</p>
-<p> |</p>
+<h2 id="六、云服务器特别提醒"><a href="#六、云服务器特别提醒" class="headerlink" title="六、云服务器特别提醒"></a>六、云服务器特别提醒</h2><table>
+<thead>
+<tr>
+<th>云平台</th>
+<th>推荐方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>阿里云</td>
+<td>控制台 → 重置实例密码</td>
+<td>官方功能，最省事</td>
+</tr>
+<tr>
+<td>腾讯云</td>
+<td>控制台 → 重置密码</td>
+<td>不需要进GRUB</td>
+</tr>
+<tr>
+<td>AWS EC2</td>
+<td>分离根卷 → 挂载到临时实例修改</td>
+<td>官方推荐方法</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>💡 <strong>强烈建议</strong>：云服务器优先使用云厂商提供的**「重置密码」**功能，远比手动进GRUB更安全、更方便！</p>
 </blockquote>
@@ -2472,28 +3053,50 @@
 
 <h3 id="Ubuntu-—-init-bin-bash-方式（备用）"><a href="#Ubuntu-—-init-bin-bash-方式（备用）" class="headerlink" title="Ubuntu — init&#x3D;&#x2F;bin&#x2F;bash 方式（备用）"></a>Ubuntu — init&#x3D;&#x2F;bin&#x2F;bash 方式（备用）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># GRUB界面按 e，linux 行把 ro 改成 rw，行尾加 init=/bin/bash</span><br></pre></td></tr></table></figure>
 
-<h2 id="八、快速对比总结表"><a href="#八、快速对比总结表" class="headerlink" title="八、快速对比总结表"></a>八、快速对比总结表</h2><p>|<br>操作步骤</p>
-<p> | </p>
-<p>RHEL系（CentOS&#x2F;Rocky）</p>
-<p> | </p>
-<p>Ubuntu&#x2F;Debian</p>
-<p> |<br>| — | — | — |<br>| <strong>GRUB按键</strong> | </p>
-<p>按 <code>e</code></p>
-<p> | <code>Shift</code></p>
-<p>（BIOS）&#x2F; <code>Esc</code>（UEFI）</p>
-<p> |<br>| <strong>内核参数</strong> | </p>
-<p>行尾加 <code>rd.break</code></p>
-<p> | </p>
-<p>recovery mode 或 <code>init=/bin/bash</code></p>
-<p> |<br>| <strong>挂载命令</strong> | <code>mount -o remount,rw /sysroot</code> | <code>mount -o rw,remount /</code> |<br>| <strong>切换环境</strong> | <code>chroot /sysroot</code> | </p>
-<p>不需要（直接在 &#x2F; 下操作）</p>
-<p> |<br>| <strong>SELinux重标记</strong> | </p>
-<p>✅ <code>touch /.autorelabel</code></p>
-<p> | </p>
-<p>❌ 不需要</p>
-<p> |<br>| <strong>重置密码</strong> | <code>passwd root</code> | <code>passwd 用户名</code> |<br>| <strong>重启</strong> | <code>exit</code></p>
-<p>（自动重启）</p>
-<p> | <code>exec /sbin/init</code> |</p>
+<h2 id="八、快速对比总结表"><a href="#八、快速对比总结表" class="headerlink" title="八、快速对比总结表"></a>八、快速对比总结表</h2><table>
+<thead>
+<tr>
+<th>操作步骤</th>
+<th>RHEL系（CentOS&#x2F;Rocky）</th>
+<th>Ubuntu&#x2F;Debian</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>GRUB按键</strong></td>
+<td>按 <code>e</code></td>
+<td><code>Shift</code>  （BIOS）&#x2F; <code>Esc</code>（UEFI）</td>
+</tr>
+<tr>
+<td><strong>内核参数</strong></td>
+<td>行尾加 <code>rd.break</code></td>
+<td>recovery mode 或 <code>init=/bin/bash</code></td>
+</tr>
+<tr>
+<td><strong>挂载命令</strong></td>
+<td><code>mount -o remount,rw /sysroot</code></td>
+<td><code>mount -o rw,remount /</code></td>
+</tr>
+<tr>
+<td><strong>切换环境</strong></td>
+<td><code>chroot /sysroot</code></td>
+<td>不需要（直接在 &#x2F; 下操作）</td>
+</tr>
+<tr>
+<td><strong>SELinux重标记</strong></td>
+<td>✅ <code>touch /.autorelabel</code></td>
+<td>❌ 不需要</td>
+</tr>
+<tr>
+<td><strong>重置密码</strong></td>
+<td><code>passwd root</code></td>
+<td><code>passwd 用户名</code></td>
+</tr>
+<tr>
+<td><strong>重启</strong></td>
+<td><code>exit</code>  （自动重启）</td>
+<td><code>exec /sbin/init</code></td>
+</tr>
+</tbody></table>
 <hr>
 <blockquote>
 <p>📌</p>
@@ -2560,7 +3163,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 02:18:59" itemprop="dateModified" datetime="2026-07-23T02:18:59+08:00">2026-07-23</time>
+      <time title="修改时间：2026-07-23 02:45:54" itemprop="dateModified" datetime="2026-07-23T02:45:54+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2611,18 +3214,22 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法</span><br></pre></td></tr></table></figure>
 
 <p>是否保留家目录？</p>
-<p>|<br>场景</p>
-<p> | </p>
-<p>推荐操作</p>
-<p> |<br>| — | — |<br>| </p>
-<p>普通员工离职</p>
-<p> | <code>userdel 用户名</code></p>
-<p>（保留家目录，归档数据）</p>
-<p> |<br>| </p>
-<p>测试账号清理</p>
-<p> | <code>userdel -r 用户名</code></p>
-<p>（彻底删除，不留痕迹）</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通员工离职</td>
+<td><code>userdel 用户名</code>  （保留家目录，归档数据）</td>
+</tr>
+<tr>
+<td>测试账号清理</td>
+<td><code>userdel -r 用户名</code>  （彻底删除，不留痕迹）</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>💡 一般建议<strong>保留家目录</strong>，以防有重要数据需要备份。</p>
 </blockquote>
@@ -2637,17 +3244,30 @@
 <li><p><code>groups</code>：所有所属组</p>
 </li>
 </ul>
-<h2 id="二、身份查询与切换"><a href="#二、身份查询与切换" class="headerlink" title="二、身份查询与切换"></a>二、身份查询与切换</h2><h3 id="2-1-查看当前登录用户"><a href="#2-1-查看当前登录用户" class="headerlink" title="2.1 查看当前登录用户"></a>2.1 查看当前登录用户</h3><p>|<br>命令</p>
-<p> | </p>
-<p>功能</p>
-<p> |<br>| — | — |<br>| <code>whoami</code> | </p>
-<p>显示当前<strong>有效用户</strong>名（简单快捷）</p>
-<p> |<br>| <code>who am i</code> | </p>
-<p>显示<strong>登录时</strong>的用户信息（更详细，含终端、时间、IP）</p>
-<p> |<br>| <code>who</code> | </p>
-<p>显示所有当前<strong>登录用户</strong>的列表</p>
-<p> |</p>
-<p><strong>三者区别：</strong></p>
+<h2 id="二、身份查询与切换"><a href="#二、身份查询与切换" class="headerlink" title="二、身份查询与切换"></a>二、身份查询与切换</h2><h3 id="2-1-查看当前登录用户"><a href="#2-1-查看当前登录用户" class="headerlink" title="2.1 查看当前登录用户"></a>2.1 查看当前登录用户</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>whoami</code></td>
+<td>显示当前<strong>有效用户</strong>名（简单快捷）</td>
+</tr>
+<tr>
+<td><code>who am i</code></td>
+<td>显示<strong>登录时</strong>的用户信息（更详细，含终端、时间、IP）</td>
+</tr>
+<tr>
+<td><code>who</code></td>
+<td>显示所有当前<strong>登录用户</strong>的列表</td>
+</tr>
+<tr>
+<td><strong>三者区别：</strong></td>
+<td></td>
+</tr>
+</tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[wal@localhost home]$ who am i</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -2655,32 +3275,40 @@
 </blockquote>
 <h3 id="2-2-切换用户：su"><a href="#2-2-切换用户：su" class="headerlink" title="2.2 切换用户：su"></a>2.2 切换用户：<code>su</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-3-⚠️-su-root-vs-su-root-核心区别"><a href="#2-3-⚠️-su-root-vs-su-root-核心区别" class="headerlink" title="2.3 ⚠️ su root vs su - root 核心区别"></a>2.3 ⚠️ <code>su root</code> vs <code>su - root</code> 核心区别</h3><p>|<br>对比项</p>
-<p> | <code>su root</code> | <code>su - root</code> |<br>| — | — | — |<br>| </p>
-<p>用户身份</p>
-<p> | </p>
-<p>✅ 切换为root</p>
-<p> | </p>
-<p>✅ 切换为root</p>
-<p> |<br>| </p>
-<p>环境变量</p>
-<p> | </p>
-<p>❌ 保留原用户</p>
-<p> | </p>
-<p>✅ 重置为root环境</p>
-<p> |<br>| </p>
-<p>PATH路径</p>
-<p> | </p>
-<p>❌ 原用户PATH</p>
-<p> | </p>
-<p>✅ root完整PATH</p>
-<p> |<br>| </p>
-<p>当前目录</p>
-<p> | </p>
-<p>❌ 留在原目录</p>
-<p> | </p>
-<p>✅ 切换到 <code>/root</code></p>
-<p> |<br>| <strong>命令找不到？</strong> | <strong>有风险 ⚠️</strong> | <strong>✅ 正常</strong> |</p>
+<h3 id="2-3-⚠️-su-root-vs-su-root-核心区别"><a href="#2-3-⚠️-su-root-vs-su-root-核心区别" class="headerlink" title="2.3 ⚠️ su root vs su - root 核心区别"></a>2.3 ⚠️ <code>su root</code> vs <code>su - root</code> 核心区别</h3><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th><code>su root</code></th>
+<th><code>su - root</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户身份</td>
+<td>✅ 切换为root</td>
+<td>✅ 切换为root</td>
+</tr>
+<tr>
+<td>环境变量</td>
+<td>❌ 保留原用户</td>
+<td>✅ 重置为root环境</td>
+</tr>
+<tr>
+<td>PATH路径</td>
+<td>❌ 原用户PATH</td>
+<td>✅ root完整PATH</td>
+</tr>
+<tr>
+<td>当前目录</td>
+<td>❌ 留在原目录</td>
+<td>✅ 切换到 <code>/root</code></td>
+</tr>
+<tr>
+<td><strong>命令找不到？</strong></td>
+<td><strong>有风险 ⚠️</strong></td>
+<td><strong>✅ 正常</strong></td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>🎯 <strong>日常运维必须用 <code>su -</code><strong>，避免环境变量错乱导致命令找不到！<code>su -</code> 等价于 <code>su - root</code>。<code>su</code>（不加参数）默认切换到 root，但和 <code>su root</code> 一样是</strong>不完整切换</strong>，同样不推荐。</p>
 </blockquote>
@@ -2697,36 +3325,42 @@
 <p>Linux的用户信息存储在三个核心文件中：</p>
 <h3 id="4-1-etc-passwd-——-用户信息"><a href="#4-1-etc-passwd-——-用户信息" class="headerlink" title="4.1 /etc/passwd —— 用户信息"></a>4.1 <code>/etc/passwd</code> —— 用户信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看内容</span><br></pre></td></tr></table></figure>
 
-<p>|<br>字段</p>
-<p> | </p>
-<p>含义</p>
-<p> |<br>| — | — |<br>| </p>
-<p>用户名</p>
-<p> | </p>
-<p>登录名</p>
-<p> |<br>| <code>x</code> | </p>
-<p>密码占位符（实际密码在 <code>/etc/shadow</code>）</p>
-<p> |<br>| </p>
-<p>UID</p>
-<p> | </p>
-<p>用户ID（0&#x3D;root，1000+为普通用户）</p>
-<p> |<br>| </p>
-<p>GID</p>
-<p> | </p>
-<p>主组ID</p>
-<p> |<br>| </p>
-<p>注释</p>
-<p> | </p>
-<p>用户描述信息</p>
-<p> |<br>| </p>
-<p>家目录</p>
-<p> | </p>
-<p>用户登录后的起始目录</p>
-<p> |<br>| </p>
-<p>登录Shell</p>
-<p> | </p>
-<p>用户使用的Shell程序</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户名</td>
+<td>登录名</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>密码占位符（实际密码在 <code>/etc/shadow</code>）</td>
+</tr>
+<tr>
+<td>UID</td>
+<td>用户ID（0&#x3D;root，1000+为普通用户）</td>
+</tr>
+<tr>
+<td>GID</td>
+<td>主组ID</td>
+</tr>
+<tr>
+<td>注释</td>
+<td>用户描述信息</td>
+</tr>
+<tr>
+<td>家目录</td>
+<td>用户登录后的起始目录</td>
+</tr>
+<tr>
+<td>登录Shell</td>
+<td>用户使用的Shell程序</td>
+</tr>
+</tbody></table>
 <h3 id="4-2-etc-shadow-——-加密密码"><a href="#4-2-etc-shadow-——-加密密码" class="headerlink" title="4.2 /etc/shadow —— 加密密码"></a>4.2 <code>/etc/shadow</code> —— 加密密码</h3><blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看内容（需要root权限）</span><br></pre></td></tr></table></figure>
 
@@ -2734,67 +3368,122 @@
 </blockquote>
 <h3 id="4-3-etc-group-——-组信息"><a href="#4-3-etc-group-——-组信息" class="headerlink" title="4.3 /etc/group —— 组信息"></a>4.3 <code>/etc/group</code> —— 组信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看内容</span><br></pre></td></tr></table></figure>
 
-<p>|<br>字段</p>
-<p> | </p>
-<p>含义</p>
-<p> |<br>| — | — |<br>| </p>
-<p>组名</p>
-<p> | </p>
-<p>组的名称</p>
-<p> |<br>| <code>x</code> | </p>
-<p>组密码占位符</p>
-<p> |<br>| </p>
-<p>GID</p>
-<p> | </p>
-<p>组ID</p>
-<p> |<br>| </p>
-<p>组内用户列表</p>
-<p> | </p>
-<p>属于该组的用户（逗号分隔）</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>组名</td>
+<td>组的名称</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>组密码占位符</td>
+</tr>
+<tr>
+<td>GID</td>
+<td>组ID</td>
+</tr>
+<tr>
+<td>组内用户列表</td>
+<td>属于该组的用户（逗号分隔）</td>
+</tr>
+</tbody></table>
 <h2 id="五、完整实战演练"><a href="#五、完整实战演练" class="headerlink" title="五、完整实战演练"></a>五、完整实战演练</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 1. 添加新用户wol</span><br></pre></td></tr></table></figure>
 
 <p>六、命令速查卡片</p>
-<p>|<br>操作</p>
-<p> | </p>
-<p>命令</p>
-<p> | </p>
-<p>示例</p>
-<p> |<br>| — | — | — |<br>| </p>
-<p>添加用户</p>
-<p> | <code>useradd 用户名</code> | <code>useradd wol</code> |<br>| </p>
-<p>指定家目录添加</p>
-<p> | <code>useradd -d 目录 用户名</code> | <code>useradd -d /opt/wol wol</code> |<br>| </p>
-<p>设置密码</p>
-<p> | <code>passwd 用户名</code> | <code>passwd wol</code> |<br>| </p>
-<p>删除用户</p>
-<p> | <code>userdel 用户名</code> | <code>userdel wol</code> |<br>| </p>
-<p>删除用户+家目录</p>
-<p> | <code>userdel -r 用户名</code> | <code>userdel -r wol</code> |<br>| </p>
-<p>查询用户信息</p>
-<p> | <code>id 用户名</code> | <code>id wol</code> |<br>| </p>
-<p>查看当前用户</p>
-<p> | <code>whoami</code> | <code>whoami</code> |<br>| </p>
-<p>查看登录用户</p>
-<p> | <code>who am i</code> | <code>who am i</code> |<br>| </p>
-<p>切换用户（完整）</p>
-<p> | <code>su - 用户名</code> | <code>su - wol</code> |<br>| </p>
-<p>添加组</p>
-<p> | <code>groupadd 组名</code> | <code>groupadd devops</code> |<br>| </p>
-<p>删除组</p>
-<p> | <code>groupdel 组名</code> | <code>groupdel devops</code> |<br>| </p>
-<p>修改用户组</p>
-<p> | <code>usermod -g 组名 用户名</code> | <code>usermod -g devops wol</code> |</p>
-<h3 id="三个关键文件"><a href="#三个关键文件" class="headerlink" title="三个关键文件"></a>三个关键文件</h3><p>|<br>文件</p>
-<p> | </p>
-<p>作用</p>
-<p> |<br>| — | — |<br>| <code>/etc/passwd</code> | </p>
-<p>用户基本信息</p>
-<p> |<br>| <code>/etc/shadow</code> | </p>
-<p>用户加密密码</p>
-<p> |<br>| <code>/etc/group</code> | </p>
-<p>组信息</p>
-<p> |</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>添加用户</td>
+<td><code>useradd 用户名</code></td>
+<td><code>useradd wol</code></td>
+</tr>
+<tr>
+<td>指定家目录添加</td>
+<td><code>useradd -d 目录 用户名</code></td>
+<td><code>useradd -d /opt/wol wol</code></td>
+</tr>
+<tr>
+<td>设置密码</td>
+<td><code>passwd 用户名</code></td>
+<td><code>passwd wol</code></td>
+</tr>
+<tr>
+<td>删除用户</td>
+<td><code>userdel 用户名</code></td>
+<td><code>userdel wol</code></td>
+</tr>
+<tr>
+<td>删除用户+家目录</td>
+<td><code>userdel -r 用户名</code></td>
+<td><code>userdel -r wol</code></td>
+</tr>
+<tr>
+<td>查询用户信息</td>
+<td><code>id 用户名</code></td>
+<td><code>id wol</code></td>
+</tr>
+<tr>
+<td>查看当前用户</td>
+<td><code>whoami</code></td>
+<td><code>whoami</code></td>
+</tr>
+<tr>
+<td>查看登录用户</td>
+<td><code>who am i</code></td>
+<td><code>who am i</code></td>
+</tr>
+<tr>
+<td>切换用户（完整）</td>
+<td><code>su - 用户名</code></td>
+<td><code>su - wol</code></td>
+</tr>
+<tr>
+<td>添加组</td>
+<td><code>groupadd 组名</code></td>
+<td><code>groupadd devops</code></td>
+</tr>
+<tr>
+<td>删除组</td>
+<td><code>groupdel 组名</code></td>
+<td><code>groupdel devops</code></td>
+</tr>
+<tr>
+<td>修改用户组</td>
+<td><code>usermod -g 组名 用户名</code></td>
+<td><code>usermod -g devops wol</code></td>
+</tr>
+</tbody></table>
+<h3 id="三个关键文件"><a href="#三个关键文件" class="headerlink" title="三个关键文件"></a>三个关键文件</h3><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/etc/passwd</code></td>
+<td>用户基本信息</td>
+</tr>
+<tr>
+<td><code>/etc/shadow</code></td>
+<td>用户加密密码</td>
+</tr>
+<tr>
+<td><code>/etc/group</code></td>
+<td>组信息</td>
+</tr>
+</tbody></table>
 <blockquote>
 </blockquote>
 
