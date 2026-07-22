@@ -1,0 +1,59 @@
+# ===============================================================
+# NexT theme config (overrides _config.yml -> theme: next)
+# NexT v8 会自动读取项目根目录下的 _config.next.yml
+# ===============================================================
+
+# Schemes: Muse | Mist | Pisces | Gemini
+scheme: Gemini
+
+# Site title in sidebar / navbar (fallback to Hexo config)
+# menu: 顶部导航
+menu:
+  home: / || fa fa-home
+  archives: /archives/ || fa fa-archive
+  categories: /categories/ || fa fa-th
+  tags: /tags/ || fa fa-tags
+  about: /about/ || fa fa-user
+
+# 社交链接（图标用 Font Awesome，NexT 自带）
+social:
+  GitHub: https://github.com/java-walker || fab fa-github
+  # 邮箱: mailto:you@example.com || fa fa-envelope
+
+social_icons:
+  enable: true
+  transition: true
+
+# 页脚
+footer:
+  since: 2026
+  icon:
+    name: fa fa-heart
+    animated: true
+    color: "#ff0000"
+  powered:
+    enable: true
+    version: true
+  theme:
+    enable: true
+    name: NexT
+    version: true
+  custom_text: Built with Hexo & NexT
+
+# 代码块：显示复制按钮
+codeblock:
+  copy_button:
+    enable: true
+    show_result: true
+    style: flat
+
+# 本地搜索（需安装 hexo-generator-searchdb 插件，暂未启用）
+search:
+  enable: false
+
+# 文章内链接样式
+post_settings:
+  toc:
+    enable: true
+    number: true
+    wrap: false
