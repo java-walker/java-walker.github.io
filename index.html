@@ -11,11 +11,26 @@
     <meta name="keywords" content="Lyuu,Homepage">
     <meta name="author" content="Lyuu">
     <title>Lyuu Home</title>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/onlinewebfonts.css"/>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/vno.css">
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/iconfont.css">
-    <link rel="apple-touch-icon" href="https://unpkg.com/dmego-home-page@latest/apple-touch-icon.png">
-    <link rel="icon" href="https://unpkg.com/dmego-home-page@latest/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@1.0.11/assets/css/onlinewebfonts.css"/>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@1.0.11/assets/css/vno.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@1.0.11/assets/css/iconfont.css">
+    <link rel="apple-touch-icon" href="https://unpkg.com/dmego-home-page@1.0.11/apple-touch-icon.png">
+    <link rel="icon" href="https://unpkg.com/dmego-home-page@1.0.11/favicon.ico">
+    <style>
+    /* 修复：手机端点开汉堡菜单后导航项全部重叠在同一位置，导致"博客"等菜单点不到。
+       主题移动端样式给 .navigation li 保留了 inline-block，这里改为块级竖排。 */
+    @media all and (max-width: 960px) {
+        .navigation-wrapper.visible .navigation li.navigation__item {
+            display: block;
+            float: none;
+            width: 80%;
+            margin: 0 auto 0.4em;
+        }
+        .navigation-wrapper.visible .cover-navigation {
+            float: none;
+        }
+    }
+    </style>
 </head>
 
 <body>
@@ -130,7 +145,7 @@
             </p>
         </div>
     </header>
-    <script type="text/javascript" src="https://unpkg.com/dmego-home-page@latest/assets/js/main.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/dmego-home-page@1.0.11/assets/js/main.js"></script>
     <script type="text/javascript" src="./assets/json/images.json?cb=getBingImages"></script>
     <script src="/site-updated.js"></script>
 </body>
