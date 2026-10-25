@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lyuu.eu.cc","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat","show_result":true},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js" defer></script>
+
+    <meta name="description" content="起因很简单：一加能往联想平板传文件，平板却找不到任何一个入口往外发。  事情是这样的我手上有台联想小新 Pad（ZUI 16），平时拿来看文档、记笔记。手机是一加。 有天想把平板上的一个安装包发到手机，点开分享面板傻眼了——系统互传（联想叫「超级互联」）只能收，不能发给一加。准确说是平板上的互传界面只能「搜索附近设备」，一加开了互传它也搜得到，但平板自己作为发送方去推文件，整个 UI 里根本没有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给联想平板写了个互传发送器：ZUI2Share">
+<meta property="og:url" content="https://lyuu.eu.cc/blog/2026/10/25/017-%E7%BB%99%E8%81%94%E6%83%B3%E5%B9%B3%E6%9D%BF%E5%86%99%E4%BA%86%E4%B8%AA%E4%BA%92%E4%BC%A0%E5%8F%91%E9%80%81%E5%99%A8%EF%BC%9AZUI2Share/index.html">
+<meta property="og:site_name" content="Lyuu 的博客">
+<meta property="og:description" content="起因很简单：一加能往联想平板传文件，平板却找不到任何一个入口往外发。  事情是这样的我手上有台联想小新 Pad（ZUI 16），平时拿来看文档、记笔记。手机是一加。 有天想把平板上的一个安装包发到手机，点开分享面板傻眼了——系统互传（联想叫「超级互联」）只能收，不能发给一加。准确说是平板上的互传界面只能「搜索附近设备」，一加开了互传它也搜得到，但平板自己作为发送方去推文件，整个 UI 里根本没有">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-25T13:30:00.000Z">
+<meta property="article:modified_time" content="2026-10-25T13:02:04.125Z">
+<meta property="article:author" content="Lyuu">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="逆向">
+<meta property="article:tag" content="互传联盟">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lyuu.eu.cc/blog/2026/10/25/017-%E7%BB%99%E8%81%94%E6%83%B3%E5%B9%B3%E6%9D%BF%E5%86%99%E4%BA%86%E4%B8%AA%E4%BA%92%E4%BC%A0%E5%8F%91%E9%80%81%E5%99%A8%EF%BC%9AZUI2Share/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lyuu.eu.cc/blog/2026/10/25/017-%E7%BB%99%E8%81%94%E6%83%B3%E5%B9%B3%E6%9D%BF%E5%86%99%E4%BA%86%E4%B8%AA%E4%BA%92%E4%BC%A0%E5%8F%91%E9%80%81%E5%99%A8%EF%BC%9AZUI2Share/","path":"2026/10/25/017-给联想平板写了个互传发送器：ZUI2Share/","title":"给联想平板写了个互传发送器：ZUI2Share"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>给联想平板写了个互传发送器：ZUI2Share | Lyuu 的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/blog/js/utils.js" defer></script><script src="/blog/js/motion.js" defer></script><script src="/blog/js/sidebar.js" defer></script><script src="/blog/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Lyuu 的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code Create Life</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-portal"><a href="https://lyuu.eu.cc/" rel="section"><i class="fa fa-globe fa-fw"></i>主页</a></li><li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E6%83%85%E6%98%AF%E8%BF%99%E6%A0%B7%E7%9A%84"><span class="nav-number">1.</span> <span class="nav-text">事情是这样的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B0%E8%BF%87%E7%9A%84%E5%BC%AF%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">走过的弯路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">正确的打开方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%9A%E6%88%90%E4%BA%86%E4%BB%80%E4%B9%88%E6%A0%B7"><span class="nav-number">4.</span> <span class="nav-text">做成了什么样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%A0%E7%82%B9%E8%AF%B4%E6%98%8E"><span class="nav-number">5.</span> <span class="nav-text">几点说明</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lyuu</p>
+  <div class="site-description" itemprop="description">记录技术、AI 与生活的个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/java-walker" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;java-walker" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/10/25/017-%E7%BB%99%E8%81%94%E6%83%B3%E5%B9%B3%E6%9D%BF%E5%86%99%E4%BA%86%E4%B8%AA%E4%BA%92%E4%BC%A0%E5%8F%91%E9%80%81%E5%99%A8%EF%BC%9AZUI2Share/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="给联想平板写了个互传发送器：ZUI2Share | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          给联想平板写了个互传发送器：ZUI2Share
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-10-25 21:30:00 / 修改时间：21:02:04" itemprop="dateCreated datePublished" datetime="2026-10-25T21:30:00+08:00">2026-10-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>起因很简单：一加能往联想平板传文件，平板却找不到任何一个入口往外发。</p>
+</blockquote>
+<h2 id="事情是这样的"><a href="#事情是这样的" class="headerlink" title="事情是这样的"></a>事情是这样的</h2><p>我手上有台联想小新 Pad（ZUI 16），平时拿来看文档、记笔记。手机是一加。</p>
+<p>有天想把平板上的一个安装包发到手机，点开分享面板傻眼了——系统互传（联想叫「超级互联」）只能<strong>收</strong>，不能<strong>发</strong>给一加。准确说是平板上的互传界面只能「搜索附近设备」，一加开了互传它也搜得到，但平板自己作为发送方去推文件，整个 UI 里根本没有这个功能。</p>
+<p>先说结论：<strong>这个功能其实存在，只是没做界面</strong>。联想把它做成了 AIDL 接口藏在系统服务里，我给它套了个壳，就是 <a target="_blank" rel="noopener" href="https://github.com/java-walker/ZUI2Share">ZUI2Share</a>。</p>
+<h2 id="走过的弯路"><a href="#走过的弯路" class="headerlink" title="走过的弯路"></a>走过的弯路</h2><p>一开始没想反编译，先试了现成方案。</p>
+<p><strong>CatShare</strong>，一个开源的互传联盟第三方客户端，思路很漂亮：自己实现 BLE 发现和 Wi-Fi Direct 组网，冒充系统互传。我给它补了几个兼容性 patch（比如它读不到 <code>p2p0</code> 的 MAC 地址，我配了 Shizuku 帮它读），最后卡在一步：握手能走完，文件传输阶段一加那边直接超时。看日志，一加的互传服务只认联想系统服务发起的 P2P 组网，第三方 App 自己建的组它不加入。</p>
+<p>这条路走不通之后我又动了把 CatShare 塞进 <code>/system/priv-app</code> 的念头，也失败了——平板的 root 是 KernelSU，4.x 版本不支持 system 目录挂载，得装 meta-overlayfs，太折腾。</p>
+<p>后来想明白一件事：<strong>CatShare 在重造轮子，而联想其实已经把轮子造好了，只是没装方向盘。</strong></p>
+<h2 id="正确的打开方式"><a href="#正确的打开方式" class="headerlink" title="正确的打开方式"></a>正确的打开方式</h2><p>把 <code>/system/priv-app/ZuiFileTransfer</code> 拖进 jadx，反编译出来的东西让我有点意外：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// com.zui.wifip2p 暴露的服务</span></span><br><span class="line">Service:    com.zui.wifip2p/.RemoteStatusService</span><br><span class="line">Action:     com.zui.wifip2p.action.RemoteApiService</span><br><span class="line">Permission: com.zui.wifip2p.permission.RemoteApiService</span><br></pre></td></tr></table></figure>
+
+<p>这个权限的 protectionLevel 是 <strong>normal</strong>。也就是说，任何一个普通 App 在 Manifest 里声明一下，就能合法 bind 这个系统服务、调用它的文件发送接口。没有签名校验，没有调用方白名单，什么都没有。</p>
+<p>接口长这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IServiceManager.getService(<span class="number">0</span>)   → IFastTransfer</span><br><span class="line">IFastTransfer.registerCallback(callback)   <span class="comment">// 设备列表从 onDevices 回调推过来</span></span><br><span class="line">IFastTransfer.callSendFile(deviceType, bleMac, uris)</span><br></pre></td></tr></table></figure>
+
+<p>就这么三个调用。后面 BLE 握手、Wi-Fi P2P 组网、断点续传，全是联想自己的服务在干。对端一加看到的请求和系统互传发出来的一模一样，当然照单全收。</p>
+<p>不过「接口存在」和「能用」之间还隔着几个坑，值得记下来：</p>
+<p><strong>AIDL 事务号是按方法声明顺序生成的</strong>，不是字母序。我第一版 .aidl 按习惯把方法按字母排了，结果 <code>registerCallback</code> 怎么调都返回 false——对端按事务号分发，我这边序号 1 的方法在对端眼里是别的操作。把声明顺序改成和反编译出来的 Stub 一致，一次通过。对接别人的 AIDL 时，先看对端 <code>onTransact</code> 里的分支号，再写自己的接口文件，这个顺序不能凭感觉来。</p>
+<p><strong><code>file://</code> URI 会被一加拒收。</strong> 联想的 <code>getMimeTypeForUri()</code> 只处理 <code>content://</code>，<code>file://</code> 直接返回 null。MIME 是 null 的一加那边解析失败，会在 <code>Download/OnePlus Share/</code> 下留下一个 0 字节的空壳文件，发送端却显示「传输完成」。我最开始测试 TXT 能通、APK 不通，排查了半天 URI 权限、provider 授权，最后发现是 MIME 的问题——解法是发送前把文件登记进 MediaStore，换一个正经的 <code>content://media/external/downloads/...</code> 回来。修完之后 MD5 校验，两边完全一致。</p>
+<p><strong>还有个阴间的：一加的互传开关是限时的。</strong> 打开后显示「X 分 X 秒内有效」，五分钟一到自动关闭。关闭后 BLE 广播就停了，平板这边设备列表里还显示着（缓存），但发什么都是超时失败，状态码 6。我一度以为是协议不兼容，反复改代码，最后发现只需要在手机上重新点一下开关。调试 Android 的问题，先确认对端真的活着，这句话说了多少年了还是会忘。</p>
+<h2 id="做成了什么样"><a href="#做成了什么样" class="headerlink" title="做成了什么样"></a>做成了什么样</h2><p>App 本身很简单，一个界面三步：选设备、选文件、发送。</p>
+<p>比较有意思的是「选择本机应用」这个功能：列出平板上装的 177 个应用，支持按用户&#x2F;系统筛选和搜索，勾选之后自动把 APK 从 <code>/data/app</code> 里抽出来（这个路径普通应用读不了目录但能读文件，权限设计挺微妙），按 <code>应用名-包名-版本号.apk</code> 重命名，然后走互传发出去。给新手机装软件倒是意外地顺手。</p>
+<p>实测 TXT 和 APK 都能正常发到一加，MD5 一致，整个过程三四秒。大文件没测过极限速度，但走的是 Wi-Fi Direct 直连，理论上不是瓶颈。</p>
+<h2 id="几点说明"><a href="#几点说明" class="headerlink" title="几点说明"></a>几点说明</h2><ul>
+<li>项目在 <a target="_blank" rel="noopener" href="https://github.com/java-walker/ZUI2Share">GitHub</a>，Release 里有打包好的 APK，要求 Android 12+ 且设备上有联想的互传服务（ZUI 平板基本都行，其他品牌没测）</li>
+<li>一加那边<strong>什么都不用装</strong>，打开互传开关就行，这也是我坚持不用 LocalSend 的原因——就是想看看纯靠发送端能不能解决</li>
+<li>一加互传开关五分钟过期这个设计属实反人类，建议OPPO系的产品经理看看</li>
+<li>代码里 AIDL 那部分是从反编译结果还原的，联想哪天更新改了接口可能就失效了，且用且珍惜</li>
+</ul>
+<p>回过头看，这次折腾最有意思的点不是逆向本身，而是发现厂商把功能做完了却不上界面——大概产品经理觉得「平板给别人发文件」是个伪需求吧。但对有两台设备的人来说，这恰恰是最常见的场景。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Android/" rel="tag"># Android</a>
+              <a href="/blog/tags/%E9%80%86%E5%90%91/" rel="tag"># 逆向</a>
+              <a href="/blog/tags/%E4%BA%92%E4%BC%A0%E8%81%94%E7%9B%9F/" rel="tag"># 互传联盟</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2026/07/22/Hexo-%E4%BB%A3%E7%A0%81%E5%9D%97%E4%B8%8E%E6%8E%92%E7%89%88%E6%B5%8B%E8%AF%95/" rel="prev" title="Hexo 代码块与排版测试">
+                  <i class="fa fa-angle-left"></i> Hexo 代码块与排版测试
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Lyuu</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<style>
+.site-updated {
+  margin: 10px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+  font-size: 12px;
+  color: #999;
+  line-height: 1.5;
+  text-align: center;
+}
+.site-updated-home {
+  font-size: 13px;
+  color: #9aa3ad;
+  margin: 4px 0 2px;
+  text-align: center;
+}
+</style>
+<script src="/site-updated.js"></script>
+
+</body>
+</html>

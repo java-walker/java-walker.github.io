@@ -143,7 +143,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/blog/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -174,6 +174,116 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/10/25/017-%E7%BB%99%E8%81%94%E6%83%B3%E5%B9%B3%E6%9D%BF%E5%86%99%E4%BA%86%E4%B8%AA%E4%BA%92%E4%BC%A0%E5%8F%91%E9%80%81%E5%99%A8%EF%BC%9AZUI2Share/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2026/10/25/017-%E7%BB%99%E8%81%94%E6%83%B3%E5%B9%B3%E6%9D%BF%E5%86%99%E4%BA%86%E4%B8%AA%E4%BA%92%E4%BC%A0%E5%8F%91%E9%80%81%E5%99%A8%EF%BC%9AZUI2Share/" class="post-title-link" itemprop="url">给联想平板写了个互传发送器：ZUI2Share</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-10-25 21:30:00 / 修改时间：21:02:04" itemprop="dateCreated datePublished" datetime="2026-10-25T21:30:00+08:00">2026-10-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>起因很简单：一加能往联想平板传文件，平板却找不到任何一个入口往外发。</p>
+</blockquote>
+<h2 id="事情是这样的"><a href="#事情是这样的" class="headerlink" title="事情是这样的"></a>事情是这样的</h2><p>我手上有台联想小新 Pad（ZUI 16），平时拿来看文档、记笔记。手机是一加。</p>
+<p>有天想把平板上的一个安装包发到手机，点开分享面板傻眼了——系统互传（联想叫「超级互联」）只能<strong>收</strong>，不能<strong>发</strong>给一加。准确说是平板上的互传界面只能「搜索附近设备」，一加开了互传它也搜得到，但平板自己作为发送方去推文件，整个 UI 里根本没有这个功能。</p>
+<p>先说结论：<strong>这个功能其实存在，只是没做界面</strong>。联想把它做成了 AIDL 接口藏在系统服务里，我给它套了个壳，就是 <a target="_blank" rel="noopener" href="https://github.com/java-walker/ZUI2Share">ZUI2Share</a>。</p>
+<h2 id="走过的弯路"><a href="#走过的弯路" class="headerlink" title="走过的弯路"></a>走过的弯路</h2><p>一开始没想反编译，先试了现成方案。</p>
+<p><strong>CatShare</strong>，一个开源的互传联盟第三方客户端，思路很漂亮：自己实现 BLE 发现和 Wi-Fi Direct 组网，冒充系统互传。我给它补了几个兼容性 patch（比如它读不到 <code>p2p0</code> 的 MAC 地址，我配了 Shizuku 帮它读），最后卡在一步：握手能走完，文件传输阶段一加那边直接超时。看日志，一加的互传服务只认联想系统服务发起的 P2P 组网，第三方 App 自己建的组它不加入。</p>
+<p>这条路走不通之后我又动了把 CatShare 塞进 <code>/system/priv-app</code> 的念头，也失败了——平板的 root 是 KernelSU，4.x 版本不支持 system 目录挂载，得装 meta-overlayfs，太折腾。</p>
+<p>后来想明白一件事：<strong>CatShare 在重造轮子，而联想其实已经把轮子造好了，只是没装方向盘。</strong></p>
+<h2 id="正确的打开方式"><a href="#正确的打开方式" class="headerlink" title="正确的打开方式"></a>正确的打开方式</h2><p>把 <code>/system/priv-app/ZuiFileTransfer</code> 拖进 jadx，反编译出来的东西让我有点意外：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// com.zui.wifip2p 暴露的服务</span></span><br><span class="line">Service:    com.zui.wifip2p/.RemoteStatusService</span><br><span class="line">Action:     com.zui.wifip2p.action.RemoteApiService</span><br><span class="line">Permission: com.zui.wifip2p.permission.RemoteApiService</span><br></pre></td></tr></table></figure>
+
+<p>这个权限的 protectionLevel 是 <strong>normal</strong>。也就是说，任何一个普通 App 在 Manifest 里声明一下，就能合法 bind 这个系统服务、调用它的文件发送接口。没有签名校验，没有调用方白名单，什么都没有。</p>
+<p>接口长这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IServiceManager.getService(<span class="number">0</span>)   → IFastTransfer</span><br><span class="line">IFastTransfer.registerCallback(callback)   <span class="comment">// 设备列表从 onDevices 回调推过来</span></span><br><span class="line">IFastTransfer.callSendFile(deviceType, bleMac, uris)</span><br></pre></td></tr></table></figure>
+
+<p>就这么三个调用。后面 BLE 握手、Wi-Fi P2P 组网、断点续传，全是联想自己的服务在干。对端一加看到的请求和系统互传发出来的一模一样，当然照单全收。</p>
+<p>不过「接口存在」和「能用」之间还隔着几个坑，值得记下来：</p>
+<p><strong>AIDL 事务号是按方法声明顺序生成的</strong>，不是字母序。我第一版 .aidl 按习惯把方法按字母排了，结果 <code>registerCallback</code> 怎么调都返回 false——对端按事务号分发，我这边序号 1 的方法在对端眼里是别的操作。把声明顺序改成和反编译出来的 Stub 一致，一次通过。对接别人的 AIDL 时，先看对端 <code>onTransact</code> 里的分支号，再写自己的接口文件，这个顺序不能凭感觉来。</p>
+<p><strong><code>file://</code> URI 会被一加拒收。</strong> 联想的 <code>getMimeTypeForUri()</code> 只处理 <code>content://</code>，<code>file://</code> 直接返回 null。MIME 是 null 的一加那边解析失败，会在 <code>Download/OnePlus Share/</code> 下留下一个 0 字节的空壳文件，发送端却显示「传输完成」。我最开始测试 TXT 能通、APK 不通，排查了半天 URI 权限、provider 授权，最后发现是 MIME 的问题——解法是发送前把文件登记进 MediaStore，换一个正经的 <code>content://media/external/downloads/...</code> 回来。修完之后 MD5 校验，两边完全一致。</p>
+<p><strong>还有个阴间的：一加的互传开关是限时的。</strong> 打开后显示「X 分 X 秒内有效」，五分钟一到自动关闭。关闭后 BLE 广播就停了，平板这边设备列表里还显示着（缓存），但发什么都是超时失败，状态码 6。我一度以为是协议不兼容，反复改代码，最后发现只需要在手机上重新点一下开关。调试 Android 的问题，先确认对端真的活着，这句话说了多少年了还是会忘。</p>
+<h2 id="做成了什么样"><a href="#做成了什么样" class="headerlink" title="做成了什么样"></a>做成了什么样</h2><p>App 本身很简单，一个界面三步：选设备、选文件、发送。</p>
+<p>比较有意思的是「选择本机应用」这个功能：列出平板上装的 177 个应用，支持按用户&#x2F;系统筛选和搜索，勾选之后自动把 APK 从 <code>/data/app</code> 里抽出来（这个路径普通应用读不了目录但能读文件，权限设计挺微妙），按 <code>应用名-包名-版本号.apk</code> 重命名，然后走互传发出去。给新手机装软件倒是意外地顺手。</p>
+<p>实测 TXT 和 APK 都能正常发到一加，MD5 一致，整个过程三四秒。大文件没测过极限速度，但走的是 Wi-Fi Direct 直连，理论上不是瓶颈。</p>
+<h2 id="几点说明"><a href="#几点说明" class="headerlink" title="几点说明"></a>几点说明</h2><ul>
+<li>项目在 <a target="_blank" rel="noopener" href="https://github.com/java-walker/ZUI2Share">GitHub</a>，Release 里有打包好的 APK，要求 Android 12+ 且设备上有联想的互传服务（ZUI 平板基本都行，其他品牌没测）</li>
+<li>一加那边<strong>什么都不用装</strong>，打开互传开关就行，这也是我坚持不用 LocalSend 的原因——就是想看看纯靠发送端能不能解决</li>
+<li>一加互传开关五分钟过期这个设计属实反人类，建议OPPO系的产品经理看看</li>
+<li>代码里 AIDL 那部分是从反编译结果还原的，联想哪天更新改了接口可能就失效了，且用且珍惜</li>
+</ul>
+<p>回过头看，这次折腾最有意思的点不是逆向本身，而是发现厂商把功能做完了却不上界面——大概产品经理觉得「平板给别人发文件」是个伪需求吧。但对有两台设备的人来说，这恰恰是最常见的场景。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -219,7 +329,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 04:43:50" itemprop="dateModified" datetime="2026-07-23T04:43:50+08:00">2026-07-23</time>
+      <time title="修改时间：2026-10-25 21:02:04" itemprop="dateModified" datetime="2026-10-25T21:02:04+08:00">2026-10-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -342,7 +452,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 04:43:50" itemprop="dateModified" datetime="2026-07-23T04:43:50+08:00">2026-07-23</time>
+      <time title="修改时间：2026-10-25 21:02:04" itemprop="dateModified" datetime="2026-10-25T21:02:04+08:00">2026-10-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -438,7 +548,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 04:43:50" itemprop="dateModified" datetime="2026-07-23T04:43:50+08:00">2026-07-23</time>
+      <time title="修改时间：2026-10-25 21:02:04" itemprop="dateModified" datetime="2026-10-25T21:02:04+08:00">2026-10-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -794,7 +904,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 04:43:50" itemprop="dateModified" datetime="2026-07-23T04:43:50+08:00">2026-07-23</time>
+      <time title="修改时间：2026-10-25 21:02:04" itemprop="dateModified" datetime="2026-10-25T21:02:04+08:00">2026-10-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1147,7 +1257,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 04:43:50" itemprop="dateModified" datetime="2026-07-23T04:43:50+08:00">2026-07-23</time>
+      <time title="修改时间：2026-10-25 21:02:04" itemprop="dateModified" datetime="2026-10-25T21:02:04+08:00">2026-10-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1636,7 +1746,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 04:43:50" itemprop="dateModified" datetime="2026-07-23T04:43:50+08:00">2026-07-23</time>
+      <time title="修改时间：2026-10-25 21:02:04" itemprop="dateModified" datetime="2026-10-25T21:02:04+08:00">2026-10-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1994,7 +2104,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 04:43:50" itemprop="dateModified" datetime="2026-07-23T04:43:50+08:00">2026-07-23</time>
+      <time title="修改时间：2026-10-25 21:02:04" itemprop="dateModified" datetime="2026-10-25T21:02:04+08:00">2026-10-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2433,7 +2543,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 04:43:50" itemprop="dateModified" datetime="2026-07-23T04:43:50+08:00">2026-07-23</time>
+      <time title="修改时间：2026-10-25 21:02:04" itemprop="dateModified" datetime="2026-10-25T21:02:04+08:00">2026-10-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2791,7 +2901,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 04:43:50" itemprop="dateModified" datetime="2026-07-23T04:43:50+08:00">2026-07-23</time>
+      <time title="修改时间：2026-10-25 21:02:04" itemprop="dateModified" datetime="2026-10-25T21:02:04+08:00">2026-10-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -3100,391 +3210,6 @@
 <hr>
 <blockquote>
 <p>📌</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/07/04/009-Linux%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%9A%E7%94%A8%E6%88%B7%E3%80%81%E5%AF%86%E7%A0%81%E3%80%81%E7%BB%84%E4%B8%8E%E8%BA%AB%E4%BB%BD%E5%88%87%E6%8D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Lyuu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lyuu 的博客">
-      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | Lyuu 的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog/2026/07/04/009-Linux%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%9A%E7%94%A8%E6%88%B7%E3%80%81%E5%AF%86%E7%A0%81%E3%80%81%E7%BB%84%E4%B8%8E%E8%BA%AB%E4%BB%BD%E5%88%87%E6%8D%A2/" class="post-title-link" itemprop="url">007 Linux用户管理完全指南：用户、密码、组与身份切换</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2026-07-04 16:00:00" itemprop="dateCreated datePublished" datetime="2026-07-04T16:00:00+08:00">2026-07-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-23 04:43:50" itemprop="dateModified" datetime="2026-07-23T04:43:50+08:00">2026-07-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>原文转载自微信公众号「walker-行者」Linux 系列。<br>原始链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&mid=2247483819&idx=1&sn=39a10e5d9763aef8cd58381b48f9e6ca&chksm=c0bf7889f7c8f19f430d183b254d1ff67cc69b01c3f5b9e9ce9924a56bbe48c799953fa1efde&cur_album_id=4586547322464501762&scene=189#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&amp;mid=2247483819&amp;idx=1&amp;sn=39a10e5d9763aef8cd58381b48f9e6ca&amp;chksm=c0bf7889f7c8f19f430d183b254d1ff67cc69b01c3f5b9e9ce9924a56bbe48c799953fa1efde&amp;cur_album_id=4586547322464501762&amp;scene=189#wechat_redirect</a></p>
-</blockquote>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1><blockquote>
-<p>一篇掌握Linux用户管理的所有核心命令</p>
-</blockquote>
-<h2 id="一、用户管理命令速览"><a href="#一、用户管理命令速览" class="headerlink" title="一、用户管理命令速览"></a>一、用户管理命令速览</h2><h3 id="1-1-添加用户：useradd"><a href="#1-1-添加用户：useradd" class="headerlink" title="1.1 添加用户：useradd"></a>1.1 添加用户：<code>useradd</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法</span><br></pre></td></tr></table></figure>
-
-<p><strong>用户添加后的默认行为：</strong></p>
-<ul>
-<li><p>自动创建<strong>同名家目录</strong>：<code>/home/用户名</code></p>
-</li>
-<li><p>自动创建<strong>同名用户组</strong></p>
-</li>
-<li><p>从 <code>/etc/skel</code> 复制初始配置文件</p>
-</li>
-</ul>
-<blockquote>
-<p>💡 <strong>Ubuntu&#x2F;Debian 特别提醒</strong>：这些发行版默认<strong>不</strong>使用 <code>useradd</code> 的 <code>-p</code> 参数设置密码（因为不安全），而是推荐用 <code>passwd</code> 单独设置密码。<code>useradd</code> 在 Ubuntu 上默认也不会自动创建用户主目录，需要加 <code>-m</code> 参数（Debian 系通常建议使用 <code>adduser</code> 这个交互式工具更友好）。</p>
-</blockquote>
-<h3 id="1-2-设置-修改密码：passwd"><a href="#1-2-设置-修改密码：passwd" class="headerlink" title="1.2 设置&#x2F;修改密码：passwd"></a>1.2 设置&#x2F;修改密码：<code>passwd</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>⚠️ 注意区分：passwd（设置密码） vs pwd（Print Working Directory，显示当前目录）</p>
-</blockquote>
-<h3 id="1-3-删除用户：userdel"><a href="#1-3-删除用户：userdel" class="headerlink" title="1.3 删除用户：userdel"></a>1.3 删除用户：<code>userdel</code></h3><p>bash</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法</span><br></pre></td></tr></table></figure>
-
-<p>是否保留家目录？</p>
-<table>
-<thead>
-<tr>
-<th>场景</th>
-<th>推荐操作</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>普通员工离职</td>
-<td><code>userdel 用户名</code>  （保留家目录，归档数据）</td>
-</tr>
-<tr>
-<td>测试账号清理</td>
-<td><code>userdel -r 用户名</code>  （彻底删除，不留痕迹）</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>💡 一般建议<strong>保留家目录</strong>，以防有重要数据需要备份。</p>
-</blockquote>
-<h3 id="1-4-查询用户信息：id"><a href="#1-4-查询用户信息：id" class="headerlink" title="1.4 查询用户信息：id"></a>1.4 查询用户信息：<code>id</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法</span><br></pre></td></tr></table></figure>
-
-<p>输出说明：</p>
-<ul>
-<li><p><code>uid</code>：用户ID（User ID）</p>
-</li>
-<li><p><code>gid</code>：主组ID（Group ID）</p>
-</li>
-<li><p><code>groups</code>：所有所属组</p>
-</li>
-</ul>
-<h2 id="二、身份查询与切换"><a href="#二、身份查询与切换" class="headerlink" title="二、身份查询与切换"></a>二、身份查询与切换</h2><h3 id="2-1-查看当前登录用户"><a href="#2-1-查看当前登录用户" class="headerlink" title="2.1 查看当前登录用户"></a>2.1 查看当前登录用户</h3><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>whoami</code></td>
-<td>显示当前<strong>有效用户</strong>名（简单快捷）</td>
-</tr>
-<tr>
-<td><code>who am i</code></td>
-<td>显示<strong>登录时</strong>的用户信息（更详细，含终端、时间、IP）</td>
-</tr>
-<tr>
-<td><code>who</code></td>
-<td>显示所有当前<strong>登录用户</strong>的列表</td>
-</tr>
-<tr>
-<td><strong>三者区别：</strong></td>
-<td></td>
-</tr>
-</tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[wal@localhost home]$ who am i</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>🎯 记住：who am i 查”我是谁登录进来的”，whoami 查”当前我以谁的身份在执行命令”。</p>
-</blockquote>
-<h3 id="2-2-切换用户：su"><a href="#2-2-切换用户：su" class="headerlink" title="2.2 切换用户：su"></a>2.2 切换用户：<code>su</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-3-⚠️-su-root-vs-su-root-核心区别"><a href="#2-3-⚠️-su-root-vs-su-root-核心区别" class="headerlink" title="2.3 ⚠️ su root vs su - root 核心区别"></a>2.3 ⚠️ <code>su root</code> vs <code>su - root</code> 核心区别</h3><table>
-<thead>
-<tr>
-<th>对比项</th>
-<th><code>su root</code></th>
-<th><code>su - root</code></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>用户身份</td>
-<td>✅ 切换为root</td>
-<td>✅ 切换为root</td>
-</tr>
-<tr>
-<td>环境变量</td>
-<td>❌ 保留原用户</td>
-<td>✅ 重置为root环境</td>
-</tr>
-<tr>
-<td>PATH路径</td>
-<td>❌ 原用户PATH</td>
-<td>✅ root完整PATH</td>
-</tr>
-<tr>
-<td>当前目录</td>
-<td>❌ 留在原目录</td>
-<td>✅ 切换到 <code>/root</code></td>
-</tr>
-<tr>
-<td><strong>命令找不到？</strong></td>
-<td><strong>有风险 ⚠️</strong></td>
-<td><strong>✅ 正常</strong></td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>🎯 <strong>日常运维必须用 <code>su -</code><strong>，避免环境变量错乱导致命令找不到！<code>su -</code> 等价于 <code>su - root</code>。<code>su</code>（不加参数）默认切换到 root，但和 <code>su root</code> 一样是</strong>不完整切换</strong>，同样不推荐。</p>
-</blockquote>
-<h3 id="2-4-退出当前用户"><a href="#2-4-退出当前用户" class="headerlink" title="2.4 退出当前用户"></a>2.4 退出当前用户</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
-
-<p><strong>三、用户组管理</strong></p>
-<h3 id="3-1-基本概念"><a href="#3-1-基本概念" class="headerlink" title="3.1 基本概念"></a>3.1 基本概念</h3><p>Linux中，每个用户<strong>必须属于至少一个组</strong>，组用于统一管理权限。</p>
-<h3 id="3-2-组管理命令"><a href="#3-2-组管理命令" class="headerlink" title="3.2 组管理命令"></a>3.2 组管理命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 添加组</span><br></pre></td></tr></table></figure>
-
-<p>3.3 添加用户时直接指定组</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 创建用户并指定所属组</span><br></pre></td></tr></table></figure>
-
-<p>四、用户&#x2F;组相关配置文件</p>
-<p>Linux的用户信息存储在三个核心文件中：</p>
-<h3 id="4-1-etc-passwd-——-用户信息"><a href="#4-1-etc-passwd-——-用户信息" class="headerlink" title="4.1 /etc/passwd —— 用户信息"></a>4.1 <code>/etc/passwd</code> —— 用户信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看内容</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>用户名</td>
-<td>登录名</td>
-</tr>
-<tr>
-<td><code>x</code></td>
-<td>密码占位符（实际密码在 <code>/etc/shadow</code>）</td>
-</tr>
-<tr>
-<td>UID</td>
-<td>用户ID（0&#x3D;root，1000+为普通用户）</td>
-</tr>
-<tr>
-<td>GID</td>
-<td>主组ID</td>
-</tr>
-<tr>
-<td>注释</td>
-<td>用户描述信息</td>
-</tr>
-<tr>
-<td>家目录</td>
-<td>用户登录后的起始目录</td>
-</tr>
-<tr>
-<td>登录Shell</td>
-<td>用户使用的Shell程序</td>
-</tr>
-</tbody></table>
-<h3 id="4-2-etc-shadow-——-加密密码"><a href="#4-2-etc-shadow-——-加密密码" class="headerlink" title="4.2 /etc/shadow —— 加密密码"></a>4.2 <code>/etc/shadow</code> —— 加密密码</h3><blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看内容（需要root权限）</span><br></pre></td></tr></table></figure>
-
-<p>⚠️ 此文件只有root可读，存储用户密码的加密哈希值，千万不要随意修改！</p>
-</blockquote>
-<h3 id="4-3-etc-group-——-组信息"><a href="#4-3-etc-group-——-组信息" class="headerlink" title="4.3 /etc/group —— 组信息"></a>4.3 <code>/etc/group</code> —— 组信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查看内容</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>组名</td>
-<td>组的名称</td>
-</tr>
-<tr>
-<td><code>x</code></td>
-<td>组密码占位符</td>
-</tr>
-<tr>
-<td>GID</td>
-<td>组ID</td>
-</tr>
-<tr>
-<td>组内用户列表</td>
-<td>属于该组的用户（逗号分隔）</td>
-</tr>
-</tbody></table>
-<h2 id="五、完整实战演练"><a href="#五、完整实战演练" class="headerlink" title="五、完整实战演练"></a>五、完整实战演练</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 1. 添加新用户wol</span><br></pre></td></tr></table></figure>
-
-<p>六、命令速查卡片</p>
-<table>
-<thead>
-<tr>
-<th>操作</th>
-<th>命令</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>添加用户</td>
-<td><code>useradd 用户名</code></td>
-<td><code>useradd wol</code></td>
-</tr>
-<tr>
-<td>指定家目录添加</td>
-<td><code>useradd -d 目录 用户名</code></td>
-<td><code>useradd -d /opt/wol wol</code></td>
-</tr>
-<tr>
-<td>设置密码</td>
-<td><code>passwd 用户名</code></td>
-<td><code>passwd wol</code></td>
-</tr>
-<tr>
-<td>删除用户</td>
-<td><code>userdel 用户名</code></td>
-<td><code>userdel wol</code></td>
-</tr>
-<tr>
-<td>删除用户+家目录</td>
-<td><code>userdel -r 用户名</code></td>
-<td><code>userdel -r wol</code></td>
-</tr>
-<tr>
-<td>查询用户信息</td>
-<td><code>id 用户名</code></td>
-<td><code>id wol</code></td>
-</tr>
-<tr>
-<td>查看当前用户</td>
-<td><code>whoami</code></td>
-<td><code>whoami</code></td>
-</tr>
-<tr>
-<td>查看登录用户</td>
-<td><code>who am i</code></td>
-<td><code>who am i</code></td>
-</tr>
-<tr>
-<td>切换用户（完整）</td>
-<td><code>su - 用户名</code></td>
-<td><code>su - wol</code></td>
-</tr>
-<tr>
-<td>添加组</td>
-<td><code>groupadd 组名</code></td>
-<td><code>groupadd devops</code></td>
-</tr>
-<tr>
-<td>删除组</td>
-<td><code>groupdel 组名</code></td>
-<td><code>groupdel devops</code></td>
-</tr>
-<tr>
-<td>修改用户组</td>
-<td><code>usermod -g 组名 用户名</code></td>
-<td><code>usermod -g devops wol</code></td>
-</tr>
-</tbody></table>
-<h3 id="三个关键文件"><a href="#三个关键文件" class="headerlink" title="三个关键文件"></a>三个关键文件</h3><table>
-<thead>
-<tr>
-<th>文件</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>/etc/passwd</code></td>
-<td>用户基本信息</td>
-</tr>
-<tr>
-<td><code>/etc/shadow</code></td>
-<td>用户加密密码</td>
-</tr>
-<tr>
-<td><code>/etc/group</code></td>
-<td>组信息</td>
-</tr>
-</tbody></table>
-<blockquote>
 </blockquote>
 
       
