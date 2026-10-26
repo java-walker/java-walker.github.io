@@ -29,6 +29,14 @@
         .navigation-wrapper.visible .cover-navigation {
             float: none;
         }
+        /* 修复2：主导航外层 div 因内部 float 塌陷为 0 高，后面的社交图标 div.iUp
+           整块叠上来挡住菜单项的点击（elementsFromPoint 命中 DIV.iUp 而非链接）。
+           让 wrapper 的直接子 div 包含浮动并各自成块，恢复正确的点击命中。 */
+        .navigation-wrapper.visible > div {
+            float: none;
+            clear: both;
+            overflow: hidden;
+        }
     }
     </style>
 </head>
