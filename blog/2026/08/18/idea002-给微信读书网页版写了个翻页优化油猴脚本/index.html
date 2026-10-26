@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lyuu.eu.cc","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat","show_result":true},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js" defer></script>
+
+    <meta name="description" content="起因很简单：在微信读书网页版看书，翻页只能点右下角的箭头或者按它认的那几个键，我用空格和滚轮翻习惯了，它不认。  事情是这样的我平时在浏览器里用微信读书（weread.qq.com）看书，阅读器页面翻页的方式很有限：鼠标点按钮，或者按方向键。但我看网页的习惯是空格键往后翻、滚轮上下滚——这套习惯在哪都好使，唯独微信读书不认。 空格在它那里要么没反应，要么触发了页面里别的行为。每翻一页都要挪鼠标去">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给微信读书网页版写了个翻页优化油猴脚本">
+<meta property="og:url" content="https://lyuu.eu.cc/blog/2026/08/18/idea002-%E7%BB%99%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6%E7%BD%91%E9%A1%B5%E7%89%88%E5%86%99%E4%BA%86%E4%B8%AA%E7%BF%BB%E9%A1%B5%E4%BC%98%E5%8C%96%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC/index.html">
+<meta property="og:site_name" content="Lyuu 的博客">
+<meta property="og:description" content="起因很简单：在微信读书网页版看书，翻页只能点右下角的箭头或者按它认的那几个键，我用空格和滚轮翻习惯了，它不认。  事情是这样的我平时在浏览器里用微信读书（weread.qq.com）看书，阅读器页面翻页的方式很有限：鼠标点按钮，或者按方向键。但我看网页的习惯是空格键往后翻、滚轮上下滚——这套习惯在哪都好使，唯独微信读书不认。 空格在它那里要么没反应，要么触发了页面里别的行为。每翻一页都要挪鼠标去">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-18T22:50:00.000Z">
+<meta property="article:modified_time" content="2026-10-26T08:55:38.729Z">
+<meta property="article:author" content="Lyuu">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="油猴脚本">
+<meta property="article:tag" content="微信读书">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lyuu.eu.cc/blog/2026/08/18/idea002-%E7%BB%99%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6%E7%BD%91%E9%A1%B5%E7%89%88%E5%86%99%E4%BA%86%E4%B8%AA%E7%BF%BB%E9%A1%B5%E4%BC%98%E5%8C%96%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lyuu.eu.cc/blog/2026/08/18/idea002-%E7%BB%99%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6%E7%BD%91%E9%A1%B5%E7%89%88%E5%86%99%E4%BA%86%E4%B8%AA%E7%BF%BB%E9%A1%B5%E4%BC%98%E5%8C%96%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC/","path":"2026/08/18/idea002-给微信读书网页版写了个翻页优化油猴脚本/","title":"给微信读书网页版写了个翻页优化油猴脚本"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>给微信读书网页版写了个翻页优化油猴脚本 | Lyuu 的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/blog/js/utils.js" defer></script><script src="/blog/js/motion.js" defer></script><script src="/blog/js/sidebar.js" defer></script><script src="/blog/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Lyuu 的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code Create Life</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-portal"><a href="https://lyuu.eu.cc/" rel="section"><i class="fa fa-globe fa-fw"></i>主页</a></li><li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E6%83%85%E6%98%AF%E8%BF%99%E6%A0%B7%E7%9A%84"><span class="nav-number">1.</span> <span class="nav-text">事情是这样的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%83%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"><span class="nav-number">2.</span> <span class="nav-text">它做了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E5%AE%9E%E7%8E%B0%E4%B8%8A%E7%9A%84%E5%B0%8F%E7%BB%86%E8%8A%82"><span class="nav-number">3.</span> <span class="nav-text">几个实现上的小细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%85%E5%9C%A8%E5%93%AA"><span class="nav-number">4.</span> <span class="nav-text">装在哪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lyuu</p>
+  <div class="site-description" itemprop="description">记录技术、AI 与生活的个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/java-walker" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;java-walker" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/08/18/idea002-%E7%BB%99%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6%E7%BD%91%E9%A1%B5%E7%89%88%E5%86%99%E4%BA%86%E4%B8%AA%E7%BF%BB%E9%A1%B5%E4%BC%98%E5%8C%96%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="给微信读书网页版写了个翻页优化油猴脚本 | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          给微信读书网页版写了个翻页优化油猴脚本
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-08-19 06:50:00" itemprop="dateCreated datePublished" datetime="2026-08-19T06:50:00+08:00">2026-08-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-10-26 16:55:38" itemprop="dateModified" datetime="2026-10-26T16:55:38+08:00">2026-10-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>起因很简单：在微信读书网页版看书，翻页只能点右下角的箭头或者按它认的那几个键，我用空格和滚轮翻习惯了，它不认。</p>
+</blockquote>
+<h2 id="事情是这样的"><a href="#事情是这样的" class="headerlink" title="事情是这样的"></a>事情是这样的</h2><p>我平时在浏览器里用微信读书（weread.qq.com）看书，阅读器页面翻页的方式很有限：鼠标点按钮，或者按方向键。但我看网页的习惯是空格键往后翻、滚轮上下滚——这套习惯在哪都好使，唯独微信读书不认。</p>
+<p>空格在它那里要么没反应，要么触发了页面里别的行为。每翻一页都要挪鼠标去点按钮，看一天书手真的很累。</p>
+<p>这种小事不值得跟官方提需求，但自己动手半小时就搞定了。写了个 <a target="_blank" rel="noopener" href="https://www.tampermonkey.net/">Tampermonkey</a> 脚本，就是 <a target="_blank" rel="noopener" href="https://github.com/java-walker/weread-web-optimizer">weread-web-optimizer</a>。</p>
+<h2 id="它做了什么"><a href="#它做了什么" class="headerlink" title="它做了什么"></a>它做了什么</h2><p>就四件事，全是翻页：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空格 &#x2F; 回车（含小键盘回车）</td>
+<td>向后翻页</td>
+</tr>
+<tr>
+<td>鼠标滚轮向下</td>
+<td>向后翻页</td>
+</tr>
+<tr>
+<td>鼠标滚轮向上</td>
+<td>向前翻页</td>
+</tr>
+</tbody></table>
+<p>装好之后，看书的姿势就恢复成了我刷其他网页的样子：手放滚轮上，滚一下翻一页，想键盘翻就敲空格。</p>
+<h2 id="几个实现上的小细节"><a href="#几个实现上的小细节" class="headerlink" title="几个实现上的小细节"></a>几个实现上的小细节</h2><ul>
+<li><strong>输入框里不拦截按键</strong>。会先判断焦点是不是在输入框 &#x2F; 文本域里，是的话直接放行，免得你在搜索框里打字打着打着突然翻页。</li>
+<li><strong>长按空格只翻一次</strong>。不做按住连翻，防止手一抖从第三章翻到第七章。</li>
+<li><strong>滚轮做了 200ms 节流</strong>。触控板和惯性滚动一次能吐十几个滚轮事件，不节流的话一滚就是好几页。阈值在脚本里可调。</li>
+<li><strong>只作用于 weread.qq.com</strong>，match 规则卡死了它的域名和 <code>/web/reader/</code> 路径，其他网站一律不碰。</li>
+</ul>
+<h2 id="装在哪"><a href="#装在哪" class="headerlink" title="装在哪"></a>装在哪</h2><ul>
+<li>仓库：<a target="_blank" rel="noopener" href="https://github.com/java-walker/weread-web-optimizer">java-walker&#x2F;weread-web-optimizer</a></li>
+<li>Greasy Fork 上也有：<a target="_blank" rel="noopener" href="https://greasyfork.org/en/scripts/592115">微信阅读网页版翻页优化</a>，走 Greasy Fork 能自动更新，也方便别人搜到。</li>
+</ul>
+<p>装法就是常规油猴脚本的装法：浏览器先装 Tampermonkey 扩展，然后点仓库 README 里的 <code>Install</code> 徽章（走 jsDelivr CDN，国内直连），确认安装即可。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>这类脚本本质上是在帮自己把「网页的默认操作习惯」掰回自己顺手的形状。代码不长，百来行，ESLint 过一遍就提交了。微信读书网页版哪天改了翻页的实现方式它可能会失效——失效了再改呗，反正生成这个脚本的成本比看一天书挪几百次鼠标低多了。</p>
+<p>脚本用 <a target="_blank" rel="noopener" href="https://github.com/java-walker/weread-web-optimizer/blob/main/LICENSE">CC BY-NC 4.0</a> 授权，随便改随便分享，别拿去卖就行。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/blog/tags/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC/" rel="tag"># 油猴脚本</a>
+              <a href="/blog/tags/%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6/" rel="tag"># 微信读书</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2026/07/22/Hexo-%E4%BB%A3%E7%A0%81%E5%9D%97%E4%B8%8E%E6%8E%92%E7%89%88%E6%B5%8B%E8%AF%95/" rel="prev" title="Hexo 代码块与排版测试">
+                  <i class="fa fa-angle-left"></i> Hexo 代码块与排版测试
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2026/10/25/idea001-%E7%BB%99%E8%81%94%E6%83%B3%E5%B9%B3%E6%9D%BF%E5%86%99%E4%BA%86%E4%B8%AA%E4%BA%92%E4%BC%A0%E5%8F%91%E9%80%81%E5%99%A8%EF%BC%9AZUI2Share/" rel="next" title="给联想平板写了个互传发送器：ZUI2Share">
+                  给联想平板写了个互传发送器：ZUI2Share <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Lyuu</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<style>
+.site-updated {
+  margin: 10px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+  font-size: 12px;
+  color: #999;
+  line-height: 1.5;
+  text-align: center;
+}
+.site-updated-home {
+  font-size: 13px;
+  color: #9aa3ad;
+  margin: 4px 0 2px;
+  text-align: center;
+}
+</style>
+<script src="/site-updated.js"></script>
+
+</body>
+</html>

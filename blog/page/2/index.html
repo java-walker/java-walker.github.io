@@ -143,7 +143,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/blog/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -174,6 +174,378 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lyuu.eu.cc/blog/2026/07/05/010-Linux%E9%87%8D%E7%BD%AEroot%E5%AF%86%E7%A0%81%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97%EF%BC%9ARHEL%E7%B3%BB%E5%92%8CDebian%E7%B3%BB%E5%85%A8%E8%A6%86%E7%9B%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Lyuu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyuu 的博客">
+      <meta itemprop="description" content="记录技术、AI 与生活的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Lyuu 的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2026/07/05/010-Linux%E9%87%8D%E7%BD%AEroot%E5%AF%86%E7%A0%81%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97%EF%BC%9ARHEL%E7%B3%BB%E5%92%8CDebian%E7%B3%BB%E5%85%A8%E8%A6%86%E7%9B%96/" class="post-title-link" itemprop="url">008 Linux重置root密码终极指南：RHEL系和Debian系全覆盖</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-07-05 22:55:00" itemprop="dateCreated datePublished" datetime="2026-07-05T22:55:00+08:00">2026-07-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-10-26 16:55:38" itemprop="dateModified" datetime="2026-10-26T16:55:38+08:00">2026-10-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>原文转载自微信公众号「walker-行者」Linux 系列。<br>原始链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&mid=2247483828&idx=1&sn=86f8395ced0a7fd493ae3d55b1331cb0&chksm=c0bf7896f7c8f1809480193f6485949bf2ebb287befd79f8d81575701024e23c405ec3f00b21&cur_album_id=4586547322464501762&scene=189#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzkwMDgyMTA2OQ==&amp;mid=2247483828&amp;idx=1&amp;sn=86f8395ced0a7fd493ae3d55b1331cb0&amp;chksm=c0bf7896f7c8f1809480193f6485949bf2ebb287befd79f8d81575701024e23c405ec3f00b21&amp;cur_album_id=4586547322464501762&amp;scene=189#wechat_redirect</a></p>
+</blockquote>
+<blockquote>
+<p>手把手教你进入救援模式重置密码，附带SELinux关键一步</p>
+</blockquote>
+<h2 id="场景说明"><a href="#场景说明" class="headerlink" title="场景说明"></a>场景说明</h2><p>作为运维人员或Linux学习者，<strong>忘记root密码</strong>是迟早会遇到的问题。别慌，Linux提供了完善的密码重置机制——核心思路是<strong>进入单用户&#x2F;救援模式</strong>，跳过密码验证，然后重新设置密码。</p>
+<p>⚠️ <strong>物理机&#x2F;虚拟机操作</strong>：以下操作需要<strong>物理接触服务器</strong>或通过<strong>虚拟机控制台</strong>（VNC&#x2F;iDRAC&#x2F;IPMI）执行，<strong>不能通过SSH远程操作</strong>（因为要重启系统，SSH连接会断开）。云服务器请使用云厂商提供的<strong>控制台VNC</strong>功能连接。</p>
+<h2 id="第一篇：RHEL系（CentOS-Rocky-Linux-AlmaLinux-RHEL）"><a href="#第一篇：RHEL系（CentOS-Rocky-Linux-AlmaLinux-RHEL）" class="headerlink" title="第一篇：RHEL系（CentOS &#x2F; Rocky Linux &#x2F; AlmaLinux &#x2F; RHEL）"></a>第一篇：RHEL系（CentOS &#x2F; Rocky Linux &#x2F; AlmaLinux &#x2F; RHEL）</h2><h2 id="方法一：rd-break救援模式（CentOS-7-RHEL-7-主流方法）"><a href="#方法一：rd-break救援模式（CentOS-7-RHEL-7-主流方法）" class="headerlink" title="方法一：rd.break救援模式（CentOS 7+&#x2F;RHEL 7+ 主流方法）"></a>方法一：rd.break救援模式（CentOS 7+&#x2F;RHEL 7+ 主流方法）</h2><h3 id="第一步：开机进入GRUB编辑"><a href="#第一步：开机进入GRUB编辑" class="headerlink" title="第一步：开机进入GRUB编辑"></a>第一步：开机进入GRUB编辑</h3><ol>
+<li><p><strong>重启系统</strong></p>
+<p>（或开机）</p>
+</li>
+<li><p>出现GRUB引导菜单时，<strong>快速按 <code>e</code></strong> 进入内核参数编辑界面</p>
+</li>
+<li><p>菜单通常一闪而过，建议开机时<strong>不停按 <code>e</code></strong> 或 <strong>不停按 <code>↓</code> 方向键</strong>暂停菜单</p>
+</li>
+</ol>
+<blockquote>
+<p>💡 <strong>GRUB是什么？</strong> GRUB（Grand Unified Bootloader）是Linux系统启动时的引导程序，负责加载内核并启动系统。在GRUB界面按 <code>e</code> 可以临时编辑启动参数（重启后恢复，不会永久修改）。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">                                                            </span><br></pre></td></tr></table></figure>
+
+<h4 id="第二步：编辑内核参数"><a href="#第二步：编辑内核参数" class="headerlink" title="第二步：编辑内核参数"></a>第二步：编辑内核参数</h4><ol>
+<li><p>找到以 <strong><code>linux</code></strong> 或 <strong><code>linuxefi</code></strong> 开头的内核行</p>
+</li>
+<li><p>移动光标到<strong>行末尾</strong></p>
+</li>
+<li><p>在最后添加参数：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> rd.break</span><br></pre></td></tr></table></figure>
+
+<p><strong>修改前：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux /vmlinuz-3.10.0-957.el7.x86_64 root=/dev/mapper/centos-root ro rhgb quiet</span><br></pre></td></tr></table></figure>
+
+<p><strong>修改后：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux /vmlinuz-3.10.0-957.el7.x86_64 root=/dev/mapper/centos-root ro rhgb quiet rd.break</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>按下 <strong><code>Ctrl+X</code></strong> 或 <strong><code>F10</code></strong> 启动进入救援模式</li>
+</ol>
+<h4 id="第三步：命令行重置密码"><a href="#第三步：命令行重置密码" class="headerlink" title="第三步：命令行重置密码"></a>第三步：命令行重置密码</h4><p>进入后会出现 <code>switch_root:/#</code> 提示符，依次执行以下命令：<code>   </code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 1. 将 /sysroot 挂载为可读写（默认是只读）</span><br></pre></td></tr></table></figure>
+
+<p>系统会自动重启，开机时会执行<strong>SELinux重标记</strong>（开机时间会变长，耐心等待！）</p>
+<h3 id="方法二：init-bin-bash-单用户模式（备用方案）"><a href="#方法二：init-bin-bash-单用户模式（备用方案）" class="headerlink" title="方法二：init&#x3D;&#x2F;bin&#x2F;bash 单用户模式（备用方案）"></a>方法二：init&#x3D;&#x2F;bin&#x2F;bash 单用户模式（备用方案）</h3><p>如果 <code>rd.break</code> 方式不生效（某些老硬件&#x2F;特殊环境），可以尝试这个方法：</p>
+<h4 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h4><ol>
+<li><p>GRUB界面按 <code>e</code> 进入编辑</p>
+</li>
+<li><p>找到 <code>linux</code> 开头的内核行，在行尾添加：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rw init=/bin/bash</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>按 <code>Ctrl+X</code> 启动</li>
+</ol>
+<p>     </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 直接进入 root shell（无需密码！）  </span><br></pre></td></tr></table></figure>
+
+<h2 id="第二篇：Debian系（Ubuntu-Debian）"><a href="#第二篇：Debian系（Ubuntu-Debian）" class="headerlink" title="第二篇：Debian系（Ubuntu &#x2F; Debian）"></a>第二篇：Debian系（Ubuntu &#x2F; Debian）</h2><blockquote>
+<p>🎯 <strong>Ubuntu方法论</strong>：Ubuntu默认<strong>没有SELinux</strong>，不需要 <code>/.autorelabel</code> 步骤，也不用 <code>rd.break</code>。两种方法任选其一即可。</p>
+</blockquote>
+<h3 id="方法一：GRUB恢复模式（最简单，推荐桌面-服务器）"><a href="#方法一：GRUB恢复模式（最简单，推荐桌面-服务器）" class="headerlink" title="方法一：GRUB恢复模式（最简单，推荐桌面&#x2F;服务器）"></a>方法一：GRUB恢复模式（最简单，推荐桌面&#x2F;服务器）</h3><h3 id="第一步：调出GRUB菜单"><a href="#第一步：调出GRUB菜单" class="headerlink" title="第一步：调出GRUB菜单"></a>第一步：调出GRUB菜单</h3><p>重启机器，开机瞬间：</p>
+<ul>
+<li><p><strong>BIOS传统启动</strong></p>
+<p>：长按 <code>Shift</code></p>
+</li>
+<li><p><strong>UEFI新电脑&#x2F;云主机VNC</strong></p>
+<p>：反复按 <code>Esc</code></p>
+</li>
+</ul>
+<p>出现GNU GRUB菜单后松手。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────────────────────────────────────────┐     </span><br></pre></td></tr></table></figure>
+
+<h4 id="第二步：进入恢复模式"><a href="#第二步：进入恢复模式" class="headerlink" title="第二步：进入恢复模式"></a>第二步：进入恢复模式</h4><ol>
+<li><p>选择 <strong><code>Advanced options for Ubuntu</code></strong> 回车</p>
+</li>
+<li><p>选中带 <strong><code>(recovery mode)</code></strong> 的内核，回车</p>
+</li>
+<li><p>在恢复菜单选择：**<code>root - Drop to root shell prompt</code>**</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────────────────────────────────────────┐</span><br></pre></td></tr></table></figure>
+
+<h4 id="第三步：挂载可读写、重置密码"><a href="#第三步：挂载可读写、重置密码" class="headerlink" title="第三步：挂载可读写、重置密码"></a>第三步：挂载可读写、重置密码</h4><p>进入root命令行后依次输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 根分区默认只读，先改成读写</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>💡 <strong>Ubuntu特殊说明</strong>：Ubuntu默认<strong>禁用root登录</strong>，日常使用 <code>sudo</code> 提权。因此重置<strong>普通用户</strong>密码即可（通常是安装时创建的用户）。如果你确实需要启用root登录，执行 <code>passwd root</code> 并设置密码后，还需修改SSH配置允许root登录。</p>
+</blockquote>
+<h4 id="第四步：重启生效"><a href="#第四步：重启生效" class="headerlink" title="第四步：重启生效"></a>第四步：重启生效</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 切回只读再重启</span><br></pre></td></tr></table></figure>
+
+<p>系统正常启动，用新密码登录。</p>
+<p>方法二：GRUB直接单用户shell（云服务器VNC常用）</p>
+<h3 id="操作步骤-1"><a href="#操作步骤-1" class="headerlink" title="操作步骤"></a>操作步骤</h3><ol>
+<li><p>GRUB菜单选中Ubuntu默认内核，按 <code>e</code> 编辑启动参数</p>
+</li>
+<li><p>找到 <strong><code>linux</code></strong> 开头的那一行</p>
+</li>
+<li><p>把行里的 <strong><code>ro</code></strong> 改成 **<code>rw</code>**，行尾添加 <strong><code>init=/bin/bash</code></strong></p>
+</li>
+</ol>
+<p><strong>修改前：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux /boot/vmlinuz-xxx root=UUID=xxx ro quiet splash</span><br></pre></td></tr></table></figure>
+
+<p><strong>修改后：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux /boot/vmlinuz-xxx root=UUID=xxx rw quiet splash init=/bin/bash</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>按 <strong><code>Ctrl+X</code></strong> 直接进入root shell</p>
+</li>
+<li><p>重置密码：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd ubuntu</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>重启系统：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec /sbin/init</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、RHEL系-vs-Ubuntu-重置密码核心区别"><a href="#三、RHEL系-vs-Ubuntu-重置密码核心区别" class="headerlink" title="三、RHEL系 vs Ubuntu 重置密码核心区别"></a>三、RHEL系 vs Ubuntu 重置密码核心区别</h2><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>RHEL系（CentOS&#x2F;Rocky&#x2F;RHEL）</th>
+<th>Ubuntu&#x2F;Debian</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>救援模式关键字</strong></td>
+<td><code>rd.break</code></td>
+<td>recovery mode &#x2F; <code>init=/bin/bash</code></td>
+</tr>
+<tr>
+<td><strong>SELinux处理</strong></td>
+<td>✅ <strong>必须</strong> <code>touch /.autorelabel</code></td>
+<td>❌ 默认无SELinux，<strong>不需要</strong></td>
+</tr>
+<tr>
+<td><strong>根分区挂载</strong></td>
+<td><code>/sysroot</code></td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td><strong>重置对象</strong></td>
+<td><code>passwd root</code></td>
+<td><code>passwd 普通用户</code>  （或root）</td>
+</tr>
+<tr>
+<td><strong>默认root登录</strong></td>
+<td>启用</td>
+<td>禁用（用sudo）</td>
+</tr>
+</tbody></table>
+<h2 id="四、常见报错与解决方案"><a href="#四、常见报错与解决方案" class="headerlink" title="四、常见报错与解决方案"></a>四、常见报错与解决方案</h2><h2 id="报错1：Authentication-token-manipulation-error"><a href="#报错1：Authentication-token-manipulation-error" class="headerlink" title="报错1：Authentication token manipulation error"></a>报错1：Authentication token manipulation error</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd: Authentication token manipulation error</span><br></pre></td></tr></table></figure>
+
+<p><strong>原因</strong>：文件系统是<strong>只读</strong>状态，无法写入新密码</p>
+<p><strong>解决方案</strong>：</p>
+<p>RHEL系：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -o remount,rw /sysroot</span><br></pre></td></tr></table></figure>
+
+<p>Ubuntu：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -o rw,remount /</span><br></pre></td></tr></table></figure>
+
+<h3 id="报错2：改完密码重启后登录失败（RHEL系）"><a href="#报错2：改完密码重启后登录失败（RHEL系）" class="headerlink" title="报错2：改完密码重启后登录失败（RHEL系）"></a>报错2：改完密码重启后登录失败（RHEL系）</h3><p><strong>原因</strong>：<strong>SELinux拦截</strong>了登录请求（密码正确但无法登录）</p>
+<p><strong>解决方案</strong>：</p>
+<ul>
+<li><p>重新走一遍整个流程</p>
+</li>
+<li><p>在 <code>chroot /sysroot</code> 环境下<strong>一定要执行</strong>：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch /.autorelabel</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重启时等待SELinux重标记完成</li>
+</ul>
+<h3 id="报错3：GRUB菜单一闪而过，看不到"><a href="#报错3：GRUB菜单一闪而过，看不到" class="headerlink" title="报错3：GRUB菜单一闪而过，看不到"></a>报错3：GRUB菜单一闪而过，看不到</h3><p><strong>解决方案</strong>：</p>
+<ul>
+<li><p>RHEL系：开机时<strong>不停按 <code>e</code></strong> 或 <strong>不停按 <code>↓</code></strong></p>
+</li>
+<li><p>Ubuntu BIOS模式：开机时<strong>不停按 <code>Shift</code></strong></p>
+</li>
+<li><p>Ubuntu UEFI模式：开机时<strong>不停按 <code>Esc</code></strong></p>
+</li>
+<li><p>云服务器：使用云厂商的<strong>控制台VNC</strong>连接，在控制台界面中操作</p>
+</li>
+</ul>
+<blockquote>
+<p>💡 <strong>虚拟机用户提示</strong>：VMware中开机后<strong>立即用鼠标点击黑屏区域</strong>，然后快速按对应按键，确保键盘输入被虚拟机捕获。</p>
+</blockquote>
+<h2 id="五、为什么RHEL系要有-autorelabel-这一步？"><a href="#五、为什么RHEL系要有-autorelabel-这一步？" class="headerlink" title="五、为什么RHEL系要有 /.autorelabel 这一步？"></a>五、为什么RHEL系要有 <code>/.autorelabel</code> 这一步？</h2><p>SELinux（Security-Enhanced Linux）会给每个文件打上<strong>安全上下文标签</strong>（类似于文件的“身份证”）。当你通过救援模式修改了 <code>/etc/shadow</code>（密码文件）时，这个文件的SELinux标签可能<strong>与当前策略不一致</strong>。</p>
+<ul>
+<li><p><strong>有 <code>/.autorelabel</code></strong></p>
+<p> → 下次开机时系统会<strong>自动扫描并修正</strong>所有文件的SELinux标签 → 登录正常</p>
+</li>
+<li><p><strong>没有 <code>/.autorelabel</code></strong></p>
+<p> → SELinux策略和文件标签不一致，<strong>拒绝登录</strong> → 进不去系统</p>
+</li>
+</ul>
+<blockquote>
+<p>🎯 <strong>记住</strong>：RHEL系无论用哪种方法，**修改密码后一定要执行 <code>touch /.autorelabel</code>**！Ubuntu用户直接跳过这步。</p>
+</blockquote>
+<h2 id="六、云服务器特别提醒"><a href="#六、云服务器特别提醒" class="headerlink" title="六、云服务器特别提醒"></a>六、云服务器特别提醒</h2><table>
+<thead>
+<tr>
+<th>云平台</th>
+<th>推荐方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>阿里云</td>
+<td>控制台 → 重置实例密码</td>
+<td>官方功能，最省事</td>
+</tr>
+<tr>
+<td>腾讯云</td>
+<td>控制台 → 重置密码</td>
+<td>不需要进GRUB</td>
+</tr>
+<tr>
+<td>AWS EC2</td>
+<td>分离根卷 → 挂载到临时实例修改</td>
+<td>官方推荐方法</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 <strong>强烈建议</strong>：云服务器优先使用云厂商提供的**「重置密码」**功能，远比手动进GRUB更安全、更方便！</p>
+</blockquote>
+<h2 id="七、完整操作速查卡片"><a href="#七、完整操作速查卡片" class="headerlink" title="七、完整操作速查卡片"></a>七、完整操作速查卡片</h2><h2 id="RHEL系（CentOS-Rocky-RHEL）—-rd-break-方式（推荐）"><a href="#RHEL系（CentOS-Rocky-RHEL）—-rd-break-方式（推荐）" class="headerlink" title="RHEL系（CentOS&#x2F;Rocky&#x2F;RHEL）— rd.break 方式（推荐）"></a>RHEL系（CentOS&#x2F;Rocky&#x2F;RHEL）— rd.break 方式（推荐）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># GRUB界面按 e，在 linux 行尾加 rd.break </span><br></pre></td></tr></table></figure>
+
+<h3 id="RHEL系—-init-bin-bash-方式（备用）"><a href="#RHEL系—-init-bin-bash-方式（备用）" class="headerlink" title="RHEL系— init&#x3D;&#x2F;bin&#x2F;bash 方式（备用）"></a>RHEL系— init&#x3D;&#x2F;bin&#x2F;bash 方式（备用）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># GRUB界面按 e，在 linux 行尾加 rw init=/bin/bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="Ubuntu-—-recovery-mode-方式（推荐）"><a href="#Ubuntu-—-recovery-mode-方式（推荐）" class="headerlink" title="Ubuntu — recovery mode 方式（推荐）"></a>Ubuntu — recovery mode 方式（推荐）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># GRUB界面选择 Advanced options → recovery mode → root</span><br></pre></td></tr></table></figure>
+
+<h3 id="Ubuntu-—-init-bin-bash-方式（备用）"><a href="#Ubuntu-—-init-bin-bash-方式（备用）" class="headerlink" title="Ubuntu — init&#x3D;&#x2F;bin&#x2F;bash 方式（备用）"></a>Ubuntu — init&#x3D;&#x2F;bin&#x2F;bash 方式（备用）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># GRUB界面按 e，linux 行把 ro 改成 rw，行尾加 init=/bin/bash</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、快速对比总结表"><a href="#八、快速对比总结表" class="headerlink" title="八、快速对比总结表"></a>八、快速对比总结表</h2><table>
+<thead>
+<tr>
+<th>操作步骤</th>
+<th>RHEL系（CentOS&#x2F;Rocky）</th>
+<th>Ubuntu&#x2F;Debian</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>GRUB按键</strong></td>
+<td>按 <code>e</code></td>
+<td><code>Shift</code>  （BIOS）&#x2F; <code>Esc</code>（UEFI）</td>
+</tr>
+<tr>
+<td><strong>内核参数</strong></td>
+<td>行尾加 <code>rd.break</code></td>
+<td>recovery mode 或 <code>init=/bin/bash</code></td>
+</tr>
+<tr>
+<td><strong>挂载命令</strong></td>
+<td><code>mount -o remount,rw /sysroot</code></td>
+<td><code>mount -o rw,remount /</code></td>
+</tr>
+<tr>
+<td><strong>切换环境</strong></td>
+<td><code>chroot /sysroot</code></td>
+<td>不需要（直接在 &#x2F; 下操作）</td>
+</tr>
+<tr>
+<td><strong>SELinux重标记</strong></td>
+<td>✅ <code>touch /.autorelabel</code></td>
+<td>❌ 不需要</td>
+</tr>
+<tr>
+<td><strong>重置密码</strong></td>
+<td><code>passwd root</code></td>
+<td><code>passwd 用户名</code></td>
+</tr>
+<tr>
+<td><strong>重启</strong></td>
+<td><code>exit</code>  （自动重启）</td>
+<td><code>exec /sbin/init</code></td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p>📌</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -219,7 +591,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-26 16:43:46" itemprop="dateModified" datetime="2026-10-26T16:43:46+08:00">2026-10-26</time>
+      <time title="修改时间：2026-10-26 16:55:38" itemprop="dateModified" datetime="2026-10-26T16:55:38+08:00">2026-10-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -604,7 +976,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-26 16:43:46" itemprop="dateModified" datetime="2026-10-26T16:43:46+08:00">2026-10-26</time>
+      <time title="修改时间：2026-10-26 16:55:38" itemprop="dateModified" datetime="2026-10-26T16:55:38+08:00">2026-10-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -999,7 +1371,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-26 16:43:46" itemprop="dateModified" datetime="2026-10-26T16:43:46+08:00">2026-10-26</time>
+      <time title="修改时间：2026-10-26 16:55:38" itemprop="dateModified" datetime="2026-10-26T16:55:38+08:00">2026-10-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1256,7 +1628,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-26 16:43:46" itemprop="dateModified" datetime="2026-10-26T16:43:46+08:00">2026-10-26</time>
+      <time title="修改时间：2026-10-26 16:55:38" itemprop="dateModified" datetime="2026-10-26T16:55:38+08:00">2026-10-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1958,7 +2330,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-26 16:43:46" itemprop="dateModified" datetime="2026-10-26T16:43:46+08:00">2026-10-26</time>
+      <time title="修改时间：2026-10-26 16:55:38" itemprop="dateModified" datetime="2026-10-26T16:55:38+08:00">2026-10-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1997,7 +2369,7 @@
 </ul>
 <p><strong>举个栗子🌰：</strong></p>
 <p>bash</p>
-<p># 用root身份连接远程服务器ssh <a href="mailto:&#114;&#x6f;&#111;&#116;&#64;&#49;&#57;&#x32;&#46;&#x31;&#54;&#x38;&#46;&#49;&#x2e;&#x31;&#x30;&#48;">&#114;&#x6f;&#111;&#116;&#64;&#49;&#57;&#x32;&#46;&#x31;&#54;&#x38;&#46;&#49;&#x2e;&#x31;&#x30;&#48;</a># 指定端口连接ssh-p2222 <a href="mailto:&#x74;&#x6f;&#109;&#x40;&#x31;&#x39;&#50;&#x2e;&#49;&#54;&#56;&#x2e;&#49;&#46;&#49;&#48;&#x30;">&#x74;&#x6f;&#109;&#x40;&#x31;&#x39;&#50;&#x2e;&#49;&#54;&#56;&#x2e;&#49;&#46;&#49;&#48;&#x30;</a># 直接在远程执行命令（执行完自动退出）ssh <a href="mailto:&#x72;&#111;&#x6f;&#x74;&#x40;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#x38;&#46;&#49;&#x2e;&#x31;&#48;&#48;">&#x72;&#111;&#x6f;&#x74;&#x40;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#x38;&#46;&#49;&#x2e;&#x31;&#48;&#48;</a> “ls -la &#x2F;home”</p>
+<p># 用root身份连接远程服务器ssh <a href="mailto:&#x72;&#111;&#x6f;&#x74;&#x40;&#49;&#x39;&#50;&#x2e;&#49;&#x36;&#56;&#x2e;&#49;&#x2e;&#49;&#x30;&#x30;">&#x72;&#111;&#x6f;&#x74;&#x40;&#49;&#x39;&#50;&#x2e;&#49;&#x36;&#56;&#x2e;&#49;&#x2e;&#49;&#x30;&#x30;</a># 指定端口连接ssh-p2222 <a href="mailto:&#116;&#111;&#109;&#x40;&#49;&#57;&#x32;&#46;&#x31;&#54;&#x38;&#x2e;&#x31;&#x2e;&#x31;&#48;&#48;">&#116;&#111;&#109;&#x40;&#49;&#57;&#x32;&#46;&#x31;&#54;&#x38;&#x2e;&#x31;&#x2e;&#x31;&#48;&#48;</a># 直接在远程执行命令（执行完自动退出）ssh <a href="mailto:&#114;&#x6f;&#111;&#116;&#x40;&#49;&#x39;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#49;&#46;&#49;&#x30;&#48;">&#114;&#x6f;&#111;&#116;&#x40;&#49;&#x39;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#49;&#46;&#49;&#x30;&#48;</a> “ls -la &#x2F;home”</p>
 <p>📖 <strong>推荐阅读</strong>：Linux ssh命令详解</p>
 <h2 id="二、SSH远程工具推荐（2026版）"><a href="#二、SSH远程工具推荐（2026版）" class="headerlink" title="二、SSH远程工具推荐（2026版）"></a>二、SSH远程工具推荐（2026版）</h2><p>图形化工具让远程管理更高效，以下按推荐度排序：</p>
 <h3 id="🥇-MobaXterm（强烈推荐）"><a href="#🥇-MobaXterm（强烈推荐）" class="headerlink" title="🥇 MobaXterm（强烈推荐）"></a>🥇 MobaXterm（强烈推荐）</h3><p><a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/">https://mobaxterm.mobatek.net/</a></p>
@@ -2153,7 +2525,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-26 16:43:46" itemprop="dateModified" datetime="2026-10-26T16:43:46+08:00">2026-10-26</time>
+      <time title="修改时间：2026-10-26 16:55:38" itemprop="dateModified" datetime="2026-10-26T16:55:38+08:00">2026-10-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2314,7 +2686,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-26 16:43:46" itemprop="dateModified" datetime="2026-10-26T16:43:46+08:00">2026-10-26</time>
+      <time title="修改时间：2026-10-26 16:55:38" itemprop="dateModified" datetime="2026-10-26T16:55:38+08:00">2026-10-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2486,7 +2858,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-26 16:43:46" itemprop="dateModified" datetime="2026-10-26T16:43:46+08:00">2026-10-26</time>
+      <time title="修改时间：2026-10-26 16:55:38" itemprop="dateModified" datetime="2026-10-26T16:55:38+08:00">2026-10-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2580,7 +2952,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-26 16:43:46" itemprop="dateModified" datetime="2026-10-26T16:43:46+08:00">2026-10-26</time>
+      <time title="修改时间：2026-10-26 16:55:38" itemprop="dateModified" datetime="2026-10-26T16:55:38+08:00">2026-10-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
